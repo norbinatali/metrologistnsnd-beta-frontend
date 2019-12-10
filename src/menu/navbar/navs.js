@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Nav from './nav';
-import i18n from "../translation/i18n";
+import i18n from "../translations/i18n";
 import LogoV2 from "../style/LogoMakr_6pZrzB.png";
 import Toolbar from "@material-ui/core/Toolbar";
 import FlagUA from "../style/LogoMakr_1Xl0t4.png";
