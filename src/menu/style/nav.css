@@ -1,4 +1,4 @@
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+
 .link {
     color: white;
     display: flex;
@@ -28,4 +28,4 @@
     height: 800px;
     border: solid blue 1px;
 }
-}
+
