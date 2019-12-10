@@ -12,7 +12,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import history from './history';
 
 const httpLink = createHttpLink({
-    uri: 'http://localhost:4000',
+    uri: 'https://metrologistnsnd-beta-backend.herokuapp.com/',
 
 });
 
