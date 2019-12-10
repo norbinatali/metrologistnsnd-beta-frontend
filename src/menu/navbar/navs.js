@@ -26,7 +26,7 @@ const Navs = ({ items, offset, duration, delay, coverWidth, navWidth, linkClass,
         backgroundImage:"linear-gradient(to right,#000222, rgba(23, 20, 61, 0.96),  #252529)",
     };
     const navsStyle = {
-        margin: 0 auto,
+        margin: "0 auto",
         paddingLeft: 0,
         position: "relative",
         height: "100%",
