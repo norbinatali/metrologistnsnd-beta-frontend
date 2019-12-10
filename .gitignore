@@ -21,3 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/src/data/
+/src/serviceWorker.js
+/src/history.js
+/src/index.js
+/src/SignUp.js
+/src/logo.svg
+/src/constants.js
+/src/menu/
+/src/style/
+/src/components/
+/.gitignore
