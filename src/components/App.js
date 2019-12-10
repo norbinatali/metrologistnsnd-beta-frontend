@@ -30,12 +30,12 @@ class App extends Component {
                     <Route exact path="/signup" component={SignUp} />
 
                            
-                                {userId ? ( <Redirect to={{path:"${this.props.match.url}/user"}} component={MenuUser}/>
+                                {userId ? ( <Redirect to={{path:"/user"}} component={MenuUser}/>
 
 
                                 ):(<Redirect to={{path:'/', state:'Please Login In'}}/>)
                                 }
-                             <Route exact path="${this.props.match.url}/user" component={MenuUser}/>
+                             <Route exact path="/user" component={MenuUser}/>
                         </Router>
                     </Switch>
 
