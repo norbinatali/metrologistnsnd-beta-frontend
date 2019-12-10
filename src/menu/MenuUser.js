@@ -1,3 +1,99 @@
+import React from 'react';
+import clsx from 'clsx';
+import SearchIcon from '@material-ui/icons/Search';
+import { fade,makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Drawer from '@material-ui/core/Drawer';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import ExitToApp from '@material-ui/icons/ExitToApp';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import PropTypes from 'prop-types';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import FolderIcon from '@material-ui/icons/Folder';
+import PeopleIcon from '@material-ui/icons/People';
+import InfoIcon from '@material-ui/icons/Info';
+import ImportantDevicesIcon from '@material-ui/icons/ImportantDevices';
+import Box from '@material-ui/core/Box';
+import history from '../history';
+import History from "../components/History";
+import AssessmentTheory from "../components/AssessmentTheory";
+import QM from "../components/QM";
+import Standards from "../components/Standards";
+import { withTranslation} from 'react-i18next';
+import i18n from "../menu/translation/i18n";
+import ListSubheader from "@material-ui/core/ListSubheader";
+import Paper from "@material-ui/core/Paper";
+import Dashboard from "../components/Dashboard";
+import MyDevice from "../components/MyDevice";
+import AddDevice from "../components/AddDevice";
+import FlagUA from "../menu/style/LogoMakr_1Xl0t4.png"
+import FlagUS from "../menu/style/LogoMakr_4V1dPm.png"
+import LogoV2 from  "../menu/style/LogoMakr_6pZrzB.png"
+import { AUTH_TOKEN } from '../constants';
+import ContactUS from "../components/ContactUS";
+import { GC_USER_ID } from '../constants'
+
+
+
+const drawerWidth = 240;
+
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        display: 'flex',
+    },
+    toolbar: {
+        paddingRight: 24, // keep right padding when drawer closed
+    },
+    toolbarIcon: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        padding: '0 8px',
+        ...theme.mixins.toolbar,
+    },
+    appBar: {
+        backgroundImage:"linear-gradient(to right,#000222, rgba(23, 20, 61, 0.96),  #252529)",
+        zIndex: theme.zIndex.drawer + 1,
+        transition: theme.transitions.create(['width', 'margin'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+    },
+    appBarShift: {
+        marginLeft: drawerWidth,
+        width: `calc(100% - ${drawerWidth}px)`,
+        transition: theme.transitions.create(['width', 'margin'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+    },
+    menuButton: {
+        marginRight: 36,
+    },
+    menuButtonHidden: {
+        display: 'none',
+    },
+    title: {
+        flexGrow: 2,
+    },
+    drawerPaper: {
+        position: 'relative',
+        whiteSpace: 'nowrap',
+        width: drawerWidth,
+        transition: theme.transitions.create('width', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.enteringScreen,
         }),
     },
     drawerPaperClose: {
