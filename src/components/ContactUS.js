@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {withTranslation} from "react-i18next";
-import '../components/contactMe'
 import gql from "graphql-tag";
 import FormControl from "@material-ui/core/FormControl";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
