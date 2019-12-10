@@ -30,7 +30,7 @@ import AssessmentTheory from "../components/AssessmentTheory";
 import QM from "../components/QM";
 import Standards from "../components/Standards";
 import { withTranslation} from 'react-i18next';
-import i18n from "../menu/translation/i18n";
+import i18n from "../menu/translations/i18n";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import Paper from "@material-ui/core/Paper";
 import Dashboard from "../components/Dashboard";
