@@ -19,7 +19,8 @@ import ContactUS from "./ContactUS";
 import Link from "@material-ui/core/Link";
 import ForgetPassword from "./ForgetPassword";
 
-export default class Login extends Component{
+
+class Login extends Component{
     constructor(props) {
         super(props);
 
