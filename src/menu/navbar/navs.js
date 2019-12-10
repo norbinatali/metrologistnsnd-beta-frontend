@@ -18,7 +18,7 @@ const Navs = ({ items, offset, duration, delay, coverWidth, navWidth, linkClass,
     navWidth = navWidth ? navWidth : DEFAULT_NAV_WIDTH;
     coverWidth = coverWidth ? coverWidth : items.length * navWidth;
     const coverStyle = {
-        width: 1300,
+        width: "100%",
         height: "100%",
         overflow: "hidden",
         WebkitMaskBoxImage: "-webkit-linear-gradient(white 100%)",
@@ -26,8 +26,7 @@ const Navs = ({ items, offset, duration, delay, coverWidth, navWidth, linkClass,
         backgroundImage:"linear-gradient(to right,#000222, rgba(23, 20, 61, 0.96),  #252529)",
     };
     const navsStyle = {
-        margin: 0,
-        left: coverWidth /2  - 100,
+        margin: 0 auto,
         paddingLeft: 0,
         position: "relative",
         height: "100%",
