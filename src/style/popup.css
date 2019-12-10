@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,600,700");
-@media screen and (-webkit-min-device-pixel-ratio:0) { 
-    property: value;
+
 
 .popup {
     position: fixed;
@@ -90,5 +89,5 @@ input {
     cursor: pointer;
     text-decoration: none;
 }
-}
+
 
