@@ -172,8 +172,8 @@ export default class Login extends Component{
         const { token } = this.state.login;
      if (this.state.login){
         this._saveUserData(token);
-        this.props.history.push(`https://metrologistnsnd-beta-frontend.herokuapp.com/user`)}
-     else { this.props.history.push('https://metrologistnsnd-beta-frontend.herokuapp.com/');}
+        this.props.history.push(`user`)}
+     else { this.props.history.push('/');}
     };
 
     _saveUserData =(id, token) => {
