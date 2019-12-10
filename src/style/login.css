@@ -1,3 +1,5 @@
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+    property: value;
 
 .input-login {
     display: flex;
@@ -44,4 +46,5 @@ h5 {
     font-family: Tahoma, Arial, sans-serif;
     color: #000222;
     margin: 5px 0;
+}
 }
