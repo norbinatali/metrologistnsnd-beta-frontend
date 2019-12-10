@@ -1,5 +1,4 @@
-{
-  "Metrologist" : "М Е Т Р О Л О Г І С Т",
+{"Metrologist" : "МЕТРОЛОГІСТ",
   "№": "№",
   "Device": "Прибор",
   "Category": "Категорія",
@@ -21,7 +20,6 @@
   "About us": "Про нас",
   "logout": "Вихід",
   "Settings": "Налаштування",
-  "Profile": "Профіль",
 
 
   "All steps completed": "Всі кроки завершено",
@@ -35,16 +33,31 @@
   "T3": "Технічний регламент законодавчо регульваних засобів вимірювальної техніки від 13 січня 2016р №94",
   "Add" : "Додати",
 
-
+"Contact us": "Написати нам",
+  "Company Name": "Назва компанії(не обов'язково)",
     "Introduction": "Представлення",
     "Welcome": "Вітаємо",
     "Products": "Продукція",
     "Login": "Особистий кабінет",
-    "Costumers": "Наші клієнти",
+  "Submit": "Підтвердити",
+  "Name": "Повне ім'я",
+  "Your email": "Вкажіть Вашу електронну адресу",
+  "Your new password": "Вкажіть новий пароль",
+  "Or": "Або",
+
+  "From": "Від",
+  "Subject": "Тема",
+  "Text": "Текст",
+  "Send": "Відправити",
+
+  "About": "Про нас",
+  "Email": "Електронна адреса",
+    "Customers": "Наші клієнти",
     "Contacts": "Контакти",
-    "Please login in": "Вхід в обліковий запис",
+    "Login in": "Вхід в обліковий запис",
     "Registration": "Реєстрація",
     "Username or Email": "Імя користувача",
+  "Forgot Password": "Забули пароль?",
     "Password": "Пароль",
     "Language": "Мова",
 
@@ -77,18 +90,24 @@
   "About QM2": "Оцінка відповідності системи управлення якістю (якщо не передбачено технічними регламентами) проводиться відповідно до модулів: D,D1,E,E1,H,H1",
 
 
-  "About Metrologist": " Metrologist це платформа створена для : інженерів які працюють з вимірювальними приборами, виробників та людей що хочуть дізнатися більше про метрологію та інфрмаційно вимірювальні технології.",
-  "Why Metrologist is needed": "Metologist допоможе Вам знайти більше інформації про стандарти, вимірювальні прибори та іншу корисну інформацію. Організувати Ваш графік повірки/калібрування для кожного Вашого прибору у Вашому списку та інше. ",
-  "Metrologist test ": "На данний час Metrologist буде працювати у тестувальному режимі, додаткова інформація буде відкриватися поступово, та доповнюватиметься інформацією.",
+  "About Metrologist": "- це платформа створена для : інженерів які працюють з вимірювальними приборами, виробників та людей що хочуть дізнатися більше про метрологію та інфрмаційно вимірювальні технології.",
+  "Why Metrologist is needed": "- допоможе Вам знайти більше інформації про стандарти, вимірювальні прибори та іншу корисну інформацію. Організувати Ваш графік повірки/калібрування для кожного Вашого прибору у Вашому списку та інше. ",
+  "Metrologist test": "- буде працювати у тестувальному режимі, додаткова інформація буде відкриватися поступово, та доповнюватиметься інформацією.",
   "Metrologist recommendations": "Якщо у Вас є будь-які рекомедації або зауваження щодо покращення. Будь-ласка поділіться з нами, заповніть форму нижче.",
 
-  "Terminology": "Terminology",
-  "Measuring Instrument": "Measuring Instrument - instrument intended to measure an electrical or non-electrical quality using electronic means and/or equipped with electronic devices",
-  "Errors": "Measurement error - measured quantity value minus a reference quantity value",
-  "Calibration": "Calibration - the process of configuring an instrument to provide a result for a sample within an acceptable range.",
-  "Fault": "Fault - difference between the error of indication ands the intrinsic error of a measuring instruments. ",
-  "Test": "Test - series of operations intended to verify the compliance of the equipment under test (EUT) with specified requirements",
-  "Test procedure": "Test procedure - detailed description of the test operations",
-  "Test program": "Test program - description of a series of tests for certain types of equipment"
+  "Terminology": "Термінологія",
+  "Measuring Instrument is": "Засоби вимірювальної техніки - технічний засіб, який застосовується під час вимірювань і має нормовані метрологічні характеристики.",
+  "Errors": "Вимірювальна похибка - це відхилення результату вимірювання від істинного значення вимірювальної величини.",
+  "Calibration": "Калібрування — визначення в певних умовах або контроль метрологічних характеристик засобів вимірювальної техніки, на які не поширюється державний метрологічний нагляд.",
+  "Fault": "Невідність - різниця між помилкою індикації та внутрішньою помилкою вимірювальних приладів. ",
+  "Test": "Випробування - ряд операцій, призначених для перевірки відповідності випробуваного обладнання (EUT) визначеним вимогам.",
+  "Test procedure": "Процедура випробування - детальний опис операцій випробувань",
+  "Test program": "Програма випробувань - опис серії випробувань на певні типи обладнання",
+
+  "Measuring Instrument":"Засоби вимірювальної техніки",
+  "Brand": "Виробник",
+  "Type": "Тип",
+  "TR": "Технічний Регламент",
+  "Calibration Date": "Дата проведеної оцінки відповідності"
 
 }
