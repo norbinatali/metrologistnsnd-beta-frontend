@@ -29,8 +29,8 @@ class App extends Component {
                             <Route exact path={"/reset-password/"+resetToken} component={ConfirmResetPassword}/>
                     <Route exact path="/signup" component={SignUp} />
 
-                            <Route exact path="/user" component={MenuUser}>
-                                {userId ? ( <Redirect to={{path:"/user"}}/>
+                            <Route exact path="${this.props.match.url}/user" component={MenuUser}>
+                                {userId ? ( <Redirect to={{path:"${this.props.match.url}/user"}}/>
 
 
                                 ):(<Redirect to={{path:'/', state:'Please Login In'}}/>)
