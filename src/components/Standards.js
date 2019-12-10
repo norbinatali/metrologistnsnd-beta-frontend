@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const GET_Device = gql`query { allDevices {id name_EN name_UA  module category tr{name_TR_UA name_TR_EN}}}`;
+const GET_Device = gql`query { allDevice {id name_EN name_UA  module category tr{name_TR_UA name_TR_EN}}}`;
 
 
 function Standards({t}){
