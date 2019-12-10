@@ -30,7 +30,7 @@ render() {
     const { from, subject,text } = this.state;
     return (
         <div >
-            <contactMe/>
+          
             <FormControl  >
                 <MuiThemeProvider>
                     <label  htmlFor="from">From </label>
