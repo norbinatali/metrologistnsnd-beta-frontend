@@ -6,18 +6,23 @@ import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
-
+import { withTranslation} from 'react-i18next';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
-
+import history from "../history";
 import gql from 'graphql-tag';
 import{Mutation} from 'react-apollo';
-import { AUTH_TOKEN , GC_USER_ID} from '../constants';
+import { AUTH_TOKEN,GC_USER_ID } from '../constants';
 import {PopupboxManager, PopupboxContainer} from 'react-popupbox';
 import '../style/login.css';
 import ContactUS from "./ContactUS";
+import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
-import ForgetPassword from "./ForgetPassword";
+import FrontPic from "../menu/style/Screen Shot 2019-11-28 at 9.19.01 PM.png"
+import {Typography} from "@material-ui/core";
+
+
+
 
 
 class Login extends Component{
