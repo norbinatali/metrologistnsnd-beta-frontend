@@ -1,5 +1,6 @@
 {
-  "Metrologist" : "M E T R O L O G I S T",
+  {
+  "Metrologist" : "METROLOGIST",
   "№": "№",
   "Device": "Device",
   "Category": "Category",
@@ -20,7 +21,6 @@
   "Forum": "Forum",
   "SAND": "SAND",
   "Change profile": "Change profile",
-  "Profile": "Profile",
   "About us": "About us",
   "Logout": "Logout",
   "Standards and Devices" : "Devices",
@@ -30,21 +30,33 @@
   "T2": "Technical reglament about requirements for measuring instruments #163 February 24th 2016",
   "T3": "Technical reglament about requirements for measuring technology",
   "Add" : "Add",
-
+"Or": "Or",
+"Company Name": "Company name(optional)",
+  "Contact us": "Contact us",
+  "From": "From",
+  "Subject": "Subject",
+  "Text": "Text",
+  "Send": "Send",
 
     "Introduction": "Introduction",
     "Welcome": "Home ",
     "Products": "Products",
     "About": "About us",
     "Login": "Login",
+  "Email": "Email",
+  "Submit": "Submit",
+  "Your email": "Your email",
+  "Your new password": "Provide new password ",
+  "Name": "Full Name",
     "Contacts": "Contacts",
-    "Please login in": "Please sign in",
+    "Login in": "Please login in",
     "Registration": "Sign up",
    "Username or Email": "Username or Email",
    "Password": "Password",
+  "Forgot Password": "Forgot Password?",
 
   "Conformity assessment general": "Conformity assessment is the name given to the processes that are used to demonstrate that a product, service or management system or body meets specified requirements. When applied to product, it involves testing to an established performance standard, as well as inspection, quality management, surveillance, accreditation and declaration of conformity.",
-"Assessment procedure" : "Objectives of the conformity assessment procedure\nTo demonstrate that a product being placed on the market complies with all legislative requirements.\nThe procedure should ensure confidence of consumers, public authorities and manufacturers regarding the conformity of products.",
+  "Assessment procedure" : "Objectives of the conformity assessment procedure\nTo demonstrate that a product being placed on the market complies with all legislative requirements.\nThe procedure should ensure confidence of consumers, public authorities and manufacturers regarding the conformity of products.",
   "Assessment module": "",
   "About module": "Modules:",
   "Module A":"A - внутрішній контроль виробництва",
@@ -64,24 +76,32 @@
   "Module B+D+E+F": "Модуль B також застосовується у комбінації з модулями D, E, F для забезпечення оцінки віповідності на стадії виробництва",
   "Module D1,H,H1" : "Модулі D1, H, H1 є самостійними процедурами пов'язаними з оцінкою системи управління якістю і не залежить від модуля B",
 
-  "System of quality management": "Система управління якістю",
+  "System of quality management": "System of quality management",
   "About QM": "Оцінка системи управляння якістю на виробництві ЗВТ проводиться з метою підтвердження того, що ЗВТ, які випускаються виробником, відповідають вимогам, які підтверджуються під час оцінки відповідності. Перевіряється, що всі технічні, адміністративні та людські чинники, що впливають на відповідність зазначеним вимогам, знаходяться під контролем, відхилення він встановлених вимог всоєчасно виявляється, а виробник вживає заходів щодо запобігання виготовленню невідповідної продукції.",
   "About QM2": "Оцінка відповідності системи управлення якістю (якщо не передбачено технічними регламентами) проводиться відповідно до модулів: D,D1,E,E1,H,H1",
 
 
 
-  "About Metrologist": "Metrologist is a platform which created for: engineers who work with measuring technology, manufacturers, and people who want to know more about metrology and information measuring technology.",
-  "Why Metrologist is needed": "Metologist will help you to find an information about standards, measuring devices and other useful information. Organize your measuring schedule for each device in your list and other. ",
-  "Metrologist test": "Metrologist will work in test mode. We will open new functions and provide more information gradually. ",
+  "About Metrologist": " is a platform created for: engineers who work with measuring technology, manufacturers, and people who want to know more about metrology and information measuring technology.",
+  "Why Metrologist is needed": " will help you to find information about standards, measuring devices and other useful information. Organize your measuring schedule for each device in your list and other. ",
+  "Metrologist test": " will work in beta mode. This app is in active development and will be relased soon. ",
   "Metrologist recommendations": "If you have any recommendations to improve the platform, please, feel free to fill the form below.",
 
   "Terminology": "Terminology",
-  "Measuring Instrument": "Measuring Instrument - instrument intended to measure an electrical or non-electrical quality using electronic means and/or equipped with electronic devices",
-  "Errors": "Measurement error - measured quantity value minus a reference quantity value",
+  "Measuring Instrument is": "Measuring Instrument - instrument intended to measure an electrical or non-electrical quality using electronic means and/or equipped with electronic devices.",
+  "Errors": "Measurement error - measured quantity value minus a reference quantity value.",
   "Calibration": "Calibration - the process of configuring an instrument to provide a result for a sample within an acceptable range.",
   "Fault": "Fault - difference between the error of indication ands the intrinsic error of a measuring instruments. ",
-  "Test": "Test - series of operations intended to verify the compliance of the equipment under test (EUT) with specified requirements",
-  "Test procedure": "Test procedure - detailed description of the test operations",
-  "Test program": "Test program - description of a series of tests for certain types of equipment"
+  "Test": "Test - series of operations intended to verify the compliance of the equipment under test (EUT) with specified requirements.",
+  "Test procedure": "Test procedure - detailed description of the test operations.",
+  "Test program": "Test program - description of a series of tests for certain types of equipment.",
 
-  }
+
+  "Brand": "Brand",
+  "Type": "Type",
+  "TR": "Technical Reglament",
+  "Calibration Date": "Last data of conforminty assessment",
+
+  "Measuring Instrument": "Measuring Instrument"
+}
+
