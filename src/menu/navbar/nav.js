@@ -4,7 +4,7 @@ import { Link } from 'react-scroll';
 
 const Nav = ({ index, item, offset, duration, delay, moveNavs, width, linkClass, activeLinkClass }) => {
     const liStyle = {
-        width: 130,
+        width: 135,
         height: "100%",
 
     };
