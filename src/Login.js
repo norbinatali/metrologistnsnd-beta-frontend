@@ -38,7 +38,6 @@ const styles = theme => ({
     },
     form: {
         width: '100%', // Fix IE 11 issue.
-
     },
     paper: {
         margin: theme.spacing(8, 4),
@@ -59,9 +58,7 @@ const styles = theme => ({
 class Login extends Component{
     constructor(props) {
         super(props);
-
         this.state = {
-
             signup: true,
             login: true,
             id: "",
@@ -71,9 +68,7 @@ class Login extends Component{
             password_signup: '',
             name_signup: "",
             classes: true,
-
         };
-
     }
     render() {
         const { classes } = this.props;
@@ -81,72 +76,60 @@ class Login extends Component{
         const HELLO_QUERY = gql`mutation ($email:String!, $password:String!) { login(email:$email , password: $password){token,user{id, posts{id, title}}}}`;
         const {email, password, id} = this.state;
         return (
-            <div style={{height:"420px", width:"800px", marginLeft: "auto", marginRight:"auto"}}>
-                <h3>{t('Login')}</h3> <br/>
-                <MuiThemeProvider>
-                    <Grid container spacing={5} style={{ backgroundColor:"white"}}>
-                        <Grid item xs={4} sm={4} >
-                            <FormControl>
-                                <h3>Login in</h3> <br/>
+            <div>
+                            <MuiThemeProvider>
 
-                                <label htmlFor="email">Email </label>
-                                <TextField
-                                    type="text"
-                                    value={this.state.email}
-                                    onChange={e => {
-                                        this.setState({email: e.target.value})
-                                    }}
-                                />
-                                < label htmlFor="password">Password </label>
-                                <TextField type="text" value={this.state.password} onChange={e => {
-                                    this.setState({password: e.target.value})
-                                }}/><br/>
+                                <Grid container spacing={6} >
+                                    <Grid item xs={4} sm={5} style={{backgroundColor:'white'}}>
+                                    <FormControl >
+                <h3>{t("Login in")}</h3> <br/>
 
-                                <Link to="/reset" component="button">Forget password?</Link>
-                                <Mutation mutation={HELLO_QUERY} variables={{email, password, id}}
-                                          onCompleted={() => this._confirm()}>
-                                    {mutation => (
-                                        <RaisedButton onClick={mutation}>Submit</RaisedButton>)}
-                                </Mutation><br/>
-
-                            </FormControl></Grid>
-                        <Grid item xs={4} sm={1} style={{backgroundColor: 'transparent'}}><h5
-                            style={{color: "white"}}>Or</h5>
-                        </Grid>
-                        <Grid item xs={4} sm={4} style={{backgroundColor: 'transparent'}}>
-                            <FormControl>
-                                <SignUp/>
-                            </FormControl>
-
-                        </Grid>
-                    </Grid>
+                <label  htmlFor="email">{t('Email')} </label>
+                <TextField
+                    type="text"
+                    value={this.state.email}
+                    onChange={e => {
+                        this.setState({ email: e.target.value })
+                    }}
+                />
+                < label htmlFor="password">{t('Password')} </label>
+                <TextField
+                    type="text"
+                    value={this.state.password}
+                    onChange={e => {
+                        this.setState({ password: e.target.value })
+                    }}
+                /><br/>
+                                        <Button link onClick={this.forgotpassword} >{t('Forgot Password')}</Button>
+                <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onCompleted={() => this._confirm()}>
+                    {mutation => (
+                        <RaisedButton onClick={mutation}>{t('Submit')}
+                        </RaisedButton>)}
+                </Mutation>
+                                    </FormControl></Grid>
+                                    <Grid item xs={4} sm={1} style={{backgroundColor:'transparent'}}><h5 style={{color:"white"}}>{t("Or")}</h5>
+                                    </Grid>
+                                    <Grid item xs={4} sm={5} style={{backgroundColor:'white'}}>
+                <FormControl >
+                    <SignUp />
+                </FormControl>
+                                    </Grid>
+                                </Grid>
                 </MuiThemeProvider>
-            </div>
-
-        );
-
-
-
-
-
-
-
+                      </div>
+        )
     }
-   _confirm = async data => {
-        const {token} = this.state.login;
-        if (this.state.login) {
+    _confirm = async data => {
+        const { token } = this.state.login;
+        if (this.state.login){
             this._saveUserData(token);
-            this.props.history.push('/user')
-        } else {
-            this.props.history.push('/');
-        }
+            this.props.history.push(`/user`)}
+        else { this.props.history.push('/')}
     };
-
-  _saveUserData = (id, token) => {
+    _saveUserData = (id,token) => {
         localStorage.setItem(GC_USER_ID, id);
         localStorage.setItem(AUTH_TOKEN, token)
     }
-
 }
+export default withTranslation()(Login);
 
-export default withTranslation() (Login)
