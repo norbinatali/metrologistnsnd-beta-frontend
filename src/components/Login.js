@@ -22,10 +22,7 @@ import FrontPic from "../menu/style/Screen Shot 2019-11-28 at 9.19.01 PM.png"
 import {Typography} from "@material-ui/core";
 
 
-
-
-
-class Login extends Component{
+class Login extends Component {
     constructor(props) {
         super(props);
 
@@ -40,51 +37,42 @@ class Login extends Component{
             name_signup: "",
             classes: true,
 
+
         };
         this.forgotpassword = this.forgotpassword.bind(this);
+
     }
-      forgotpassword() {
-        let path = '/forgot-password';
-        this.props.history.push(path)
-    }
+
     openPopupbox() {
         const content = (
             <div className='popup'>
                 <div className='popup-inner'>
-            <SignUp />
-            <div>
-                <a className="popup-close" onClick={PopupboxManager.close}>X</a></div>
-           </div>
+                    <SignUp/>
+                    <div>
+                        <a className="popup-close" onClick={PopupboxManager.close}>X</a></div>
+                </div>
             </div>
         );
-        PopupboxManager.open({ content,
+        PopupboxManager.open({
+            content,
             config: {
 
-            fadeIn: true,
+                fadeIn: true,
                 fadeInSpeed: 500
-        }});
+            }
+        });
+
     }
+
+    forgotpassword() {
+        let path = '/forgot-password';
+        this.props.history.push(path)
+    }
+
+
+
     render() {
-         const { t } = this.props;
-        const navbarItems = [{
-            label: "Welcome",
-            target: "item-1"
-        }, {
-            label: "Products",
-            target: "item-2"
-        }, {
-            label: "About",
-            target: "item-3"
-        }, {
-            label: "Contacts",
-            target: "item-4"
-        }, {
-            label: "Login",
-            target: "item-5"
-        }, {
-            label: "Customers",
-            target: "item-6"
-        }, ];
+        const { t } = this.props;
         const containerStyle = {
             width: "100%",
             margin: "100px 0px 100px"
@@ -110,34 +98,9 @@ class Login extends Component{
         const HELLO_QUERY = gql `mutation ($email:String!, $password:String!) { login(email:$email , password: $password){token,user{id, posts{id, title}}}}`;
         const { email, password,id } = this.state;
         return (
-           <div>
-                <Navbar items={navbarItems} offset={-80} duration={500} delay={0}></Navbar>
-                <div style={containerStyle}>
-                    <ElementsWrapper items={navbarItems} >
-                        <div name="item-1" style={{ width: 800, height: 800}} >
-                            <Grid container spacing={6} style={{marginTop:"20%",padding:"40"}}>
-                                <Grid item xs={4} sm={5} >
-                            <Typography>  <h2 style={{color:"white", marginTop:"5%"}}>{t('New software for metrologist, manufactures and people who wants to know more about measuring technology')}</h2></Typography>
-                                </Grid>
-                                <Grid item xs={4} sm={5} >
-                                <img src={FrontPic}/>
-                                </Grid>
-                            </Grid>
-                        </div>
-                        <div name="item-2" style={{ width: 800, height: 800}} >
-                            <Typography style={{color:"white"}}><h3>{t('Web application')}</h3></Typography>
-                        </div>
-                        <div name="item-3" style={{ width: 800, height: 800}} >
-                            <Typography style={{color:"white"}}><h3>{t('Metrologists')}</h3></Typography>
-                        </div>
-                        <div name="item-4" style={{ width: 800, height: 800}}>
-                            <div align={"center"} style={{backgroundColor:"white", marginTop:"50px", width:"50%", marginLeft:"30%"}}>
-                                <h3>{t("Contact us")}</h3> <br/>
-                                <ContactUS/></div>
-                        </div>
-                        <div name="item-5" style={{ width: 800, height: 800}} >
+            <div>
                             <MuiThemeProvider>
-                                <Grid container spacing={6} style={{marginTop:"20%",padding:"40"}}>
+                                <Grid container spacing={6} >
                                     <Grid item xs={4} sm={5} style={{backgroundColor:'white'}}>
                                     <FormControl >
                 <h3>{t("Login in")}</h3> <br/>
@@ -171,19 +134,19 @@ class Login extends Component{
                 <FormControl >
                     <SignUp />
                 </FormControl>
+
                                     </Grid>
                                 </Grid>
-           </MuiThemeProvider>
-                     </div>
-                    </ElementsWrapper></div>
-                </div>
+                </MuiThemeProvider>
+
+                      </div>
         )
     }
     _confirm = async data => {
         const { token } = this.state.login;
         if (this.state.login){
             this._saveUserData(token);
-            this.props.history.push('/user')}
+            this.props.history.push(`/user`)}
         else { this.props.history.push('/')}
     };
 
