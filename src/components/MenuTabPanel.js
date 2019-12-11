@@ -26,7 +26,7 @@ import Typography from "@material-ui/core/Typography";
 import ListItem from "@material-ui/core/ListItem";
 import {Button} from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
-import i18n from "../menu/translation/i18n";
+import i18n from "../menu/translations/i18n";
 
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
