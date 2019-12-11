@@ -18,7 +18,7 @@ import {PopupboxManager, PopupboxContainer} from 'react-popupbox';
 import '../style/login.css';
 import ContactUS from "./ContactUS";
 import Link from "@material-ui/core/Link";
-import ForgetPassword from "./ForgetPassword";
+
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -26,7 +26,7 @@ import Typography from "@material-ui/core/Typography";
 import ListItem from "@material-ui/core/ListItem";
 import {Button} from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
-import i18n from "../menu/translations/i18n";
+import i18n from "../menu/translation/i18n";
 
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -34,8 +34,10 @@ import Login from "./Login";
 import {withTranslation} from "react-i18next";
 import Paper from "@material-ui/core/Paper";
 import PropTypes from "prop-types";
-import FrontPic from "../menu/style/Screen Shot 2019-11-28 at 9.19.01 PM (1).png"
+import FrontPic from "../menu/style/Screen Shot 2019-11-28 at 9.19.01 PM.png"
 import logo from "../menu/style/LogoMakr_6pZrzB.png"
+import FlagUA from "../menu/style/LogoMakr_1Xl0t4.png";
+import FlagUS from "../menu/style/LogoMakr_4V1dPm.png";
 
 const classes = makeStyles(theme => ({
     root: {
@@ -98,10 +100,10 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(1),
     },
     panel: {
-
+marginRight:"auto",
         marginTop: "0px",
-        marginLeft: "30%",
-      backgroundImage:"linear-gradient(to right,#000222, rgba(23, 20, 61, 0.96),  #252529);"
+        marginLeft: "auto",
+        backgroundImage:"linear-gradient(to right,#000222, rgba(23, 20, 61, 0.96),  #252529);"
     },
     tab:{
 
@@ -111,7 +113,7 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
- function MenuTabPanel({t}) {
+function MenuTabPanel({t}) {
     const [value, setValue] = React.useState(0);
     const classes = useStyles();
     const theme = useTheme();
@@ -131,44 +133,46 @@ const useStyles = makeStyles(theme => ({
             <CssBaseline />
             <AppBar >
                 <Toolbar className={classes.toolBar}>
-                    <img src={logo} />
-                    <div>
-                        <button onClick={() => changeLanguage('ua')}>ua</button>
-                        <button onClick={() => changeLanguage('en')}>en</button>
+
+                    <img src={logo} style={{marginLeft:"40%", marginRight:"auto"}} />
+                    <div style={{marginLeft:"auto"}}>
+                        <button style={{height:"40%", backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
+                        <button style={{height:"40%", backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
                     </div>
                 </Toolbar>
+                <AppBar position="static" square>
+                    <Tabs centered value={value} onChange={handleChange} indicatorColor="white" variant="fullWidth" className ={classes.toolBar}>
+                        <Tab label={t("Welcome")} {...a11yProps(0)} className={classes.tab}/>
+                        <Tab label={t('Login')}  {...a11yProps(1)} className={classes.tab}/>
+                        <Tab label={t('Contacts')} {...a11yProps(2)} className={classes.tab}/>
+                    </Tabs>
+                </AppBar>
             </AppBar>
-            <AppBar position="static" square>
-                <Tabs centered value={value} onChange={handleChange} indicatorColor="white" variant="fullWidth" className ={classes.toolBar}>
-                    <Tab label={t("Welcome")} {...a11yProps(0)} className={classes.tab}/>
-                    <Tab label={t('Login')}  {...a11yProps(1)} className={classes.tab}/>
-                    <Tab label={t('Contacts')} {...a11yProps(2)} className={classes.tab}/>
-                </Tabs>
-            </AppBar>
+
 
             <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}  index={value} onChangeIndex={handleChangeIndex}>
                 <TabPanel value={value} index={0} dir={theme.direction} className={classes.panel}>
-<div style={{height:"445px"}}>
-    <MuiThemeProvider>
-    <Grid container spacing={6} >
-        <Grid item xs={4} sm={5} >
-            <Typography>  <h2 >{t('New software for metrologist, manufactures and people who wants to know more about measuring technology')}</h2></Typography>
-        </Grid>
-        <Grid item xs={4} sm={5} >
-            <img src={FrontPic}/>
-        </Grid>
-    </Grid>
-    </MuiThemeProvider>
-</div>
+                    <div style={{height:"445px"}}>
+                        <MuiThemeProvider>
+                            <Grid container spacing={6} >
+                                <Grid item xs={4} sm={5} >
+                                    <Typography>  <h2 >{t('New software for metrologist, manufactures and people who wants to know more about measuring technology')}</h2></Typography>
+                                </Grid>
+                                <Grid item xs={4} sm={5} >
+                                    <img src={FrontPic}/>
+                                </Grid>
+                            </Grid>
+                        </MuiThemeProvider>
+                    </div>
                 </TabPanel>
                 <TabPanel value={value} index={1} dir={theme.direction} className={classes.panel} >
-                    <div>
+                    <div style={{marginRight:"auto", marginLeft:"auto"}}>
 
-                       <Login/>
+                        <Login/>
                     </div>
                 </TabPanel>
                 <TabPanel value={value} index={2} dir={theme.direction} className={classes.panel}>
-                    <div >
+                    <div style={{marginRight:"auto", marginLeft:"auto"}}>
 
                         <ContactUS />
                     </div>
