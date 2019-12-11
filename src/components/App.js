@@ -11,6 +11,7 @@ import { GC_USER_ID, RESET_TOKEN as resetToken} from '../constants'
 import MenuUser from "../menu/MenuUser";
 import ForgetPassword from "./ForgetPassword";
 import ConfirmResetPassword from "./ConfirmResetPassword";
+import MenuTabPanel from "./MenuTabPanel";
 
 class App extends Component {
 
