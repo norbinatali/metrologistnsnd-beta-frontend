@@ -8,10 +8,15 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from '@material-ui/core/TextField';
 import FormControl from "@material-ui/core/FormControl";
+import {
+    Grid, Button, IconButton,
+    Link,
+    Typography
+} from '@material-ui/core';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import {withTranslation} from "react-i18next";
 
-
-
-export default class SignUp extends Component{
+class SignUp extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -27,13 +32,20 @@ export default class SignUp extends Component{
     render(){
         const SIGNUP_MUTATION = gql `mutation ($email: String!, $password: String!, $name: String!){signup(email:$email , password: $password,name:$name){token}}`;
         const { email, password,name } = this.state;
+         const { t } = this.props;
         const userId = localStorage.getItem(GC_USER_ID);
         return (
             <div>
+            
+              <MuiThemeProvider>
                 <FormControl >
-            <h3>Registration</h3><br/>
-                <MuiThemeProvider>
-       <label  htmlFor="email">Email </label>
+            <div style={{display: 'flex'}}>
+                                <IconButton onClick={this._handleBack}>
+                                    <ArrowBackIcon />
+                                </IconButton>
+                            </div>
+            <h3>{t('Registration')}</h3><br/>
+       <label  htmlFor="email">{t('Email')} </label>
                     <TextField
                         type="text"
                         value={this.state.email}
@@ -42,7 +54,7 @@ export default class SignUp extends Component{
                         }}
                         required
                     />
-       < label htmlFor="password">Password </label>
+       < label htmlFor="password">{t('Password')} </label>
                     <TextField
                         type="text"
                         value={this.state.password}
@@ -50,7 +62,7 @@ export default class SignUp extends Component{
                             this.setState({ password: e.target.value })
                         }} required
                     />
-       <label  htmlFor="name">Name </label>
+       <label  htmlFor="name">{t'(Name')} </label>
                     <TextField
                         type="text"
                         value={this.state.name}
@@ -60,11 +72,12 @@ export default class SignUp extends Component{
                     /><br/>
                     <Mutation mutation={SIGNUP_MUTATION}  variables={{ email, password, name } } onCompleted={() => this._confirm()}>
                         {signup => (
-                            <RaisedButton onClick={signup}>Submit </RaisedButton>)}
+                            <RaisedButton onClick={signup}>{t('Submit')} </RaisedButton>)}
                     </Mutation>
 
 
-                </MuiThemeProvider> </FormControl>
+                 </FormControl> </Grid>
+                                                            </MuiThemeProvider></Grid>
             </div>
         );
     }
@@ -82,3 +95,4 @@ export default class SignUp extends Component{
     }
 
 }
+export default withTranslation()(SignUp)
