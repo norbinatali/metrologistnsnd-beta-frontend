@@ -152,11 +152,11 @@ function MenuTabPanel({t}) {
 
             <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}  index={value} onChangeIndex={handleChangeIndex}>
                 <TabPanel value={value} index={0} dir={theme.direction} className={classes.panel}>
-                    <div style={{height:"445px"}}>
+                    <div>
                         <MuiThemeProvider>
                             <Grid container spacing={6} >
                                 <Grid item xs={4} sm={5} >
-                                    <Typography>  <h2 >{t('New software for metrologist, manufactures and people who wants to know more about measuring technology')}</h2></Typography>
+                                    <Typography>  <h3 >{t('New software for metrologist, manufactures and people who wants to know more about measuring technology')}</h2></Typography>
                                 </Grid>
                                 <Grid item xs={4} sm={5} >
                                     <img src={FrontPic}/>
