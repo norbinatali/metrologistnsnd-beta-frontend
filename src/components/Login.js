@@ -6,26 +6,57 @@ import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
-import { withTranslation} from 'react-i18next';
+import SwipeableViews from 'react-swipeable-views';
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-import history from "../history";
+import {withStyles, makeStyles, useTheme } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+
 import gql from 'graphql-tag';
 import{Mutation} from 'react-apollo';
-import { AUTH_TOKEN,GC_USER_ID } from '../constants';
+import { AUTH_TOKEN , GC_USER_ID} from '../constants';
 import {PopupboxManager, PopupboxContainer} from 'react-popupbox';
 import '../style/login.css';
 import ContactUS from "./ContactUS";
-import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
-import FrontPic from "../menu/style/Screen Shot 2019-11-28 at 9.19.01 PM.png"
-import {Typography} from "@material-ui/core";
+import ForgetPassword from "./ForgetPassword";
+import AppBar from "@material-ui/core/AppBar";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import ListItem from "@material-ui/core/ListItem";
+import {Button} from "@material-ui/core";
+import Icon from "@material-ui/core/Icon";
+import i18n from "../menu/translations/i18n";
+import MenuTabPanel from "./MenuTabPanel";
+import {withTranslation} from "react-i18next";
+import { Link as RouterLink, withRouter } from 'react-router-dom';
+
+const styles = theme => ({
+    root: {
+        height: '100vh',
+    },
+    form: {
+        width: '100%', // Fix IE 11 issue.
+    },
+    paper: {
+        margin: theme.spacing(8, 4),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+    },
+    grid:{
+        backgroundColor: "white"
+    }
+});
 
 
-class Login extends Component {
+
+class Login extends Component{
     constructor(props) {
         super(props);
-
         this.state = {
             signup: true,
             login: true,
@@ -36,74 +67,22 @@ class Login extends Component {
             password_signup: '',
             name_signup: "",
             classes: true,
-
-
         };
-        this.forgotpassword = this.forgotpassword.bind(this);
-
     }
-
-    openPopupbox() {
-        const content = (
-            <div className='popup'>
-                <div className='popup-inner'>
-                    <SignUp/>
-                    <div>
-                        <a className="popup-close" onClick={PopupboxManager.close}>X</a></div>
-                </div>
-            </div>
-        );
-        PopupboxManager.open({
-            content,
-            config: {
-
-                fadeIn: true,
-                fadeInSpeed: 500
-            }
-        });
-
-    }
-
-    forgotpassword() {
-        let path = '/forgot-password';
-        this.props.history.push(path)
-    }
-
-
-
     render() {
+        const { classes } = this.props;
         const { t } = this.props;
-        const containerStyle = {
-            width: "100%",
-            margin: "100px 0px 100px"
-        };
-        const useStyles = makeStyles(theme => ({
-            root: {
-                height: '100vh',
-            },
-            form: {
-                width: '100%', // Fix IE 11 issue.
-                marginTop: theme.spacing(1),
-            },
-            paper: {
-                margin: theme.spacing(8, 4),
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-            },
-            submit: {
-                margin: theme.spacing(3, 0, 2),
-            },
-        }));
-        const HELLO_QUERY = gql `mutation ($email:String!, $password:String!) { login(email:$email , password: $password){token,user{id, posts{id, title}}}}`;
-        const { email, password,id } = this.state;
+        const HELLO_QUERY = gql`mutation ($email:String!, $password:String!) { login(email:$email , password: $password){token,user{id, posts{id, title}}}}`;
+        const {email, password, id} = this.state;
         return (
             <div>
                             <MuiThemeProvider>
-                                <Grid container spacing={6} >
-                                    <Grid item xs={4} sm={5} style={{backgroundColor:'white'}}>
+
+                               <Grid container >
+                                    <Grid item lg={7} xs={12} style={{ backgroundColor:"white", marginLeft: "auto", marginRight:"auto"}}>
+            <h3 style={{marginLeft: "auto", marginRight:"auto"}}>{t("Login in")}</h3> <br/>
                                     <FormControl >
-                <h3>{t("Login in")}</h3> <br/>
+                
 
                 <label  htmlFor="email">{t('Email')} </label>
                 <TextField
@@ -127,18 +106,15 @@ class Login extends Component {
                         <RaisedButton onClick={mutation}>{t('Submit')}
                         </RaisedButton>)}
                 </Mutation>
+                       <Typography color="textSecondary" variant="body1" >
+                                    Don't have an account?{' '}
+                                    <Link component={RouterLink} to="/signup" variant="h8"  >
+                                        Sign up
+                                    </Link>
+                                </Typography>
                                     </FormControl></Grid>
-                                    <Grid item xs={4} sm={1} style={{backgroundColor:'transparent'}}><h5 style={{color:"white"}}>{t("Or")}</h5>
-                                    </Grid>
-                                    <Grid item xs={4} sm={5} style={{backgroundColor:'white'}}>
-                <FormControl >
-                    <SignUp />
-                </FormControl>
-
-                                    </Grid>
                                 </Grid>
                 </MuiThemeProvider>
-
                       </div>
         )
     }
@@ -149,13 +125,10 @@ class Login extends Component {
             this.props.history.push(`/user`)}
         else { this.props.history.push('/')}
     };
-
     _saveUserData = (id,token) => {
         localStorage.setItem(GC_USER_ID, id);
         localStorage.setItem(AUTH_TOKEN, token)
     }
 }
 export default withTranslation()(Login);
-
-
 
