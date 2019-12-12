@@ -26,6 +26,7 @@ class App extends Component {
                     <Switch>
                         <Router history={history}>
                     <Route exact path="/" component={MenuTabPanel} />
+             <Route exact path="/" component={Login}/>
                             <Route exact path="/reset-password" component={ForgetPassword} />
                             <Route exact path={"/reset-password/"+resetToken} component={ConfirmResetPassword}/>
                     <Route exact path="/signup" component={SignUp} />
