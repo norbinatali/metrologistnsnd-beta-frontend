@@ -62,7 +62,7 @@ class SignUp extends Component{
                             this.setState({ password: e.target.value })
                         }} required
                     />
-       <label  htmlFor="name">{t'(Name')} </label>
+       <label  htmlFor="name">{t('Name')} </label>
                     <TextField
                         type="text"
                         value={this.state.name}
@@ -93,6 +93,9 @@ class SignUp extends Component{
         localStorage.setItem(GC_USER_ID, id);
         localStorage.setItem(AUTH_TOKEN, token)
     }
+     _handleBack = () => {
+        history.goBack();
+    };
 
 }
 export default withTranslation()(SignUp)
