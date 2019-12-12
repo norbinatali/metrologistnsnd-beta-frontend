@@ -133,12 +133,17 @@ function MenuTabPanel({t}) {
             <CssBaseline />
             <AppBar >
                 <Toolbar className={classes.toolBar}>
-
+ <Grid container spacing={16}>
+                        <Grid item xs={11}>
                     <img src={logo} style={{marginLeft:"40%", marginRight:"auto"}} />
+</Grid>
+  <Grid item spacing={6}>
                     <div style={{marginLeft:"auto"}}>
                         <button style={{height:"40%", backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
                         <button style={{height:"40%", backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
                     </div>
+</Grid>
+</Grid>
                 </Toolbar>
                 <AppBar position="static" square>
                     <Tabs centered value={value} onChange={handleChange} indicatorColor="white" variant="fullWidth" className ={classes.toolBar}>
@@ -172,7 +177,7 @@ function MenuTabPanel({t}) {
                     </div>
                 </TabPanel>
                 <TabPanel value={value} index={2} dir={theme.direction} className={classes.panel}>
-                    <div style={{marginRight:"auto", marginLeft:"auto"}}>
+                    <div>
 
                         <ContactUS />
                     </div>
