@@ -28,7 +28,6 @@ import {Button} from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
 import i18n from "../menu/translations/i18n";
 import MenuTabPanel from "./MenuTabPanel";
-import TabPanel from "./TabPanel";
 import {withTranslation} from "react-i18next";
 import { Link as RouterLink, withRouter } from 'react-router-dom';
 
