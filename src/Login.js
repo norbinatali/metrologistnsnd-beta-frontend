@@ -30,7 +30,7 @@ import i18n from "../menu/translations/i18n";
 import MenuTabPanel from "./MenuTabPanel";
 import TabPanel from "./TabPanel";
 import {withTranslation} from "react-i18next";
-
+import { Link as RouterLink, withRouter } from 'react-router-dom';
 
 const styles = theme => ({
     root: {
@@ -79,10 +79,11 @@ class Login extends Component{
             <div>
                             <MuiThemeProvider>
 
-                                <Grid container spacing={6} >
-                                    <Grid item xs={4} sm={5} style={{backgroundColor:'white'}}>
+                               <Grid container >
+                                    <Grid item lg={7} xs={12} style={{ backgroundColor:"white", marginLeft: "auto", marginRight:"auto"}}>
+            <h3 style={{marginLeft: "auto", marginRight:"auto"}}>{t("Login in")}</h3> <br/>
                                     <FormControl >
-                <h3>{t("Login in")}</h3> <br/>
+                
 
                 <label  htmlFor="email">{t('Email')} </label>
                 <TextField
@@ -106,14 +107,13 @@ class Login extends Component{
                         <RaisedButton onClick={mutation}>{t('Submit')}
                         </RaisedButton>)}
                 </Mutation>
+                       <Typography color="textSecondary" variant="body1" >
+                                    Don't have an account?{' '}
+                                    <Link component={RouterLink} to="/signup" variant="h8"  >
+                                        Sign up
+                                    </Link>
+                                </Typography>
                                     </FormControl></Grid>
-                                    <Grid item xs={4} sm={1} style={{backgroundColor:'transparent'}}><h5 style={{color:"white"}}>{t("Or")}</h5>
-                                    </Grid>
-                                    <Grid item xs={4} sm={5} style={{backgroundColor:'white'}}>
-                <FormControl >
-                    <SignUp />
-                </FormControl>
-                                    </Grid>
                                 </Grid>
                 </MuiThemeProvider>
                       </div>
