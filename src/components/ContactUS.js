@@ -32,17 +32,23 @@ render() {
     const { from, subject,text } = this.state;
     return (
         <div >
-           <Grid container spacing={6} style={{ marginLeft: "auto", marginRight:"auto",backgroundColor:"#fff", width:"80%" }} >
+           <Grid container spacing={6} style={{ marginLeft: "auto", marginRight:"auto", width:"80%" }} >
                   <Grid item xs={6} style={{marginLeft: "auto", marginRight:"auto"}}>
             <FormControl >
                 <MuiThemeProvider>
-                    <label  htmlFor="from">From </label>
-                    <TextField type="text" value={this.state.form} onChange={e => {this.setState({ form: e.target.value })}} required/>
-                    < label htmlFor="subject">Subject </label>
-                    <TextField type="text" value={this.state.subject} onChange={e => {this.setState({ subject: e.target.value })}} required
+                    <label style={{color:"#fff"}} htmlFor="from">From </label>
+                    <TextField  fullWidth
+                    variant="outlined"
+                    style={{backgroundColor:"#fff"}} type="text" value={this.state.form} onChange={e => {this.setState({ form: e.target.value })}} required/>
+                    < label style={{color:"#fff"}} htmlFor="subject">Subject </label>
+                    <TextField  fullWidth
+                    variant="outlined"
+                    style={{backgroundColor:"#fff"}} type="text" value={this.state.subject} onChange={e => {this.setState({ subject: e.target.value })}} required
                     />
-                    <label  htmlFor="text">Text </label>
-                    <TextField  id="outlined-multiline-static" multiline  rows="5" type="text"  margin="normal" variant="outlined" value={this.state.text}  onChange={e => {this.setState({ text: e.target.value })}}
+                    <label style={{color:"#fff"}} htmlFor="text">Text </label>
+                    <TextField  fullWidth
+                    variant="outlined"
+                    style={{backgroundColor:"#fff"}} id="outlined-multiline-static" multiline  rows="5" type="text"  margin="normal" variant="outlined" value={this.state.text}  onChange={e => {this.setState({ text: e.target.value })}}
                     /><br/>
                     <Mutation mutation={LETTER_MUTATION}  variables={{ from,subject, text } } onCompleted={() => this._confirm()}>
                         {send => (
