@@ -32,7 +32,7 @@ render() {
     const { from, subject,text } = this.state;
     return (
         <div >
-           <Grid container spacing={6} style={{ marginLeft: "auto", marginRight:"auto",backgroundColor:"#fff", width:"40%" }} >
+           <Grid container spacing={6} style={{ marginLeft: "auto", marginRight:"auto",backgroundColor:"#fff", width:"80%" }} >
                   <Grid item xs={6} style={{marginLeft: "auto", marginRight:"auto"}}>
             <FormControl >
                 <MuiThemeProvider>
