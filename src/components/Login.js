@@ -10,7 +10,7 @@ import SwipeableViews from 'react-swipeable-views';
 import TextField from '@material-ui/core/TextField';
 import {withStyles, makeStyles, useTheme } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-
+import history from "../history"
 import gql from 'graphql-tag';
 import{Mutation} from 'react-apollo';
 import { AUTH_TOKEN , GC_USER_ID} from '../constants';
