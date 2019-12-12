@@ -8,6 +8,9 @@ import Input from "@material-ui/core/Input";
 import RaisedButton from "material-ui/RaisedButton";
 import {AUTH_TOKEN} from "../constants";
 import {Mutation} from 'react-apollo'
+import {
+    Grid
+} from '@material-ui/core';
 
 class ContactUS extends Component {
     constructor(props) {
