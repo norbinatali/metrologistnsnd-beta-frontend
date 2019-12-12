@@ -162,11 +162,11 @@ function MenuTabPanel({t}) {
                 <TabPanel value={value} index={0} dir={theme.direction} className={classes.panel}>
                     <div style={{display:"flex"}}>
                         <MuiThemeProvider>
-                            <Grid container spacing={6} style={{display: 'flex'}} >
-                                <Grid item xs={4} sm={5}  >
+                             <Grid container spacing={5} >
+                                <Grid item xs={12} md={4} >
                                     <Typography style={{color:"#fff"}}>  <h4 >{t('New software for metrologist, manufactures and people who wants to know more about measuring technology')}</h4></Typography>
                                 </Grid>
-                                <Grid item xs={4} sm={5} >
+                               <Grid item xs={12} md={4} >
                                     <img src={FrontPic}/>
                                 </Grid>
                             </Grid>
