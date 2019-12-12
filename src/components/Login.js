@@ -79,36 +79,40 @@ class Login extends Component{
                             <MuiThemeProvider>
 
                                <Grid container >
-                                    <Grid item lg={7} xs={12} style={{ backgroundColor:"white", marginLeft: "auto", marginRight:"auto"}}>
-            <h3 style={{marginLeft: "auto", marginRight:"auto"}}>{t("Login in")}</h3> <br/>
+                                    <Grid item lg={7} xs={12} style={{marginLeft: "auto", marginRight:"auto"}}>
+            <h3 style={{marginLeft: "auto",color:"#fff", marginRight:"auto"}}>{t("Login in")}</h3> <br/>
                                     <FormControl >
-                
-
-                <label  htmlFor="email">{t('Email')} </label>
+              
+                <label style={{color:"#fff"}} htmlFor="email">{t('Email')} </label>
                 <TextField
                     type="text"
-                    value={this.state.email}
+                    value={this.state.email} fullWidth
+                    variant="outlined"
+                    style={{backgroundColor:"#fff"}}
                     onChange={e => {
                         this.setState({ email: e.target.value })
                     }}
                 />
-                < label htmlFor="password">{t('Password')} </label>
+                < label style={{color:"#fff"}} htmlFor="password">{t('Password')} </label>
                 <TextField
                     type="text"
+                    fullWidth
+                    variant="outlined"
+                    style={{backgroundColor:"#fff"}}
                     value={this.state.password}
                     onChange={e => {
                         this.setState({ password: e.target.value })
                     }}
                 /><br/>
-                                        <Button link onClick={this.forgotpassword} >{t('Forgot Password')}</Button>
+                                        <Button style={{color:"#fff"}} link onClick={this.forgotpassword} >{t('Forgot Password')}</Button>
                 <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onCompleted={() => this._confirm()}>
                     {mutation => (
                         <RaisedButton onClick={mutation}>{t('Submit')}
                         </RaisedButton>)}
                 </Mutation>
-                       <Typography color="textSecondary" variant="body1" >
+                       <Typography style={{color:"#fff"}} variant="body1" >
                                     Don't have an account?{' '}
-                                    <Link component={RouterLink} to="/signup" variant="h8"  >
+                                    <Link component={RouterLink} to="/signup" variant="h8" style={{color:"#fff"}}  >
                                         Sign up
                                     </Link>
                                 </Typography>
