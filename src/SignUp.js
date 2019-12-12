@@ -36,7 +36,7 @@ class SignUp extends Component{
         const userId = localStorage.getItem(GC_USER_ID);
         const { t } = this.props;
         return ( 
-<div style={{ width:"100%", marginLeft:"30%"}}>
+ <div style={{flexGrow: 1, display: 'flex', alignItems: 'center',justifyContent: 'center'}}>
 
                 <Grid container spacing={6}  >
                     <div >
