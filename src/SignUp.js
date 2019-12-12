@@ -36,14 +36,18 @@ class SignUp extends Component{
         const userId = localStorage.getItem(GC_USER_ID);
         return (
             <div>
-            
+             <Grid container style={{ backgroundColor:"white", marginLeft: "auto", marginRight:"auto"}}>
               <MuiThemeProvider>
-                <FormControl >
-            <div style={{display: 'flex'}}>
+             <Grid item  xs={12} >
+             <div style={{display: 'flex'}}>
                                 <IconButton onClick={this._handleBack}>
                                     <ArrowBackIcon />
                                 </IconButton>
                             </div>
+            </Grid>
+                        <Grid item xs={12} style={{ marginLeft: "auto", marginRight:"auto"}}>
+                <FormControl >
+           
             <h3>{t('Registration')}</h3><br/>
        <label  htmlFor="email">{t('Email')} </label>
                     <TextField
@@ -77,7 +81,7 @@ class SignUp extends Component{
 
 
                  </FormControl> </Grid>
-                                                            </MuiThemeProvider></Grid>
+                                                            </MuiThemeProvider> </Grid>
             </div>
         );
     }
