@@ -30,7 +30,7 @@ import i18n from "../menu/translations/i18n";
 
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import Login from "../Login";
+import Login from "./Login";
 import {withTranslation} from "react-i18next";
 import Paper from "@material-ui/core/Paper";
 import PropTypes from "prop-types";
