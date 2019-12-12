@@ -29,8 +29,9 @@ render() {
     const { from, subject,text } = this.state;
     return (
         <div >
-          
-            <FormControl  >
+           <Grid container spacing={6} style={{ marginLeft: "auto", marginRight:"auto",backgroundColor:"#fff", width:"40%" }} >
+                  <Grid item xs={6} style={{marginLeft: "auto", marginRight:"auto"}}>
+            <FormControl >
                 <MuiThemeProvider>
                     <label  htmlFor="from">From </label>
                     <TextField type="text" value={this.state.form} onChange={e => {this.setState({ form: e.target.value })}} required/>
@@ -48,6 +49,8 @@ render() {
 
                 </MuiThemeProvider>
             </FormControl>
+
+</Grid></Grid>
         </div>
     )
 
