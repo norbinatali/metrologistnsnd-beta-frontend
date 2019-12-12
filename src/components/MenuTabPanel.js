@@ -163,7 +163,7 @@ function MenuTabPanel({t}) {
                         <MuiThemeProvider>
                             <Grid container spacing={6} style={{display: 'flex'}} >
                                 <Grid item xs={4} sm={5}  >
-                                    <Typography>  <h3 >{t('New software for metrologist, manufactures and people who wants to know more about measuring technology')}</h3></Typography>
+                                    <Typography style={{color:"#fff"}}>  <h3 >{t('New software for metrologist, manufactures and people who wants to know more about measuring technology')}</h3></Typography>
                                 </Grid>
                                 <Grid item xs={4} sm={5} >
                                     <img src={FrontPic}/>
