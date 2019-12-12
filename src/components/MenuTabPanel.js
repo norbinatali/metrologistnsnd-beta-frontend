@@ -94,7 +94,8 @@ const useStyles = makeStyles(theme => ({
 
     },
     toolBar:{
-        backgroundImage:"linear-gradient(to right,#000222, rgba(23, 20, 61, 0.96),  #252529);"
+        backgroundImage:"linear-gradient(to right,#000222, rgba(23, 20, 61, 0.96),  #252529);",
+display:"flex"
     },
     padding: {
         padding: theme.spacing(1),
@@ -141,8 +142,8 @@ function MenuTabPanel({t}) {
 </Grid>
   <Grid item spacing={6}>
                     <div style={{marginLeft:"auto"}}>
-                        <button style={{height:"10%", backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
-                        <button style={{height:"10%", backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
+                        <button style={{height:"10%", width:"10%", backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
+                        <button style={{height:"10%", width:"10%", backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
                     </div>
 </Grid>
 </Grid>
@@ -159,7 +160,7 @@ function MenuTabPanel({t}) {
 
             <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}  index={value} onChangeIndex={handleChangeIndex}>
                 <TabPanel value={value} index={0} dir={theme.direction} className={classes.panel}>
-                    <div>
+                    <div style={{display:"flex"}}>
                         <MuiThemeProvider>
                             <Grid container spacing={6} style={{display: 'flex'}} >
                                 <Grid item xs={4} sm={5}  >
