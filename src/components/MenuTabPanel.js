@@ -142,8 +142,8 @@ function MenuTabPanel({t}) {
 </Grid>
   <Grid item spacing={6}>
                     <div style={{marginLeft:"auto"}}>
-                        <button style={{height:"10%", width:"10%", backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
-                        <button style={{height:"10%", width:"10%", backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
+                        <button style={{height:"10%", backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
+                        <button style={{height:"10%", backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
                     </div>
 </Grid>
 </Grid>
@@ -164,7 +164,7 @@ function MenuTabPanel({t}) {
                         <MuiThemeProvider>
                             <Grid container spacing={6} style={{display: 'flex'}} >
                                 <Grid item xs={4} sm={5}  >
-                                    <Typography style={{color:"#fff"}}>  <h3 >{t('New software for metrologist, manufactures and people who wants to know more about measuring technology')}</h3></Typography>
+                                    <Typography style={{color:"#fff"}}>  <h4 >{t('New software for metrologist, manufactures and people who wants to know more about measuring technology')}</h4></Typography>
                                 </Grid>
                                 <Grid item xs={4} sm={5} >
                                     <img src={FrontPic}/>
