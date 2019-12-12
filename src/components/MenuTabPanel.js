@@ -30,7 +30,7 @@ import i18n from "../menu/translations/i18n";
 
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import Login from "./Login";
+import Login from "../Login";
 import {withTranslation} from "react-i18next";
 import Paper from "@material-ui/core/Paper";
 import PropTypes from "prop-types";
@@ -135,7 +135,9 @@ function MenuTabPanel({t}) {
                 <Toolbar className={classes.toolBar}>
  <Grid container spacing={16}>
                         <Grid item xs={11}>
-                    <img src={logo} style={{marginLeft:"40%", marginRight:"auto"}} />
+ <div style={{ marginRight: "auto", marginLeft: "auto",}}>
+                    <img src={logo}  />
+</div>
 </Grid>
   <Grid item spacing={6}>
                     <div style={{marginLeft:"auto"}}>
