@@ -142,7 +142,7 @@ function MyDevice({t,className, rest}) {
                             >  <Link
                             component={RouterLink}
                             to="/add-device"
-                            variant="h8"
+                            variant="h8" style={{color:"#fff"}}
                         >{t('Add Device')}</Link>
                                 </Button>
         <Tooltip title="Reload">
