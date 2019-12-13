@@ -108,6 +108,13 @@
   "Brand": "Виробник",
   "Type": "Тип",
   "TR": "Технічний Регламент",
+ "Device Name":"Серійний номер",
+ "Device Type":"Вид ЗВТ",
+ "Device TR":"Технічний регламент ЗВТ",
+ "Device Module":"Модуль ЗВТ",
+  "Device Date Last Calibration":"Дата останнього калібрування",
+  "Device Calibration Interval":"Калібрувальний інтервал",
+ 
   "Calibration Date": "Дата проведеної оцінки відповідності",
  "New software for metrologist, manufactures and people who wants to know more about measuring technology":"Нове прогамне забезпечення для метрологів, виробників, підприємств та для людей які хочуть дізнатися більше про вимірювальні засоби та технології",
 "If you have any questions or recommendations, please fill the form.":"Якщо Ви маєте буль-які запитання або рекомендації, будь ласка, заповніть форму."
