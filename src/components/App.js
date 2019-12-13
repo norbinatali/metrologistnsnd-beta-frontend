@@ -12,6 +12,7 @@ import MenuUser from "../menu/MenuUser";
 import ForgetPassword from "./ForgetPassword";
 import ConfirmResetPassword from "./ConfirmResetPassword";
 import MenuTabPanel from "./MenuTabPanel";
+import AddDevice from "./AddDevice";
 
 class App extends Component {
 
@@ -38,6 +39,7 @@ class App extends Component {
                                 ):(<Redirect to={{path:'/', state:'Please Login In'}}/>)
                                 }
                              <Route exact path="/user" component={MenuUser}/>
+                                    <Route exact path="/add-device" component={AddDevice} />
                         </Router>
                     </Switch>
 
