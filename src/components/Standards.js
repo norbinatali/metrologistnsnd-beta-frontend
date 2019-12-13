@@ -71,7 +71,7 @@ function Standards({t}){
                             {( {loading, error, data} ) =>  {
                               if (loading) {return<LinearProgress variant="determinate" value={completed} color="secondary"/>}
                                 if (error) { return <div>error</div>;}
-                                const devicelist = data.devices;
+                                const devicelist = data.allDevice;
 
                                 if (i18n.language === "ua" )  {
                                 return(
