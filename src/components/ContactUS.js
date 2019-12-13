@@ -32,24 +32,24 @@ const {t}= this.props;
    const LETTER_MUTATION = gql`mutation ($from: String!, $text: String!, $subject: String!){createNewLetter(text:$text , subject: $subject,from:$from){text,subject,from}}`
     const { from, subject,text } = this.state;
     return (
-      <div style={{display:"flex", marginTop:"15%"}}> 
+      <div style={{display:"flex"}}> 
                       <MuiThemeProvider>
          <Grid container spacing={5} >
                                     <Grid item xs={12} md={4} >
-                                        <Typography style={{color:"#fff"}}>  <h4 >{t('If you have any questions or recommendations, please fill the form. ')}</h4></Typography>
+                                        <Typography style={{color:"#fff"}}>  <h4 >{t('If you have any questions or recommendations, please fill the form.')}</h4></Typography>
                                     </Grid>
                                     <Grid item xs={12} md={4} >
                                         <FormControl >
-                    <label style={{color:"#fff"}} htmlFor="from">From </label>
+                    <label style={{color:"#fff"}} htmlFor="from">{t('Email')} </label>
                     <TextField  fullWidth
                     variant="outlined"
                     style={{backgroundColor:"#fff"}} type="text" value={this.state.form} onChange={e => {this.setState({ form: e.target.value })}} required/>
-                    < label style={{color:"#fff"}} htmlFor="subject">Subject </label>
+                    < label style={{color:"#fff"}} htmlFor="subject">{t('Subject')} </label>
                     <TextField  fullWidth
                     variant="outlined"
                     style={{backgroundColor:"#fff"}} type="text" value={this.state.subject} onChange={e => {this.setState({ subject: e.target.value })}} required
                     />
-                    <label style={{color:"#fff"}} htmlFor="text">Text </label>
+                    <label style={{color:"#fff"}} htmlFor="text">{t('Text')} </label>
                     <TextField  fullWidth
                     variant="outlined"
                     style={{backgroundColor:"#fff"}} id="outlined-multiline-static" multiline  rows="5" type="text"  margin="normal" variant="outlined" value={this.state.text}  onChange={e => {this.setState({ text: e.target.value })}}
