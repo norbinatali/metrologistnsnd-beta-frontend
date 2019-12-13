@@ -80,7 +80,7 @@ class Login extends Component{
 
                                <Grid container >
                                     <Grid item lg={7} xs={12} style={{marginLeft: "auto", marginRight:"auto"}}>
-            <h3 style={{marginLeft: "auto",color:"#fff", marginRight:"auto"}}>{t("Login in")}</h3> <br/>
+            <h3 style={{marginLeft: "auto",color:"#fff", marginRight:"auto", marginTop:"30%"}}>{t("Login in")}</h3> <br/>
                                     <FormControl >
               
                 <label style={{color:"#fff"}} htmlFor="email">{t('Email')} </label>
