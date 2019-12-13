@@ -117,7 +117,7 @@ const useStyles = makeStyles(theme => ({
         paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(4),
         height: 240,
-        width: `100%`,
+        width: 'calc(100% - ${drawerWidth}px)',
     },
     paper: {
         padding: theme.spacing(2),
