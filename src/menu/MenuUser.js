@@ -117,7 +117,7 @@ const useStyles = makeStyles(theme => ({
         paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(4),
         height: 240,
-        width: `calc(100% - ${drawerWidth}px)`,
+        width: `100%`,
     },
     paper: {
         padding: theme.spacing(2),
@@ -302,7 +302,7 @@ const useStyles = makeStyles(theme => ({
                     }
                 </div></List>
             </Drawer>
-            <main style={{ flexGrow: 1, height: '100vh', overflow: 'auto'}}>
+            <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
                
 
                 {  component === 'dashboard' ?
