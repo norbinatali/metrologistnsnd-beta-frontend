@@ -32,7 +32,7 @@ const {t}= this.props;
    const LETTER_MUTATION = gql`mutation ($from: String!, $text: String!, $subject: String!){createNewLetter(text:$text , subject: $subject,from:$from){text,subject,from}}`
     const { from, subject,text } = this.state;
     return (
-      <div style={{display:"flex"}}> 
+      <div > 
                       <MuiThemeProvider>
          <Grid container spacing={5} >
                                     <Grid item xs={12} md={4} >
