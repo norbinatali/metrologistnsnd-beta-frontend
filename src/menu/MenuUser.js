@@ -213,17 +213,14 @@ const useStyles = makeStyles(theme => ({
                     <IconButton edge="start" color="inherit" aria-label="open drawer" value={valueLang} onClick={handleDrawerOpen} className={clsx(classes.menuButton, open && classes.menuButtonHidden)}>
                         <MenuIcon />
                     </IconButton>
-
                    <img src={LogoV2} style={{marginRight:"auto",marginLeft:"auto"}}/>
-                    <div>
-                        <button style={{backgroundColor:"rgba(0,2,14,0.76)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
-                        <button  style={{backgroundColor:"rgba(0,1,47,0.84)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
-                    </div>
-                </Toolbar>
+                                </Toolbar>
 
             </AppBar>
             <Drawer classes={{paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),}} open={open}>
                 <div className={classes.toolbarIcon}>
+                    <button style={{backgroundColor:"#fff",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
+                        <button  style={{backgroundColor:"#fff",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
                     <IconButton onClick={handleDrawerClose} >
                         <ChevronLeftIcon />
                     </IconButton>
