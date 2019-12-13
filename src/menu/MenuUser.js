@@ -214,7 +214,7 @@ const useStyles = makeStyles(theme => ({
                         <MenuIcon />
                     </IconButton>
 
-                   <img src={LogoV2} style={{marginRight:"30%",marginLeft:"40%"}}/>
+                   <img src={LogoV2} style={{marginRight:"auto",marginLeft:"auto"}}/>
                     <div>
                         <button style={{backgroundColor:"rgba(0,2,14,0.76)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
                         <button  style={{backgroundColor:"rgba(0,1,47,0.84)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
