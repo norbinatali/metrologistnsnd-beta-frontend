@@ -160,7 +160,7 @@ function MenuTabPanel({t}) {
 
             <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}  index={value} onChangeIndex={handleChangeIndex}>
                 <TabPanel value={value} index={0} dir={theme.direction} className={classes.panel}>
-                    <div style={{display:"flex", marginTop:"15%"}}>
+                    <div style={{display:"flex", marginTop:"20%"}}>
                         <MuiThemeProvider>
                              <Grid container spacing={5} >
                                 <Grid item xs={12} md={4} >
@@ -180,7 +180,7 @@ function MenuTabPanel({t}) {
                     </div>
                 </TabPanel>
                 <TabPanel value={value} index={2} dir={theme.direction} className={classes.panel}>
-                    <div>
+                     <div style={{display:"flex", marginTop:"20%"}}>
 
                         <ContactUS />
                     </div>
