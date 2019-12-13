@@ -141,9 +141,9 @@ function MenuTabPanel({t}) {
 </div>
 </Grid>
   <Grid item spacing={6}>
-                    <div style={{marginLeft:"auto"}}>
-                        <button style={{height:"10%",width:"25%", backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
-                        <button style={{height:"10%", width:"25%", backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
+                    <div style={{marginRight:"auto"}}>
+                        <button style={{backgroundColor:"№fff",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
+                        <button style={{backgroundColor:"#fff",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
                     </div>
 </Grid>
 </Grid>
