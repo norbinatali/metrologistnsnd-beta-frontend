@@ -13,19 +13,35 @@ import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
-import FormControl from '@material-ui/core/FormControl';
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
 import AddDevice from "./AddDevice";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import RefreshIcon from '@material-ui/icons/Refresh';
+import Link from "@material-ui/core/Link";
+import { Link as RouterLink, withRouter } from 'react-router-dom';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
     root: {
-        display:"flex",
+                padding: theme.spacing(3),
+        margin: 'auto',
+         overflow: 'hidden'
 
     },
-
+    row: {
+        height: '42px',
+        display: 'flex',
+        alignItems: 'center',
+        marginTop: theme.spacing(1)
+    },
+    spacer: {
+        flexGrow: 1
+    },
     button: {
         width:"100 px",
         height:"10 px",
@@ -58,6 +74,10 @@ const useStyles = makeStyles(theme => ({
         height: 240,
         width: `calc(100% - ${drawerWidth}px)`,
     },
+    content: {
+
+        margin: '40px 16px',
+    }
 
 }));
 const ExpansionPanel = withStyles({
@@ -86,11 +106,7 @@ const ExpansionPanelSummary = withStyles({
             minHeight: 56,
         },
     },
-    content: {
-        '&$expanded': {
-            margin: '12px 0',
-        },
-    },
+    content: { padding: 0},
     expanded: {},
 })(MuiExpansionPanelSummary);
 
@@ -100,8 +116,9 @@ const ExpansionPanelDetails = withStyles(theme => ({
     },
 }))(MuiExpansionPanelDetails);
 
-function MyDevice({t}) {
+function MyDevice({t,className, rest}) {
     const classes = useStyles();
+
     const [expanded, setExpanded] = React.useState(false);
     const [component, setComponent] = React.useState(' ');
     const handleChange = panel => (event, isExpanded) => {
@@ -109,10 +126,37 @@ function MyDevice({t}) {
     };
     return(
         <div className={classes.root}>
-            <div style={{ marginTop: 20, padding: 60 }}>
-                <Grid container spacing={24} justify={"space-between"} direction={"row"}  >
 
-                    <Grid item xs={6} spacing={8}>
+<AppBar position="static" elevation={0} style={{borderBottom: '1px solid rgba(0, 0, 0, 0.12)',backgroundColor:"transparent"}} >
+                <Toolbar>
+                    <Grid container spacing={2} alignItems="center">
+                        <Grid item xs>
+            <Typography variant="h5" component="h2">{t('My devices')}</Typography>
+                        </Grid>
+
+    <Grid item>
+                        <span className={classes.spacer} />
+                        <Button
+                            color="primary"
+                            variant="contained"
+                            >  <Link
+                            component={RouterLink}
+                            to="/signup"
+                            variant="h8"
+                        >{t('Add Device')}</Link>
+                                </Button>
+        <Tooltip title="Reload">
+            <IconButton>
+                <RefreshIcon className={classes.block} style={{color:"#fff"}}  />
+            </IconButton>
+        </Tooltip>
+    </Grid>
+
+                    </Grid>
+                </Toolbar>
+</AppBar>
+
+                <div className={classes.content}>
                         <ExpansionPanel expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1bh-content" id="panel1bh-header">
                                 <Typography className={classes.heading}>{t('T1')}</Typography>
@@ -121,11 +165,17 @@ function MyDevice({t}) {
                                 <Typography>
                                     <Table>
                                         <TableHead>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
+                                            <TableCell>{t('Device Name')}</TableCell>
+                                            <TableCell>{t('Device Type')}</TableCell>
+                                            <TableCell>{t('Device TR')}</TableCell>
+                                            <TableCell>{t('Device Module')}</TableCell>
+                                            <TableCell>{t('Device Date Last Calibration')}</TableCell>
+                                            <TableCell>{t('Device Calibration Interval')}</TableCell>
                                         </TableHead>
                                         <TableBody>
+                                            <TableCell></TableCell>
+                                            <TableCell></TableCell>
+                                            <TableCell></TableCell>
                                             <TableCell></TableCell>
                                             <TableCell></TableCell>
                                             <TableCell></TableCell>
@@ -142,14 +192,20 @@ function MyDevice({t}) {
                                 <Typography>
                                     <Table>
                                         <TableHead>
-                                            <TableCell>Коза</TableCell>
-                                            <TableCell>Кроляка</TableCell>
-                                            <TableCell>Бігімотяка</TableCell>
+                                            <TableCell>{t('Device Name')}</TableCell>
+                                            <TableCell>{t('Device Type')}</TableCell>
+                                            <TableCell>{t('Device TR')}</TableCell>
+                                            <TableCell>{t('Device Module')}</TableCell>
+                                            <TableCell>{t('Device Date Last Calibration')}</TableCell>
+                                            <TableCell>{t('Device Calibration Interval')}</TableCell>
                                         </TableHead>
                                         <TableBody>
                                             <TableCell>Капуста</TableCell>
                                             <TableCell>Морква</TableCell>
                                             <TableCell>білий ведмідь</TableCell>
+                                            <TableCell></TableCell>
+                                            <TableCell></TableCell>
+                                            <TableCell></TableCell>
                                         </TableBody>
                                     </Table>
                                 </Typography>
@@ -163,11 +219,17 @@ function MyDevice({t}) {
                                 <Typography>
                                     <Table>
                                         <TableHead>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
+                                            <TableCell>{t('Device Name')}</TableCell>
+                                            <TableCell>{t('Device Type')}</TableCell>
+                                            <TableCell>{t('Device TR')}</TableCell>
+                                            <TableCell>{t('Device Module')}</TableCell>
+                                            <TableCell>{t('Device Date Last Calibration')}</TableCell>
+                                            <TableCell>{t('Device Calibration Interval')}</TableCell>
                                         </TableHead>
                                         <TableBody>
+                                            <TableCell></TableCell>
+                                            <TableCell></TableCell>
+                                            <TableCell></TableCell>
                                             <TableCell></TableCell>
                                             <TableCell></TableCell>
                                             <TableCell></TableCell>
@@ -176,39 +238,10 @@ function MyDevice({t}) {
                                 </Typography>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
-                    </Grid>
-                    <Grid item xs={1} spacing={8} style={{backgroundColor:"transparent"}}>
-
-                    </Grid>
-                    <Grid item xs={5} spacing={8} >
-                        <div >
-                            <Typography variant="h5" component="h2">{t('Add device')}</Typography>
-
-                            <AddDevice/>
-
-                        </div>
-                    </Grid>
-                </Grid>
-            </div>
-            <main style={{ flexGrow: 1, height: '100vh', overflow: 'auto'}}>
-                <div style={{paddingRight: 24}} />
-                {
-                    component === 'addDevice' ?
-
-                        <div style={{display:"flex"}}>
-                            <div style={{ marginTop: 40, padding: 30 }}>
-                                <Typography variant="h5" component="h2">{t('Add Device')}</Typography>
-
-                                <AddDevice/>
-                            </div>
-                        </div>
-
-                        :
-                        component === ''
 
 
-                }
-            </main>
+                </div>
+
         </div>
 
     )
