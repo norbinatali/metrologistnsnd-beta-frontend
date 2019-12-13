@@ -75,13 +75,14 @@ class Login extends Component{
         const HELLO_QUERY = gql`mutation ($email:String!, $password:String!) { login(email:$email , password: $password){token,user{id, posts{id, title}}}}`;
         const {email, password, id} = this.state;
         return (
-            <div>
-                            <MuiThemeProvider>
-
-                               <Grid container >
-                                    <Grid item lg={7} xs={12} style={{marginLeft: "auto", marginRight:"auto"}}>
-            <h3 style={{marginLeft: "auto",color:"#fff", marginRight:"auto", marginTop:"30%"}}>{t("Login in")}</h3> <br/>
-                                    <FormControl >
+          <div style={{marginLeft: "auto", marginRight:"auto", display:"flex"}}> 
+                      <MuiThemeProvider>
+         <Grid container spacing={5} >
+                                  
+                                   <Grid item xs={12} md={4} >
+            <h3 style={{color:"#fff", marginTop:"50%"}}>{t("Login in")}</h3> <br/>
+                                    <Grid item xs={12} md={4} >
+                                        <FormControl >
               
                 <label style={{color:"#fff"}} htmlFor="email">{t('Email')} </label>
                 <TextField
@@ -116,10 +117,10 @@ class Login extends Component{
                                         Sign up
                                     </Link>
                                 </Typography>
-                                    </FormControl></Grid>
+                                    </FormControl> </Grid>
                                 </Grid>
                 </MuiThemeProvider>
-                      </div>
+                </div>
         )
     }
     _confirm = async data => {
