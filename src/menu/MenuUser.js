@@ -331,8 +331,7 @@ const useStyles = makeStyles(theme => ({
                             component === 'mydevice' ?
                                 <div style={{display:"flex"}}>
                                     <div style={{ marginTop: 80, padding: 20 }}>
-                                        <Typography variant="h5" component="h2">{t('My devices')}</Typography>
-                                        <MyDevice />
+                                                 <MyDevice />
                                     </div>
                                 </div>
                                 :
@@ -356,7 +355,7 @@ const useStyles = makeStyles(theme => ({
                     <AddDevice/>
                     :
                                     component === 'contactus'?
-                                        <div style={{backgroundColor:"white"}}>
+                                        <div >
                                             <div style={{ marginTop: 40, padding: 30,  }}>
                                                 <Typography variant="h5" component="h2">{t('Contact us')}</Typography>
                                             </div>
@@ -370,7 +369,7 @@ const useStyles = makeStyles(theme => ({
                                                 <div style={{ marginTop: 40, padding: 30 }}>
                                                     <div style={{ marginTop: 20, padding: 30, marginRight:"10%" }}>
                                                         <Dashboard/>
-                                                        <div style={{width:"50%", marginLeft:"30%", backgroundColor:"white"}}>
+                                                        <div style={{width:"50%", marginLeft:"30%"}}>
                                                             <Typography variant="h5" component="h2">{t('Contact us')}</Typography>
                                                             <ContactUS/>
                                                         </div>
