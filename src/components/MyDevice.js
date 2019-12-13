@@ -163,24 +163,7 @@ function MyDevice({t,className, rest}) {
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
                                 <Typography>
-                                    <Table>
-                                        <TableHead>
-                                            <TableCell>{t('Device Name')}</TableCell>
-                                            <TableCell>{t('Device Type')}</TableCell>
-                                            <TableCell>{t('Device TR')}</TableCell>
-                                            <TableCell>{t('Device Module')}</TableCell>
-                                            <TableCell>{t('Device Date Last Calibration')}</TableCell>
-                                            <TableCell>{t('Device Calibration Interval')}</TableCell>
-                                        </TableHead>
-                                        <TableBody>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                        </TableBody>
-                                    </Table>
+                                    
                                 </Typography>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
@@ -190,24 +173,7 @@ function MyDevice({t,className, rest}) {
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
                                 <Typography>
-                                    <Table>
-                                        <TableHead>
-                                            <TableCell>{t('Device Name')}</TableCell>
-                                            <TableCell>{t('Device Type')}</TableCell>
-                                            <TableCell>{t('Device TR')}</TableCell>
-                                            <TableCell>{t('Device Module')}</TableCell>
-                                            <TableCell>{t('Device Date Last Calibration')}</TableCell>
-                                            <TableCell>{t('Device Calibration Interval')}</TableCell>
-                                        </TableHead>
-                                        <TableBody>
-                                            <TableCell>Капуста</TableCell>
-                                            <TableCell>Морква</TableCell>
-                                            <TableCell>білий ведмідь</TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                        </TableBody>
-                                    </Table>
+                                    
                                 </Typography>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
@@ -217,24 +183,7 @@ function MyDevice({t,className, rest}) {
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
                                 <Typography>
-                                    <Table>
-                                        <TableHead>
-                                            <TableCell>{t('Device Name')}</TableCell>
-                                            <TableCell>{t('Device Type')}</TableCell>
-                                            <TableCell>{t('Device TR')}</TableCell>
-                                            <TableCell>{t('Device Module')}</TableCell>
-                                            <TableCell>{t('Device Date Last Calibration')}</TableCell>
-                                            <TableCell>{t('Device Calibration Interval')}</TableCell>
-                                        </TableHead>
-                                        <TableBody>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                            <TableCell></TableCell>
-                                        </TableBody>
-                                    </Table>
+                                    
                                 </Typography>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
