@@ -181,7 +181,7 @@ function MenuTabPanel({t}) {
                 <TabPanel value={value} index={2} dir={theme.direction} className={classes.panel}>
                   <div style={{marginRight:"auto", marginLeft:"auto"}}>
                         <ContactUS />
-</div>
+
                     </div>
                 </TabPanel>
             </SwipeableViews>
