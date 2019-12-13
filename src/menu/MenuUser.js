@@ -53,7 +53,7 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
     },
     toolbar: {
-        paddingLeft: 24, // keep right padding when drawer closed
+       
     },
     toolbarIcon: {
         display: 'flex',
@@ -308,7 +308,7 @@ const useStyles = makeStyles(theme => ({
                 {  component === 'dashboard' ?
                     <div style={{ marginTop: 40 }}>
 
-                        <div style={{ marginTop: 20, }}>
+                        <div style={{ marginTop: 20, padding:30}}>
                                 <Dashboard/>
                                 <div >
                                     <ContactUS/>
@@ -319,7 +319,7 @@ const useStyles = makeStyles(theme => ({
                         :
                         component === 'metrology' ?
                             <div style={{display:"flex"}}>
-                                <div style={{ marginTop: 80 }}>
+                                <div style={{ marginTop: 80,padding:30 }}>
                                     <Typography variant="h5" component="h2">{t('Metrology')}</Typography>
                                     <div style={{ marginTop: 20 }}>
                                        <History/>
@@ -329,14 +329,14 @@ const useStyles = makeStyles(theme => ({
                             :
                             component === 'mydevice' ?
                                 <div style={{display:"flex"}}>
-                                    <div style={{ marginTop: 80  }}>
+                                    <div style={{ marginTop: 80,padding:30  }}>
                                                  <MyDevice />
                                     </div>
                                 </div>
                                 :
                             component === 'sand' ?
                                 <div>
-                                    <div style={{ marginTop: 80 }}>
+                                    <div style={{ marginTop: 80,padding:30 }}>
                                         <Typography variant="h5" component="h2">{t('Measuring Instrument')}</Typography>
                                     </div>
                                     <div style={{flexGrow: 1, width: '100%'}}>
@@ -355,7 +355,7 @@ const useStyles = makeStyles(theme => ({
                     :
                                     component === 'contactus'?
                                         <div >
-                                            <div style={{ marginTop: 40 }}>
+                                            <div style={{ marginTop: 40,padding:30 }}>
                                                 <Typography variant="h5" component="h2">{t('Contact us')}</Typography>
                                             </div>
                                             <div style={{flexGrow: 1, width: '100%'}}>
@@ -365,13 +365,13 @@ const useStyles = makeStyles(theme => ({
                                         :
                                         component === ' ' ?
                                             <div style={{display:"flex"}}>
-                                                <div style={{ marginTop: 40 }}>
-                                                    <div style={{ marginTop: 20, }}>
+                                                <div style={{ marginTop: 40,padding:30 }}>
+                                                   
                                                         <Dashboard/>
                                                         <div >
                                                             <ContactUS/>
                                                         </div>
-                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                             : component
