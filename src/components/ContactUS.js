@@ -36,9 +36,9 @@ const {t}= this.props;
                       <MuiThemeProvider>
          <Grid container spacing={5} >
                                      <Grid item xs={12} md={4} >
-                                        <Typography style={{color:"#fff"}}>  <h4 >{t('If you have any questions or recommendations, please fill the form.')}</h4></Typography>
+                                        <Typography style={{color:"#fff", marginTop:"50%"}}>  <h4 >{t('If you have any questions or recommendations, please fill the form.')}</h4></Typography>
                                     </Grid>
-                                    <Grid item xs={12} md={4} >>
+                                    <Grid item xs={12} md={4} >
                                         <FormControl >
                     <label style={{color:"#fff"}} htmlFor="from">{t('Email')} </label>
                     <TextField  fullWidth
