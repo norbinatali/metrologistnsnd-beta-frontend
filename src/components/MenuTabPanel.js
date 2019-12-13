@@ -175,13 +175,11 @@ function MenuTabPanel({t}) {
                 </TabPanel>
                 <TabPanel value={value} index={1} dir={theme.direction} className={classes.panel} >
                     <div style={{marginRight:"auto", marginLeft:"auto"}}>
-
                         <Login/>
                     </div>
                 </TabPanel>
                 <TabPanel value={value} index={2} dir={theme.direction} className={classes.panel}>
-                     <div style={{display:"flex", marginTop:"20%"}}>
-
+                     <div style={{display:"flex", marginTop:"25%"}}>
                         <ContactUS />
                     </div>
                 </TabPanel>
