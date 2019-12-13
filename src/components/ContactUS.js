@@ -27,7 +27,7 @@ class ContactUS extends Component {
 
     }
 render() {
-
+const {t}= this.props;
    const LETTER_MUTATION = gql`mutation ($from: String!, $text: String!, $subject: String!){createNewLetter(text:$text , subject: $subject,from:$from){text,subject,from}}`
     const { from, subject,text } = this.state;
     return (
@@ -36,6 +36,11 @@ render() {
                   <Grid item xs={6} style={{marginLeft: "auto", marginRight:"auto"}}>
             <FormControl >
                 <MuiThemeProvider>
+         <Grid container spacing={5} >
+                                    <Grid item xs={12} md={4} >
+                                        <Typography style={{color:"#fff"}}>  <h4 >{t('If you have any questions or recommendations, please fill the form. ')}</h4></Typography>
+                                    </Grid>
+                                    <Grid item xs={12} md={4} >
                     <label style={{color:"#fff"}} htmlFor="from">From </label>
                     <TextField  fullWidth
                     variant="outlined"
@@ -54,7 +59,8 @@ render() {
                         {send => (
                             <RaisedButton style={{marginBottom:"10%"}} onClick={send}>Send </RaisedButton>)}
                     </Mutation>
-
+ </Grid>
+                                </Grid>
 
                 </MuiThemeProvider>
             </FormControl>
