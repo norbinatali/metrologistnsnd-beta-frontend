@@ -267,7 +267,7 @@ const useStyles = makeStyles(theme => ({
                 <Divider />
                 <List> <div>
                     <ListSubheader inset>{t('Settings')}</ListSubheader>
-                    <ListItem button nClick={() => setComponent('UserPage')}>
+                    <ListItem button onClick={() => setComponent('UserPage')}>
                         <ListItemIcon>
                             <AssignmentIcon />
                         </ListItemIcon>
