@@ -141,7 +141,7 @@ function MyDevice({t,className, rest}) {
                             variant="contained"
                             >  <Link
                             component={RouterLink}
-                            to="/signup"
+                            to="/add-device"
                             variant="h8"
                         >{t('Add Device')}</Link>
                                 </Button>
