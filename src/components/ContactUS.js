@@ -8,6 +8,7 @@ import Input from "@material-ui/core/Input";
 import RaisedButton from "material-ui/RaisedButton";
 import {AUTH_TOKEN} from "../constants";
 import {Mutation} from 'react-apollo'
+import Typography from "@material-ui/core/Typography";
 import {
     Grid
 } from '@material-ui/core';
