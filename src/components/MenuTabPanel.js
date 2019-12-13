@@ -160,11 +160,11 @@ function MenuTabPanel({t}) {
 
             <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}  index={value} onChangeIndex={handleChangeIndex}>
                 <TabPanel value={value} index={0} dir={theme.direction} className={classes.panel}>
-                    <div style={{display:"flex", marginTop:"20%"}}>
+                    <div style={{display:"flex"}}>
                         <MuiThemeProvider>
                              <Grid container spacing={5} >
                                 <Grid item xs={12} md={4} >
-                                    <Typography style={{color:"#fff"}}>  <h4 >{t('New software for metrologist, manufactures and people who wants to know more about measuring technology')}</h4></Typography>
+                                    <Typography style={{color:"#fff", marginTop:"50%"}}>  <h4 >{t('New software for metrologist, manufactures and people who wants to know more about measuring technology')}</h4></Typography>
                                 </Grid>
                                <Grid item xs={12} md={4} >
                                     <img src={FrontPic}/>
@@ -179,8 +179,9 @@ function MenuTabPanel({t}) {
                     </div>
                 </TabPanel>
                 <TabPanel value={value} index={2} dir={theme.direction} className={classes.panel}>
-                     <div style={{display:"flex", marginTop:"25%"}}>
+                  <div style={{marginRight:"auto", marginLeft:"auto"}}>
                         <ContactUS />
+</div>
                     </div>
                 </TabPanel>
             </SwipeableViews>
