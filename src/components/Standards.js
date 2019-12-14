@@ -123,9 +123,6 @@ function Standards({t}){
                                     </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                   
-                                    <TableRow>
-                                
                                       {devicelist.map(device =>(
                                             <TableRow>
                                                 <TableCell key={device.id} lign="center">{device.name_EN}</TableCell>
