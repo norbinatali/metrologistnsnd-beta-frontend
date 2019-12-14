@@ -92,12 +92,16 @@ function Standards({t}){
                                             </TableRow>
                                         </TableHead>
                                         <TableBody>
+                                             {devicelist.map(device =>(
                                             <TableRow>
-                                               {devicelist.map(device =>  <TableCell key={device.id} lign="center" style={{textAlign: "center"}}>{device.name_UA}</TableCell>)}
-                                                {devicelist.map(device =>  <TableCell key={device.id} lign="center"  style={{textAlign: "center"}}>{device.tr.name_TR_UA}</TableCell>)}
-                                                {devicelist.map(device =>  <TableCell key={device.id} lign="center"  style={{textAlign: "center"}}>{device.category}</TableCell>)}
-                                                {devicelist.map(device =>  <TableCell key={device.id} lign="center"  style={{textAlign: "center"}}>{device.module}</TableCell>)}
-                                            </TableRow>   </TableBody>
+                                                <TableCell key={device.id} lign="center">{device.name_UA}</TableCell>
+                                                 <TableCell key={device.id} lign="center">{device.tr.name_TR_UA}</TableCell>
+                                            <TableCell key={device.id} lign="center">{device.category}</TableCell>
+                                             <TableCell key={device.id} lign="center">{device.module}</TableCell>
+                                            </TableRow>  ))}
+                                            </TableBody>
+                                                                                
+                                             
                                     </Table>
                                   
                                     </CardContent>)}
@@ -122,13 +126,14 @@ function Standards({t}){
                                    
                                     <TableRow>
                                 
-                                      <TableRow>
-                                               {devicelist.map(device =>  <TableCell key={device.id} lign="center" style={{textAlign: "center"}}>{device.name_EN}</TableCell>)}
-                                                {devicelist.map(device =>  <TableCell key={device.id} lign="center"  style={{textAlign: "center"}}>{device.tr.name_TR_UA}</TableCell>)}
-                                                {devicelist.map(device =>  <TableCell key={device.id} lign="center"  style={{textAlign: "center"}}>{device.category}</TableCell>)}
-                                                {devicelist.map(device =>  <TableCell key={device.id} lign="center"  style={{textAlign: "center"}}>{device.module}</TableCell>)}
-                                            </TableRow>
-                                    </TableBody>
+                                      {devicelist.map(device =>(
+                                            <TableRow>
+                                                <TableCell key={device.id} lign="center">{device.name_EN}</TableCell>
+                                                 <TableCell key={device.id} lign="center">{device.tr.name_TR_EN}</TableCell>
+                                            <TableCell key={device.id} lign="center">{device.category}</TableCell>
+                                             <TableCell key={device.id} lign="center">{device.module}</TableCell>
+                                            </TableRow>  ))}
+                                            </TableBody>
                                        </Table> 
                                     </CardContent>)}
                             else return null}
