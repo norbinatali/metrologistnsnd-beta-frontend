@@ -119,10 +119,15 @@ function Standards({t}){
                                     </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                    <tbody>
-                                    <StyledTableRow>
-                                    <tr>   <StyledTableCell component="th" scope="row" ></StyledTableCell></tr>{devicelist.map(device => <tr><StyledTableCell key={device.id} lign="right">{device.name_EN}</StyledTableCell></tr>)}</StyledTableRow>
-                                    </tbody>
+                                   
+                                    <TableRow>
+                                
+                                      <TableRow>
+                                               {devicelist.map(device =>  <TableCell key={device.id} lign="center" style={{textAlign: "center"}}>{device.name_EN}</TableCell>)}
+                                                {devicelist.map(device =>  <TableCell key={device.id} lign="center"  style={{textAlign: "center"}}>{device.tr.name_TR_UA}</TableCell>)}
+                                                {devicelist.map(device =>  <TableCell key={device.id} lign="center"  style={{textAlign: "center"}}>{device.category}</TableCell>)}
+                                                {devicelist.map(device =>  <TableCell key={device.id} lign="center"  style={{textAlign: "center"}}>{device.module}</TableCell>)}
+                                            </TableRow>
                                     </TableBody>
                                        </Table> 
                                     </CardContent>)}
