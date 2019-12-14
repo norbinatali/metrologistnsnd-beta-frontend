@@ -38,6 +38,7 @@ const StyledTableRow = withStyles(theme => ({
 }))(TableRow);
 const useStyles = makeStyles(theme => ({
     root: {
+        height:"100%",
         width: '100%',
         marginTop: theme.spacing(3),
         overflowX: 'auto',
@@ -71,7 +72,7 @@ function Standards({t}){
             clearInterval(timer);
         };
     }, [1]);
-    return (
+    return ( <div  className={classes.root}>
                     <Query query={GET_Device} >
                             {( {loading, error, data} ) =>  {
                               if (loading) {return<LinearProgress variant="determinate" value={completed} color="secondary"/>}
@@ -80,6 +81,7 @@ function Standards({t}){
 
                                 if (i18n.language === "ua" )  {
                                 return(
+                                   
                                    <CardContent className={classes.content}>
                                         
                                     <Table component={Paper} className={classes.table} aria-label="customized table">
@@ -136,7 +138,7 @@ function Standards({t}){
                             else return null}
                             }
                         </Query>
-
+</div>
 
 
     );
