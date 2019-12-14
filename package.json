@@ -62,5 +62,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-perfect-scrollbar": "^1.5.3",
+    "react-swipeable-views": "^0.13.3"
   }
 }
