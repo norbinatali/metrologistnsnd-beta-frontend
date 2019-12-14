@@ -198,6 +198,38 @@ const useStyles = makeStyles(theme => ({
     const handleDrawerClose = () => {
         setOpen(false);
     };
+     const handleDrawerCloseDashboard = () => {
+         setOpen(false);
+         setComponent('dashboard')
+     };
+    const handleDrawerCloseMetrology = () => {
+        setOpen(false);
+        setComponent('metrology')
+    };
+     const handleDrawerCloseMyDevice = () => {
+         setOpen(false);
+         setComponent('mydevice')
+     };
+     const handleDrawerCloseSand = () => {
+         setOpen(false);
+         setComponent('sand')
+     };
+     const handleDrawerCloseForum = () => {
+         setOpen(false);
+         setComponent('forum')
+     };
+     const handleDrawerCloseApps = () => {
+         setOpen(false);
+         setComponent('apps')
+     };
+     const handleDrawerCloseContactUS = () => {
+         setOpen(false);
+         setComponent('contactus')
+     };
+     const handleDrawerCloseUserPage = () => {
+         setOpen(false);
+         setComponent('UserPage')
+     };
      const userId = localStorage.getItem(GC_USER_ID);
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
@@ -219,45 +251,43 @@ const useStyles = makeStyles(theme => ({
             </AppBar>
             <Drawer classes={{paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),}} open={open}>
                 <div className={classes.toolbarIcon}>
-                    <button style={{backgroundColor:"#fff",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
-                        <button  style={{backgroundColor:"#fff",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
                     <IconButton onClick={handleDrawerClose} >
                         <ChevronLeftIcon />
                     </IconButton>
                 </div>
                 <Divider />
                 <List >
-                    <ListItem button onClick={() => setComponent('dashboard')} >
+                    <ListItem button onClick={handleDrawerCloseDashboard} >
                     <ListItemIcon>
                         <DashboardIcon />
                     </ListItemIcon>
                     <ListItemText primary={t('Dashboard')} />
                 </ListItem>
-                    <ListItem  button onClick={() => setComponent('metrology')}>
-                        <ListItemIcon>
+                    <ListItem  button onClick={handleDrawerCloseMetrology}>
+                        <ListItemIcon >
                             <InfoIcon />
                         </ListItemIcon>
                         <ListItemText primary={t('Metrology')} />
                     </ListItem>
-                    <ListItem  button onClick={() => setComponent('mydevice')}>
+                    <ListItem  button onClick={handleDrawerCloseMetrology}>
                         <ListItemIcon>
                             <InfoIcon />
                         </ListItemIcon>
                         <ListItemText primary={t('My devices')} />
                     </ListItem>
-                    <ListItem button onClick={() => setComponent('sand')}>
+                    <ListItem button onClick={handleDrawerCloseSand}>
                         <ListItemIcon>
                             <FolderIcon />
                         </ListItemIcon>
                         <ListItemText primary={t('SAND')} />
                     </ListItem>
-                    <ListItem button onClick={() => setComponent('forum')}>
+                    <ListItem button onClick={handleDrawerCloseForum}>
                         <ListItemIcon>
                             <PeopleIcon />
                         </ListItemIcon>
                         <ListItemText primary={t('Forum')} />
                     </ListItem>
-                    <ListItem button onClick={() => setComponent('apps')}>
+                    <ListItem button onClick={handleDrawerCloseApps}>
                         <ListItemIcon>
                             <ImportantDevicesIcon />
                         </ListItemIcon>
@@ -267,7 +297,7 @@ const useStyles = makeStyles(theme => ({
                 <Divider />
                 <List> <div>
                     <ListSubheader inset>{t('Settings')}</ListSubheader>
-                    <ListItem button onClick={() => setComponent('UserPage')}>
+                    <ListItem button onClick={handleDrawerCloseUserPage}>
                         <ListItemIcon>
                             <AssignmentIcon />
                         </ListItemIcon>
@@ -279,7 +309,7 @@ const useStyles = makeStyles(theme => ({
                         </ListItemIcon>
                         <ListItemText primary={t('About us')} />
                     </ListItem>
-                    <ListItem button onClick={() => setComponent('contactus')}>
+                    <ListItem button onClick={handleDrawerCloseContactUS}>
                         <ListItemIcon>
                             <AssignmentIcon />
                         </ListItemIcon>
