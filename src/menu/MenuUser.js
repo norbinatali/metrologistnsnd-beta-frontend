@@ -332,15 +332,14 @@ const useStyles = makeStyles(theme => ({
                                 </div>
                                 :
                             component === 'sand' ?
-                                <div>
+                                
                                     <div style={{ marginTop: 80,padding:30 }}>
-                                        <Typography variant="h5" component="h2">{t('Measuring Instrument')}</Typography>
-                                    </div>
-                                    <div style={{flexGrow: 1, width: '100%'}}>
-                                        <div className={classes.root}>
-                                            <Paper style={{backgroundColor:"white"}} >
+                                <div style={{flexGrow: 1, width: '100%'}}>
+                                     
+                                              <Typography variant="h5" component="h2">{t('Measuring Instrument')}</Typography>
+                                          <div style={{ marginTop: 20 }}>
                                                 <Standards />
-                                            </Paper>
+                                         
                                         </div>
                                     </div></div>
                                                 :
