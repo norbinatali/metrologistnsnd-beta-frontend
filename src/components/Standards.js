@@ -11,7 +11,9 @@ import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
 import { withTranslation} from 'react-i18next';
 import LinearProgress from '@material-ui/core/LinearProgress';
-
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import Paper from '@material-ui/core/Paper';
+import CardContent from "@material-ui/core/CardContent";
 import i18n from "../menu/translations/i18n";
 
 
@@ -41,8 +43,11 @@ const useStyles = makeStyles(theme => ({
         overflowX: 'auto',
     },
     table: {
-        minWidth: 700,
+        minWidth: "100$",
         color:"linear-gradient(to right,#000222, rgba(23, 20, 61, 0.96),  #252529)"
+    },
+     inner:{
+        minWidth: "100%"
     },
 }));
 
@@ -75,7 +80,9 @@ function Standards({t}){
 
                                 if (i18n.language === "ua" )  {
                                 return(
-                                    <div><Table className={classes.table} aria-label="customized table">
+                                   <CardContent className={classes.content}>
+                                        <PerfectScrollbar>
+                                    <Table component={Paper} className={classes.table} aria-label="customized table">
                                         <TableHead aria-label="sticky table">
                                             <TableRow >
                                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
@@ -92,14 +99,17 @@ function Standards({t}){
                                                 {devicelist.map(device =>  <TableCell key={device.id} lign="center"  style={{textAlign: "center"}}>{device.module}</TableCell>)}
                                             </TableRow>   </TableBody>
                                     </Table>
-                                    </div>)}
+                                    </PerfectScrollbar>
+                                    </CardContent>)}
 
 
 
 
                                 if (i18n.language === "en"){
                                    return(
-                                       <div><Table className={classes.table} aria-label="customized table">
+                                       <CardContent className={classes.content}>
+                                        <PerfectScrollbar>
+                                    <Table component={Paper} className={classes.table} aria-label="customized table">
                                     <TableHead aria-label="sticky table">
                                     <TableRow >
                                     <StyledTableCell align="right">{t('Device')}</StyledTableCell>
@@ -114,7 +124,8 @@ function Standards({t}){
                                     <tr>   <StyledTableCell component="th" scope="row" ></StyledTableCell></tr>{devicelist.map(device => <tr><StyledTableCell key={device.id} lign="right">{device.name_EN}</StyledTableCell></tr>)}</StyledTableRow>
                                     </tbody>
                                     </TableBody>
-                                       </Table></div>)}
+                                       </Table> </PerfectScrollbar>
+                                    </CardContent>)}
                             else return null}
                             }
                         </Query>
