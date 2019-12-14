@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
         overflowX: 'auto',
     },
     table: {
-        minWidth: "100$",
+        minWidth: "90%",
         color:"linear-gradient(to right,#000222, rgba(23, 20, 61, 0.96),  #252529)"
     },
      inner:{
