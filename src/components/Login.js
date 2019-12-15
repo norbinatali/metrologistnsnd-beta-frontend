@@ -83,14 +83,15 @@ class Login extends Component{
             <h3 style={{color:"#fff", marginTop:"50%"}}>{t("Login in")}</h3> <br/>
             </Grid>
                                     <Grid item xs={12} md={4} >
-                                        <FormControl style={{marginLeft:"50%"}}>
+                                        <FormControl >
               
                 <label style={{color:"#fff"}} htmlFor="email">{t('Email')} </label>
                 <TextField
                     type="text"
                     value={this.state.email} fullWidth
+                    
                     variant="outlined"
-                    style={{backgroundColor:"#fff"}}
+                    style={{backgroundColor:"#fff", height:"50%"}}
                     onChange={e => {
                         this.setState({ email: e.target.value })
                     }}
@@ -100,7 +101,7 @@ class Login extends Component{
                     type="text"
                     fullWidth
                     variant="outlined"
-                    style={{backgroundColor:"#fff"}}
+                    style={{backgroundColor:"#fff",height:"50%"}}
                     value={this.state.password}
                     onChange={e => {
                         this.setState({ password: e.target.value })
