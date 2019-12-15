@@ -36,7 +36,7 @@ const styles = theme => ({
         height: '100vh',
     },
     form: {
-        width: '100%', // Fix IE 11 issue.
+        width: '50%', // Fix IE 11 issue.
     },
     paper: {
         margin: theme.spacing(8, 4),
@@ -83,7 +83,7 @@ class Login extends Component{
             <h3 style={{color:"#fff", marginTop:"50%"}}>{t("Login in")}</h3> <br/>
             </Grid>
                                     <Grid item xs={12} md={4} >
-                                        <FormControl >
+                                        <FormControl className={classes.form}>
               
                 <label style={{color:"#fff"}} htmlFor="email">{t('Email')} </label>
                 <TextField
