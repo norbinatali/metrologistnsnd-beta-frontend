@@ -88,8 +88,9 @@ class Login extends Component{
                 <label style={{color:"#fff"}} htmlFor="email">{t('Email')} </label>
                 <TextField
                     type="text"
+                    placeholder="example@example.com"
                     value={this.state.email} fullWidth
-                    
+                     size="small"
                     variant="outlined"
                     style={{backgroundColor:"#fff", height:"20%"}}
                     onChange={e => {
@@ -99,6 +100,7 @@ class Login extends Component{
                 < label style={{color:"#fff"}} htmlFor="password">{t('Password')} </label>
                 <TextField
                     type="text"
+                      size="small"
                     fullWidth
                     variant="outlined"
                     style={{backgroundColor:"#fff",height:"20%"}}
