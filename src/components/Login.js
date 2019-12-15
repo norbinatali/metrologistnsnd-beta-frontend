@@ -92,7 +92,7 @@ class Login extends Component{
                     value={this.state.email} fullWidth
                      size="small"
                     variant="outlined"
-                    style={{backgroundColor:"#fff", height:"20%"}}
+                    style={{backgroundColor:"#fff"}}
                     onChange={e => {
                         this.setState({ email: e.target.value })
                     }}
@@ -103,7 +103,7 @@ class Login extends Component{
                       size="small"
                     fullWidth
                     variant="outlined"
-                    style={{backgroundColor:"#fff",height:"20%"}}
+                    style={{backgroundColor:"#fff"}}
                     value={this.state.password}
                     onChange={e => {
                         this.setState({ password: e.target.value })
