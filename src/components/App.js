@@ -40,6 +40,8 @@ class App extends Component {
                                 }
                              <Route exact path="/user" component={MenuUser}/>
                                     <Route exact path="/add-device" component={AddDevice} />
+                                    <Route exact path={"/check-email"} component={CheckYourEmail}/>
+                    <Route exact path={"/confirm-email"} component={PleaseConfirmEmail}/>
                         </Router>
                     </Switch>
 
