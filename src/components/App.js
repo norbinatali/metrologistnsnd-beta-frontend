@@ -13,6 +13,9 @@ import ForgetPassword from "./ForgetPassword";
 import ConfirmResetPassword from "./ConfirmResetPassword";
 import MenuTabPanel from "./MenuTabPanel";
 import AddDevice from "./AddDevice";
+import PleaseConfirmEmail from "./PleaseConfirmEmail";
+import CheckYourEmail from "./CheckYourEmail";
+
 
 class App extends Component {
 
