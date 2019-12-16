@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import gql from "graphql-tag";
 import {AUTH_TOKEN,CONFIRM_EMAIL, GC_USER_ID} from "../constants";
 import {Mutation} from 'react-apollo'
-import history from './history';
+import history from "../history";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import {withTranslation} from "react-i18next";
