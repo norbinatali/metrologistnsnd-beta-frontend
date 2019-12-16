@@ -36,7 +36,7 @@ class SignUp extends Component{
         const userId = localStorage.getItem(GC_USER_ID);
         const { t } = this.props;
         return ( 
- <div style={{height: '100%'}} >
+ <div style={{height: '100%', width:"100%"}} >
                 <MuiThemeProvider>
                 <Grid container style={{ height: '100%'}} >
 
@@ -59,6 +59,7 @@ class SignUp extends Component{
                             <TextField
                                 type="text"
                                 fullWidth
+                                                                           size="Small"
                                 variant="outlined"
                                 style={{backgroundColor:"#fff"}}
                                 value={this.state.email}
@@ -72,6 +73,7 @@ class SignUp extends Component{
                                 type="text"
                                 fullWidth
                                 variant="outlined"
+                                                                               size="Small"
                                 style={{backgroundColor:"#fff"}}
                                 value={this.state.password}
                                 onChange={e => {
@@ -84,6 +86,7 @@ class SignUp extends Component{
                                 fullWidth
                                 variant="outlined"
                                 style={{backgroundColor:"#fff"}}
+                                size="Small"
                                 value={this.state.name}
                                 onChange={e => {
                                     this.setState({ name: e.target.value })
@@ -94,6 +97,7 @@ class SignUp extends Component{
                                 type="text"
                                 value={this.state.companyName}
                                 fullWidth
+                                size="Small"
                                 variant="outlined"
                                 style={{backgroundColor:"#fff"}}
                                 onChange={e => {
