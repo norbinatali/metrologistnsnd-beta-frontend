@@ -30,8 +30,11 @@ class App extends Component {
                     <Switch>
                         <Router history={history}>
                     <Route exact path="/" component={MenuTabPanel} />
-             <Route exact path="/login" component={Login}/>
+            
+             <Route exact path={"/check-email"} component={CheckYourEmail}/>
+                    <Route path={"/confirm-email"} component={PleaseConfirmEmail}/>
                             <Route exact path="/reset-password" component={ForgetPassword} />
+             <Route exact path="/login" component={Login}/>
                             <Route exact path={"/reset-password/"+resetToken} component={ConfirmResetPassword}/>
                     <Route exact path="/signup" component={SignUp} />
 
@@ -43,8 +46,7 @@ class App extends Component {
                                 }
                              <Route exact path="/user" component={MenuUser}/>
                                     <Route exact path="/add-device" component={AddDevice} />
-                                    <Route exact path={"/check-email"} component={CheckYourEmail}/>
-                    <Route exact path={"/confirm-email"} component={PleaseConfirmEmail}/>
+                                   
                         </Router>
                     </Switch>
 
