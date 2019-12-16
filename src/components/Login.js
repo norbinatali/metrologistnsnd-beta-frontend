@@ -99,7 +99,7 @@ class Login extends Component{
                 />
                 < label style={{color:"#fff"}} htmlFor="password">{t('Password')} </label>
                 <TextField
-                    type="text"
+                    type="password"
                       size="small"
                     fullWidth
                     variant="outlined"
