@@ -36,7 +36,7 @@ class SignUp extends Component{
         const userId = localStorage.getItem(GC_USER_ID);
         const { t } = this.props;
         return ( 
- <div style={{height: '100%}} >
+ <div style={{height: "100%"}} >
                 <MuiThemeProvider>
                 <Grid container style={{ height: '100%'}} >
 
