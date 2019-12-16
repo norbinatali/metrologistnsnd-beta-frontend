@@ -120,7 +120,7 @@ class SignUp extends Component{
         const {id, token} = this.state.signup;
 
         this._saveUserData(id, token);
-        history.push(`/check-email`)
+        history.push('/check-email')
     };
 
     _saveUserData = (id,token) => {
