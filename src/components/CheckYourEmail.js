@@ -22,14 +22,8 @@ class CheckYourEmail extends Component{
         super(props);
         this.state = {
             email: '',
-
             confirmEmail:true,
-
-
-
         };
-
-
     }
     componentDidMount() {
         const urlObj = new URL(window.location.href);
@@ -44,16 +38,11 @@ class CheckYourEmail extends Component{
         const {t}= this.props;
         return (
             <div style={{height: '100%'}} >
-
                 <MuiThemeProvider>
                     <Grid container style={{ height: '100%'}} >
 
                         <Grid item lg={5}>
-                            <div style={{marginTop:"0px"}} >
-                                <IconButton onClick={this.handleBack}>
-                                    <ArrowBackIcon style={{color:"white"}} />
-                                </IconButton>
-                            </div>
+                          
                         </Grid>
                         <Grid
                             item
@@ -62,11 +51,9 @@ class CheckYourEmail extends Component{
                         >
                     <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center'}}>
                         <Typography>{t('Please Check your email to confirm!')}</Typography>
-
                     </FormControl>
                         </Grid>
                     </Grid>
-
                 </MuiThemeProvider>
             </div>
         );
@@ -74,7 +61,6 @@ class CheckYourEmail extends Component{
 
     _confirm = async data => {
         const {id,emailConfirmToken } = this.state.confirmEmail;
-
         this._saveUserData(id, emailConfirmToken);
         history.push('/');
 
