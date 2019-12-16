@@ -23,6 +23,7 @@ class PleaseConfirmEmail extends Component{
         this.state = {
             email: '',
             confirmEmail:true,
+            emailConfirmToken:'',
 
         };
 
