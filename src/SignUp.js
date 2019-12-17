@@ -40,7 +40,7 @@ class SignUp extends Component{
                 <MuiThemeProvider>
                 <Grid container style={{ height: '100%'}} >
 
-                    <Grid item lg={5}>
+                    <Grid item>
                     <div style={{marginTop:"0px"}} >
                         <IconButton onClick={this.handleBack}>
                             <ArrowBackIcon style={{color:"white"}} />
@@ -49,7 +49,7 @@ class SignUp extends Component{
                     </Grid>
                     <Grid
                         item
-                        lg={7}
+                        lg={10}
                         xs={12}
                     >
                     <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center'}}>
@@ -59,7 +59,8 @@ class SignUp extends Component{
                             <TextField
                                 type="text"
                                 fullWidth
-                                                                           size="Small"
+                                size={'small'}
+                                placeholder={"example@example.com"}
                                 variant="outlined"
                                 style={{backgroundColor:"#fff"}}
                                 value={this.state.email}
@@ -70,10 +71,10 @@ class SignUp extends Component{
                             />
                             < label style={{color:"#fff"}} htmlFor="password">{t("Password")} </label>
                             <TextField
-                                type="text"
+                                type="password"
                                 fullWidth
                                 variant="outlined"
-                                                                               size="Small"
+                                size={'small'}
                                 style={{backgroundColor:"#fff"}}
                                 value={this.state.password}
                                 onChange={e => {
@@ -86,7 +87,7 @@ class SignUp extends Component{
                                 fullWidth
                                 variant="outlined"
                                 style={{backgroundColor:"#fff"}}
-                                size="Small"
+                                size={'small'}
                                 value={this.state.name}
                                 onChange={e => {
                                     this.setState({ name: e.target.value })
@@ -97,7 +98,7 @@ class SignUp extends Component{
                                 type="text"
                                 value={this.state.companyName}
                                 fullWidth
-                                size="Small"
+                                size={'small'}
                                 variant="outlined"
                                 style={{backgroundColor:"#fff"}}
                                 onChange={e => {
