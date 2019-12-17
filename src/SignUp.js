@@ -48,8 +48,8 @@ class SignUp extends Component{
                     </div>
                     </Grid>
                     <Grid  item lg={10} xs={12} >
-            <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onCompleted={() => this._confirm()}>
-                                {( mutation,{loading, error,}) => {
+            <Mutation mutation={SIGNUP_MUTATIONY}  variables={{ email, password,name,companyName } } onCompleted={() => this._confirm()}>
+                                {( signup,{loading, error,}) => {
                                     if (loading) { return (<LinearDeterminate/> )}
  if (error){ return (<span>{error.message}</span>)}
                                     return(
