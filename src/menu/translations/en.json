@@ -108,6 +108,7 @@
   "Please Check your email to confirm":"Please, Check the confirmaton letter in your email!",
   "Please check your email or password": "Please check your email or password",
   "loading...": "Loading...",
-  "Email already exists": "Email already exists"
+  "Email already exists": "Email already exists",
+   "Email field is empty": "Email field is empty"
 }
 
