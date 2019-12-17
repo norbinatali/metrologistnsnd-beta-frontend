@@ -116,10 +116,10 @@ class Login extends Component{
                                     </Link>
                                 </Typography>
                           <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onCompleted={() => this._confirm()}>
-                                    {( mutation,{loading, error}) => {
+                                    {( mutation,{loading, error,InvalidEmailError}) => {
                                         if (loading) { return (<span>{t('loading...')}</span> )}
                                         if (error) { return( <div style={{color:"red"}}>{t('Please check your email or password')}</div>)}
-
+                                        if (InvalidEmailError) {return(<div style={{color:"red"}}>{t('Email field is empty')}</div>)}
                                         return(
                                         <RaisedButton onClick={mutation}>{t('Submit')}</RaisedButton>)}}
 
