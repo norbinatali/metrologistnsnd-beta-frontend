@@ -88,7 +88,7 @@ class Login extends Component{
                                         <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onCompleted={() => this._confirm()}>
                                 {( mutation,{loading, error,}) => {
                                     if (loading) { return (<LinearDeterminate/> )}
-
+ if (error){ return (<span>{error.message}</span>)}
 
                                     return(
                             <FormControl >
