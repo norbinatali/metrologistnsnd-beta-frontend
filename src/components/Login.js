@@ -31,6 +31,7 @@ import MenuTabPanel from "./MenuTabPanel";
 import {withTranslation} from "react-i18next";
 import { Link as RouterLink, withRouter } from 'react-router-dom';
 import Auth from './Auth';
+import LinearDeterminate from "./LinearDeterminate";
 
 const styles = theme => ({
     root: {
@@ -84,54 +85,56 @@ class Login extends Component{
             
             </Grid>
                                     <Grid item xs={12} md={4} lg={8} >
-                                        <FormControl >
-              <h3 style={{color:"#fff", marginTop:"50%"}}>{t("Login in")}</h3> <br/>
-                <label style={{color:"#fff"}} htmlFor="email">{t('Email')} </label>
-                <TextField
-                    type="text"
-                    placeholder="example@example.com"
-                    value={this.state.email} fullWidth
-                     size="small"
-                    variant="outlined"
-                    style={{backgroundColor:"#fff"}}
-                    onChange={e => {
-                        this.setState({ email: e.target.value })
-                    }}
-                />
-                < label style={{color:"#fff"}} htmlFor="password">{t('Password')} </label>
-                <TextField
-                    type="password"
-                      size="small"
-                    fullWidth
-                    variant="outlined"
-                    style={{backgroundColor:"#fff"}}
-                    value={this.state.password}
-                    onChange={e => {
-                        this.setState({ password: e.target.value })
-                    }}
-                /><br/>
-                     <Typography style={{color:"#fff"}} variant="body1" >                              
+                                        <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onCompleted={() => this._confirm()}>
+                                {( mutation,{loading, error,}) => {
+                                    if (loading) { return (<LinearDeterminate/> )}
+
+
+                                    return(
+                            <FormControl >
+                                <h3 style={{color:"#fff", marginTop:"50%"}}>{t("Login in")}</h3> <br/>
+                                <label style={{color:"#fff"}} htmlFor="email">{t('Email')} </label>
+                                <TextField
+                                    type="text"
+                                    placeholder="example@example.com"
+                                    value={this.state.email} fullWidth
+
+                                    size="small"
+                                    variant="outlined"
+                                    style={{backgroundColor:"#fff"}}
+                                    onChange={e => {
+                                        this.setState({ email: e.target.value })
+                                    }}
+                                />
+                                < label style={{color:"#fff"}} htmlFor="password">{t('Password')} </label>
+                                <TextField
+                                    type="password"
+                                    size="small"
+                                    fullWidth
+                                    variant="outlined"
+                                    style={{backgroundColor:"#fff"}}
+                                    value={this.state.password}
+                                    onChange={e => {
+                                        this.setState({ password: e.target.value })
+                                    }}
+                                /><br/>
+                                <Typography style={{color:"#fff"}} variant="body1" >
                                     <Link component={RouterLink} to="/reset-password" variant="h8" style={{color:"#fff"}}  >
                                         {t('Forgot Password')}
                                     </Link>
                                 </Typography>
-                          <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onCompleted={() => this._confirm()}>
-                                    {( mutation,{loading, error,InvalidEmailError}) => {
-                                        if (loading) { return (<span>{t('loading...')}</span> )}
-                                        if (error) { return( <div style={{color:"red"}}>{t('Please check your email or password')}</div>)}
-                                        if (InvalidEmailError) {return(<div style={{color:"red"}}>{t('Email field is empty')}</div>)}
-                                        return(
-                                        <RaisedButton onClick={mutation}>{t('Submit')}</RaisedButton>)}}
 
-                                </Mutation>
-                                                          
-                       <Typography style={{color:"#fff"}} variant="body1" >
+                                            <RaisedButton onClick={mutation}>{t('Submit')}</RaisedButton>
+
+                                <Typography style={{color:"#fff"}} variant="body1" >
                                     Don't have an account?{' '}
                                     <Link component={RouterLink} to="/signup" variant="h8" style={{color:"#fff"}}  >
                                         Sign up
                                     </Link>
                                 </Typography>
-                                    </FormControl> </Grid>
+                            </FormControl> )}}
+
+                            </Mutation> </Grid>
                                 </Grid>
                 </MuiThemeProvider>
                 </div>
