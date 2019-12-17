@@ -110,12 +110,17 @@ class Login extends Component{
                         this.setState({ password: e.target.value })
                     }}
                 /><br/>
-                                        <Button style={{color:"#fff"}} link onClick={this.forgotpassword} >{t('Forgot Password')}</Button>
-                <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onCompleted={() => this._confirm()}>
+                     <Typography style={{color:"#fff"}} variant="body1" >                              
+                                    <Link component={RouterLink} to="/reset-password" variant="h8" style={{color:"#fff"}}  >
+                                        {t('Forgot Password')}
+                                    </Link>
+                                </Typography>
+                                          <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onCompleted={() => this._confirm()}>
                     {mutation => (
                         <RaisedButton onClick={mutation}>{t('Submit')}
                         </RaisedButton>)}
                 </Mutation>
+                                                          
                        <Typography style={{color:"#fff"}} variant="body1" >
                                     Don't have an account?{' '}
                                     <Link component={RouterLink} to="/signup" variant="h8" style={{color:"#fff"}}  >
