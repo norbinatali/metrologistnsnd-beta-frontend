@@ -254,8 +254,8 @@ const useStyles = makeStyles(theme => ({
             <Drawer classes={{paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),}} open={open}>
                 <div className={classes.toolbarIcon}>
                     
-                        <button style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
-                        <button style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
+                        <button style={{backgroundColor:"#fff",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
+                        <button style={{backgroundColor:"#fff",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
                     
                     <IconButton onClick={handleDrawerClose} >
                         <ChevronLeftIcon />
