@@ -15,7 +15,7 @@ import MenuTabPanel from "./MenuTabPanel";
 import AddDevice from "./AddDevice";
 import PleaseConfirmEmail from "./PleaseConfirmEmail";
 import CheckYourEmail from "./CheckYourEmail";
-
+import Auth from "./Auth";
 
 class App extends Component {
 
@@ -39,13 +39,8 @@ class App extends Component {
                     <Route exact path="/signup" component={SignUp} />
 
                            
-                                {userId ? ( <Redirect to={{path:"/user"}} component={MenuUser}/>
-
-
-                                ):(<Redirect to={{path:'/', state:'Please Login In'}}/>)
-                                }
-                             <Route exact path="/user" component={MenuUser}/>
-                                    <Route exact path="/add-device" component={AddDevice} />
+                            <PrivateRoute path="/user" component={MenuUser} />
+                            <PrivateRoute path="/add-device" component={AddDevice} />
                                    
                         </Router>
                     </Switch>
@@ -54,6 +49,20 @@ class App extends Component {
             </div> )
     }
 }
+            
+const PrivateRoute = ({ component: Component, ...rest }) => (
+    <Route
+        {...rest}
+        render={props =>
+            Auth.getAuth() ? (
+                <Component {...props} />
+            ) : (
+                <Redirect to={{ pathname: "/" }}
+                />
+            )
+        }
+    />
+);
 
 
 export default App;
