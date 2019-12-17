@@ -106,9 +106,13 @@ class SignUp extends Component{
                                 }}
                                 required
                             /><br/>
-                            <Mutation mutation={SIGNUP_MUTATION}  variables={{ email, password, name } } onCompleted={() => this._confirm()}>
-                                {signup => (
-                                    <RaisedButton onClick={signup}>{t("Submit")} </RaisedButton>)}
+                                    <Mutation mutation={SIGNUP_MUTATION}  variables={{ email, password, name } } onCompleted={() => this._confirm()}>
+                            {( signup,{loading, error}) =>{
+                                    if (loading) { return <span>{t('loading...')}</span> }
+                                    if (error) { return <div>{t('Email already exists')}</div>;}
+
+                                    return(
+                                    <RaisedButton onClick={signup}>{t("Submit")} </RaisedButton>)}}
                             </Mutation>
                     </FormControl>
 
