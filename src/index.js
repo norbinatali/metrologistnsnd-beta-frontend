@@ -10,7 +10,7 @@ import { AUTH_TOKEN } from './constants'
 import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import history from './history';
-
+import { onError } from "apollo-link-error";
 const httpLink = createHttpLink({
     uri: 'https://metrologistnsnd-beta-backend.herokuapp.com/',
 
