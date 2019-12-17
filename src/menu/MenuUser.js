@@ -270,7 +270,7 @@ const useStyles = makeStyles(theme => ({
                         </ListItemIcon>
                         <ListItemText primary={t('Metrology')} />
                     </ListItem>
-                    <ListItem  button onClick={handleDrawerCloseMetrology}>
+                    <ListItem  button onClick={handleDrawerCloseMyDevice}>
                         <ListItemIcon>
                             <InfoIcon />
                         </ListItemIcon>
