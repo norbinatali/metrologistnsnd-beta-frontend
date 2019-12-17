@@ -42,6 +42,7 @@ import LogoV2 from  "../menu/style/LogoMakr_6pZrzB.png"
 import { AUTH_TOKEN } from '../constants';
 import ContactUS from "../components/ContactUS";
 import { GC_USER_ID } from '../constants'
+import Auth from '../components/Auth';
 
 
 
@@ -315,18 +316,15 @@ const useStyles = makeStyles(theme => ({
                         </ListItemIcon>
                         <ListItemText primary={t('Contacts')} />
                     </ListItem>
-                    {userId ?
-                        (  <ListItem button onClick={() => {
-                            localStorage.removeItem(GC_USER_ID);
-                            localStorage.removeItem(AUTH_TOKEN);
-                            history.push(`/`)
+                    <ListItem button onClick={() => {
+                         Auth.signout();
+                         history.push('/')
                         }}>
                             <ListItemIcon>
                                 <ExitToApp/>
                             </ListItemIcon>
                             <ListItemText primary={t('logout')}/>
-                        </ListItem>): (<div>Please Login</div>)
-                    }
+                        </ListItem>
                 </div></List>
             </Drawer>
             <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
