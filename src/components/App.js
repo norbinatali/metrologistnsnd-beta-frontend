@@ -28,14 +28,13 @@ class App extends Component {
                 <div className="App-header">
 
                     <Switch>
-                        <Router history={history}>
+                    <Router history={history}>
                     <Route exact path="/" component={MenuTabPanel} />
-            
-             <Route exact path={"/check-email"} component={CheckYourEmail}/>
+                    <Route path={"/check-email"} component={CheckYourEmail}/>
                     <Route path={"/confirm-email"} component={PleaseConfirmEmail}/>
-                            <Route exact path="/reset-password" component={ForgetPassword} />
-             <Route exact path="/login" component={Login}/>
-                            <Route exact path={"/reset-password/"+resetToken} component={ConfirmResetPassword}/>
+                    <Route path="/reset-password" component={ForgetPassword} />
+                    <Route exact path="/login" component={Login}/>
+                    <Route exact path={"/reset-password/"+resetToken} component={ConfirmResetPassword}/>
                     <Route exact path="/signup" component={SignUp} />
 
                            
