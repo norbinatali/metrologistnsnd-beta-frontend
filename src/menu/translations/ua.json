@@ -55,7 +55,8 @@
     "Customers": "Наші клієнти",
     "Contacts": "Контакти",
     "Login in": "Вхід в обліковий запис",
-    "Registration": "Реєстрація",
+ "Sign up":"Зареєструватися",
+     "Registration": "Реєстрація",
     "Username or Email": "Імя користувача",
   "Forgot Password": "Забули пароль?",
     "Password": "Пароль",
@@ -124,4 +125,5 @@
  "Please check your email or password": "Неправильний логін чи пароль",
   "loading...": "Завантажується, зачекайте ...",
   "Email already exists": "Користувач з данною електронною поштою вже є "
+ 
 }
