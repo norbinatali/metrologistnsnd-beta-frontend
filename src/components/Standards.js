@@ -96,10 +96,10 @@ function Standards({t}){
                                         <TableBody>
                                              {devicelist.map(device =>(
                                             <TableRow>
-                                                <TableCell key={device.id} lign="center">{device.name_UA}</TableCell>
-                                                 <TableCell key={device.id} lign="center">{device.tr.name_TR_UA}</TableCell>
-                                            <TableCell key={device.id} lign="center">{device.category}</TableCell>
-                                             <TableCell key={device.id} lign="center">{device.module}</TableCell>
+                                                <TableCell lign="center">{device.name_UA}</TableCell>
+                                                 <TableCell lign="center">{device.tr.name_TR_UA}</TableCell>
+                                            <TableCell lign="center">{device.category}</TableCell>
+                                             <TableCell lign="center">{device.module}</TableCell>
                                             </TableRow>  ))}
                                             </TableBody>
                                                                                 
@@ -127,10 +127,10 @@ function Standards({t}){
                                     <TableBody>
                                       {devicelist.map(device =>(
                                             <TableRow>
-                                                <TableCell key={device.id} lign="center">{device.name_EN}</TableCell>
-                                                 <TableCell key={device.id} lign="center">{device.tr.name_TR_EN}</TableCell>
-                                            <TableCell key={device.id} lign="center">{device.category}</TableCell>
-                                             <TableCell key={device.id} lign="center">{device.module}</TableCell>
+                                                <TableCell lign="center">{device.name_EN}</TableCell>
+                                                 <TableCell lign="center">{device.tr.name_TR_EN}</TableCell>
+                                            <TableCell lign="center">{device.category}</TableCell>
+                                             <TableCell lign="center">{device.module}</TableCell>
                                             </TableRow>  ))}
                                             </TableBody>
                                        </Table> 
