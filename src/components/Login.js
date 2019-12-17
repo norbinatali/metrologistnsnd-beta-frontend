@@ -115,11 +115,15 @@ class Login extends Component{
                                         {t('Forgot Password')}
                                     </Link>
                                 </Typography>
-                                          <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onCompleted={() => this._confirm()}>
-                    {mutation => (
-                        <RaisedButton onClick={mutation}>{t('Submit')}
-                        </RaisedButton>)}
-                </Mutation>
+                          <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onCompleted={() => this._confirm()}>
+                                    {( mutation,{loading, error}) => {
+                                        if (loading) { return (<span>{t('loading...')}</span> )}
+                                        if (error) { return( <div style={{color:"red"}}>{t('Please check your email or password')}</div>)}
+
+                                        return(
+                                        <RaisedButton onClick={mutation}>{t('Submit')}</RaisedButton>)}}
+
+                                </Mutation>
                                                           
                        <Typography style={{color:"#fff"}} variant="body1" >
                                     Don't have an account?{' '}
