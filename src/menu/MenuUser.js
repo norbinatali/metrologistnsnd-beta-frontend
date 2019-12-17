@@ -232,17 +232,21 @@ const useStyles = makeStyles(theme => ({
          setComponent('UserPage')
      };
      const userId = localStorage.getItem(GC_USER_ID);
+   
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
 
     };
-
     return (
 
         <div className={classes.root}>
             <CssBaseline />
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
+                   
+                        <button style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
+                        <button style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
+                    
                     <IconButton edge="start" color="inherit" aria-label="open drawer" value={valueLang} onClick={handleDrawerOpen} className={clsx(classes.menuButton, open && classes.menuButtonHidden)}>
                         <MenuIcon />
                     </IconButton>
