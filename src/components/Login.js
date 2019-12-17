@@ -30,6 +30,7 @@ import i18n from "../menu/translations/i18n";
 import MenuTabPanel from "./MenuTabPanel";
 import {withTranslation} from "react-i18next";
 import { Link as RouterLink, withRouter } from 'react-router-dom';
+import Auth from './Auth';
 
 const styles = theme => ({
     root: {
