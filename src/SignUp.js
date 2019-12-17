@@ -12,7 +12,7 @@ import {withTranslation} from "react-i18next";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Grid from "@material-ui/core/Grid";
-import LinearDeterminate from "./LinearDeterminate";
+import LinearDeterminate from "./components/LinearDeterminate";
 
 
 class SignUp extends Component{
