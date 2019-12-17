@@ -131,6 +131,7 @@ class Login extends Component{
         const { token } = this.state.login;
         if (this.state.login){
             this._saveUserData(token);
+            Auth.authenticate();
             history.push('/user')}
         else { history.push('/')}
     };
