@@ -12,7 +12,7 @@ import {withTranslation} from "react-i18next";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Grid from "@material-ui/core/Grid";
-
+import LinearDeterminate from "./LinearDeterminate";
 
 
 class SignUp extends Component{
@@ -47,11 +47,12 @@ class SignUp extends Component{
                         </IconButton>
                     </div>
                     </Grid>
-                    <Grid
-                        item
-                        lg={10}
-                        xs={12}
-                    >
+                    <Grid  item lg={10} xs={12} >
+            <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onCompleted={() => this._confirm()}>
+                                {( mutation,{loading, error,}) => {
+                                    if (loading) { return (<LinearDeterminate/> )}
+
+                                    return(
                     <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center'}}>
                         <h3 style={{color:"#fff"}} >{t("Registration")}</h3><br/>
 
@@ -106,15 +107,11 @@ class SignUp extends Component{
                                 }}
                                 required
                             /><br/>
-                                    <Mutation mutation={SIGNUP_MUTATION}  variables={{ email, password, name } } onCompleted={() => this._confirm()}>
-                            {( signup,{loading, error}) =>{
-                                    if (loading) { return <span>{t('loading...')}</span> }
-                                    if (error) { return <div>{t('Email already exists')}</div>;}
+                                    <RaisedButton onClick={signup}>{t("Submit")} </RaisedButton>
+                            
+                    </FormControl>)}}
 
-                                    return(
-                                    <RaisedButton onClick={signup}>{t("Submit")} </RaisedButton>)}}
                             </Mutation>
-                    </FormControl>
 
                     </Grid> </Grid></MuiThemeProvider>
             </div>
