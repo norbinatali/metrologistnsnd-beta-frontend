@@ -81,11 +81,11 @@ class Login extends Component{
          <Grid container spacing={5} >
                                   
                                    <Grid item xs={12} md={4} >
-            <h3 style={{color:"#fff", marginTop:"50%"}}>{t("Login in")}</h3> <br/>
+            
             </Grid>
-                                    <Grid item xs={12} md={4} lg={8} >
+                                    <Grid item xs={12} md={4} lg={3} >
                                         <FormControl >
-              
+              <h3 style={{color:"#fff", marginTop:"50%"}}>{t("Login in")}</h3> <br/>
                 <label style={{color:"#fff"}} htmlFor="email">{t('Email')} </label>
                 <TextField
                     type="text"
