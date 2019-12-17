@@ -120,5 +120,8 @@
 "If you have any questions or recommendations, please fill the form.":"Якщо Ви маєте буль-які запитання або рекомендації, будь ласка, заповніть форму.",
 "you confirmed your email": "Ви підтвердили Вашу електронну адресу!",
   "To login page": "Повернутися на головну",
- "Please Check your email to confirm": "Будь ласка, перевірьте лист на Вашій електроній пошті для підтверждення реєстації"
+ "Please Check your email to confirm": "Будь ласка, перевірьте лист на Вашій електроній пошті для підтверждення реєстації",
+ "Please check your email or password": "Неправильний логін чи пароль",
+  "loading...": "Завантажується, зачекайте ...",
+  "Email already exists": "Користувач з данною електронною поштою вже є "
 }
