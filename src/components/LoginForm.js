@@ -198,7 +198,7 @@ function LoginForm({t},props){
                         <RaisedButton onClick={mutation}>{t('Submit')}
                         </RaisedButton>
             <Typography style={{color:"#fff"}} variant="body1" >
-                {t('Don't have an account?')}{' '}
+                {t('Dont have an account?')}{' '}
                 <Link component={RouterLink} to="/signup" variant="h8" style={{color:"#fff"}}  >
                     {t('Sign up')}
                 </Link>
