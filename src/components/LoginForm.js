@@ -83,6 +83,7 @@ const useStyles = makeStyles(theme => ({
 function LoginForm({t},props){
     const HELLO_QUERY = gql`mutation ($email:String!, $password:String!) { login(email:$email , password: $password){token,user{id, posts{id, title}}}}`;
     const {email, password, id,text} = useState("");
+    const {login} = useState (true);
     const classes = useStyles();
 const [state, setState]=useState("");
     const [formState, setFormState] = useState({
@@ -108,8 +109,8 @@ const [state, setState]=useState("");
 
         const confirm = async (data, e) => {
          e.preventDefault();
-        const { token } = this.state.login;
-        if (this.state.login){
+        const { token } = login;
+        if (login){
             saveUserData(token);
             Auth.authenticate();
             history.push('/user')}
