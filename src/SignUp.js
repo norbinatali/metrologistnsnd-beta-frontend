@@ -31,9 +31,8 @@ class SignUp extends Component{
 
 
     render(){
-        const SIGNUP_MUTATION = gql `mutation ($email: String!, $password: String!, $name: String!,$companyName:String){signup(email:$email , password: $password,name:$name,companyName:$companyName  ){token}}`;
-        const { email, password,name,companyName } = this.state;
-        const userId = localStorage.getItem(GC_USER_ID);
+        
+   
         const { t } = this.props;
         return ( 
  <div style={{height: "100%"}} >
@@ -55,17 +54,7 @@ class SignUp extends Component{
         );
     }
 
-    _confirm = async data => {
-        const {id, token} = this.state.signup;
-
-        this._saveUserData(id, token);
-        history.push('/check-email')
-    };
-
-    _saveUserData = (id,token) => {
-        localStorage.setItem(AUTH_TOKEN, token);
-        localStorage.setItem(GC_USER_ID, id);
-    }
+   
     handleBack = () => {
     history.goBack();
 };
