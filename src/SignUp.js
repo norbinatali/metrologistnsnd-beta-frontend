@@ -13,7 +13,7 @@ import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Grid from "@material-ui/core/Grid";
 import LinearDeterminate from "./components/LinearDeterminate";
-
+import SignUpForm from "./SignUpForm";
 
 class SignUp extends Component{
     constructor(props) {
@@ -48,70 +48,7 @@ class SignUp extends Component{
                     </div>
                     </Grid>
                     <Grid  item lg={10} xs={12} >
-            <Mutation mutation={SIGNUP_MUTATION}  variables={{ email, password,name,companyName } } onCompleted={() => this._confirm()}>
-                                {( signup,{loading, error,}) => {
-                                    if (loading) { return (<LinearDeterminate/> )}
- if (error){ return (<span>{error.message}</span>)}
-                                    return(
-                    <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center'}}>
-                        <h3 style={{color:"#fff"}} >{t("Registration")}</h3><br/>
-
-                            <label style={{color:"#fff"}} htmlFor="email">{t("Email")} </label>
-                            <TextField
-                                type="text"
-                                fullWidth
-                                size={'small'}
-                                placeholder={"example@example.com"}
-                                variant="outlined"
-                                style={{backgroundColor:"#fff"}}
-                                value={this.state.email}
-                                onChange={e => {
-                                    this.setState({ email: e.target.value })
-                                }}
-                                required
-                            />
-                            < label style={{color:"#fff"}} htmlFor="password">{t("Password")} </label>
-                            <TextField
-                                type="password"
-                                fullWidth
-                                variant="outlined"
-                                size={'small'}
-                                style={{backgroundColor:"#fff"}}
-                                value={this.state.password}
-                                onChange={e => {
-                                    this.setState({ password: e.target.value })
-                                }} required
-                            />
-                            <label style={{color:"#fff"}} htmlFor="name">{t("Name")} </label>
-                            <TextField
-                                type="text"
-                                fullWidth
-                                variant="outlined"
-                                style={{backgroundColor:"#fff"}}
-                                size={'small'}
-                                value={this.state.name}
-                                onChange={e => {
-                                    this.setState({ name: e.target.value })
-                                }}
-                            />
-                            <label style={{color:"#fff"}} htmlFor="companyName">{t("Company Name")} </label>
-                            <TextField
-                                type="text"
-                                value={this.state.companyName}
-                                fullWidth
-                                size={'small'}
-                                variant="outlined"
-                                style={{backgroundColor:"#fff"}}
-                                onChange={e => {
-                                    this.setState({ companyName: e.target.value })
-                                }}
-                                required
-                            /><br/>
-                                    <RaisedButton onClick={signup}>{t("Submit")} </RaisedButton>
-                            
-                    </FormControl>)}}
-
-                            </Mutation>
+            <SignUpForm />
 
                     </Grid> </Grid></MuiThemeProvider>
             </div>
