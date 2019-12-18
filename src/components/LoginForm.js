@@ -195,7 +195,7 @@ function LoginForm({t},props){
                                 ));}
                             }
                         /><br/>
-                        <RaisedButton disabled={!formState.isValid} onClick={mutation}>{t('Submit')}
+                        <RaisedButton onClick={mutation}>{t('Submit')}
                         </RaisedButton>
             <Typography style={{color:"#fff"}} variant="body1" >
                 {t('Don't have an account?')}{' '}
