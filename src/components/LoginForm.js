@@ -24,6 +24,7 @@ import Auth from "./Auth";
 import history from "../history";
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
 import LinearDeterminate from "./LinearDeterminate";
+import Snackbar from "@material-ui/core/Snackbar";
 const schema = {
     email: {
         presence: { allowEmpty: false, message: 'is required' },
@@ -123,9 +124,10 @@ function LoginForm({t},props){
 
     const hasError = field =>
         !!(formState.touched[field] && formState.errors[field]);
-
+ const [open, setOpen] = React.useState( false);
     return (
-        <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onCompleted={() => confirm()}>
+        <div>
+        <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onError={(error) => setOpen(true)} onCompleted={() => confirm()}>
             {( mutation,{loading, error}) => {
                 if (loading) { return (<LinearDeterminate /> )}
 
@@ -207,6 +209,8 @@ function LoginForm({t},props){
                 )}}
 
         </Mutation>
+<Snackbar open={open}  onClose={() => setOpen(false)} message={<span>error.message</span>} autoHideDuration={6000}/>
+                                                               </div>
     )
 
 
