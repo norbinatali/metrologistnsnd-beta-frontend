@@ -23,6 +23,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import Auth from "./Auth";
 import history from "../history";
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
+import LinearDeterminate from "./LinearDeterminate";
 const schema = {
     email: {
         presence: { allowEmpty: false, message: 'is required' },
@@ -125,7 +126,7 @@ const [state, setState]=useState("");
     return (
         <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onCompleted={() => confirm()}>
             {( mutation,{loading, error, event}) => {
-                if (loading) { return (<span>{t('loading...')}</span> )}
+                if (loading) { return (<LinearDeterminate /> )}
 
                 return(
         <FormControl >
