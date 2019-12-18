@@ -25,6 +25,7 @@ import history from "../history";
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
 import LinearDeterminate from "./LinearDeterminate";
 import Snackbar from "@material-ui/core/Snackbar";
+import { SnackbarProvider, useSnackbar } from 'notistack';
 const schema = {
     email: {
         presence: { allowEmpty: false, message: 'is required' },
@@ -83,6 +84,7 @@ const useStyles = makeStyles(theme => ({
   const HELLO_QUERY = gql`mutation ($email:String!, $password:String!) { login(email:$email , password: $password){token,user{id, posts{id, title}}}}`;
    
 function LoginForm({t},props){
+    const { enqueueSnackbar } = useSnackbar();
    const {id} = React.useState("");
     const [email,setStateEmail] = useState("");
     const [login] = useState(true);
@@ -127,7 +129,7 @@ function LoginForm({t},props){
  const [open, setOpen] = React.useState( false);
     return (
         <div>
-        <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onError={(error) => setOpen(true)} onCompleted={() => confirm()}>
+        <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={() => confirm()}>
             {( mutation,{loading, error}) => {
                 if (loading) { return (<LinearDeterminate /> )}
 
