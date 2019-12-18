@@ -11,6 +11,7 @@ import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import history from './history';
 import { onError } from "apollo-link-error";
+import { SnackbarProvider, useSnackbar } from 'notistack';
 const httpLink = createHttpLink({
     uri: 'https://metrologistnsnd-beta-backend.herokuapp.com/',
 
@@ -44,7 +45,9 @@ const client = new ApolloClient({
 ReactDOM.render(
     <BrowserRouter>
     <ApolloProvider client={client}>
+      <SnackbarProvider>
         <App />
+       </SnackbarProvider>
     </ApolloProvider>
     </BrowserRouter>,
     document.getElementById('root'),
