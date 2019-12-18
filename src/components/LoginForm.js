@@ -79,14 +79,15 @@ const useStyles = makeStyles(theme => ({
         color:"#fff"
     },
 }));
-
+  const HELLO_QUERY = gql`mutation ($email:String!, $password:String!) { login(email:$email , password: $password){token,user{id, posts{id, title}}}}`;
+   
 function LoginForm({t},props){
-    const HELLO_QUERY = gql`mutation ($email:String!, $password:String!) { login(email:$email , password: $password){token,user{id, posts{id, title}}}}`;
-    const {email, password, id,text} = useState("");
-    const {login} = useState (true);
+   const {id} = React.useState("");
+    const [email,setStateEmail] = useState("");
+    const [login] = useState(true);
+    const [password,setStatePassword] = useState("");
     const classes = useStyles();
-const [state, setState]=useState("");
-    const [formState, setFormState] = useState({
+    const [formState, setFormState] = React.useState({
         isValid: false,
         values: {},
         touched: {},
@@ -108,9 +109,8 @@ const [state, setState]=useState("");
     };
 
         const confirm = async (data, e) => {
-         e.preventDefault();
-        const { token } = login;
-        if (login){
+         const { token } = login;
+        if ( login){
             saveUserData(token);
             Auth.authenticate();
             history.push('/user')}
@@ -126,7 +126,7 @@ const [state, setState]=useState("");
 
     return (
         <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onCompleted={() => confirm()}>
-            {( mutation,{loading, error, event}) => {
+            {( mutation,{loading, error}) => {
                 if (loading) { return (<LinearDeterminate /> )}
 
                 return(
@@ -134,70 +134,67 @@ const [state, setState]=useState("");
             <h3 style={{color:"#fff", marginTop:"50%"}}>{t("Login in")}</h3> <br/>
             <label style={{color:"#fff"}} htmlFor="email">{t('Email')} </label>
             <CssTextField
-                type="text"
-                name={"email"}
-                label={email}
-                placeholder={"example@example.com"}
-                value={email&&(formState.values.email || '')} fullWidth
-                size="medium"
-                error={hasError('email')}
-                helperText={hasError('email')? formState.errors.email[0] : null}
-                variant="outlined"
-                className={classes.margin}
-                onChange={e => {
-                        e.persist();
-                        setFormState(formState => ({
-                            ...formState,
-                            values: {
-                                ...formState.values,
-                                [e.target.name]:
-                                    e.target.type === 'checkbox'
-                                        ? e.target.checked
-                                        : e.target.value
-                            },
-                            touched: {
-                                ...formState.touched,
-                                [e.target.name]: true
+                            type="text"
+                            name={"email"}
+                            placeholder={"example@example.com"}
+                            value={email}
+                            fullWidth
+                            size="medium"
+                            error={hasError('email')}
+                            helperText={hasError('email')? formState.errors.email[0] : null}
+                            variant="outlined"
+                            className={classes.margin}
+                            onChange={(e) => {setStateEmail(e.target.value);
+                                e.persist();
+                                setFormState(formState => ({
+                                        ...formState,
+                                        values: {
+                                            ...formState.values,
+                                            [e.target.name]:
+                                                e.target.type === 'checkbox'
+                                                    ? e.target.checked
+                                                    : e.target.value
+                                        },
+                                        touched: {
+                                            ...formState.touched,
+                                            [e.target.name]: true
+                                        }
+                                    }
+                                ));
+                            }}
+                        />
+                        < label style={{color:"#fff"}} htmlFor="password">{t('Password')} </label>
+                        <CssTextField
+                            type="password"
+                            size="medium"
+                            name={password}
+                            fullWidth
+                            error={hasError('password')}
+                            helperText={
+                                hasError('password') ? formState.errors.password[0] : null
                             }
-                        }
-                       ));
-                        setState({ email: e.target.value });
+                            variant="outlined"
 
-                }}
-            />
-            < label style={{color:"#fff"}} htmlFor="password">{t('Password')} </label>
-            <CssTextField
-                type="password"
-                size="medium"
-                name={"password"}
-                fullWidth
-                error={hasError('password')}
-
-                helperText={
-                    hasError('password') ? formState.errors.password[0] : null
-                }
-                variant="outlined"
-
-                value={password&&(formState.values.password || '')}
-                onChange={e => {
-                        e.persist();
-                        setFormState(formState => ({
-                            ...formState,
-                            values: {
-                                ...formState.values,
-                                [e.target.name]:
-                                    e.target.type === 'checkbox'
-                                        ? e.target.checked
-                                        : e.target.value
-                            },
-                            touched: {
-                                ...formState.touched,
-                                [e.target.name]: true
+                            value={password}
+                            onChange={e =>  {setStatePassword(e.target.value )
+                                e.persist();
+                                setFormState(formState => ({
+                                        ...formState,
+                                        values: {
+                                            ...formState.values,
+                                            [e.target.name]:
+                                                e.target.type === 'checkbox'
+                                                    ? e.target.checked
+                                                    : e.target.value
+                                        },
+                                        touched: {
+                                            ...formState.touched,
+                                            [e.target.name]: true
+                                        }
+                                    }
+                                ));}
                             }
-                        }));
-                    setState({ password: e.target.value })
-                }}
-            /><br/>
+                        /><br/>
                         <RaisedButton disabled={!formState.isValid} onClick={mutation}>{t('Submit')}
                         </RaisedButton>
             <Typography style={{color:"#fff"}} variant="body1" >
