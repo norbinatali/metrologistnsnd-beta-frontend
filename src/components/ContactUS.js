@@ -36,7 +36,7 @@ function ContactUS({t}) {
                 <MuiThemeProvider>
                     <label style={{color:"#fff"}} htmlFor="from">{t("Email")} </label>
                     <TextField variant="outlined"
-                               style={{backgroundColor:"#fff"}} type="text" value={from} onChange={e => setFrom( e.target.value )} required/>
+                               style={{backgroundColor:"#fff"}} placeholder="example@example.com" type="text" value={from} onChange={e => setFrom( e.target.value )} required/>
                     < label style={{color:"#fff"}} htmlFor="subject">{t("Subject")} </label>
                     <TextField variant="outlined"
                                style={{backgroundColor:"#fff"}} type="text" value={subject} onChange={e => setSubject(e.target.value )} required
