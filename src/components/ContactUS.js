@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component, useState} from 'react';
 import {withTranslation} from "react-i18next";
 import gql from "graphql-tag";
 import FormControl from "@material-ui/core/FormControl";
@@ -8,70 +8,55 @@ import Input from "@material-ui/core/Input";
 import RaisedButton from "material-ui/RaisedButton";
 import {AUTH_TOKEN} from "../constants";
 import {Mutation} from 'react-apollo'
-import Typography from "@material-ui/core/Typography";
-import {
-    Grid
-} from '@material-ui/core';
+import { useSnackbar } from 'notistack';
 
-class ContactUS extends Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-           sendMail:true,
-            from:"",
-            subject:"",
-            text:"",
-            classes: true,
+const LETTER_MUTATION = gql`mutation ($from: String!, $text: String!, $subject: String!){createNewLetter(text:$text , subject: $subject,from:$from){text,subject,from}}`
 
-        };
+function ContactUS({t}) {
+    const { enqueueSnackbar } = useSnackbar();
+    const [sendMail,classes]= useState(true);
+     const [from, setFrom] =useState("");
+     const [subject, setSubject] = useState("");
+    const [text, setText] = useState("");
 
-    }
-render() {
-const {t}= this.props;
-   const LETTER_MUTATION = gql`mutation ($from: String!, $text: String!, $subject: String!){createNewLetter(text:$text , subject: $subject,from:$from){text,subject,from}}`
-    const { from, subject,text } = this.state;
-    return (
-      <div style={{marginLeft: "auto", marginRight:"auto", display:"flex"}}> 
-                      <MuiThemeProvider>
-         <Grid container spacing={5} >
-                                     <Grid item xs={12} md={4} >
-                                        <Typography style={{color:"#fff", marginTop:"50%"}}>  <h4 >{t('If you have any questions or recommendations, please fill the form.')}</h4></Typography>
-                                    </Grid>
-                                    <Grid item xs={12} md={4} >
-                                        <FormControl >
-                    <label style={{color:"#fff"}} htmlFor="from">{t('Email')} </label>
-                    <TextField  fullWidth
-                    variant="outlined"
-                    style={{backgroundColor:"#fff"}} type="text" value={this.state.form} onChange={e => {this.setState({ form: e.target.value })}} required/>
-                    < label style={{color:"#fff"}} htmlFor="subject">{t('Subject')} </label>
-                    <TextField  fullWidth
-                    variant="outlined"
-                    style={{backgroundColor:"#fff"}} type="text" value={this.state.subject} onChange={e => {this.setState({ subject: e.target.value })}} required
-                    />
-                    <label style={{color:"#fff"}} htmlFor="text">{t('Text')} </label>
-                    <TextField  fullWidth
-                    variant="outlined"
-                    style={{backgroundColor:"#fff"}} id="outlined-multiline-static" multiline  rows="5" type="text"  margin="normal" variant="outlined" value={this.state.text}  onChange={e => {this.setState({ text: e.target.value })}}
-                    /><br/>
-                    <Mutation mutation={LETTER_MUTATION}  variables={{ from,subject, text } } onCompleted={() => this._confirm()}>
-                        {send => (
-                            <RaisedButton style={{marginBottom:"10%"}} onClick={send}>Send </RaisedButton>)}
-                    </Mutation>
-  </FormControl>
- </Grid>
-                                </Grid>
-                </MuiThemeProvider>
-                </div>
-    )
-}
-    _confirm = async data => {
-        const { token } = this.state.sendMail;
-        this._saveLetterData(token);
+    const confirm = async data => {
 
+        const { token } = sendMail;
+        saveLetterData(token);
+        enqueueSnackbar('Thank you for your request. Дякую за Ваше звернення')
     };
-    _saveLetterData = token => {
+
+    const saveLetterData = token => {
         localStorage.setItem(AUTH_TOKEN, token)
     }
+    return (
+        <div  >
+            <FormControl  >
+                <MuiThemeProvider>
+                    <label style={{color:"#fff"}} htmlFor="from">{t("Email")} </label>
+                    <TextField variant="outlined"
+                               style={{backgroundColor:"#fff"}} type="text" value={from} onChange={e => setFrom( e.target.value )} required/>
+                    < label style={{color:"#fff"}} htmlFor="subject">{t("Subject")} </label>
+                    <TextField variant="outlined"
+                               style={{backgroundColor:"#fff"}} type="text" value={subject} onChange={e => setSubject(e.target.value )} required
+                    />
+                    <label style={{color:"#fff"}} htmlFor="text">{t("Text")} </label>
+                    <TextField variant="outlined"
+                               style={{backgroundColor:"#fff"}} id="outlined-multiline-static" multiline  rows="5" type="text"  margin="normal" variant="outlined" value={text}  onChange={e => setText( e.target.value )}
+                    /><br/>
+                    <Mutation mutation={LETTER_MUTATION}  variables={{ from,subject, text } }  onCompleted={() => confirm()  }>
+                        {send => (
+                            <RaisedButton style={{marginBottom:"10%"}} onClick={send}>{t("Send")} </RaisedButton>)}
+                    </Mutation>
+
+
+                </MuiThemeProvider>
+            </FormControl>
+        </div>
+    )
+
+
+
 }
 export default withTranslation()(ContactUS)
