@@ -10,7 +10,7 @@ import {withTranslation} from "react-i18next";
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
-        marginLeft:"30%"
+       
     },
 }));
  function AssessmentTheory({t}){
@@ -23,7 +23,6 @@ const useStyles = makeStyles(theme => ({
     const classes = useStyles();
 return(
     <div className={classes.root}>
-            <Typography variant="h5" component="h2">{t('History')}</Typography>
                 <Paper style={{backgroundColor:"white"}}>
                     <Typography variant="h5" component="h3">
                         {t('Terminology')}<br/></Typography>
