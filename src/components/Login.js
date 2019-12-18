@@ -31,7 +31,7 @@ import MenuTabPanel from "./MenuTabPanel";
 import {withTranslation} from "react-i18next";
 import { Link as RouterLink, withRouter } from 'react-router-dom';
 import Auth from './Auth';
-import LinearDeterminate from "./LinearDeterminate";
+
 import LoginForm from './LoginForm'
 
 const styles = theme => ({
