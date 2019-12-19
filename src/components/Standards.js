@@ -105,7 +105,7 @@ function Standards({t}){
                                                                                 
                                              
                                     </Table>
-                                  </Paper>
+                                  
                                     </CardContent>)}
 
 
