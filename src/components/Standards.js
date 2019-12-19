@@ -53,7 +53,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const GET_Device = gql`query { allDevice {id name_EN name_UA  module category tr{name_TR_UA name_TR_EN}}}`;
+const GET_Device = gql`query { allDevice {id name_EN name_UA  module tr{name_TR_UA name_TR_EN} dtc{name_UA name_EN}}}`;
 
 
 function Standards({t}){
@@ -98,7 +98,7 @@ function Standards({t}){
                                             <TableRow>
                                                 <TableCell lign="center">{device.name_UA}</TableCell>
                                                  <TableCell lign="center">{device.tr.name_TR_UA}</TableCell>
-                                            <TableCell lign="center">{device.category}</TableCell>
+                                            <TableCell lign="center">{device.dtc.name_UA}</TableCell>
                                              <TableCell lign="center">{device.module}</TableCell>
                                             </TableRow>  ))}
                                             </TableBody>
@@ -129,7 +129,7 @@ function Standards({t}){
                                             <TableRow>
                                                 <TableCell lign="center">{device.name_EN}</TableCell>
                                                  <TableCell lign="center">{device.tr.name_TR_EN}</TableCell>
-                                            <TableCell lign="center">{device.category}</TableCell>
+                                            <TableCell lign="center">{device.dtc.name_EN}</TableCell>
                                              <TableCell lign="center">{device.module}</TableCell>
                                             </TableRow>  ))}
                                             </TableBody>
