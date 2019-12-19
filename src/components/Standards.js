@@ -83,7 +83,7 @@ function Standards({t}){
                                 return(
                                    
                                    <CardContent className={classes.content}>
-                                        
+                                        <Paper>
                                     <Table component={Paper} className={classes.table} aria-label="customized table">
                                         <TableHead aria-label="sticky table">
                                             <TableRow >
@@ -105,7 +105,7 @@ function Standards({t}){
                                                                                 
                                              
                                     </Table>
-                                  
+                                  </Paper>
                                     </CardContent>)}
 
 
@@ -114,7 +114,7 @@ function Standards({t}){
                                 if (i18n.language === "en"){
                                    return(
                                        <CardContent className={classes.content}>
-                                       
+                                       <Paper>
                                     <Table component={Paper} className={classes.table} aria-label="customized table">
                                     <TableHead aria-label="sticky table">
                                     <TableRow >
@@ -134,6 +134,7 @@ function Standards({t}){
                                             </TableRow>  ))}
                                             </TableBody>
                                        </Table> 
+                                            </Paper>
                                     </CardContent>)}
                             else return null}
                             }
