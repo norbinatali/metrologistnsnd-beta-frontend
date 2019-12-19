@@ -45,6 +45,7 @@ const useStyles = makeStyles(theme => ({
     },
     table: {
         minWidth: "90%",
+        maxHeight:"300px",
         color:"linear-gradient(to right,#000222, rgba(23, 20, 61, 0.96),  #252529)"
     },
      inner:{
@@ -72,7 +73,7 @@ function Standards({t}){
             clearInterval(timer);
         };
     }, [1]);
-    return ( <Paper  className={classes.root}>
+    return ( <div  className={classes.root}>
                     <Query query={GET_Device} >
                             {( {loading, error, data} ) =>  {
                               if (loading) {return<LinearProgress variant="determinate" value={completed} color="secondary"/>}
@@ -139,7 +140,7 @@ function Standards({t}){
                             else return null}
                             }
                         </Query>
-</Paper>
+</div>
 
 
     );
