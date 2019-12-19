@@ -82,7 +82,7 @@ function Standards({t}){
 
                                 if (i18n.language === "ua" )  {
                                 return(
-                                    
+                                    <Paper style={{width:"100%", maxHeight:"350px"}}>
                                    <CardContent className={classes.content}>
                                       
                                     <Table component={Paper} className={classes.table} aria-label="customized table">
@@ -107,15 +107,16 @@ function Standards({t}){
                                              
                                     </Table>
                                   
-                                    </CardContent>)}
+                                    </CardContent></Paper>)}
 
 
 
 
                                 if (i18n.language === "en"){
                                    return(
+                                        <Paper style={{width:"100%", maxHeight:"350px"}}>
                                        <CardContent className={classes.content}>
-                                       <Paper>
+                                      
                                     <Table component={Paper} className={classes.table} aria-label="customized table">
                                     <TableHead aria-label="sticky table">
                                     <TableRow >
@@ -135,8 +136,8 @@ function Standards({t}){
                                             </TableRow>  ))}
                                             </TableBody>
                                        </Table> 
-                                            </Paper>
-                                    </CardContent>)}
+                                            
+                                    </CardContent></Paper>)}
                             else return null}
                             }
                         </Query>
