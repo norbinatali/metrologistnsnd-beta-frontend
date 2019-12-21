@@ -109,6 +109,15 @@
   "Please check your email or password": "Please check your email or password",
   "loading...": "Loading...",
   "Email already exists": "Email already exists",
-   "Email field is empty": "Email field is empty"
+   "Email field is empty": "Email field is empty",
+   "L": " L – length",
+  "M": "М – mass and all values of mass",
+  "EM": "ЕМ – electricity and magnetism",
+  "T": "T – thermometry",
+  "TF": "ТF – time and frequency",
+  "PR": "РR – photometry",
+  "IR": "ІR– ionizing radiation",
+  "AUV": "АUV – acoustics, ultrasound, vibration",
+  "QM": "QМ – chemistry (quantity of substances)"
 }
 
