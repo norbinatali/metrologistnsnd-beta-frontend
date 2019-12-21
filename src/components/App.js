@@ -16,6 +16,7 @@ import AddDevice from "./AddDevice";
 import PleaseConfirmEmail from "./PleaseConfirmEmail";
 import CheckYourEmail from "./CheckYourEmail";
 import Auth from "./Auth";
+import Standards from "./Standards";
 
 class App extends Component {
 
@@ -40,6 +41,7 @@ class App extends Component {
                            
                             <PrivateRoute path="/user" component={MenuUser} />
                             <PrivateRoute path="/add-device" component={AddDevice} />
+             <PrivateRoute path="/standard/L" component={Standards} />
                                    
                         </Router>
                     </Switch>
