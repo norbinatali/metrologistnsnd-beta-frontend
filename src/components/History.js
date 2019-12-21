@@ -17,6 +17,7 @@ import GeneralInfo from "./GeneralInfo";
 import ModulesInfo from "./ModulesInfo";
 import {withTranslation} from "react-i18next";
 import AssessmentTheory from "./AssessmentTheory";
+import UserMenu from "./UserMenu";
 
 const QontoConnector = withStyles({
     alternativeLabel: {
