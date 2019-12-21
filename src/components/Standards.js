@@ -107,7 +107,7 @@ function Standards({t}){
 </AppBar>
 <Grid item >
                     <div style={{marginTop:"0px"}} >
-                        <IconButton onClick={this.handleBack}>
+                        <IconButton onClick={handleBack}>
                             <ArrowBackIcon style={{color:"white"}} />
                         </IconButton>
                     </div>
