@@ -149,6 +149,9 @@ function StandardListGrid({t}) {
 
     };
     return (
+        <div>
+            <UserMenu/>
+                <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
         <div className={classes.root}>
             <div style={{ marginTop: "10%" }}>
                 <Typography variant="h5" component="h2">{t('Standards and Devices')}</Typography>
@@ -164,6 +167,8 @@ function StandardListGrid({t}) {
             </div>
 
         </div>
+</main>
+</div>
     );
 
 }
