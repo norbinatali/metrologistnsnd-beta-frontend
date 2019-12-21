@@ -132,6 +132,9 @@ const posts={
     };
 
     return(
+        <div>
+            <UserMenu/>
+                <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
         <div style={{display:'flex'}}>
                 <Grid container spacing={2} justify="center" style={{backgroundColor:"white"}}>
                     <Card>
@@ -177,8 +180,8 @@ const posts={
         </div>
 
 
-
-
+</main>
+</div>
     )
 
 
