@@ -4,6 +4,7 @@ import {makeStyles} from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import ContactUS from "./ContactUS";
+import UserMenu from "./UserMenu";
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
