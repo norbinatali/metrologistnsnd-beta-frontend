@@ -46,7 +46,7 @@ class App extends Component {
                            <PrivateRoute path="/mydevices" component={MyDevice} />
                            <PrivateRoute path="/metrology" component={History} />
                            <PrivateRoute path="/add-device" component={AddDevice} />
-                           <PrivateRoute path="/standards/L" component={Standards} />
+                           <PrivateRoute path="/standards-L" component={Standards} />
                            <PrivateRoute path="/standards" component={StandardListGrid} />
                             
                         </Router>
