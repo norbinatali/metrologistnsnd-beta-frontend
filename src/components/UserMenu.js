@@ -201,19 +201,19 @@ const useStyles = makeStyles(theme => ({
     };
      const handleDrawerCloseDashboard = () => {
          setOpen(false);
-         setComponent('dashboard')
+         history.push('/dashboard');
      };
     const handleDrawerCloseMetrology = () => {
         setOpen(false);
-        setComponent('metrology')
+       history.push('/metrology');
     };
      const handleDrawerCloseMyDevice = () => {
          setOpen(false);
-         setComponent('mydevice')
+        history.push('/mydevices');
      };
      const handleDrawerCloseSand = () => {
          setOpen(false);
-         setComponent('sand')
+         history.push('/standards');
      };
      const handleDrawerCloseForum = () => {
          setOpen(false);
