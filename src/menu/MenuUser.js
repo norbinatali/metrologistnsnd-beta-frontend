@@ -371,7 +371,6 @@ const useStyles = makeStyles(theme => ({
                                        <StandardListGrid />
                                          
                                         </div>
-                                    </div></div>
                                                 :
                                 component === 'history' ?
                                 <History />
