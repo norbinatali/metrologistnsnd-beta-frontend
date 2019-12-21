@@ -17,8 +17,13 @@ marginLeft: "5%",
 
      const classes = useStyles();
         return(
-
+<div>
+            <UserMenu/>
+                <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
+             <div style={{ marginTop: 40 }}>
+                        <div style={{ marginTop: 20, padding:30}}>
             <div className={classes.root}>
+            
 <div >
 <Typography  align={"justify"}  >
     <p>{t('About Metrologist')}<br/></p>
@@ -29,6 +34,10 @@ marginLeft: "5%",
 
 </div>
                 </div>
+         </div>
+                    </div>
+        </main
+        </div>
 
 
 
