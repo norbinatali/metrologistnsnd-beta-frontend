@@ -36,8 +36,8 @@ marginLeft: "5%",
                 </div>
          </div>
                     </div>
-        </main
-        </div>
+        </main>
+ </div>
 
 
 
