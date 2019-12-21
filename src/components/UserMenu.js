@@ -186,7 +186,7 @@ const useStyles = makeStyles(theme => ({
 
     const classes = useStyles();
     const [component, setComponent] = React.useState(' ');
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const [value, setValue] = React.useState(0);
     const [valueLang, setValueLang] = React.useState(''
     );
