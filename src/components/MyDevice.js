@@ -125,6 +125,9 @@ function MyDevice({t,className, rest}) {
         setExpanded(isExpanded ? panel : false);
     };
     return(
+        <div>
+            <UserMenu/>
+                <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
         <div className={classes.root}>
 
 <AppBar position="static" elevation={0} style={{borderBottom: '1px solid rgba(0, 0, 0, 0.12)',backgroundColor:"transparent"}} >
@@ -192,6 +195,8 @@ function MyDevice({t,className, rest}) {
                 </div>
 
         </div>
+                                                                         </main>
+                                                                         </div>
 
     )
 
