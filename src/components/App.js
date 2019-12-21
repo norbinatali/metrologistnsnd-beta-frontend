@@ -5,7 +5,6 @@ import {Switch,Route,Redirect} from 'react-router-dom'
 import SignUp from "../SignUp";
 import history from '../history';
 import {Router} from "react-router-dom";
-import History from "./History";
 import { GC_USER_ID, RESET_TOKEN as resetToken} from '../constants'
 import MenuUser from "../menu/MenuUser";
 import ForgetPassword from "./ForgetPassword";
