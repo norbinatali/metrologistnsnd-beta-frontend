@@ -6,7 +6,7 @@ import SignUp from "../SignUp";
 import history from '../history';
 import {Router} from "react-router-dom";
 import { GC_USER_ID, RESET_TOKEN as resetToken} from '../constants'
-import UserMenu from "../menu/UserMenu";
+import UserMenu from "./UserMenu";
 import ForgetPassword from "./ForgetPassword";
 import ConfirmResetPassword from "./ConfirmResetPassword";
 import MenuTabPanel from "./MenuTabPanel";
