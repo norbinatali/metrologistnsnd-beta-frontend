@@ -43,7 +43,7 @@ import { AUTH_TOKEN } from '../constants';
 import ContactUS from "../components/ContactUS";
 import { GC_USER_ID } from '../constants'
 import Auth from '../components/Auth';
-
+import StandardListGrid from "../components/StandardListGrid";
 
 
 const drawerWidth = 240;
@@ -366,12 +366,9 @@ const useStyles = makeStyles(theme => ({
                                 :
                             component === 'sand' ?
                                 
-                                    <div style={{ marginTop: 80,padding:30 }}>
-                                <div style={{flexGrow: 1, width: '100%'}}>
+                                  <div style={{width:"100%", height:"100%", }}>
                                      
-                                              <Typography variant="h5" component="h2">{t('Measuring Instrument')}</Typography>
-                                          <div style={{ marginTop: 20 }}>
-                                                <Standards />
+                                       <StandardListGrid />
                                          
                                         </div>
                                     </div></div>
