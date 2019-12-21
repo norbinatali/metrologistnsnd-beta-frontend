@@ -11,12 +11,16 @@ import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
 import { withTranslation} from 'react-i18next';
 import LinearProgress from '@material-ui/core/LinearProgress';
-
+import IconButton from "@material-ui/core/IconButton";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Grid from "@material-ui/core/Grid";
 import Paper from '@material-ui/core/Paper';
 import CardContent from "@material-ui/core/CardContent";
 import i18n from "../menu/translations/i18n";
-
-
+import CssBaseline from "@material-ui/core/CssBaseline";
+import AppBar from "@material-ui/core/AppBar/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import LinearDeterminate from './LinearDeterminate';
 
 
 const StyledTableCell = withStyles(theme => ({
@@ -60,6 +64,13 @@ const GET_Device = gql`query { allDevice {id name_EN name_UA  module tr{name_TR_
 function Standards({t}){
     const classes = useStyles();
     const [completed, setCompleted] = React.useState(0);
+    const handleBack = () => {
+        history.goBack();
+    };
+     const changeLanguage = (lng) => {
+        i18n.changeLanguage(lng);
+
+    };
     React.useEffect(() => {
         function progress() {
             setCompleted(oldCompleted => {
@@ -74,9 +85,34 @@ function Standards({t}){
         };
     }, [1]);
     return ( <div  className={classes.root}>
+          <CssBaseline />
+        <AppBar >
+        <Toolbar className={classes.toolBar}>
+        <Grid container spacing={16}>
+        <Grid item xs={11}>
+        <div style={{ marginRight: "auto", marginLeft: "auto",}}>
+<img src={logo} />
+</div>
+</Grid>
+<Grid item spacing={6}>
+
+<button onClick={() => changeLanguage('ua')}>ua</button>
+<button onClick={() => changeLanguage('en')}>en</button>
+
+</Grid>
+</Grid>
+</Toolbar>
+</AppBar>
+<Grid item >
+                    <div style={{marginTop:"0px"}} >
+                        <IconButton onClick={this.handleBack}>
+                            <ArrowBackIcon style={{color:"white"}} />
+                        </IconButton>
+                    </div>
+                    </Grid>
                     <Query query={GET_Device} >
                             {( {loading, error, data} ) =>  {
-                              if (loading) {return<LinearProgress variant="determinate" value={completed} color="secondary"/>}
+                              if (loading) {return <LinearDeterminate/>}
                                 if (error) { return <div>error</div>;}
                                 const devicelist = data.allDevice;
 
