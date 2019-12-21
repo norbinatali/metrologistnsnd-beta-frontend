@@ -24,6 +24,7 @@ import LinearDeterminate from './LinearDeterminate';
 import FlagUA from "../menu/style/LogoMakr_1Xl0t4.png";
 import FlagUS from "../menu/style/LogoMakr_4V1dPm.png";
 import history from "../history"
+import logo from "../menu/style/LogoMakr_6pZrzB.png"
 
 const StyledTableCell = withStyles(theme => ({
     head: {
