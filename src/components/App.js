@@ -41,7 +41,7 @@ class App extends Component {
                     <Route exact path="/signup" component={SignUp} />
 
                            
-                           <PrivateRoute path="/user" component={UserMenu} />
+                           <PrivateRoute path="/user" component={Dashboard} />
                            <PrivateRoute path="/dashboard" component={Dashboard} />
                            <PrivateRoute path="/mydevices" component={MyDevice} />
                            <PrivateRoute path="/metrology" component={History} />
