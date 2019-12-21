@@ -5,7 +5,6 @@ import {Switch,Route,Redirect} from 'react-router-dom'
 import SignUp from "../SignUp";
 import history from '../history';
 import {Router} from "react-router-dom";
-
 import History from "./History";
 import { GC_USER_ID, RESET_TOKEN as resetToken} from '../constants'
 import MenuUser from "../menu/MenuUser";
@@ -17,6 +16,10 @@ import PleaseConfirmEmail from "./PleaseConfirmEmail";
 import CheckYourEmail from "./CheckYourEmail";
 import Auth from "./Auth";
 import Standards from "./Standards";
+import Dashboard from "./Dashboard";
+import MyDevice from "./MyDevice";
+import History from "./History";
+import StandardListGrid from "./StandardListGrid";
 
 class App extends Component {
 
@@ -39,10 +42,14 @@ class App extends Component {
                     <Route exact path="/signup" component={SignUp} />
 
                            
-                            <PrivateRoute path="/user" component={MenuUser} />
-                            <PrivateRoute path="/add-device" component={AddDevice} />
-             <PrivateRoute path="/standard/L" component={Standards} />
-                                   
+                           <PrivateRoute path="/user" component={MenuUser} />
+                           <PrivateRoute path="/dashboard" component={Dashboard} />
+                           <PrivateRoute path="/mydevices" component={MyDevice} />
+                           <PrivateRoute path="/metrology" component={History} />
+                           <PrivateRoute path="/add-device" component={AddDevice} />
+                           <PrivateRoute path="/standards/L" component={Standards} />
+                           <PrivateRoute path="/sandards" component={StandardListGrid} />
+                            
                         </Router>
                     </Switch>
 
