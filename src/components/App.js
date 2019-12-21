@@ -6,7 +6,7 @@ import SignUp from "../SignUp";
 import history from '../history';
 import {Router} from "react-router-dom";
 import { GC_USER_ID, RESET_TOKEN as resetToken} from '../constants'
-import MenuUser from "../menu/MenuUser";
+import UserMenu from "../menu/UserMenu";
 import ForgetPassword from "./ForgetPassword";
 import ConfirmResetPassword from "./ConfirmResetPassword";
 import MenuTabPanel from "./MenuTabPanel";
@@ -41,7 +41,7 @@ class App extends Component {
                     <Route exact path="/signup" component={SignUp} />
 
                            
-                           <PrivateRoute path="/user" component={MenuUser} />
+                           <PrivateRoute path="/user" component={UserMenu} />
                            <PrivateRoute path="/dashboard" component={Dashboard} />
                            <PrivateRoute path="/mydevices" component={MyDevice} />
                            <PrivateRoute path="/metrology" component={History} />
