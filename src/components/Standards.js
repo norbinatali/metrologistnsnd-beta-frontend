@@ -21,7 +21,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import LinearDeterminate from './LinearDeterminate';
-
+import FlagUA from "../menu/style/LogoMakr_1Xl0t4.png";
+import FlagUS from "../menu/style/LogoMakr_4V1dPm.png";
 
 const StyledTableCell = withStyles(theme => ({
     head: {
@@ -95,9 +96,8 @@ function Standards({t}){
 </div>
 </Grid>
 <Grid item spacing={6}>
-
-<button onClick={() => changeLanguage('ua')}>ua</button>
-<button onClick={() => changeLanguage('en')}>en</button>
+<button style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
+<button style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
 
 </Grid>
 </Grid>
