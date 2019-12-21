@@ -25,6 +25,7 @@ import FlagUA from "../menu/style/LogoMakr_1Xl0t4.png";
 import FlagUS from "../menu/style/LogoMakr_4V1dPm.png";
 import history from "../history"
 import logo from "../menu/style/LogoMakr_6pZrzB.png"
+import UserMenu from "./UserMenu";
 
 const StyledTableCell = withStyles(theme => ({
     head: {
@@ -87,31 +88,17 @@ function Standards({t}){
             clearInterval(timer);
         };
     }, [1]);
-    return ( <div  className={classes.root}>
-          <CssBaseline />
-        <AppBar >
-        <Toolbar className={classes.toolBar}>
-        <Grid container spacing={16}>
-        <Grid item xs={11}>
-        <div style={{ marginRight: "auto", marginLeft: "auto",}}>
-<img src={logo} />
-</div>
-</Grid>
-<Grid item spacing={6}>
-<button style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
-<button style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
+    return (
+         <div>
+            <UserMenu/>
+            <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
 
-</Grid>
-</Grid>
-</Toolbar>
-</AppBar>
-<Grid item >
                     <div style={{marginTop:"0px"}} >
                         <IconButton onClick={handleBack}>
                             <ArrowBackIcon style={{color:"white"}} />
                         </IconButton>
                     </div>
-                    </Grid>
+              
                     <Query query={GET_Device} >
                             {( {loading, error, data} ) =>  {
                               if (loading) {return <LinearDeterminate/>}
@@ -179,9 +166,10 @@ function Standards({t}){
                             else return null}
                             }
                         </Query>
-</div>
 
-
+   
+            </main>
+        </div>
     );
 
 }
