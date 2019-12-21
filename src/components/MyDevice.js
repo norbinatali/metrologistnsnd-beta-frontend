@@ -131,7 +131,7 @@ function MyDevice({t,className, rest}) {
                 <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
         <div className={classes.root}>
 
-<AppBar position="static" elevation={0} style={{borderBottom: '1px solid rgba(0, 0, 0, 0.12)',backgroundColor:"transparent"}} >
+<AppBar position="static" elevation={0} style={{borderBottom: '1px solid rgba(0, 0, 0, 0.12)',backgroundColor:"transparent", marginTop:"10%"}} >
                 <Toolbar>
                     <Grid container spacing={2} alignItems="center">
                         <Grid item xs>
