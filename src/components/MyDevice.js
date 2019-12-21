@@ -23,6 +23,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import RefreshIcon from '@material-ui/icons/Refresh';
 import Link from "@material-ui/core/Link";
 import { Link as RouterLink, withRouter } from 'react-router-dom';
+import UserMenu from "./UserMenu";
 
 const drawerWidth = 240;
 
