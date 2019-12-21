@@ -158,7 +158,7 @@ function StandardButtons({t}) {
                                 style={{
                                     width:"300px",
                                 }}
-                                onClick={()=> history.push('/standards/L')}
+                                onClick={()=> history.push('/standards-L')}
                             >
           <span
               className={classes.imageSrc}
