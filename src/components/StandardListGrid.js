@@ -42,7 +42,6 @@ import ContactUS from "../components/ContactUS";
 import { GC_USER_ID } from '../constants'
 import UserProfile from "../components/UserProfile";
 import Grid from "@material-ui/core/Grid";
-import StandardToolView from "./StandardToolView";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Link from "@material-ui/core/Link";
 import StandardButtons from "./StandardsButtons";
