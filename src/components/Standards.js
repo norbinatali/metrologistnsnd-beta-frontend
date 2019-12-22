@@ -100,7 +100,6 @@ function Standards({t}){
                                         <TableHead >
                                             <TableRow >
                                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
-                                                <StyledTableCell align="right">{t('Technical Reglament')}</StyledTableCell>
                                                 <StyledTableCell align="right">{t('Module')}</StyledTableCell>
                                             </TableRow>
                                         </TableHead>
@@ -108,7 +107,7 @@ function Standards({t}){
                                             {devicelist.map(device =>(
                                                 <TableRow>
                                                     <TableCell className={classes.row} lign="center">{device.device_id.name_UA}</TableCell>
-                                                    <TableCell className={classes.row} lign="center">{device.device_id.tr.name_TR_UA}</TableCell>
+                                                  
                                                     <TableCell className={classes.row} lign="center">{device.device_id.module}</TableCell>
                                                 </TableRow>  ))}
                                         </TableBody>
@@ -130,7 +129,7 @@ function Standards({t}){
                                         <TableHead aria-label="sticky table">
                                             <TableRow >
                                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
-                                                <StyledTableCell align="right">{t('Technical Reglament')}</StyledTableCell>
+                                              
                                                 <StyledTableCell align="right">{t('Module')}</StyledTableCell>
                                             </TableRow>
                                         </TableHead>
@@ -138,7 +137,7 @@ function Standards({t}){
                                             {devicelist.map(device =>(
                                                 <TableRow>
                                                     <TableCell lign="center">{device.device_id.name_EN}</TableCell>
-                                                    <TableCell lign="center">{device.device_id.tr.name_TR_EN}</TableCell>
+                                               
                                                     <TableCell lign="center">{device.device_id.module}</TableCell>
                                                 </TableRow>  ))}
                                         </TableBody>
