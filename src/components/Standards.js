@@ -110,8 +110,8 @@ function Standards({t}){
                                     <Paper style={{width:"100%", maxHeight:"350px"}}>
                                    <CardContent className={classes.content}>
                                       
-                                    <Table component={Paper} className={classes.table} aria-label="customized table">
-                                        <TableHead aria-label="sticky table">
+                                    <Table className={classes.table} stickyHeader aria-label="sticky table">
+                                        <TableHead>
                                             <TableRow >
                                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
                                                 <StyledTableCell align="right">{t('Technical Reglament')}</StyledTableCell>
