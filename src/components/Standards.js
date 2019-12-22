@@ -48,17 +48,22 @@ const useStyles = makeStyles(theme => ({
     root: {
         height:"100%",
         width: '100%',
+         marginRight:"auto",
+        marginLeft:"auto",
         marginTop: theme.spacing(3),
         overflowX: 'auto',
     },
     table: {
-        minWidth: "60%",
+      maxWidth:"100%",
         maxHeight:"500px",
-        color:"linear-gradient(to right,#000222, rgba(23, 20, 61, 0.96),  #252529)"
+        color:"#fff"
     },
      inner:{
         minWidth: "100%"
     },
+    row:{
+        backgroundColor:"#fff"
+    }
 }));
 
 
@@ -107,7 +112,7 @@ function Standards({t}){
 
                                 if (i18n.language === "ua" )  {
                                 return(
-                                    <Paper style={{width:"100%", maxHeight:"350px"}}>
+                                    <Paper>
                                    <CardContent className={classes.content}>
                                       
                                     <Table className={classes.table} stickyHeader aria-label="sticky table">
@@ -122,10 +127,10 @@ function Standards({t}){
                                         <TableBody>
                                              {devicelist.map(device =>(
                                             <TableRow>
-                                                <TableCell lign="center">{device.name_UA}</TableCell>
-                                                 <TableCell lign="center">{device.tr.name_TR_UA}</TableCell>
-                                            <TableCell lign="center">{device.dtc.name_UA}</TableCell>
-                                             <TableCell lign="center">{device.module}</TableCell>
+                                                <TableCell className={classes.row} lign="center">{device.name_UA}</TableCell>
+                                                 <TableCell className={classes.row} lign="center">{device.tr.name_TR_UA}</TableCell>
+                                            <TableCell className={classes.row} lign="center">{device.dtc.name_UA}</TableCell>
+                                             <TableCell className={classes.row} lign="center">{device.module}</TableCell>
                                             </TableRow>  ))}
                                             </TableBody>
                                                                                 
@@ -139,11 +144,11 @@ function Standards({t}){
 
                                 if (i18n.language === "en"){
                                    return(
-                                        <Paper style={{width:"100%", maxHeight:"350px"}}>
+                                        <Paper>
                                        <CardContent className={classes.content}>
                                       
-                                    <Table component={Paper} className={classes.table} aria-label="customized table">
-                                    <TableHead aria-label="sticky table">
+                                   <Table className={classes.table} stickyHeader aria-label="sticky table">
+                                    <TableHead>
                                     <TableRow >
                                     <StyledTableCell align="right">{t('Device')}</StyledTableCell>
                                     <StyledTableCell align="right">{t('Technical Reglament')}</StyledTableCell>
@@ -154,10 +159,10 @@ function Standards({t}){
                                     <TableBody>
                                       {devicelist.map(device =>(
                                             <TableRow>
-                                                <TableCell lign="center">{device.name_EN}</TableCell>
-                                                 <TableCell lign="center">{device.tr.name_TR_EN}</TableCell>
-                                            <TableCell lign="center">{device.dtc.name_EN}</TableCell>
-                                             <TableCell lign="center">{device.module}</TableCell>
+                                                <TableCell className={classes.row} lign="center">{device.name_EN}</TableCell>
+                                                 <TableCell className={classes.row} lign="center">{device.tr.name_TR_EN}</TableCell>
+                                            <TableCell className={classes.row} lign="center">{device.dtc.name_EN}</TableCell>
+                                             <TableCell className={classes.row} lign="center">{device.module}</TableCell>
                                             </TableRow>  ))}
                                             </TableBody>
                                        </Table> 
