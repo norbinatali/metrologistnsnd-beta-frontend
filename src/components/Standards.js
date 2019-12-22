@@ -97,12 +97,14 @@ function Standards({t}){
          <div>
             <UserMenu/>
             <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
-
-                    <div style={{marginTop:"0px"}} >
-                        <IconButton onClick={handleBack}>
+ <Grid container spacing={1}>
+                <Grid item >
+                    <IconButton onClick={handleBack}>
                             <ArrowBackIcon style={{color:"white"}} />
                         </IconButton>
                     </div>
+        </Grid>
+        <Grid item xs={12}>
               
                     <Query query={GET_Device} >
                             {( {loading, error, data} ) =>  {
@@ -113,8 +115,6 @@ function Standards({t}){
                                 if (i18n.language === "ua" )  {
                                 return(
                                     <Paper>
-                                   <CardContent className={classes.content}>
-                                      
                                     <Table className={classes.table} stickyHeader aria-label="sticky table">
                                         <TableHead>
                                             <TableRow >
@@ -136,8 +136,7 @@ function Standards({t}){
                                                                                 
                                              
                                     </Table>
-                                  
-                                    </CardContent></Paper>)}
+                                 </Paper>)}
 
 
 
@@ -145,8 +144,6 @@ function Standards({t}){
                                 if (i18n.language === "en"){
                                    return(
                                         <Paper>
-                                       <CardContent className={classes.content}>
-                                      
                                    <Table className={classes.table} stickyHeader aria-label="sticky table">
                                     <TableHead>
                                     <TableRow >
@@ -166,11 +163,12 @@ function Standards({t}){
                                             </TableRow>  ))}
                                             </TableBody>
                                        </Table> 
-                                            
-                                    </CardContent></Paper>)}
+                                    </Paper>)}
                             else return null}
                             }
                         </Query>
+        </Grid>
+        </Grid>
 
    
             </main>
