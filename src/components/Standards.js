@@ -55,7 +55,7 @@ maxWidth:"100%",
 }));
 
 
-const GET_Device = gql`query { allDevice {id name_EN name_UA  module tr{name_TR_UA name_TR_EN} dtc{name_UA name_EN}}}`;
+const GET_Device = gql`query { dtc(id:"ck4cnhiuhv5q60922pznldecj") {id name_EN name_UA device_id{ name_UA name_EN module tr{name_TR_UA name_TR_EN} }}}`;
 
 
 function Standards({t}){
@@ -91,7 +91,7 @@ function Standards({t}){
                 {( {loading, error, data} ) =>  {
                     if (loading) {return<LinearDeterminate/>}
                     if (error) { return <div>error</div>;}
-                    const devicelist = data.allDevice;
+                    const devicelist = data.dtc;
 
                     if (i18n.language === "ua" )  {
                         return(
@@ -101,17 +101,15 @@ function Standards({t}){
                                             <TableRow >
                                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
                                                 <StyledTableCell align="right">{t('Technical Reglament')}</StyledTableCell>
-                                                <StyledTableCell align="right">{t('Category')}</StyledTableCell>
                                                 <StyledTableCell align="right">{t('Module')}</StyledTableCell>
                                             </TableRow>
                                         </TableHead>
                                         <TableBody>
                                             {devicelist.map(device =>(
                                                 <TableRow>
-                                                    <TableCell className={classes.row} lign="center">{device.name_UA}</TableCell>
-                                                    <TableCell className={classes.row} lign="center">{device.tr.name_TR_UA}</TableCell>
-                                                    <TableCell className={classes.row} lign="center">{device.dtc.name_UA}</TableCell>
-                                                    <TableCell className={classes.row} lign="center">{device.module}</TableCell>
+                                                    <TableCell className={classes.row} lign="center">{device.device_id.name_UA}</TableCell>
+                                                    <TableCell className={classes.row} lign="center">{device.device_id.tr.name_TR_UA}</TableCell>
+                                                    <TableCell className={classes.row} lign="center">{device.device_id.module}</TableCell>
                                                 </TableRow>  ))}
                                         </TableBody>
 
@@ -133,17 +131,15 @@ function Standards({t}){
                                             <TableRow >
                                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
                                                 <StyledTableCell align="right">{t('Technical Reglament')}</StyledTableCell>
-                                                <StyledTableCell align="right">{t('Category')}</StyledTableCell>
                                                 <StyledTableCell align="right">{t('Module')}</StyledTableCell>
                                             </TableRow>
                                         </TableHead>
                                         <TableBody>
                                             {devicelist.map(device =>(
                                                 <TableRow>
-                                                    <TableCell lign="center">{device.name_EN}</TableCell>
-                                                    <TableCell lign="center">{device.tr.name_TR_EN}</TableCell>
-                                                    <TableCell lign="center">{device.dtc.name_EN}</TableCell>
-                                                    <TableCell lign="center">{device.module}</TableCell>
+                                                    <TableCell lign="center">{device.device_id.name_EN}</TableCell>
+                                                    <TableCell lign="center">{device.device_id.tr.name_TR_EN}</TableCell>
+                                                    <TableCell lign="center">{device.device_id.module}</TableCell>
                                                 </TableRow>  ))}
                                         </TableBody>
                                     </Table>
