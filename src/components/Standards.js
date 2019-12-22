@@ -55,7 +55,7 @@ maxWidth:"100%",
 }));
 
 
-const GET_Device = gql`query { dtc(id:"ck4cnhiuhv5q60922pznldecj") {id name_EN name_UA device_id{ name_UA name_EN module tr{name_TR_UA name_TR_EN} }}}`;
+const GET_Device = gql`query { dtcL(id:"ck4cnhiuhv5q60922pznldecj") {id name_EN name_UA device_id{ name_UA name_EN module tr{name_TR_UA name_TR_EN} }}}`;
 
 
 function Standards({t}){
@@ -91,7 +91,7 @@ function Standards({t}){
                 {( {loading, error, data} ) =>  {
                     if (loading) {return<LinearDeterminate/>}
                     if (error) { return <div>error</div>;}
-                    const devicelist = data.dtc;
+                    const devicelist = data.dtcL;
 
                     if (i18n.language === "ua" )  {
                         return(
