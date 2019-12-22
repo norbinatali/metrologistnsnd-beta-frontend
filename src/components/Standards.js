@@ -14,7 +14,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Paper from '@material-ui/core/Paper';
 import CardContent from "@material-ui/core/CardContent";
-import i18n from "../menu/translation/i18n";
+import i18n from "../menu/translations/i18n";
 import UserMenu from "./UserMenu";
 import LinearDeterminate from "./LinearDeterminate";
 import Grid from "@material-ui/core/Grid";
