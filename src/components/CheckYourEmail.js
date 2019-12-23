@@ -37,20 +37,20 @@ class CheckYourEmail extends Component{
         const userId = localStorage.getItem(GC_USER_ID);
         const {t}= this.props;
         return (
-            <div style={{height: '100%'}} >
-                <MuiThemeProvider>
-                    <Grid container style={{ height: '100%'}} >
+            <div style={{height: '100%',width:"100%"}} >
+      
+                     <MuiThemeProvider>
+                    <Grid container style={{ height: '100%', }} >
 
-                        <Grid item lg={5}>
-                          
+                        <Grid item lg={4} md={6} xl={4} xs={12}>
+                                <IconButton onClick={this.handleBack}>
+                                    <ArrowBackIcon style={{color:"white"}} />
+                                </IconButton>
                         </Grid>
-                        <Grid
-                            item
-                            lg={7}
-                            xs={12}
-                        >
+                        <Grid item lg={4} md={6} xl={4} xs={12} >
                     <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center'}}>
-                        <Typography>{t('Please Check your email to confirm!')}</Typography>
+                        <Typography>{t('Please Check your email to confirm')}</Typography>
+
                     </FormControl>
                         </Grid>
                     </Grid>
