@@ -21,51 +21,180 @@ import Login from "./Login";
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
+          padding: theme.spacing(4),
     },}));
 
 
 function UserProfile({t}) {
 
-    const userId = localStorage.getItem(GC_USER_ID);
+   const {  ...rest } = props;
+
     const classes = useStyles();
+
+    const [values, setValues] = React.useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        state: '',
+        country: '',
+        password: '',
+        newpassword: '',
+        companyName:''
+    });
+
+    const handleChange = event => {
+        setValues({
+            ...values,
+            [event.target.name]: event.target.value
+        });
+    };
 
     const QUERY_USER= gql`query{me {name, email}}`;
     return(
-<div className={classes.root}>
-    {userId ? (
-    <Grid container spacing={6} style={{marginTop:"20%",padding:"40"}}>
-        <Grid item xs={4} sm={5} style={{backgroundColor:'white'}}>
-            <FormControl >
-                <Query query={QUERY_USER} >
-                    {( {loading, error, data} ) => {
-                        if (error) { return <div>error</div>;}
-                        const me = data.me;
-                        return(
-                            <div>
-                        <label htmlFor="email">Email </label>
-                                {me.map(me =>  <Typography key={me.id} lign="center" style={{textAlign: "center"}}>{me.email}</Typography>)}
-                       <label htmlFor="name">Name</label>
-                                {me.map(me =>  <Typography key={me.id} lign="center" style={{textAlign: "center"}}>{me.name}</Typography>)}
-                            </div>
-                    ) }}
-                </Query>
-            </FormControl></Grid>
-        <Grid item xs={4} sm={1} style={{backgroundColor:'transparent'}}><h5 style={{color:"white"}}>Or</h5>
-        </Grid>
-        <Grid item xs={4} sm={5} style={{backgroundColor:'white'}}>
-            <FormControl >
-                <ChangeProfile />
-            </FormControl>
+  <div>
+            <UserMenu/>
+            <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
+                <div className={classes.root}>
+                    <Grid container spacing={4}>
+                        <Grid item lg={4} md={6} xl={4} xs={12}>
+        <Card {...rest}>
 
-        </Grid>
-    </Grid>
+            <form>
+                <CardHeader subheader="Update password" title="Password"/>
+                <Divider />
+                <CardContent>
+                    <TextField
+                        fullWidth
+                        label="Password"
+                        name="password"
+                        onChange={handleChange}
+                        type="password"
+                        value={values.password}
+                        variant="outlined"
+                    />
+                    <TextField
+                        fullWidth
+                        label="Confirm password"
+                        name="confirm"
+                        onChange={handleChange}
+                        style={{ marginTop: '1rem' }}
+                        type="password"
+                        value={values.newpassword}
+                        variant="outlined"
+                    />
+                </CardContent>
+                <Divider />
+                <CardActions>
+                    <Button color="primary" variant="outlined">
+                        Update
+                    </Button>
+                </CardActions>
+            </form>
+        </Card>
+                        </Grid>
+                            <Grid item lg={4} md={6} xl={4} xs={12}>
+                                <Card{...rest} >
+            <form autoComplete="off" noValidate>
+                <CardHeader subheader="The information can be edited" title="Profile"/>
+                <Divider />
+                <CardContent>
+                    <Grid container spacing={3}>
+                        <Grid item md={6} xs={12}>
+                            <TextField
+                                fullWidth
+                                helperText="Please specify the first name"
+                                label="First name"
+                                margin="dense"
+                                name="firstName"
+                                onChange={handleChange}
+                                required
+                                value={values.firstName}
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid item md={6} xs={12}>
+                            <TextField
+                                fullWidth
+                                label="Last name"
+                                margin="dense"
+                                name="lastName"
+                                onChange={handleChange}
+                                required
+                                value={values.lastName}
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid item md={6} xs={12}>
+                            <TextField
+                                fullWidth
+                                label="Email Address"
+                                margin="dense"
+                                name="email"
+                                onChange={handleChange}
+                                required
+                                value={values.email}
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid item md={6} xs={12}>
+                            <TextField
+                                fullWidth
+                                label="Phone Number"
+                                margin="dense"
+                                name="phone"
+                                onChange={handleChange}
+                                type="number"
+                                value={values.phone}
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid item md={6} xs={12}>
+                            <TextField
+                                fullWidth
+                                label="Company Name"
+                                margin="dense"
+                                name="companyName"
+                                onChange={handleChange}
+                                required
+                                select
+                                // eslint-disable-next-line react/jsx-sort-props
+                                SelectProps={{ native: true }}
+                                value={values.companyName}
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid item md={6} xs={12}>
+                            <TextField
+                                fullWidth
+                                label="Country"
+                                margin="dense"
+                                name="country"
+                                onChange={handleChange}
+                                required
+                                value={values.country}
+                                variant="outlined"
+                            />
+                        </Grid>
+                    </Grid>
+                </CardContent>
+                <Divider />
+                <CardActions>
+                    <Button color="primary" variant="outlined">
+                        Save details
+                    </Button>
+                </CardActions>
+            </form>
+        </Card>
+                            </Grid>
+                    </Grid>
+                </div>
+            </main>
+        </div>
+    );
+};
 
-    ):( <Login/>)}
-
-</div>
-
-
-    )
-
-}
+UserProfile.propTypes = {
+    className: PropTypes.string
+};
 export default withTranslation()(UserProfile);
