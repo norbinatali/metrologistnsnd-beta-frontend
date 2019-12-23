@@ -48,7 +48,14 @@ class App extends Component {
                            <PrivateRoute path="/add-device" component={AddDevice} />
                            <PrivateRoute path="/standards-L" component={Standards} />
                            <PrivateRoute path="/standards" component={StandardListGrid} />
-                            
+                           <PrivateRoute path="/standards-M" component={StandardsM} />
+                           <PrivateRoute path="/standards-EM" component={StandardsEM} />
+                           <PrivateRoute path="/standards-T" component={StandardsT} />
+                           <PrivateRoute path="/standards-TF" component={StandardsTF} />
+                           <PrivateRoute path="/standards-PR" component={StandardsPR} />
+                           <PrivateRoute path="/standards-IR" component={StandardsIR} />
+                           <PrivateRoute path="/standards-AUV" component={StandardsAUV} />
+                           <PrivateRoute path="/standards-QM" component={StandardsQM} />
                         </Router>
                     </Switch>
 
