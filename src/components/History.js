@@ -136,7 +136,7 @@ const posts={
         <div>
             <UserMenu/>
                 <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
-        <div style={{display:'flex', width:"80%"}}>
+        <div style={{display:'flex', width:"80%", marginRight:"auto", marginLeft:"auto"}}>
                 <Grid container spacing={2} justify="center" style={{backgroundColor:"white"}}>
                     <Card>
                     <CardActionArea>
