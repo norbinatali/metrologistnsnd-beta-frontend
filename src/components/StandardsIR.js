@@ -73,6 +73,9 @@ function StandardsIR({t}){
             clearInterval(timer);
         };
     }, [1]);
+     const handleBack = () => {
+    history.goBack();
+};
     return (
         <div>
             <UserMenu/>
@@ -81,7 +84,7 @@ function StandardsIR({t}){
         <div  className={classes.root}>
             <Grid container spacing={1}>
                 <Grid item >
-                    <IconButton >
+                    <IconButton onClick={handleBack}>
                         <ArrowBackIcon style={{color:"white", marginTop:"5%", marginRight:"auto"}} />
                     </IconButton>
                 </Grid>
