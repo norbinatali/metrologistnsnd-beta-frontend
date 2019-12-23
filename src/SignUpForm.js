@@ -90,7 +90,7 @@ function SignUpForm({t},props){
     const [state, setState]=useState("");
     const [formState, setFormState] = useState({
         isValid: false,
-        values: {},
+        values: {email, password},
         touched: {},
         errors: {}
     });
@@ -137,7 +137,8 @@ function SignUpForm({t},props){
                             type="text"
                             name={"email"}
                             placeholder={"example@example.com"}
-                            value={email} fullWidth
+                            value={formState.values.email || ''} 
+                             fullWidth
                             size="medium"
                             error={hasError('email')}
                             helperText={hasError('email')? formState.errors.email[0] : null}
@@ -172,7 +173,7 @@ function SignUpForm({t},props){
                             error={hasError('password')}
                             helperText={hasError('password') ? formState.errors.password[0] : null}
                             variant="outlined"
-                            value={password}
+                            value={formState.values.password || ''}
                             onChange={e => {setStatePassword(e.target.value )
                                 e.persist();
                                 setFormState(formState => ({
@@ -252,7 +253,7 @@ function SignUpForm({t},props){
                             }}
 
                         /><br/>
-                                    <RaisedButton  onClick={signup}>{t("Submit")} </RaisedButton>
+                                    <RaisedButton disabled={!formState.isValid}  onClick={signup}>{t("Submit")} </RaisedButton>
 
                     </FormControl>
                 )}}
