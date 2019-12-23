@@ -41,6 +41,7 @@ import FlagUS from "../menu/style/LogoMakr_4V1dPm.png"
 import LogoV2 from  "../menu/style/LogoMakr_6pZrzB.png"
 import { AUTH_TOKEN } from '../constants';
 import ContactUS from "../components/ContactUS";
+import UserPage from "../components/UserPage";
 import { GC_USER_ID } from '../constants'
 import Auth from '../components/Auth';
 import StandardListGrid from "../components/StandardListGrid";
