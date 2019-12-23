@@ -97,12 +97,12 @@ function getStepContent(step) {
 
 const useStyles = makeStyles(theme => ({
     root: {
-        width: '100%',
+        width: '80%',
         marginTop: theme.spacing(3),
         overflowX: 'auto',
     },
     table: {
-        minWidth: 700,
+        minWidth: 500,
         color:"linear-gradient(to right,#000222, rgba(23, 20, 61, 0.96),  #252529)"
     },
     boxFlex:"column"
