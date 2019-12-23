@@ -42,36 +42,30 @@ const schema = {
     }
 };
 
-const CssTextField = withStyles({
+const useStylesReddit = makeStyles(theme => ({
     root: {
-        '& .Mui-focused': {
-            color: '#fff',
+        border: '1px solid #e2e2e1',
+        overflow: 'hidden',
+        borderRadius: 4,
+        backgroundColor: 'transparent',
+        color:"#fff",
+        transition: theme.transitions.create(['border-color', 'box-shadow']),
+        '&:hover': {
+            backgroundColor: 'transparent',
         },
-        '& text.Mui-focused': {
-            color: '#fff',
-        },
-        '& .MuiInput-underline:after': {
-            borderBottomColor: 'green',
-            color:"#fff"
-
-        },
-        '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-                borderColor: '#fff',
-
-
-            },
-            '&:hover fieldset': {
-                borderColor: 'primary',
-                color:"green"
-            },
-            '&.Mui-focused fieldset': {
-                borderColor: '#fff',
-                color:"green"
-            },
+        '&$focused': {
+            backgroundColor: 'transparent',
+            boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+            borderColor: theme.palette.primary.main,
         },
     },
-})(TextField);
+    focused: {},
+}));
+function RedditTextField(props) {
+    const classes = useStylesReddit();
+
+    return <TextField InputProps={{ classes, disableUnderline: true }} {...props} />;
+}
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
@@ -137,11 +131,11 @@ function LoginForm({t},props){
         <FormControl >
             <h3 style={{color:"#fff", marginTop:"50%"}}>{t("Login in")}</h3> <br/>
             <label style={{color:"#fff"}} htmlFor="email">{t('Email')} </label>
-            <CssTextField
+            <RedditTextField
                             type="text"
                             name={"email"}
                             placeholder={"example@example.com"}
-                            value={formState.values.email}
+                            value={formState.values.email || ''}
                             fullWidth
                             size="medium"
                             error={hasError('email')}
@@ -168,7 +162,7 @@ function LoginForm({t},props){
                             }}
                         />
                         < label style={{color:"#fff"}} htmlFor="password">{t('Password')} </label>
-                        <CssTextField
+                        <RedditTextField
                             type="password"
                             size="medium"
                             name={"password"}
@@ -179,7 +173,7 @@ function LoginForm({t},props){
                             }
                             variant="outlined"
 
-                            value={formState.values.password}
+                            value={formState.values.password || ''}
                             onChange={e =>  {setStatePassword(e.target.value )
                                 e.persist();
                                 setFormState(formState => ({
