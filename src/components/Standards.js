@@ -55,7 +55,7 @@ maxWidth:"100%",
 }));
 
 
-const GET_Device = gql`query { dtcL(id:"ck4cnhiuhv5q60922pznldecj") {id name_EN name_UA device_id{ name_UA name_EN module tr{name_TR_UA name_TR_EN} }}}`;
+const GET_Device = gql`query { dtc(id:"ck4cnhiuhv5q60922pznldecj") {id name_EN name_UA device_id{ name_UA name_EN module tr{name_TR_UA name_TR_EN} }}}`;
 
 
 function Standards({t}){
@@ -91,7 +91,7 @@ function Standards({t}){
                 {( {loading, error, data} ) =>  {
                     if (loading) {return<LinearDeterminate/>}
                     if (error) { return <div>error</div>;}
-                    const devicelist = data.dtcL;
+                    const devicelist = data.dtc.device_id;
 
                     if (i18n.language === "ua" )  {
                         return(
@@ -100,15 +100,16 @@ function Standards({t}){
                                         <TableHead >
                                             <TableRow >
                                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
+                                                <StyledTableCell align="right">{t('Reglament')}</StyledTableCell>
                                                 <StyledTableCell align="right">{t('Module')}</StyledTableCell>
                                             </TableRow>
                                         </TableHead>
                                         <TableBody>
                                             {devicelist.map(device =>(
                                                 <TableRow>
-                                                    <TableCell className={classes.row} lign="center">{device.device_id.name_UA}</TableCell>
-                                                  
-                                                    <TableCell className={classes.row} lign="center">{device.device_id.module}</TableCell>
+                                                    <TableCell className={classes.row} lign="center">{device.name_UA}</TableCell>
+                                                   <TableCell className={classes.row} lign="center">{device.tr.name_TR_UA}</TableCell>
+                                                   <TableCell className={classes.row} lign="center">{device.module}</TableCell>
                                                 </TableRow>  ))}
                                         </TableBody>
 
@@ -129,16 +130,16 @@ function Standards({t}){
                                         <TableHead aria-label="sticky table">
                                             <TableRow >
                                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
-                                              
+                                               <StyledTableCell align="right">{t('Reglament')}</StyledTableCell>
                                                 <StyledTableCell align="right">{t('Module')}</StyledTableCell>
                                             </TableRow>
                                         </TableHead>
                                         <TableBody>
                                             {devicelist.map(device =>(
                                                 <TableRow>
-                                                    <TableCell lign="center">{device.device_id.name_EN}</TableCell>
-                                               
-                                                    <TableCell lign="center">{device.device_id.module}</TableCell>
+                                                    <TableCell lign="center">{device.name_EN}</TableCell>
+                                                 <TableCell className={classes.row} lign="center">{device.tr.name_TR_EN}</TableCell>
+                                                   <TableCell className={classes.row} lign="center">{device.module}</TableCell>
                                                 </TableRow>  ))}
                                         </TableBody>
                                     </Table>
