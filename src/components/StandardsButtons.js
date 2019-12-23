@@ -191,6 +191,7 @@ function StandardButtons({t}) {
                                 style={{
                                     width:"300px",
                                 }}
+                                  onClick={()=> history.push('/standards-M')}
                             >
           <span
               className={classes.imageSrc}
@@ -215,7 +216,7 @@ function StandardButtons({t}) {
                             </Grid>
                             <Grid item lg={4} md={6} xs={12}>
                                 <div style={ {display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%',}}>
-                            <ButtonBase focusRipple className={classes.image} focusVisibleClassName={classes.focusVisible} style={{width:"300px",}}>
+                            <ButtonBase focusRipple className={classes.image} focusVisibleClassName={classes.focusVisible}   onClick={()=> history.push('/standards-EM')} style={{width:"300px",}}>
           <span className={classes.imageSrc} style={{backgroundImage: `url()`,}}/>
                                 <span className={classes.imageBackdrop} />
                                 <span className={classes.imageButton}>
@@ -229,7 +230,7 @@ function StandardButtons({t}) {
                             </Grid>
                             <Grid item lg={4} md={6} xs={12}>
                                 <div style={ {display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%',}}>
-                            <ButtonBase focusRipple className={classes.image} focusVisibleClassName={classes.focusVisible} style={{width:"300px",}}>
+     <ButtonBase focusRipple className={classes.image} focusVisibleClassName={classes.focusVisible}   onClick={()=> history.push('/standards-T')} style={{width:"300px",}}>
           <span className={classes.imageSrc} style={{backgroundImage: `url()`,}}/>
                                 <span className={classes.imageBackdrop} />
                                 <span className={classes.imageButton}>
@@ -246,6 +247,7 @@ function StandardButtons({t}) {
                             <ButtonBase focusRipple className={classes.image} focusVisibleClassName={classes.focusVisible} style={{
                                     width:"300px",
                                 }}
+                                  onClick={()=> history.push('/standards-TF')}
                             >
           <span className={classes.imageSrc} style={{
                   backgroundImage: `url(})`,
@@ -266,6 +268,7 @@ function StandardButtons({t}) {
                         <ButtonBase focusRipple className={classes.image} focusVisibleClassName={classes.focusVisible} style={{
                                 width:"300px",
                             }}
+                              onClick={()=> history.push('/standards-PR')}
                         >
           <span className={classes.imageSrc} style={{backgroundImage: `url()`,}}/>
                             <span className={classes.imageBackdrop} />
@@ -283,6 +286,7 @@ function StandardButtons({t}) {
                         <ButtonBase focusRipple className={classes.image} focusVisibleClassName={classes.focusVisible} style={{
                 width:"300px",
             }}
+              onClick={()=> history.push('/standards-IR')}
             >
           <span className={classes.imageSrc} style={{
               backgroundImage: `url()`,
@@ -303,6 +307,7 @@ function StandardButtons({t}) {
                 <ButtonBase focusRipple className={classes.image} focusVisibleClassName={classes.focusVisible} style={{
                     width:"300px",
                 }}
+                  onClick={()=> history.push('/standards-AUV')}
                 >
           <span className={classes.imageSrc} style={{
               backgroundImage: `url()`,
@@ -323,6 +328,7 @@ function StandardButtons({t}) {
                         <ButtonBase focusRipple className={classes.image} focusVisibleClassName={classes.focusVisible} style={{
                             width:"300px",
                         }}
+                          onClick={()=> history.push('/standards-QM')}
                         >
           <span className={classes.imageSrc} style={{
               backgroundImage: `url()`,
