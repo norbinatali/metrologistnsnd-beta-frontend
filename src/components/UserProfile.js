@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     },}));
 
 
-function UserProfile({t}) {
+function UserProfile({t,props}) {
 
    const {  ...rest } = props;
 
