@@ -70,12 +70,12 @@ function UserProfile({t,props}) {
         <Card {...rest}>
 
             <form>
-                <CardHeader subheader="Update password" title="Password"/>
+                <CardHeader subheader={t("Update password")} title={t("Password")}/>
                 <Divider />
                 <CardContent>
                     <TextField
                         fullWidth
-                        label="Password"
+                        label=(t("Password")}
                         name="password"
                         onChange={handleChange}
                         type="password"
@@ -84,7 +84,7 @@ function UserProfile({t,props}) {
                     />
                     <TextField
                         fullWidth
-                        label="Confirm password"
+                        label={t("New password")}
                         name="confirm"
                         onChange={handleChange}
                         style={{ marginTop: '1rem' }}
@@ -96,7 +96,7 @@ function UserProfile({t,props}) {
                 <Divider />
                 <CardActions>
                     <Button color="primary" variant="outlined">
-                        Update
+                        {t("Update")}
                     </Button>
                 </CardActions>
             </form>
@@ -105,7 +105,7 @@ function UserProfile({t,props}) {
                             <Grid item lg={4} md={6} xl={4} xs={12}>
                                 <Card{...rest} >
             <form autoComplete="off" noValidate>
-                <CardHeader subheader="The information can be edited" title="Profile"/>
+                <CardHeader subheader={t("The information can be edited")} title={t("Profile")}/>
                 <Divider />
                 <CardContent>
                     <Grid container spacing={3}>
@@ -113,7 +113,7 @@ function UserProfile({t,props}) {
                             <TextField
                                 fullWidth
                                 helperText="Please specify the first name"
-                                label="First name"
+                                label={t("First name")}
                                 margin="dense"
                                 name="firstName"
                                 onChange={handleChange}
@@ -122,22 +122,11 @@ function UserProfile({t,props}) {
                                 variant="outlined"
                             />
                         </Grid>
+                       
                         <Grid item md={6} xs={12}>
                             <TextField
                                 fullWidth
-                                label="Last name"
-                                margin="dense"
-                                name="lastName"
-                                onChange={handleChange}
-                                required
-                                value={values.lastName}
-                                variant="outlined"
-                            />
-                        </Grid>
-                        <Grid item md={6} xs={12}>
-                            <TextField
-                                fullWidth
-                                label="Email Address"
+                                label={t("Email")}
                                 margin="dense"
                                 name="email"
                                 onChange={handleChange}
@@ -161,7 +150,7 @@ function UserProfile({t,props}) {
                         <Grid item md={6} xs={12}>
                             <TextField
                                 fullWidth
-                                label="Company Name"
+                                label={t("Company Name")}
                                 margin="dense"
                                 name="companyName"
                                 onChange={handleChange}
@@ -190,7 +179,7 @@ function UserProfile({t,props}) {
                 <Divider />
                 <CardActions>
                     <Button color="primary" variant="outlined">
-                        Save details
+                        {t("Save details")}
                     </Button>
                 </CardActions>
             </form>
