@@ -9,7 +9,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import {AUTH_TOKEN} from "../constants";
 import {Mutation} from 'react-apollo'
 import { useSnackbar } from 'notistack';
-
+import UserMenu from "./UserMenu";
 
 const LETTER_MUTATION = gql`mutation ($from: String!, $text: String!, $subject: String!){createNewLetter(text:$text , subject: $subject,from:$from){text,subject,from}}`
 
@@ -32,6 +32,8 @@ function ContactUS({t}) {
     }
     return (
         <div  >
+            <UserMenu/>
+            <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
             <FormControl  >
                 <MuiThemeProvider>
                     <label style={{color:"#fff"}} htmlFor="from">{t("Email")} </label>
@@ -53,6 +55,7 @@ function ContactUS({t}) {
 
                 </MuiThemeProvider>
             </FormControl>
+                                                                                       </main>
         </div>
     )
 
