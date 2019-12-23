@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 import RaisedButton from "material-ui/RaisedButton";
-
+import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
 import { AUTH_TOKEN , GC_USER_ID} from '../constants';
@@ -16,6 +16,14 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import Typography from "@material-ui/core/Typography";
 import Login from "./Login";
+import Card from "@material-ui/core/Card";
+import clsx from "clsx";
+import Divider from "@material-ui/core/Divider";
+import CardActions from "@material-ui/core/CardActions";
+import Button from "@material-ui/core/Button";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
+import UserMenu from "./UserMenu";
 
 
 const useStyles = makeStyles(theme => ({
