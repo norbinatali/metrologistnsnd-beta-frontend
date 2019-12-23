@@ -97,7 +97,7 @@ function getStepContent(step) {
 
 const useStyles = makeStyles(theme => ({
     root: {
-        width: '80%',
+        width: '100%',
         marginTop: theme.spacing(3),
         overflowX: 'auto',
     },
@@ -136,7 +136,7 @@ const posts={
         <div>
             <UserMenu/>
                 <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
-        <div style={{display:'flex'}}>
+        <div style={{display:'flex', width:"80%"}}>
                 <Grid container spacing={2} justify="center" style={{backgroundColor:"white"}}>
                     <Card>
                     <CardActionArea>
