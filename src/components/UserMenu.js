@@ -223,14 +223,16 @@ const useStyles = makeStyles(theme => ({
          setOpen(false);
          setComponent('apps')
      };
+     
+     const handleDrawerCloseUserPage = () => {
+         setOpen(false);
+          history.push('/account');
+     };
      const handleDrawerCloseContactUS = () => {
          setOpen(false);
          setComponent('contactus')
      };
-     const handleDrawerCloseUserPage = () => {
-         setOpen(false);
-         setComponent('UserPage')
-     };
+    
      const userId = localStorage.getItem(GC_USER_ID);
    
     const changeLanguage = (lng) => {
