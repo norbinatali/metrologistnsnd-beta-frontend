@@ -28,6 +28,7 @@ import MyDevice from "./MyDevice";
 import History from "./History";
 import UserProfile from "./UserProfile";
 import StandardListGrid from "./StandardListGrid";
+import ContactUS from "./ContactUS";
 
 class App extends Component {
 
@@ -66,6 +67,7 @@ class App extends Component {
                            <PrivateRoute path="/standards-AUV" component={StandardsAUV} />
                            <PrivateRoute path="/standards-QM" component={StandardsQM} />
                            <PrivateRoute path="/account" component={UserProfile} />
+                           <PrivateRoute path="/contactus" component={ContactUS} />
                         </Router>
                     </Switch>
 
