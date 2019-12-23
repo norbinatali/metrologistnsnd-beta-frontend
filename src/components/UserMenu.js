@@ -289,13 +289,13 @@ const useStyles = makeStyles(theme => ({
                         </ListItemIcon>
                         <ListItemText primary={t('SAND')} />
                     </ListItem>
-                    <ListItem button onClick={handleDrawerCloseForum}>
+                    <ListItem button disabled onClick={handleDrawerCloseForum}>
                         <ListItemIcon>
                             <PeopleIcon />
                         </ListItemIcon>
                         <ListItemText primary={t('Forum')} />
                     </ListItem>
-                    <ListItem button onClick={handleDrawerCloseApps}>
+                    <ListItem button disabled onClick={handleDrawerCloseApps}>
                         <ListItemIcon>
                             <ImportantDevicesIcon />
                         </ListItemIcon>
@@ -311,11 +311,11 @@ const useStyles = makeStyles(theme => ({
                         </ListItemIcon>
                         <ListItemText primary={t('Change profile')} />
                     </ListItem>
-                    <ListItem button>
+                    <ListItem button disabled>
                         <ListItemIcon>
                             <AssignmentIcon />
                         </ListItemIcon>
-                        <ListItemText primary={t('About us')} />
+                        <ListItemText  primary={t('About us')} />
                     </ListItem>
                     <ListItem button onClick={handleDrawerCloseContactUS}>
                         <ListItemIcon>
