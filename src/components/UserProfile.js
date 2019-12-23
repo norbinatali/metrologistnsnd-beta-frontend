@@ -75,7 +75,7 @@ function UserProfile({t,props}) {
                 <CardContent>
                     <TextField
                         fullWidth
-                        label=(t("Password")}
+                        label={t("Password")}
                         name="password"
                         onChange={handleChange}
                         type="password"
