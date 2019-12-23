@@ -39,36 +39,33 @@ const schema = {
     }
 };
 
-const CssTextField = withStyles({
+const useStylesReddit = makeStyles(theme => ({
     root: {
-        '& .Mui-focused': {
-            color: '#fff',
+        border: '1px solid #e2e2e1',
+        overflow: 'hidden',
+        borderRadius: 4,
+        backgroundColor: 'transparent',
+        color:"#fff",
+        transition: theme.transitions.create(['border-color', 'box-shadow']),
+        '&:hover': {
+            backgroundColor: 'transparent',
         },
-        '& text.Mui-focused': {
-            color: '#fff',
-        },
-        '& .MuiInput-underline:after': {
-            borderBottomColor: 'green',
-            color:"#fff"
-
-        },
-        '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-                borderColor: '#fff',
-
-
-            },
-            '&:hover fieldset': {
-                borderColor: 'primary',
-                color:"green"
-            },
-            '&.Mui-focused fieldset': {
-                borderColor: '#fff',
-                color:"green"
-            },
+        '&$focused': {
+            backgroundColor: 'transparent',
+            boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+            borderColor: theme.palette.primary.main,
         },
     },
-})(TextField);
+    focused: {},
+}));
+
+function RedditTextField(props) {
+    const classes = useStylesReddit();
+
+    return <TextField InputProps={{ classes, disableUnderline: true }} {...props} />;
+}
+
+
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
@@ -90,7 +87,7 @@ function SignUpForm({t},props){
     const [state, setState]=useState("");
     const [formState, setFormState] = useState({
         isValid: false,
-        values: {email, password},
+        values: {email, password,name},
         touched: {},
         errors: {}
     });
@@ -133,7 +130,7 @@ function SignUpForm({t},props){
                         <h3 style={{color:"#fff"}} >{t("Registration")}</h3><br/>
 
                         <label style={{color:"#fff"}} htmlFor="email">{t("Email")} </label>
-                        <CssTextField
+                        <RedditTextField
                             type="text"
                             name={"email"}
                             placeholder={"example@example.com"}
@@ -165,7 +162,7 @@ function SignUpForm({t},props){
                             required
                         />
                         < label style={{color:"#fff"}} htmlFor="password">{t("Password")} </label>
-                        <CssTextField
+                        <RedditTextField
                             type="password"
                             size="medium"
                             name={"password"}
@@ -194,7 +191,7 @@ function SignUpForm({t},props){
                             }} required
                         />
                         <label style={{color:"#fff"}} htmlFor="name">{t("Name")} </label>
-                        <CssTextField
+                        <RedditTextField
                             type="name"
                             size="medium"
                             name={"name"}
@@ -205,7 +202,7 @@ function SignUpForm({t},props){
                                 hasError('name') ? formState.errors.name[0] : null
                             }
                             variant="outlined"
-                            value={name}
+                            value={formState.values.name || ''}
                             onChange={e => {
                                 e.persist();
                                 setFormState(formState => ({
@@ -226,7 +223,7 @@ function SignUpForm({t},props){
                             }}
                         />
                         <label style={{color:"#fff"}} htmlFor="companyName">{t("Company Name")} </label>
-                        <CssTextField
+                        <RedditTextField
                             type="companyName"
                             size="medium"
                             name={"companyName"}
