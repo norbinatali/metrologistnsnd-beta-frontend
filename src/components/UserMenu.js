@@ -230,7 +230,7 @@ const useStyles = makeStyles(theme => ({
      };
      const handleDrawerCloseContactUS = () => {
          setOpen(false);
-         setComponent('contactus')
+          history.push('/contactus');
      };
     
      const userId = localStorage.getItem(GC_USER_ID);
