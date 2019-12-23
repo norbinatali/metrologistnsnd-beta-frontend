@@ -8,8 +8,6 @@ import UserMenu from "./UserMenu";
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
-marginLeft: "5%",
-        marginRight:"20%"
     },
 
 }));
