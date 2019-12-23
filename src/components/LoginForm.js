@@ -92,7 +92,7 @@ function LoginForm({t},props){
     const classes = useStyles();
     const [formState, setFormState] = React.useState({
         isValid: false,
-        values: {},
+        values: {email, password},
         touched: {},
         errors: {}
     });
@@ -141,7 +141,7 @@ function LoginForm({t},props){
                             type="text"
                             name={"email"}
                             placeholder={"example@example.com"}
-                            value={email}
+                            value={formState.values.email}
                             fullWidth
                             size="medium"
                             error={hasError('email')}
@@ -171,7 +171,7 @@ function LoginForm({t},props){
                         <CssTextField
                             type="password"
                             size="medium"
-                            name={password}
+                            name={"password"}
                             fullWidth
                             error={hasError('password')}
                             helperText={
@@ -179,7 +179,7 @@ function LoginForm({t},props){
                             }
                             variant="outlined"
 
-                            value={password}
+                            value={formState.values.password}
                             onChange={e =>  {setStatePassword(e.target.value )
                                 e.persist();
                                 setFormState(formState => ({
@@ -199,7 +199,7 @@ function LoginForm({t},props){
                                 ));}
                             }
                         /><br/>
-                        <RaisedButton onClick={mutation}>{t('Submit')}
+                        <RaisedButton disabled={!formState.isValid} onClick={mutation}>{t('Submit')}
                         </RaisedButton>
             <Typography style={{color:"#fff"}} variant="body1" >
                 {t('Dont have an account?')}{' '}
