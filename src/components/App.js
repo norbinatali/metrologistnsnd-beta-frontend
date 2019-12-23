@@ -26,6 +26,7 @@ import StandardsQM from "./StandardsQM";
 import Dashboard from "./Dashboard";
 import MyDevice from "./MyDevice";
 import History from "./History";
+import UserProfile from "./UserProfile";
 import StandardListGrid from "./StandardListGrid";
 
 class App extends Component {
@@ -64,6 +65,7 @@ class App extends Component {
                            <PrivateRoute path="/standards-IR" component={StandardsIR} />
                            <PrivateRoute path="/standards-AUV" component={StandardsAUV} />
                            <PrivateRoute path="/standards-QM" component={StandardsQM} />
+                           <PrivateRoute path="/account" component={UserProfile} />
                         </Router>
                     </Switch>
 
