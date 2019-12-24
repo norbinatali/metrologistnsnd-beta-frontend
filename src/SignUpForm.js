@@ -22,6 +22,7 @@ import FormControl from "@material-ui/core/FormControl";
 import RaisedButton from "material-ui/RaisedButton";
 import Auth from './components/Auth'
 import history from "./history";
+import LinearDeterminate from "./LinearDeterminate";
 import {AUTH_TOKEN, GC_USER_ID} from "./constants";
 const schema = {
     email: {
@@ -124,7 +125,7 @@ function SignUpForm({t},props){
     return (
         <Mutation mutation={SIGNUP_MUTATION}  variables={{ email, password,name, companyName, country} } onCompleted={() => confirm()}>
             {( signup,{loading, error, event}) => {
-                if (loading) { return (<span></span> )}
+                if (loading) { return (<LinearDeterminate /> )}
 
                 return(
                     <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
