@@ -216,7 +216,7 @@ function MyDevice({t,className, rest}) {
                                 </TableRow>))}
                         </TableBody>
                     </Table>
-                </Paper>))}  
+                </Paper>)})  
                     }}  
                                 </Query>
 
