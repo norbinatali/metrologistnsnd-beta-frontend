@@ -116,6 +116,7 @@
   "PR": "РR – photometry",
   "IR": "ІR– ionizing radiation",
   "AUV": "АUV – acoustics, ultrasound, vibration",
-  "QM": "QМ – chemistry (quantity of substances)"
+  "QM": "QМ – chemistry (quantity of substances)",
+   "Country":"Country"
 }
 
