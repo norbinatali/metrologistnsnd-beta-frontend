@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import {withTranslation} from "react-i18next";
 import gql from "graphql-tag";
 import FormControl from "@material-ui/core/FormControl";
@@ -9,6 +9,11 @@ import RaisedButton from "material-ui/RaisedButton";
 import {AUTH_TOKEN} from "../constants";
 import {Mutation} from 'react-apollo'
 import { useSnackbar } from 'notistack';
+import {Grid, IconButton} from "@material-ui/core";
+import {
+    fade, withStyles,
+    makeStyles
+} from '@material-ui/core/styles';
 import UserMenu from "./UserMenu";
 
 const LETTER_MUTATION = gql`mutation ($from: String!, $text: String!, $subject: String!){createNewLetter(text:$text , subject: $subject,from:$from){text,subject,from}}`
