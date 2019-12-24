@@ -15,7 +15,7 @@ import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import {AUTH_TOKEN, CREATE_MY_DEVICE, GC_USER_ID} from "../constants";
 import {fade} from "@material-ui/core/styles";
-
+import LinearDeterminate from "./LinearDeterminate";
 import {
     MuiPickersUtilsProvider,
     KeyboardTimePicker,
@@ -104,7 +104,7 @@ function AddDevice ({t,props}) {
                     <Grid item lg={10} xs={12}>
                         <Mutation mutation={CREATE_MYDEVICE}  variables={{ brand_device, type_device,module_device, calibration, next_calibration} } onCompleted={() => confirm()}>
                             {( addmydevice,{loading, error, event}) => {
-                                if (loading) { return (<span>loading</span> )}
+                                if (loading) { return (<LinearDeterminate /> )}
                                 if (error) {return (error.message)}
                                 return(
                         <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
