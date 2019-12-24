@@ -105,9 +105,10 @@ function AddDevice ({t,props}) {
                     </Grid>
                     <Grid item lg={10} xs={12}>
                         <Mutation mutation={CREATE_MYDEVICE}  variables={{ brand_device, type_device,module_device, calibration, next_calibration} } onCompleted={() => confirm()}>
-                            {( addmydevice,{loading, error, event}) => {
+                            {( addmydevice,{client,loading, error, event}) => {
                                 if (loading) { return (<LinearDeterminate /> )}
-                                if (error) {return (error.message)}
+                                if (error) {return (error.message)},
+                                    if (client){
                                 return(
                         <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
 
@@ -182,7 +183,7 @@ function AddDevice ({t,props}) {
 
 
                 <RaisedButton onClick={addmydevice} style={{backgroundColor:"rgba(0,1,47,0.84)", color:"white"}}>{t('Add')}</RaisedButton>
-            </FormControl>)}}
+            </FormControl>)} return (null)}}
                         </Mutation>
                     </Grid>
                 </Grid>
