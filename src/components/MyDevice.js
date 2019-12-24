@@ -23,14 +23,13 @@ import Toolbar from "@material-ui/core/Toolbar";
 import RefreshIcon from '@material-ui/icons/Refresh';
 import { Link as RouterLink, withRouter } from 'react-router-dom';
 import TableRow from "@material-ui/core/TableRow";
-import LinearProgress from "@material-ui/core/LinearProgress";
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
 import i18n from "../menu/translations/i18n";
 import Link from "@material-ui/core/Link";
 import { Link as RouterLink, withRouter } from 'react-router-dom';
 import UserMenu from "./UserMenu";
-
+import LinearDeterminate from "./LinearDeterminate";
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -169,7 +168,7 @@ function MyDevice({t,className, rest}) {
                  <div className={classes.content}>
                 <Query query={GET_MyDevice} >
                     {( {loading, error, data} ) =>  {
-                        if (loading) {return<LinearProgress variant="determinate" color="secondary"/>}
+                        if (loading) {return <LinearDeterminate />}
                         if (error) { return <div>error</div>;}
                         const devicelist = data.me.mydevices;
 
