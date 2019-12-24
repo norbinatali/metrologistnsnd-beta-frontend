@@ -29,6 +29,8 @@ import i18n from "../menu/translations/i18n";
 import Link from "@material-ui/core/Link";
 import UserMenu from "./UserMenu";
 import LinearDeterminate from "./LinearDeterminate";
+import {AUTH_TOKEN, GC_USER_ID} from "../constants";
+
 const drawerWidth = 240;
 
 const authToken = localStorage.getItem(AUTH_TOKEN)
