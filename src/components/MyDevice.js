@@ -27,7 +27,6 @@ import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
 import i18n from "../menu/translations/i18n";
 import Link from "@material-ui/core/Link";
-import { Link as RouterLink, withRouter } from 'react-router-dom';
 import UserMenu from "./UserMenu";
 import LinearDeterminate from "./LinearDeterminate";
 const drawerWidth = 240;
