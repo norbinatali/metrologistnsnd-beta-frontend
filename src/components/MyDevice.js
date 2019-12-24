@@ -120,6 +120,18 @@ const ExpansionPanelDetails = withStyles(theme => ({
         padding: theme.spacing(2),
     },
 }))(MuiExpansionPanelDetails);
+
+const StyledTableCell = withStyles(theme => ({
+    head: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+        width:'20px'
+    },
+    body: {
+        fontSize: 12,
+        width:'20px'
+    },
+}))(TableCell);
 const GET_MyDevice = gql`query { me{mydevices{module_device, brand_device, module_device, notes,  verification_device, calibration next_calibration} }}`;
 function MyDevice({t,className, rest}) {
     const classes = useStyles();
