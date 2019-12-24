@@ -1,6 +1,7 @@
 import React, {Component, useState, useEffect} from 'react';
 import {withTranslation} from "react-i18next";
 import gql from "graphql-tag";
+import validate from 'validate.js';
 import FormControl from "@material-ui/core/FormControl";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import TextField from "@material-ui/core/TextField";
