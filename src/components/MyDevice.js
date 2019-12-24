@@ -31,6 +31,7 @@ import UserMenu from "./UserMenu";
 import LinearDeterminate from "./LinearDeterminate";
 const drawerWidth = 240;
 
+const authToken = localStorage.getItem(AUTH_TOKEN)
 const useStyles = makeStyles(theme => ({
     root: {
                 padding: theme.spacing(3),
@@ -177,6 +178,7 @@ function MyDevice({t,className, rest}) {
 </AppBar>
 
                  <div className={classes.content}>
+                     {authToken && (
                 <Query query={GET_MyDevice} >
                     {( {loading, error, data} ) =>  {
                         if (loading) {return <LinearDeterminate />}
@@ -217,7 +219,7 @@ function MyDevice({t,className, rest}) {
 
 
             </div>
-
+)}
         </div>
 
                                                                          </main>
