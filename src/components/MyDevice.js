@@ -186,11 +186,12 @@ function MyDevice({t,className, rest}) {
                         if (loading) {return <LinearDeterminate />}
                         if (error) { return error.message }
                         const devicelist = data.me.mydevices;
-{authToken && (
 
-                           
+
+                           return(
                                 
                 <Paper >
+                               {authToken && (
                     <Table aria-label="customized table" className={classes.table}>
                         <TableHead sticky table aria-label="sticky table" >
                             <TableRow >
@@ -215,7 +216,7 @@ function MyDevice({t,className, rest}) {
                                 </TableRow>))}
                         </TableBody>
                     </Table>
-                </Paper>)}  
+                </Paper>))}  
                     }}  
                                 </Query>
 
