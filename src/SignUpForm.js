@@ -259,7 +259,7 @@ function SignUpForm({t},props){
                             fullWidth
                             variant="outlined"
                             value={country}
-                            onChange={e => {setStateCounry(e.target.value );
+                            onChange={e => {setStateCountry(e.target.value );
                                 e.persist();
                                 setFormState(formState => ({
                                     ...formState,
