@@ -96,20 +96,18 @@ const [formState, setFormState] = useState({
                             name={"from"}
                         value={from} 
                             placeholder={"example@example.com"}
-                                               
-                               style={{backgroundColor:"#fff"}} onChange={e => {setFrom( e.target.value )
-                                                                         } } required/>
+                               onChange={e => setFrom( e.target.value )   } required/>
                     < label style={{color:"#fff"}} htmlFor="subject">{t("Subject")} </label>
                     <RedditTextField variant="outlined"
-                               style={{backgroundColor:"#fff"}} type="text" value={subject} onChange={e => setSubject(e.target.value )} required
+                              type="text" value={subject} onChange={e => setSubject(e.target.value )} required
                     />
                     <label style={{color:"#fff"}} htmlFor="text">{t("Text")} </label>
                     <RedditTextField variant="outlined"
-                               style={{backgroundColor:"#fff"}} id="outlined-multiline-static" multiline  rows="5" type="text"  margin="normal" variant="outlined" value={text}  onChange={e => setText( e.target.value )}
+                                id="outlined-multiline-static" multiline  rows="5" type="text"  margin="normal" variant="outlined" value={text}  onChange={e => setText( e.target.value )}
                     /><br/>
                     <Mutation mutation={LETTER_MUTATION}  variables={{ from,subject, text } }  onCompleted={() => confirm()  }>
                         {send => (
-                            <RaisedButton disabled={!formState.isValid} style={{marginBottom:"10%"}} onClick={send}>{t("Send")} </RaisedButton>)}
+                            <RaisedButton style={{marginBottom:"10%"}} onClick={send}>{t("Send")} </RaisedButton>)}
                     </Mutation>
 
 
