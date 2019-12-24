@@ -107,7 +107,7 @@ function AddDevice ({t,props}) {
                         <Mutation mutation={CREATE_MYDEVICE}  variables={{ brand_device, type_device,module_device, calibration, next_calibration} } onCompleted={() => confirm()}>
                             {( addmydevice,{client,loading, error, event}) => {
                                 if (loading) { return (<LinearDeterminate /> )}
-                                if (error) {return (error.message)},
+                                if (error) {return (error.message)}
                                     if (client){
                                 return(
                         <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
