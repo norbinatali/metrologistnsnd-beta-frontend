@@ -22,6 +22,9 @@ import {
     KeyboardTimePicker,
     KeyboardDatePicker,
 } from '@material-ui/pickers';
+
+
+const authToken = localStorage.getItem(AUTH_TOKEN)
 const useStyles = makeStyles(theme => ({
     root: {
         width: '70%',
@@ -74,12 +77,12 @@ function AddDevice ({t,props}) {
     };
     const confirm = async (data, e) => {
 
-        const {id, token } = addmydevice;
-        saveUserData(id, token);
+        const { token } = addmydevice;
+        saveUserData( token);
         history.push('/mydevice')
     };
-    const saveUserData = (id,token) => {
-        localStorage.setItem(GC_USER_ID, id);
+    const saveUserData = (token) => {
+      
         localStorage.setItem(CREATE_MY_DEVICE, token)
     };
     const handleDateCalibration = date => {
@@ -104,6 +107,7 @@ function AddDevice ({t,props}) {
                         </div>
                     </Grid>
                     <Grid item lg={10} xs={12}>
+         {authToken && (
                         <Mutation mutation={CREATE_MYDEVICE}  variables={{ brand_device, type_device,module_device, calibration, next_calibration} } onCompleted={() => confirm()}>
                             {( addmydevice,{client,loading, error, event}) => {
                                 if (loading) { return (<LinearDeterminate /> )}
@@ -184,7 +188,7 @@ function AddDevice ({t,props}) {
 
                 <RaisedButton onClick={addmydevice} style={{backgroundColor:"rgba(0,1,47,0.84)", color:"white"}}>{t('Add')}</RaisedButton>
             </FormControl>)} return (null)}}
-                        </Mutation>
+                        </Mutation>)}
                     </Grid>
                 </Grid>
                 </MuiPickersUtilsProvider>
