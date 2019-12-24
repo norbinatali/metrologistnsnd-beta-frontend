@@ -100,37 +100,55 @@ function AddDevice ({t,props}) {
                         <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
 
 
-                <label  htmlFor="brand">Brand</label>
+                <label  htmlFor="brand">{'(Brand)}</label>
                 <RedditTextField type="text" fullWidth value={brand_device}  onChange={e => {
                     setStateBrand_device(e.target.value);
                 }}
                            required/>
 
-                <label  htmlFor="type">Type</label>
+                <label  htmlFor="type">{t('Type')}</label>
                 <RedditTextField
                     type="text"
                     fullWidth
                     value={type_device}
                     onChange={e => {
                         setStateType_device(e.target.value);
-                    }}
+                    }}  required
                 />
 
-                <label  htmlFor="module">Module</label>
+                <label  htmlFor="module">{t('Module')}</label>
                 <RedditTextField
                     type="text"
                     fullWidth
                     value={module_device}
                     onChange={e => {
                         setStateModule_device(e.target.value);
+                    }} required
+                />
+               <label  htmlFor="notes">{t('Notes')}</label>
+                <RedditTextField
+                    type="text"
+                    fullWidth
+                    value={notes}
+                    onChange={e => {
+                        setStateNotes(e.target.value);
                     }}
                 />
-                <label  htmlFor="calibration">Calibration</label>
+                <label  htmlFor="notes">{t('Verification')}</label>
+                <RedditTextField
+                    type="text"
+                    fullWidth
+                    value={verification_device}
+                    onChange={e => {
+                        setStateVerification_device(e.target.value);
+                    }}
+                />
+                <label  htmlFor="calibration">{t('Calibration')}</label>
 
                             <KeyboardDatePicker
                                 margin="normal"
                                 id="date-picker-dialog"
-                                label="calibration"
+                                label= {t('calibration')}
                                 format="MM/dd/yyyy"
                                 value={calibration}
                                 onChange={handleDateCalibration}
@@ -141,7 +159,7 @@ function AddDevice ({t,props}) {
                             <KeyboardDatePicker
                                 margin="normal"
                                 id="date-picker-dialog"
-                                label="next calibration"
+                                label={t('next calibration')}
                                 format="MM/dd/yyyy"
                                 value={next_calibration}
                                 onChange={handleDateNext_Calibration}
