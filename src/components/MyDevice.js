@@ -180,14 +180,14 @@ function MyDevice({t,className, rest}) {
 </AppBar>
 
                  <div className={classes.content}>
-                     {authToken && (
+                     
                 <Query query={GET_MyDevice} >
                     {( {loading, error, data} ) =>  {
                         if (loading) {return <LinearDeterminate />}
                         if (error) { return error.message }
                         const devicelist = data.me.mydevices;
 
-
+{authToken && (
                             return(
                 <Paper >
                     <Table aria-label="customized table" className={classes.table}>
@@ -214,11 +214,11 @@ function MyDevice({t,className, rest}) {
                                 </TableRow>))}
                         </TableBody>
                     </Table>
-                </Paper>)
-                    }}
+                </Paper>) )}
+                    }}  
                                 </Query>
 
-)}
+
 
             </div>
 
