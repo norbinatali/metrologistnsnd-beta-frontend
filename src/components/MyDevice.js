@@ -160,42 +160,48 @@ function MyDevice({t,className, rest}) {
                 </Toolbar>
 </AppBar>
 
-                <div className={classes.content}>
-                        <ExpansionPanel expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1bh-content" id="panel1bh-header">
-                                <Typography className={classes.heading}>{t('T1')}</Typography>
-                            </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
-                                <Typography>
-                                    
-                                </Typography>
-                            </ExpansionPanelDetails>
-                        </ExpansionPanel>
-                        <ExpansionPanel expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2bh-content" id="panel2bh-header">
-                                <Typography className={classes.heading}>{t('T2')}</Typography>
-                            </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
-                                <Typography>
-                                    
-                                </Typography>
-                            </ExpansionPanelDetails>
-                        </ExpansionPanel>
-                        <ExpansionPanel expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel3bh-content" id="panel3bh-header">
-                                <Typography className={classes.heading}>{t('T3')}</Typography>
-                            </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
-                                <Typography>
-                                    
-                                </Typography>
-                            </ExpansionPanelDetails>
-                        </ExpansionPanel>
+                 <div className={classes.content}>
+                <Query query={GET_MyDevice} >
+                    {( {loading, error, data} ) =>  {
+                        if (loading) {return<LinearProgress variant="determinate" color="secondary"/>}
+                        if (error) { return <div>error</div>;}
+                        const devicelist = data.me.mydevices;
 
 
-                </div>
+                            return(
+                <Paper >
+                    <Table aria-label="customized table" className={classes.table}>
+                        <TableHead sticky table aria-label="sticky table" >
+                            <TableRow >
+                                <StyledTableCell align="right">{t('Device')}</StyledTableCell>
+                                <StyledTableCell align="right">{t('Category')}</StyledTableCell>
+                                <StyledTableCell align="right">{t('Module')}</StyledTableCell>
+                                <StyledTableCell align="right">{t('Calibration')}</StyledTableCell>
+                                <StyledTableCell align="right">{t('Next Calibration')}</StyledTableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+
+                            {devicelist.map(device =>(
+                                <TableRow>
+                                    <TableCell lign="center">{device.brand_device}</TableCell>
+                                    <TableCell lign="center">{device.type_device}</TableCell>
+                                    <TableCell lign="center">{device.module_device}</TableCell>
+                                    <TableCell lign="center">{device.calibration}</TableCell>
+                                    <TableCell lign="center">{device.next_calibration}</TableCell>
+                                </TableRow>))}
+                        </TableBody>
+                    </Table>
+                </Paper>)
+                    }}
+                                </Query>
+
+
+
+            </div>
 
         </div>
+
                                                                          </main>
                                                                          </div>
 
