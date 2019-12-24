@@ -72,14 +72,7 @@ const [formState, setFormState] = useState({
         touched: {},
         errors: {}
     });
-     useEffect(() => {
-        const errors = validate(formState.values, schema);
-        setFormState(formState => ({
-            ...formState,
-            isValid: !errors,
-            errors: errors || {}
-        }));
-    }, [formState.values]);
+   
     const confirm = async data => {
 
         const { token } = sendMail;
@@ -101,26 +94,11 @@ const [formState, setFormState] = useState({
                     <label style={{color:"#fff"}} htmlFor="from">{t("Email")} </label>
                     <RedditTextField variant="outlined"  type="text"
                             name={"from"}
-                        value={formState.values.from || ''} 
+                        value={from} 
                             placeholder={"example@example.com"}
-                           error={hasError('from')}
-                            helperText={hasError('from')? formState.errors.from[0] : null}
+                                               
                                style={{backgroundColor:"#fff"}} onChange={e => {setFrom( e.target.value )
-                                                                          e.persist();
-                                setFormState(formState => ({
-                                    ...formState,
-                                    values: {
-                                        ...formState.values,
-                                        [e.target.name]:
-                                            e.target.type === 'checkbox'
-                                                ? e.target.checked
-                                                : e.target.value
-                                    },
-                                    touched: {
-                                        ...formState.touched,
-                                        [e.target.name]: true
-                                    }
-                                }));} } required/>
+                                                                         } } required/>
                     < label style={{color:"#fff"}} htmlFor="subject">{t("Subject")} </label>
                     <RedditTextField variant="outlined"
                                style={{backgroundColor:"#fff"}} type="text" value={subject} onChange={e => setSubject(e.target.value )} required
