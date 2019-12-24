@@ -187,8 +187,9 @@ function MyDevice({t,className, rest}) {
                         if (error) { return error.message }
                         const devicelist = data.me.mydevices;
 
-{authToken && (
+
                             return(
+                                {authToken && (
                 <Paper >
                     <Table aria-label="customized table" className={classes.table}>
                         <TableHead sticky table aria-label="sticky table" >
@@ -214,7 +215,7 @@ function MyDevice({t,className, rest}) {
                                 </TableRow>))}
                         </TableBody>
                     </Table>
-                </Paper>) )}
+                </Paper>)} ) 
                     }}  
                                 </Query>
 
