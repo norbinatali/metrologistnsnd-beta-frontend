@@ -16,6 +16,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import {AUTH_TOKEN, CREATE_MY_DEVICE, GC_USER_ID} from "../constants";
 import {fade} from "@material-ui/core/styles";
 import LinearDeterminate from "./LinearDeterminate";
+import UserMenu from "./UserMenu";
 import {
     MuiPickersUtilsProvider,
     KeyboardTimePicker,
