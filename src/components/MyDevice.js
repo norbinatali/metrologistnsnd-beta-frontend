@@ -184,7 +184,7 @@ function MyDevice({t,className, rest}) {
                 <Query query={GET_MyDevice} >
                     {( {loading, error, data} ) =>  {
                         if (loading) {return <LinearDeterminate />}
-                        if (error) { return <div>error.message</div>;}
+                        if (error) { return error.message }
                         const devicelist = data.me.mydevices;
 
 
