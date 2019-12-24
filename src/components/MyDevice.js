@@ -216,10 +216,10 @@ function MyDevice({t,className, rest}) {
                     }}
                                 </Query>
 
-
+)}
 
             </div>
-)}
+
         </div>
 
                                                                          </main>
