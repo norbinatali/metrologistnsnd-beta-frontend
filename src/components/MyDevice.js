@@ -215,8 +215,8 @@ function MyDevice({t,className, rest}) {
                                     <TableCell lign="center">{device.next_calibration}</TableCell>
                                 </TableRow>))}
                         </TableBody>
-                    </Table>
-                </Paper>)})  
+                    </Table>)}
+                </Paper>)  
                     }}  
                                 </Query>
 
