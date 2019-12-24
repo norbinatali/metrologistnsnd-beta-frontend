@@ -85,7 +85,7 @@ const [formState, setFormState] = useState({
                             placeholder={"example@example.com"}
                            error={hasError('from')}
                             helperText={hasError('from')? formState.errors.from[0] : null}
-                               style={{backgroundColor:"#fff"}} onChange={e => setFrom( e.target.value )
+                               style={{backgroundColor:"#fff"}} onChange={e => {setFrom( e.target.value )
                                                                           e.persist();
                                 setFormState(formState => ({
                                     ...formState,
@@ -100,7 +100,7 @@ const [formState, setFormState] = useState({
                                         ...formState.touched,
                                         [e.target.name]: true
                                     }
-                                }));} required/>
+                                }));} } required/>
                     < label style={{color:"#fff"}} htmlFor="subject">{t("Subject")} </label>
                     <RedditTextField variant="outlined"
                                style={{backgroundColor:"#fff"}} type="text" value={subject} onChange={e => setSubject(e.target.value )} required
