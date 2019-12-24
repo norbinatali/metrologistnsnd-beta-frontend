@@ -1,6 +1,7 @@
 import React, {Component, useState, useEffect} from 'react';
 import {withTranslation} from "react-i18next";
 import gql from "graphql-tag";
+import PropTypes from 'prop-types';
 import validate from 'validate.js';
 import FormControl from "@material-ui/core/FormControl";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
@@ -59,7 +60,7 @@ function RedditTextField(props) {
     return <TextField InputProps={{ classes, disableUnderline: true }} {...props} />;
 }
 
-function ContactUS({t}) {
+function ContactUS({t,props}) {
     const { enqueueSnackbar } = useSnackbar();
     const [sendMail,classes]= useState(true);
      const [from, setFrom] =useState("");
