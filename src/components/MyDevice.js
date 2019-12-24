@@ -116,7 +116,7 @@ const ExpansionPanelDetails = withStyles(theme => ({
         padding: theme.spacing(2),
     },
 }))(MuiExpansionPanelDetails);
-
+const GET_MyDevice = gql`query { me{mydevices{module_device, brand_device, module_device, notes,  verification_device, calibration next_calibration} }}`;
 function MyDevice({t,className, rest}) {
     const classes = useStyles();
 
@@ -176,6 +176,7 @@ function MyDevice({t,className, rest}) {
                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
                                 <StyledTableCell align="right">{t('Category')}</StyledTableCell>
                                 <StyledTableCell align="right">{t('Module')}</StyledTableCell>
+                                <StyledTableCell align="right">{t('Verification')}</StyledTableCell>
                                 <StyledTableCell align="right">{t('Calibration')}</StyledTableCell>
                                 <StyledTableCell align="right">{t('Next Calibration')}</StyledTableCell>
                             </TableRow>
@@ -187,6 +188,7 @@ function MyDevice({t,className, rest}) {
                                     <TableCell lign="center">{device.brand_device}</TableCell>
                                     <TableCell lign="center">{device.type_device}</TableCell>
                                     <TableCell lign="center">{device.module_device}</TableCell>
+                                     <TableCell lign="center">{device.verification_device}</TableCell>
                                     <TableCell lign="center">{device.calibration}</TableCell>
                                     <TableCell lign="center">{device.next_calibration}</TableCell>
                                 </TableRow>))}
