@@ -24,7 +24,7 @@ import {
 } from '@material-ui/pickers';
 const useStyles = makeStyles(theme => ({
     root: {
-        width: '100%',
+        width: '70%',
         backgroundColor:"white"
     },
 
@@ -91,6 +91,7 @@ function AddDevice ({t,props}) {
     return(
         <div>
         <UserMenu />
+         <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
         <div className={classes.root}>
             <MuiThemeProvider>
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -189,6 +190,7 @@ function AddDevice ({t,props}) {
             </MuiThemeProvider>
 
         </div>
+                                                                                                                  </main>
 </div>
     )
 }
