@@ -18,7 +18,21 @@ import {
 import UserMenu from "./UserMenu";
 
 const LETTER_MUTATION = gql`mutation ($from: String!, $text: String!, $subject: String!){createNewLetter(text:$text , subject: $subject,from:$from){text,subject,from}}`
-
+const schema = {
+    from: {
+        presence: { allowEmpty: false, message: 'is required' },
+        from: true,
+        length: {
+            maximum: 64
+        }
+    },
+    password: {
+        presence: { allowEmpty: false, message: 'is required' },
+        length: {
+            maximum: 128
+        }
+    }
+};
 const useStylesReddit = makeStyles(theme => ({
     root: {
         border: '1px solid #e2e2e1',
@@ -59,7 +73,6 @@ const [formState, setFormState] = useState({
     });
      useEffect(() => {
         const errors = validate(formState.values, schema);
-
         setFormState(formState => ({
             ...formState,
             isValid: !errors,
