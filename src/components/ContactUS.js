@@ -8,7 +8,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import TextField from "@material-ui/core/TextField";
 import Input from "@material-ui/core/Input";
 import RaisedButton from "material-ui/RaisedButton";
-import {AUTH_TOKEN} from "../constants";
+import {CREATE_LETTER} from "../constants";
 import {Mutation} from 'react-apollo'
 import { useSnackbar } from 'notistack';
 import {Grid, IconButton} from "@material-ui/core";
@@ -81,7 +81,7 @@ const [formState, setFormState] = useState({
     };
 
     const saveLetterData = token => {
-        localStorage.setItem(AUTH_TOKEN, token)
+        localStorage.setItem(CREATE_LETTER, token)
     }
      const hasError = field =>
         !!(formState.touched[field] && formState.errors[field]);
