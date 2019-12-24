@@ -100,7 +100,7 @@ function AddDevice ({t,props}) {
                         <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
 
 
-                <label  htmlFor="brand">{'(Brand)}</label>
+                <label  htmlFor="brand">{t'(Brand)}</label>
                 <RedditTextField type="text" fullWidth value={brand_device}  onChange={e => {
                     setStateBrand_device(e.target.value);
                 }}
