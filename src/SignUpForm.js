@@ -83,6 +83,7 @@ function SignUpForm({t},props){
     const [password, setStatePassword]=useState("");
     const [name, setStateName]=useState("");
     const [companyName, setStateCompanyName]=useState("");
+      const [country, setStateCountry]=useState("");
     const classes = useStyles();
     const [state, setState]=useState("");
     const [formState, setFormState] = useState({
@@ -121,7 +122,7 @@ function SignUpForm({t},props){
         !!(formState.touched[field] && formState.errors[field]);
 
     return (
-        <Mutation mutation={SIGNUP_MUTATION}  variables={{ email, password,name, companyName} } onCompleted={() => confirm()}>
+        <Mutation mutation={SIGNUP_MUTATION}  variables={{ email, password,name, companyName, country} } onCompleted={() => confirm()}>
             {( signup,{loading, error, event}) => {
                 if (loading) { return (<span></span> )}
 
@@ -231,6 +232,33 @@ function SignUpForm({t},props){
                             variant="outlined"
                             value={companyName}
                             onChange={e => {setStateCompanyName(e.target.value );
+                                e.persist();
+                                setFormState(formState => ({
+                                    ...formState,
+                                    values: {
+                                        ...formState.values,
+                                        [e.target.name]:
+                                            e.target.type === 'checkbox'
+                                                ? e.target.checked
+                                                : e.target.value
+                                    },
+                                    touched: {
+                                        ...formState.touched,
+                                        [e.target.name]: true
+                                    }
+                                }));
+
+                            }}
+
+                        /><label style={{color:"#fff"}} htmlFor="country">{t("Country")} </label>
+                        <RedditTextField
+                            type="country"
+                            size="medium"
+                            name={"country"}
+                            fullWidth
+                            variant="outlined"
+                            value={country}
+                            onChange={e => {setStateCounry(e.target.value );
                                 e.persist();
                                 setFormState(formState => ({
                                     ...formState,
