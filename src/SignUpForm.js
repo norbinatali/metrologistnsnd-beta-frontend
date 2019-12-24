@@ -22,7 +22,7 @@ import FormControl from "@material-ui/core/FormControl";
 import RaisedButton from "material-ui/RaisedButton";
 import Auth from './components/Auth'
 import history from "./history";
-import LinearDeterminate from "./LinearDeterminate";
+import LinearDeterminate from "./components/LinearDeterminate";
 import {AUTH_TOKEN, GC_USER_ID} from "./constants";
 const schema = {
     email: {
