@@ -81,7 +81,6 @@ function LoginForm({t},props){
     const { enqueueSnackbar } = useSnackbar();
    const {id} = React.useState("");
     const [email,setStateEmail] = useState("");
-    const [login] = useState(true);
     const [password,setStatePassword] = useState("");
     const classes = useStyles();
     const [formState, setFormState] = React.useState({
