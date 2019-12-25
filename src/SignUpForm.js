@@ -23,7 +23,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import Auth from './components/Auth'
 import history from "./history";
 import LinearDeterminate from "./components/LinearDeterminate";
-import {AUTH_TOKEN, GC_USER_ID} from "./constants";
+import {AUTH_TOKEN, GC_USER_ID,GC_AUTH_TOKEN} from "./constants";
 const schema = {
     email: {
         presence: { allowEmpty: false, message: 'is required' },
@@ -108,22 +108,22 @@ function SignUpForm({t},props){
         history.goBack();
     };
 
-    const confirm = async (data, e) => {
+    const confirm = async (token, e) => {
 
-        const {id, token } = signup;
-        saveUserData(id, token);
+  
+        saveUserData(token);
         history.push('/check-email')
     };
     const saveUserData = (id,token) => {
         localStorage.setItem(GC_USER_ID, id);
-        localStorage.setItem(AUTH_TOKEN, token)
+        localStorage.setItem(GC_AUTH_TOKEN, token)
     };
 
     const hasError = field =>
         !!(formState.touched[field] && formState.errors[field]);
 
     return (
-        <Mutation mutation={SIGNUP_MUTATION}  variables={{ email, password,name, companyName, country} } onCompleted={() => confirm()}>
+        <Mutation mutation={SIGNUP_MUTATION}  variables={{ email, password,name, companyName, country} } onCompleted={(token) => confirm(token)}>
             {( signup,{loading, error, event}) => {
                 if (loading) { return (<LinearDeterminate /> )}
 
