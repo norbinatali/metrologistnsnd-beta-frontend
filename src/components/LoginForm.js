@@ -104,15 +104,15 @@ function LoginForm({t},props){
         history.goBack();
     };
 
-        const confirm = async (token, e) => {
-            saveUserData(token);
+        const confirm = async (data, e) => {
+            saveUserData(data.login.token);
             Auth.authenticate();
             history.push('/user')
        
     };
-     const saveUserData = (id,token) => {
-        localStorage.setItem(GC_USER_ID, id);
+     const saveUserData = (token,id) => {
         localStorage.setItem(AUTH_TOKEN, token)
+         localStorage.setItem(GC_USER_ID, id);
     };
 
     const hasError = field =>
@@ -120,7 +120,7 @@ function LoginForm({t},props){
  const [open, setOpen] = React.useState( false);
     return (
         <div>
-        <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(token) => confirm(token)}>
+        <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
             {( mutation,{loading, error}) => {
                 if (loading) { return (<LinearDeterminate /> )}
 
