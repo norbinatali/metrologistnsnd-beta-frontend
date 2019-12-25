@@ -54,8 +54,9 @@ class App extends Component {
                            <PrivateRoute path="/user" component={Dashboard} />
                            <PrivateRoute path="/dashboard" component={Dashboard} />
                            <PrivateRoute path="/metrology" component={History} />
+            {userId&&(
                            <PrivateRoute path="/add-device" component={AddDevice} />
-                           <PrivateRoute path="/mydevices" component={MyDevice} />
+                           <PrivateRoute path="/mydevices" component={MyDevice} />)}
                            <PrivateRoute path="/standards-L" component={Standards} />
                            <PrivateRoute path="/standards" component={StandardListGrid} />
                            <PrivateRoute path="/standards-M" component={StandardsM} />
