@@ -79,7 +79,6 @@ const useStyles = makeStyles(theme => ({
 
 function SignUpForm({t},props){
     const SIGNUP_MUTATION = gql `mutation ($email: String!, $password: String!, $name: String!, $companyName:String){signup(email:$email , password: $password,name:$name, companyName: $companyName){token}}`;
-    const [signup] = useState(true);
     const [email, setStateEmail]=useState("");
     const [password, setStatePassword]=useState("");
     const [name, setStateName]=useState("");
