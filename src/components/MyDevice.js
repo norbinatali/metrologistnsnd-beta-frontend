@@ -32,7 +32,7 @@ import LinearDeterminate from "./LinearDeterminate";
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
 
 const drawerWidth = 240;
-
+ const userId = localStorage.getItem(GC_USER_ID);
 const authToken = localStorage.getItem(AUTH_TOKEN)
 const useStyles = makeStyles(theme => ({
     root: {
@@ -178,7 +178,7 @@ function MyDevice({t,className, rest}) {
                     </Grid>
                 </Toolbar>
 </AppBar>
-   {authToken && (
+  
                  <div className={classes.content}>
                      
                 <Query query={GET_MyDevice} >
@@ -187,7 +187,7 @@ function MyDevice({t,className, rest}) {
                         if (error) { return error.message }
                         const devicelist = data.me.mydevices;
 
-
+                          if(userId){           
                            return(
                                 
                 <Paper >
@@ -215,15 +215,14 @@ function MyDevice({t,className, rest}) {
                                     <TableCell lign="center">{device.next_calibration}</TableCell>
                                 </TableRow>))}
                         </TableBody>
-                    </Table>)}
-                </Paper>}  
+                    </Table>
+                </Paper>)}else return null}}  
                                 </Query>
 
 
 
             </div>
-)  
-                    }
+
         </div>
 
                                                                          </main>
