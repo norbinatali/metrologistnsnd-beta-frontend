@@ -178,7 +178,7 @@ function MyDevice({t,className, rest}) {
                     </Grid>
                 </Toolbar>
 </AppBar>
-
+   {authToken && (
                  <div className={classes.content}>
                      
                 <Query query={GET_MyDevice} >
@@ -191,7 +191,7 @@ function MyDevice({t,className, rest}) {
                            return(
                                 
                 <Paper >
-                               {authToken && (
+                            
                     <Table aria-label="customized table" className={classes.table}>
                         <TableHead sticky table aria-label="sticky table" >
                             <TableRow >
@@ -216,14 +216,14 @@ function MyDevice({t,className, rest}) {
                                 </TableRow>))}
                         </TableBody>
                     </Table>)}
-                </Paper>)  
-                    }}  
+                </Paper>}  
                                 </Query>
 
 
 
             </div>
-
+)  
+                    }
         </div>
 
                                                                          </main>
