@@ -105,13 +105,11 @@ function LoginForm({t},props){
         history.goBack();
     };
 
-        const confirm = async (data, e) => {
-         const { token } = login;
-        if ( login){
+        const confirm = async (token, e) => {
             saveUserData(token);
             Auth.authenticate();
             history.push('/user')}
-        else { history.push('/')}
+       
     };
      const saveUserData = (id,token) => {
         localStorage.setItem(GC_USER_ID, id);
@@ -123,7 +121,7 @@ function LoginForm({t},props){
  const [open, setOpen] = React.useState( false);
     return (
         <div>
-        <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={() => confirm()}>
+        <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(token) => confirm(token)}>
             {( mutation,{loading, error}) => {
                 if (loading) { return (<LinearDeterminate /> )}
 
