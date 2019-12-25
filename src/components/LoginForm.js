@@ -108,7 +108,7 @@ function LoginForm({t},props){
         const confirm = async (token, e) => {
             saveUserData(token);
             Auth.authenticate();
-            history.push('/user')}
+            history.push('/user')
        
     };
      const saveUserData = (id,token) => {
