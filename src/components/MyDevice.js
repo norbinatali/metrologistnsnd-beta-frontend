@@ -135,7 +135,7 @@ const StyledTableCell = withStyles(theme => ({
         width:'20px'
     },
 }))(TableCell);
-const GET_MyDevice = gql`query { me{mydevices{module_device, brand_device, module_device, notes,  verification_device, calibration next_calibration} }}`;
+const GET_MyDevice = gql`query { me{mydevices{type_device, brand_device, module_device, notes,  verification_device, calibration next_calibration} }}`;
 function MyDevice({t,className, rest}) {
     const classes = useStyles();
 
