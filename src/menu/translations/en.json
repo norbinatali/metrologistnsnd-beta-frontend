@@ -87,7 +87,7 @@
   "Terminology": "Terminology",
   "Measuring Instrument is": "Measuring Instrument - instrument intended to measure an electrical or non-electrical quality using electronic means and/or equipped with electronic devices.",
   "Errors": "Measurement error - measured quantity value minus a reference quantity value.",
-  "Calibration": "Calibration - the process of configuring an instrument to provide a result for a sample within an acceptable range.",
+  "Calibration-is": "Calibration - the process of configuring an instrument to provide a result for a sample within an acceptable range.",
   "Fault": "Fault - difference between the error of indication ands the intrinsic error of a measuring instruments. ",
   "Test": "Test - series of operations intended to verify the compliance of the equipment under test (EUT) with specified requirements.",
   "Test procedure": "Test procedure - detailed description of the test operations.",
@@ -117,6 +117,7 @@
   "IR": "ІR– ionizing radiation",
   "AUV": "АUV – acoustics, ultrasound, vibration",
   "QM": "QМ – chemistry (quantity of substances)",
-   "Country":"Country"
+   "Country":"Country",
+  "Calibration":"Calibration"
 }
 
