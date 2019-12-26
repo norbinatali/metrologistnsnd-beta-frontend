@@ -187,7 +187,7 @@ function MyDevice({t,className, rest}) {
                         if (error) { return error.message }
                         const devicelist = data.me.mydevices;
 
-                          if(userId){           
+                          if(authToken){           
                            return(
                                 
                 <Paper >
