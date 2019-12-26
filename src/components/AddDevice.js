@@ -28,7 +28,8 @@ const authToken = localStorage.getItem(AUTH_TOKEN)
 const useStyles = makeStyles(theme => ({
     root: {
         width: '70%',
-        backgroundColor:"white"
+      marginRight:"auto",
+        marginLeft:"auto"
     },
 
 }));
@@ -76,9 +77,6 @@ function AddDevice ({t,props}) {
         history.goBack();
     };
     const confirm = async (data, e) => {
-
-        const { token } = addmydevice;
-        saveUserData( token);
         history.push('/mydevice')
     };
     const saveUserData = (token) => {
@@ -100,19 +98,16 @@ function AddDevice ({t,props}) {
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <Grid container style={{ height: '100%'}} >
                     <Grid item >
-                        <div style={{marginTop:"0px"}} >
-                            <IconButton onClick={handleBack}>
+                         <IconButton onClick={handleBack}>
                                 <ArrowBackIcon style={{color:"white"}} />
                             </IconButton>
-                        </div>
                     </Grid>
                     <Grid item lg={10} xs={12}>
-         {authToken && (
-                        <Mutation mutation={CREATE_MYDEVICE}  variables={{ brand_device, type_device,module_device, calibration, next_calibration} } onCompleted={() => confirm()}>
-                            {( addmydevice,{client,loading, error, event}) => {
+                     <Mutation mutation={CREATE_MYDEVICE}  variables={{ brand_device, type_device,module_device, calibration, next_calibration} } onCompleted={(data) => confirm(data)}>
+                            {( addmydevice,{loading, error, event}) => {
                                 if (loading) { return (<LinearDeterminate /> )}
                                 if (error) {return (error.message)}
-                                    if (client){
+                                    if (authToken){
                                 return(
                         <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
 
@@ -184,11 +179,10 @@ function AddDevice ({t,props}) {
                                     'aria-label': 'change date',
                                 }}
                             />
-
-
                 <RaisedButton onClick={addmydevice} style={{backgroundColor:"rgba(0,1,47,0.84)", color:"white"}}>{t('Add')}</RaisedButton>
-            </FormControl>)} return (null)}}
-                        </Mutation>)}
+            </FormControl>)} 
+                                                                                                                
+                        </Mutation>}}
                     </Grid>
                 </Grid>
                 </MuiPickersUtilsProvider>
