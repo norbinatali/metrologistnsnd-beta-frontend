@@ -77,7 +77,7 @@ function AddDevice ({t,props}) {
         history.goBack();
     };
     const confirm = async (data, e) => {
-        history.push('/mydevice')
+        history.push('/mydevices')
     };
     const saveUserData = (token) => {
       
@@ -112,13 +112,13 @@ function AddDevice ({t,props}) {
                         <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
 
 
-                <label  htmlFor="brand">{t('Brand')}</label>
+                <label  htmlFor="brand" style={{color:"#fff"}}>{t('Brand')}</label>
                 <RedditTextField type="text" fullWidth value={brand_device}  onChange={e => {
                     setStateBrand_device(e.target.value);
                 }}
                            required/>
 
-                <label  htmlFor="type">{t('Type')}</label>
+                <label  htmlFor="type" style={{color:"#fff"}}>{t('Type')}</label>
                 <RedditTextField
                     type="text"
                     fullWidth
@@ -128,7 +128,7 @@ function AddDevice ({t,props}) {
                     }}  required
                 />
 
-                <label  htmlFor="module">{t('Module')}</label>
+                <label  htmlFor="module" style={{color:"#fff"}}>{t('Module')}</label>
                 <RedditTextField
                     type="text"
                     fullWidth
@@ -137,25 +137,27 @@ function AddDevice ({t,props}) {
                         setStateModule_device(e.target.value);
                     }} required
                 />
-               <label  htmlFor="notes">{t('Notes')}</label>
+               <label  htmlFor="notes" style={{color:"#fff"}}>{t('Notes')}</label>
                 <RedditTextField
                     type="text"
                     fullWidth
+                    rows="5"
                     value={notes}
                     onChange={e => {
                         setStateNotes(e.target.value);
                     }}
                 />
-                <label  htmlFor="notes">{t('Verification')}</label>
+                <label  htmlFor="notes" style={{color:"#fff"}}>{t('Verification')}</label>
                 <RedditTextField
                     type="text"
+                                                                placeholder="Yes/No"
                     fullWidth
                     value={verification_device}
                     onChange={e => {
                         setStateVerification_device(e.target.value);
                     }}
                 />
-                <label  htmlFor="calibration">{t('Calibration')}</label>
+                <label  htmlFor="calibration" style={{color:"#fff"}}>{t('Calibration')}</label>
 
                             <KeyboardDatePicker
                                 margin="normal"
@@ -178,7 +180,8 @@ function AddDevice ({t,props}) {
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',
                                 }}
-                            />
+                            /><br/>
+
                 <RaisedButton onClick={addmydevice} style={{backgroundColor:"rgba(0,1,47,0.84)", color:"white"}}>{t('Add')}</RaisedButton>
             </FormControl>)}}}
                                                                                                                 
