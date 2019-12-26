@@ -29,7 +29,7 @@ return(
                     <Typography>
                         {t('Measuring Technology')}<br/>
                         {t('Errors')}<br/>
-                        {t('Calibration')}<br/>
+                        {t('Calibration is')}<br/>
                         {t('Fault')}<br/>
                         {t('Test')}<br/>
                         {t('Test procedure')}<br/>
