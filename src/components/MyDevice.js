@@ -184,10 +184,11 @@ function MyDevice({t,className, rest}) {
   
                  <div className={classes.content}>
                      
-                <Query query={GET_MyDevice} >
+                <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={500} >
                     {( {loading, error, data} ) =>  {
                         if (loading) {return <LinearDeterminate />}
                         if (error) { return error.message }
+                                      
                         const devicelist = data.me.mydevices;
 
                           if(authToken){           
