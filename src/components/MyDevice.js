@@ -144,6 +144,9 @@ function MyDevice({t,className, rest}) {
     const handleChange = panel => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
+ const refreshPage(){ 
+    window.location.reload(); 
+}
     return(
         <div>
             <UserMenu/>
@@ -170,7 +173,7 @@ function MyDevice({t,className, rest}) {
                                 </Button>
         <Tooltip title="Reload">
             <IconButton>
-                <RefreshIcon className={classes.block} style={{color:"#fff"}}  />
+                <RefreshIcon className={classes.block} style={{color:"#fff"}} onClick={refreshPage}  />
             </IconButton>
         </Tooltip>
     </Grid>
