@@ -144,7 +144,7 @@ function MyDevice({t,className, rest}) {
     const handleChange = panel => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
- const refreshPage(){ 
+ const refreshPage=()=>{ 
     window.location.reload(); 
 }
     return(
