@@ -180,9 +180,9 @@ function AddDevice ({t,props}) {
                                 }}
                             />
                 <RaisedButton onClick={addmydevice} style={{backgroundColor:"rgba(0,1,47,0.84)", color:"white"}}>{t('Add')}</RaisedButton>
-            </FormControl>)} 
+            </FormControl>)}}}
                                                                                                                 
-                        </Mutation>}}
+                        </Mutation>
                     </Grid>
                 </Grid>
                 </MuiPickersUtilsProvider>
