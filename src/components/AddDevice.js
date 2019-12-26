@@ -56,6 +56,8 @@ function RedditTextField(props) {
 
     return <TextField InputProps={{ classes, disableUnderline: true }} {...props} />;
 }
+const GET_MyDevice = gql`query { me{mydevices{type_device, brand_device, module_device, verification_device calibration next_calibration} }}`;
+
 const CREATE_MYDEVICE =gql `mutation($brand_device:String!, $type_device:String!, $module_device:String!,$notes:String, $verification_device:String, $calibration:Date, $next_calibration:Date){createNewMyDevice(module_device:$module_device, brand_device:$brand_device,type_device: $type_device, notes:$notes, verification_device:$verification_device, calibration:$calibration,next_calibration:$next_calibration){
     brand_device
     type_device
@@ -103,8 +105,13 @@ function AddDevice ({t,props}) {
                             </IconButton>
                     </Grid>
                     <Grid item lg={10} xs={12}>
-                     <Mutation mutation={CREATE_MYDEVICE}  variables={{ brand_device, type_device,module_device, calibration, next_calibration} } onCompleted={(data) => confirm(data)}>
+                     <Mutation mutation={CREATE_MYDEVICE}  variables={{ brand_device, type_device,module_device, calibration, next_calibration} } update={(caches,{data:{addmydevice}})} onCompleted={(data) => confirm(data)}>
                             {( addmydevice,{loading, error, event}) => {
+                                 const { mydevice } = caches.readQuery({ query: GET_MyDevice });
+                                caches.writeQuery({
+                                    query: GET_MyDevice,
+                                    data: { mydevice: mydevice.concat([mydevice]) },
+                                });
                                 if (loading) { return (<LinearDeterminate /> )}
                                 if (error) {return (error.message)}
                                     if (authToken){
