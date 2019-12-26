@@ -105,13 +105,9 @@ function AddDevice ({t,props}) {
                             </IconButton>
                     </Grid>
                     <Grid item lg={10} xs={12}>
-                     <Mutation mutation={CREATE_MYDEVICE}  variables={{ brand_device, type_device,module_device, calibration, next_calibration} } update={(caches,{data:{addmydevice}})} onCompleted={(data) => confirm(data)}>
+                     <Mutation mutation={CREATE_MYDEVICE}  variables={{ brand_device, type_device,module_device, calibration, next_calibration} } onCompleted={(data) => confirm(data)}>
                             {( addmydevice,{loading, error, event}) => {
-                                 const { mydevice } = caches.readQuery({ query: GET_MyDevice });
-                                caches.writeQuery({
-                                    query: GET_MyDevice,
-                                    data: { mydevice: mydevice.concat([mydevice]) },
-                                });
+                                 
                                 if (loading) { return (<LinearDeterminate /> )}
                                 if (error) {return (error.message)}
                                     if (authToken){
