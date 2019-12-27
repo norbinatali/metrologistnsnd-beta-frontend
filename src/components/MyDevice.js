@@ -142,8 +142,8 @@ function MyDevice({t,className, rest}) {
                         const devicelist = data.me.mydevices;
                        if(authToken){           
                            return(
-                <Paper style={{ height:"460px"}}>
-                    <Table stickyHeader style={{overflow:"auto", maxHeight:"440px"}}>
+                <Paper >
+                    <Table stickyHeader style={{maxHeight:"440px"}}>
                         <TableHead  >
                             <TableRow >
                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
@@ -155,7 +155,7 @@ function MyDevice({t,className, rest}) {
                                    <StyledTableCell align="right">{t('Delete')} </StyledTableCell>
                             </TableRow>
                         </TableHead>
-                        <TableBody>
+                        <TableBody style={{overflow:"auto", maxHeight:"350px"}}>
 
                             {devicelist.map(device =>(
                                 <TableRow>
