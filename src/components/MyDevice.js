@@ -143,7 +143,7 @@ function MyDevice({t,className, rest}) {
                        if(authToken){           
                            return(
                 <Paper style={{ height:"460px"}}>
-                    <Table stickyHeader style={{ maxHeight:"440px"}}>
+                    <Table stickyHeader style={{overflow:"auto", maxHeight:"440px"}}>
                         <TableHead  >
                             <TableRow >
                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
