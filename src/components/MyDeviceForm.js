@@ -95,7 +95,7 @@ function MyDeviceForm({t,className, rest}) {
                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
                                 <StyledTableCell align="right">{t('Category')}</StyledTableCell>
                                 <StyledTableCell align="right">{t('Module')}</StyledTableCell>
-                                <StyledTableCell align="right">{t('Verification')}</StyledTableCell>
+                                
                                 <StyledTableCell align="right">{t('Calibration')}</StyledTableCell>
                                 <StyledTableCell align="right">{t('Next Calibration')}</StyledTableCell>
                                    <StyledTableCell align="right">{t('Delete')} </StyledTableCell>
@@ -108,7 +108,7 @@ function MyDeviceForm({t,className, rest}) {
                                     <TableCell lign="center">{device.brand_device}</TableCell>
                                     <TableCell lign="center">{device.type_device}</TableCell>
                                     <TableCell lign="center">{device.module_device}</TableCell>
-                                     <TableCell lign="center">{device.verification_device}</TableCell>
+                                   
                                     <TableCell lign="center">{device.calibration}</TableCell>
                                     <TableCell lign="center">{device.next_calibration}</TableCell>
                                     <TableCell lign="center"><IconButton>
