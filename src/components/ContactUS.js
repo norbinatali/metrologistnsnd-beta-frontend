@@ -91,7 +91,7 @@ const [formState, setFormState] = useState({
             <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
             <FormControl  >
                 <MuiThemeProvider>
-                    <label style={{color:"#fff"}} htmlFor="from">{t("Email")} </label>
+                    <label style={{color:"#fff", marginTop:"10%"}} htmlFor="from">{t("Email")} </label>
                     <RedditTextField variant="outlined"  type="text"
                             name={"from"}
                         value={from} 
