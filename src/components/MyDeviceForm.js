@@ -35,68 +35,35 @@ const drawerWidth = 240;
  const userId = localStorage.getItem(GC_USER_ID);
 const authToken = localStorage.getItem(AUTH_TOKEN)
 const useStyles = makeStyles(theme => ({
-    root: {
-                padding: theme.spacing(3),
-        margin: 'auto',
-         overflow: 'hidden'
+  root: {
+        width: '90%',
+        overflowX: 'auto',
+        marginRight:"auto",
+        marginLeft:"auto",
+        height:"100%"
+    },
+    table: {
+maxWidth:"100%",
+        maxHeight:"500px",
 
+        color:"#fff"
     },
-    row: {
-        height: '42px',
-        display: 'flex',
-        alignItems: 'center',
-        marginTop: theme.spacing(1)
+    inner:{
+        minWidth: "100%"
     },
-    spacer: {
-        flexGrow: 1
-    },
-    button: {
-        width:"100 px",
-        height:"10 px",
-        backgroundColor:"white",
-        textColor:"white",
-        marginRight: theme.spacing(3)
-    },
-    input: {
-        display: 'none',
-    },
-    heading: {
-        fontSize: theme.typography.pxToRem(15),
-        flexBasis: '50%',
-        flexShrink: 0,
-        display:"center",
-    },
-    secondaryHeading: {
-        fontSize: theme.typography.pxToRem(15),
-        color: theme.palette.text.secondary,
-    },
-    margin: {
-        margin: theme.spacing(1),
-    },
-    extendedIcon: {
-        marginRight: theme.spacing(3),
-    },
-    container: {
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4),
-        height: 240,
-        width: `calc(100% - ${drawerWidth}px)`,
-    },
-    content: {
-        margin: '40px 16px',
+    row:{
+        backgroundColor:"#fff"
     }
-
 }));
+  
 
 const StyledTableCell = withStyles(theme => ({
     head: {
         backgroundColor: theme.palette.common.black,
         color: theme.palette.common.white,
-        width:'20px'
     },
     body: {
-        fontSize: 12,
-        width:'20px'
+        fontSize: 14,
     },
 }))(TableCell);
 const GET_MyDevice = gql`query { me{mydevices{type_device, brand_device, module_device, notes,  verification_device, calibration next_calibration} }}`;
@@ -122,7 +89,7 @@ function MyDeviceForm({t,className, rest}) {
                        if(authToken){           
                            return(
                 <Paper >
-                    <Table stickyHeader style={{maxHeight:"440px"}}>
+                    <Table stickyHeader>
                         <TableHead  >
                             <TableRow >
                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
@@ -134,7 +101,7 @@ function MyDeviceForm({t,className, rest}) {
                                    <StyledTableCell align="right">{t('Delete')} </StyledTableCell>
                             </TableRow>
                         </TableHead>
-                        <TableBody style={{overflow:"auto", maxHeight:"350px"}}>
+                        <TableBody>
 
                             {devicelist.map(device =>(
                                 <TableRow>
