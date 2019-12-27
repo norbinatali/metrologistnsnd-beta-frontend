@@ -115,8 +115,8 @@ const useStyles = makeStyles(theme => ({
                                             </IconButton>
                                         </ListItem>
                                          <ListItem>
-                                        <ListItemText  primary={""} secondary={""} />
-                                        <IconButton  edge="end"    size="small"  >
+                                        <ListItemText  primary={""} secondary={"Procesure"} />
+                                        <IconButton  edge="end" size="small" onClick={()=> history.push('/procedure-conformity-assessment')} >
                                             <ArrowRightIcon />
                                         </IconButton>
                                     </ListItem>
