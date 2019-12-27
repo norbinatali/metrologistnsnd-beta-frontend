@@ -28,6 +28,7 @@ import {Query} from 'react-apollo';
 import i18n from "../menu/translations/i18n";
 import Link from "@material-ui/core/Link";
 import UserMenu from "./UserMenu";
+import MyDeviceForm from "./MyDeviceForm";
 import LinearDeterminate from "./LinearDeterminate";
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
 import DeleteIcon from "@material-ui/icons/Delete"
@@ -133,48 +134,9 @@ function MyDevice({t,className, rest}) {
                    </Grid>
                 </Toolbar>
 </AppBar>
-                   <div className={classes.content}>
+                <MyDeviceForm />
                      
-                <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={500} >
-                    {( {loading, error, data} ) =>  {
-                        if (loading) {return <LinearDeterminate />}
-                        if (error) { return error.message }
-                        const devicelist = data.me.mydevices;
-                       if(authToken){           
-                           return(
-                <Paper >
-                    <Table stickyHeader style={{maxHeight:"440px"}}>
-                        <TableHead  >
-                            <TableRow >
-                                <StyledTableCell align="right">{t('Device')}</StyledTableCell>
-                                <StyledTableCell align="right">{t('Category')}</StyledTableCell>
-                                <StyledTableCell align="right">{t('Module')}</StyledTableCell>
-                                <StyledTableCell align="right">{t('Verification')}</StyledTableCell>
-                                <StyledTableCell align="right">{t('Calibration')}</StyledTableCell>
-                                <StyledTableCell align="right">{t('Next Calibration')}</StyledTableCell>
-                                   <StyledTableCell align="right">{t('Delete')} </StyledTableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody style={{overflow:"auto", maxHeight:"350px"}}>
-
-                            {devicelist.map(device =>(
-                                <TableRow>
-                                    <TableCell lign="center">{device.brand_device}</TableCell>
-                                    <TableCell lign="center">{device.type_device}</TableCell>
-                                    <TableCell lign="center">{device.module_device}</TableCell>
-                                     <TableCell lign="center">{device.verification_device}</TableCell>
-                                    <TableCell lign="center">{device.calibration}</TableCell>
-                                    <TableCell lign="center">{device.next_calibration}</TableCell>
-                                    <TableCell lign="center"><IconButton>
-                <DeleteIcon className={classes.block}  />
-            </IconButton></TableCell>
-                                </TableRow>))}
-                        </TableBody>
-                    </Table>
-                </Paper>)}else return null}}  
-                                </Query>
-
-            </div>
+              
         </div>
 
                                                                          </main>
