@@ -142,8 +142,8 @@ function MyDevice({t,className, rest}) {
                         const devicelist = data.me.mydevices;
                        if(authToken){           
                            return(
-                <Paper style={{ height:"700px"}}>
-                    <Table stickyHeader style={{ height:"600px"}}>
+                <Paper style={{ height:"460px"}}>
+                    <Table stickyHeader style={{ maxHeight:"440px"}}>
                         <TableHead  >
                             <TableRow >
                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
