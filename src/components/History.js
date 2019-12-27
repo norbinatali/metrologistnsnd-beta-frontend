@@ -18,82 +18,17 @@ import ModulesInfo from "./ModulesInfo";
 import {withTranslation} from "react-i18next";
 import AssessmentTheory from "./AssessmentTheory";
 import UserMenu from "./UserMenu";
-
-const QontoConnector = withStyles({
-    alternativeLabel: {
-        top: 10,
-        left: 'calc(-50% + 16px)',
-        right: 'calc(50% + 16px)',
-    },
-    active: {
-        '& $line': {
-            borderColor: '#784af4',
-        },
-    },
-    completed: {
-        '& $line': {
-            borderColor: '#784af4',
-        },
-    },
-    line: {
-        borderColor: '#eaeaf0',
-        borderTopWidth: 3,
-        borderRadius: 1,
-    },
-})(StepConnector);
-const useQontoStepIconStyles = makeStyles({
-    root: {
-        color: '#eaeaf0',
-        display: 'flex',
-        height: 22,
-        alignItems: 'center',
-    },
-    active: {
-        color: '#784af4',
-    },
-    circle: {
-        width: 8,
-        height: 8,
-        borderRadius: '50%',
-        backgroundColor: 'currentColor',
-    },
-    completed: {
-        color: '#784af4',
-        zIndex: 1,
-        fontSize: 18,
-    },
-});
-function QontoStepIcon(props) {
-    const classes = useQontoStepIconStyles();
-    const { active, completed } = props;
-
-    return (
-        <div
-            className={clsx(classes.root, {[classes.active]: active,})}>
-            {completed ? <Check className={classes.completed} /> : <div className={classes.circle} />}
-        </div>
-    );
-}
-QontoStepIcon.propTypes = {
-    active: PropTypes.bool,
-    completed: PropTypes.bool,
-};
-function getSteps() {
-    return ['', '', ''];
-}
-
-function getStepContent(step) {
-    switch (step) {
-        case 0:
-            return <GeneralInfo/>;
-        case 1:
-            return <ModulesInfo/>;
-        case 2:
-            return <AssessmentTheory/>;
-        default:
-            return 'Unknown step';
-    }
-}
+import Paper from "@material-ui/core/Paper";
+import CardActions from "@material-ui/core/CardActions";
+import CardHeader from "@material-ui/core/CardHeader";
+import Divider from "@material-ui/core/Divider";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import ListItemText from "@material-ui/core/ListItemText";
+import IconButton from "@material-ui/core/IconButton";
+import {ArrowRightIcon} from "@material-ui/pickers/_shared/icons/ArrowRightIcon";
+import history from '../history'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -102,89 +37,135 @@ const useStyles = makeStyles(theme => ({
         overflowX: 'auto',
     },
     table: {
-        minWidth: 500,
+        minWidth: 700,
         color:"linear-gradient(to right,#000222, rgba(23, 20, 61, 0.96),  #252529)"
     },
     boxFlex:"column"
 
 }));
- function History({t}) {
-const posts={
-    title: "",
-    excerpt:""
+ function History({t,props}) {
 
-
-};
     const classes = useStyles();
-    const [activeStep, setActiveStep] = React.useState(0);
-    const steps = getSteps();
 
-    const handleNext = () => {
-
-        setActiveStep(prevActiveStep => prevActiveStep + 1);
-    };
-
-    const handleBack = () => {
-        setActiveStep(prevActiveStep => prevActiveStep - 1);
-    };
-
-    const handleReset = () => {
-        setActiveStep(0);
-    };
+     const {  ...rest } = props;
 
     return(
         <div>
             <UserMenu/>
                 <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
-        <div style={{display:'flex', width:"80%", marginRight:"auto", marginLeft:"auto"}}>
-                <Grid container spacing={2} justify="center" style={{backgroundColor:"white"}}>
-                    <Card>
-                    <CardActionArea>
-                            <div className={classes.root}>
-                                <Stepper activeStep={activeStep} alternativeLabel>
-                                    {steps.map(label => (
-                                        <Step key={label}>
-                                            <StepLabel>{label}</StepLabel>
-                                        </Step>
-                                    ))}
-                                </Stepper>
-                                <div>
-                                    {activeStep === steps.length ? (
-                                        <div>
-                                            <Typography className={classes.instructions}>{t('All steps completed')}</Typography>
-                                            <Button onClick={handleReset}>{t('Reset')}</Button>
-                                        </div>
-                                    ) : (
-                                        <div>
-                                            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
-                                            <div>
-                                                <Button disabled={activeStep === 0} onClick={handleBack} className={classes.backButton}>
-                                                    {t('Back')}
-                                                </Button>
-                                                <Button variant="contained" style={{backgroundColor:"rgba(0,1,47,0.84)"}}onClick={handleNext}>
-                                                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                                                </Button>
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
+                    <div style={{ marginTop: 40 }}>
+                        <div style={{ marginTop: 20, padding:30}}>
+                        <div style={{display:'flex'}}>
+                <Grid container spacing={2} >
+                    <Grid item>
+                   <Paper elevation={3}>
+                       <Card {...rest} className={clsx(classes.root)}>
+                           <CardHeader subtitle={` in total`} title="About metrology"/>
+                           <Divider />
+                           <CardContent className={classes.content}>
+                               <List>
+                                       <ListItem>
+                                           <ListItemText  primary={""} secondary={"What is Metrology?"}   />
+                                           <IconButton  edge="end" size="small" onClick={()=> history.push('/what-is-metrology')}  >
+                                               <ArrowRightIcon />
+                                           </IconButton>
+                                       </ListItem>
+                                   <ListItem>
+                                       <ListItemText  primary={""} secondary={"History"}   />
+                                       <IconButton  edge="end" size="small"  onClick={()=> history.push('/history-metrology')} >
+                                           <ArrowRightIcon />
+                                       </IconButton>
+                                   </ListItem>
+                                   <ListItem>
+                                       <ListItemText  primary={""} secondary={""}   />
+                                       <IconButton  edge="end"    size="small"  >
+                                           <ArrowRightIcon />
+                                       </IconButton>
+                                   </ListItem>
+                               </List>
+                           </CardContent>
+                           <Divider />
+                       </Card>
+                   </Paper>
 
-                       <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">{posts.title}</Typography>
-                            <Typography component="p">{posts.excerpt}</Typography>
-                       </CardContent>
+                </Grid>
+                      <Grid item>
+                        <Paper elevation={3}>
+                            <Card {...rest} className={clsx(classes.root)}>
+                                <CardHeader subtitle={` in total`} title="Conformity assessment"/>
+                                <Divider />
+                                <CardContent className={classes.content}>
+                                    <List>
+                                        <ListItem>
+                                            <ListItemText  primary={""} secondary={"What is conformity assessment"}   />
+                                            <IconButton  edge="end"    size="small"  >
+                                                <ArrowRightIcon />
+                                            </IconButton>
+                                        </ListItem>
+                                        <ListItem>
+                                            <ListItemText  primary={""} secondary={"Modules"}   />
+                                            <IconButton  edge="end"    size="small"  >
+                                                <ArrowRightIcon />
+                                            </IconButton>
+                                        </ListItem>
+                                        <ListItem>
+                                            <ListItemText  primary={""} secondary={"Technical Reglaments"} />
+                                            <IconButton  edge="end"    size="small"  >
+                                                <ArrowRightIcon />
+                                            </IconButton>
+                                        </ListItem>
+                                         <ListItem>
+                                        <ListItemText  primary={""} secondary={"Technical Reglaments"} />
+                                        <IconButton  edge="end"    size="small"  >
+                                            <ArrowRightIcon />
+                                        </IconButton>
+                                    </ListItem>
+                                    </List>
+                                </CardContent>
+                                <Divider />
+                            </Card>
+                        </Paper>
 
-                    </CardActionArea>
-                    </Card>
+                    </Grid>
+                    <Grid item>
+                    <Paper elevation={3}>
+                        <Card {...rest} className={clsx(classes.root)}>
+                            <CardHeader subtitle={` in total`} title="Quality Management"/>
+                            <Divider />
+                            <CardContent className={classes.content}>
+                                <List>
+                                    <ListItem>
+                                        <ListItemText  primary={""} secondary={`Updated `}   />
+                                        <IconButton  edge="end"    size="small"  >
+                                            <ArrowRightIcon />
+                                        </IconButton>
+                                    </ListItem>
+                                    <ListItem>
+                                        <ListItemText  primary={""} secondary={`Updated `}   />
+                                        <IconButton  edge="end"    size="small"  >
+                                            <ArrowRightIcon />
+                                        </IconButton>
+                                    </ListItem>
+                                    <ListItem>
+                                        <ListItemText  primary={""} secondary={`Updated `}   />
+                                        <IconButton  edge="end"    size="small"  >
+                                            <ArrowRightIcon />
+                                        </IconButton>
+                                    </ListItem>
+                                </List>
+                            </CardContent>
+                            <Divider />
+                        </Card>
+                    </Paper>
+                </Grid>
                 </Grid>
         </div>
-
-
-</main>
+                        </div>
+                    </div>
+                </main>
 </div>
-    )
-
-
-    }
+    )}
+History.propTypes = {
+    className: PropTypes.string
+};
 export default withTranslation()(History)
