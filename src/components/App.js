@@ -61,6 +61,7 @@ class App extends Component {
                            <PrivateRoute path="/what-is-conformity-assessment" component={History} />
                            <PrivateRoute path="/modules" component={History} />
                            <PrivateRoute path="/technical-reglaments" component={History} />
+                           <PrivateRoute path="/procedure-conformity-assessment component={History} />
                            <PrivateRoute path="/what-is-quality-system" component={History} />
                            <PrivateRoute path="/documents-of-quality-system" component={History} />
                            <PrivateRoute path="/add-device" component={AddDevice} />
