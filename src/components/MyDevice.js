@@ -30,7 +30,7 @@ import Link from "@material-ui/core/Link";
 import UserMenu from "./UserMenu";
 import LinearDeterminate from "./LinearDeterminate";
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
-
+import DeleteIcon from "@material-ui/icons/Delete"
 const drawerWidth = 240;
  const userId = localStorage.getItem(GC_USER_ID);
 const authToken = localStorage.getItem(AUTH_TOKEN)
@@ -88,41 +88,6 @@ const useStyles = makeStyles(theme => ({
     }
 
 }));
-const ExpansionPanel = withStyles({
-    root: {
-        border: '1px solid rgba(0, 0, 0, .125)',
-        boxShadow: 'none',
-        '&:not(:last-child)': {
-            borderBottom: 0,
-        },
-        '&:before': {
-            display: 'none',
-        },
-        '&$expanded': {
-            margin: 'auto',
-        },
-    },
-    expanded: {},
-})(MuiExpansionPanel);
-const ExpansionPanelSummary = withStyles({
-    root: {
-        backgroundColor: 'rgba(0, 0, 0, .03)',
-        borderBottom: '1px solid rgba(0, 0, 0, .125)',
-        marginBottom: -1,
-        minHeight: 56,
-        '&$expanded': {
-            minHeight: 56,
-        },
-    },
-    content: { padding: 0},
-    expanded: {},
-})(MuiExpansionPanelSummary);
-
-const ExpansionPanelDetails = withStyles(theme => ({
-    root: {
-        padding: theme.spacing(2),
-    },
-}))(MuiExpansionPanelDetails);
 
 const StyledTableCell = withStyles(theme => ({
     head: {
@@ -162,40 +127,23 @@ function MyDevice({t,className, rest}) {
 
     <Grid item>
                         <span className={classes.spacer} />
-                        <Button
-                            color="primary"
-                            variant="contained"
-                            >  <Link
-                            component={RouterLink}
-                            to="/add-device"
-                            variant="h8" style={{color:"#fff"}}
-                        >{t('Add Device')}</Link>
+                        <Button color="primary" variant="contained" > 
+                         <Link component={RouterLink} to="/add-device" variant="h8" style={{color:"#fff"}} >{t('Add Device')}</Link>
                                 </Button>
-        <Tooltip title="Reload">
-            <IconButton>
-                <RefreshIcon className={classes.block} style={{color:"#fff"}} onClick={refreshPage}  />
-            </IconButton>
-        </Tooltip>
-    </Grid>
-
-                    </Grid>
+          </Grid>
+                   </Grid>
                 </Toolbar>
 </AppBar>
-  
-                 <div className={classes.content}>
+                   <div className={classes.content}>
                      
                 <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={500} >
                     {( {loading, error, data} ) =>  {
                         if (loading) {return <LinearDeterminate />}
                         if (error) { return error.message }
-                                      
                         const devicelist = data.me.mydevices;
-
-                          if(authToken){           
+                       if(authToken){           
                            return(
-                                
-                <Paper >
-                            
+                <Paper style={{ height:"600px"}}>
                     <Table aria-label="customized table" className={classes.table}>
                         <TableHead sticky table aria-label="sticky table" >
                             <TableRow >
@@ -205,6 +153,7 @@ function MyDevice({t,className, rest}) {
                                 <StyledTableCell align="right">{t('Verification')}</StyledTableCell>
                                 <StyledTableCell align="right">{t('Calibration')}</StyledTableCell>
                                 <StyledTableCell align="right">{t('Next Calibration')}</StyledTableCell>
+                                   <StyledTableCell align="right">{t('Delete')} </StyledTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -217,16 +166,16 @@ function MyDevice({t,className, rest}) {
                                      <TableCell lign="center">{device.verification_device}</TableCell>
                                     <TableCell lign="center">{device.calibration}</TableCell>
                                     <TableCell lign="center">{device.next_calibration}</TableCell>
+                                    <TableCell lign="center"><IconButton>
+                <DeleteIcon className={classes.block} style={{color:"#fff"}}  />
+            </IconButton></TableCell>
                                 </TableRow>))}
                         </TableBody>
                     </Table>
                 </Paper>)}else return null}}  
                                 </Query>
 
-
-
             </div>
-
         </div>
 
                                                                          </main>
