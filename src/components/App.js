@@ -26,6 +26,7 @@ import StandardsQM from "./StandardsQM";
 import Dashboard from "./Dashboard";
 import MyDevice from "./MyDevice";
 import History from "./History";
+import WhatIsMetrology from "./WhatIsMetrology";
 import UserProfile from "./UserProfile";
 import StandardListGrid from "./StandardListGrid";
 import ContactUS from "./ContactUS";
@@ -54,7 +55,7 @@ class App extends Component {
                            <PrivateRoute path="/user" component={Dashboard} />
                            <PrivateRoute path="/dashboard" component={Dashboard} />
                            <PrivateRoute path="/metrology" component={History} />
-                           <PrivateRoute path="/what-is-metrology" component={History} />
+                           <PrivateRoute path="/what-is-metrology" component={WhatIsMetrology} />
                            <PrivateRoute path="/history-metrology" component={History} />
                            <PrivateRoute path="/what-is-conformity-assessment" component={History} />
                            <PrivateRoute path="/modules" component={History} />
