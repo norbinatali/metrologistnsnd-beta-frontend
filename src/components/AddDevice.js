@@ -168,6 +168,7 @@ function AddDevice ({t,props}) {
                                 label= {t('calibration')}
                                 format="MM/dd/yyyy"
                                 value={calibration}
+                                style={{color:"#fff"}}
                                 onChange={handleDateCalibration}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',
@@ -178,6 +179,7 @@ function AddDevice ({t,props}) {
                                 id="date-picker-dialog"
                                 label={t('next calibration')}
                                 format="MM/dd/yyyy"
+                                style={{color:"#fff"}}
                                 value={next_calibration}
                                 onChange={handleDateNext_Calibration}
                                 KeyboardButtonProps={{
