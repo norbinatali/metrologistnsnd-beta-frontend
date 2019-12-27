@@ -83,7 +83,6 @@ const useStyles = makeStyles(theme => ({
         width: `calc(100% - ${drawerWidth}px)`,
     },
     content: {
-
         margin: '40px 16px',
     }
 
@@ -143,9 +142,9 @@ function MyDevice({t,className, rest}) {
                         const devicelist = data.me.mydevices;
                        if(authToken){           
                            return(
-                <Paper style={{ height:"600px"}}>
-                    <Table aria-label="customized table" className={classes.table}>
-                        <TableHead sticky table aria-label="sticky table" >
+                <Paper style={{ height:"700px"}}>
+                    <Table stickyHeader style={{ height:"600px"}}>
+                        <TableHead  >
                             <TableRow >
                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
                                 <StyledTableCell align="right">{t('Category')}</StyledTableCell>
@@ -167,7 +166,7 @@ function MyDevice({t,className, rest}) {
                                     <TableCell lign="center">{device.calibration}</TableCell>
                                     <TableCell lign="center">{device.next_calibration}</TableCell>
                                     <TableCell lign="center"><IconButton>
-                <DeleteIcon className={classes.block} style={{color:"#fff"}}  />
+                <DeleteIcon className={classes.block}  />
             </IconButton></TableCell>
                                 </TableRow>))}
                         </TableBody>
