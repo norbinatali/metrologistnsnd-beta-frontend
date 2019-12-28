@@ -36,11 +36,11 @@ const drawerWidth = 240;
 const authToken = localStorage.getItem(AUTH_TOKEN)
 const useStyles = makeStyles(theme => ({
   root: {
-        width: '80%',
+        width: '70%',
         overflow: 'auto',
         marginRight:"auto",
         marginLeft:"auto",
-        height:"100%"
+       
     },
     table: {
 maxWidth:"100%",
