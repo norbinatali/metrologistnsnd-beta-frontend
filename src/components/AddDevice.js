@@ -171,6 +171,7 @@ value={calibration}
     InputLabelProps={{
       shrink: true,
     }}
+    onChange={handleDateCalibration}
   />
                            <TextField
     id="date"
@@ -183,6 +184,7 @@ value={calibration}
     InputLabelProps={{
       shrink: true,
     }}
+     onChange={handleDateNext_Calibration}
   /><br/>
 
                 <RaisedButton onClick={addmydevice} style={{backgroundColor:"rgba(0,1,47,0.84)", color:"white"}}>{t('Add')}</RaisedButton>
