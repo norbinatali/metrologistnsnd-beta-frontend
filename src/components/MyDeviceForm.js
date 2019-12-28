@@ -63,7 +63,7 @@ const StyledTableCell = withStyles(theme => ({
         color: theme.palette.common.white,
     },
     body: {
-        fontSize: 14,
+        fontSize: 10,
     },
 }))(TableCell);
 const GET_MyDevice = gql`query { me{mydevices{type_device, brand_device, module_device, notes,  verification_device, calibration next_calibration} }}`;
