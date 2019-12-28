@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     root: {
                 padding: theme.spacing(3),
         margin: 'auto',
-         overflow: 'hidden'
+         overflow: 'auto'
 
     },
     row: {
