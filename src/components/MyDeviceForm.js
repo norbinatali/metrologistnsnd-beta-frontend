@@ -36,20 +36,20 @@ const drawerWidth = 240;
 const authToken = localStorage.getItem(AUTH_TOKEN)
 const useStyles = makeStyles(theme => ({
   root: {
-        width: '90%',
-        overflowX: 'auto',
+        width: '80%',
+        overflow: 'auto',
         marginRight:"auto",
         marginLeft:"auto",
         height:"100%"
     },
     table: {
 maxWidth:"100%",
-        maxHeight:"500px",
+        maxHeight:"300px",
 
         color:"#fff"
     },
     inner:{
-        minWidth: "100%"
+        minWidth: "60%"
     },
     row:{
         backgroundColor:"#fff"
@@ -75,9 +75,7 @@ function MyDeviceForm({t,className, rest}) {
     const handleChange = panel => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
- const refreshPage=()=>{ 
-    window.location.reload(false); 
-}
+ 
     return(  
                    <div className={classes.content}>
                      
