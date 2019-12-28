@@ -162,7 +162,7 @@ function AddDevice ({t,props}) {
                 <label  htmlFor="calibration" style={{color:"#fff"}}>{t('Calibration')}</label>
  <TextField
     id="date"
-    label={t('Calibration'}
+    label={t('Calibration')}
     type="date"
 style={{color:"#fff"}}
     defaultValue="12-06-2019"
