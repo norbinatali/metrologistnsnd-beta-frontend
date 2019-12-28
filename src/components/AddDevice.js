@@ -152,8 +152,7 @@ function AddDevice ({t,props}) {
                 />
                 <label  htmlFor="notes" style={{color:"#fff"}}>{t('Verification')}</label>
                 <RedditTextField
-                    type="text"
-                                                                placeholder="Yes/No"
+                    type="text" placeholder="Yes/No"
                     fullWidth
                     value={verification_device}
                     onChange={e => {
@@ -161,31 +160,30 @@ function AddDevice ({t,props}) {
                     }}
                 />
                 <label  htmlFor="calibration" style={{color:"#fff"}}>{t('Calibration')}</label>
-
-                            <KeyboardDatePicker
-                                margin="normal"
-                                id="date-picker-dialog"
-                                label= {t('calibration')}
-                                format="MM/dd/yyyy"
-                                value={calibration}
-                                style={{color:"#fff"}}
-                                onChange={handleDateCalibration}
-                                KeyboardButtonProps={{
-                                    'aria-label': 'change date',
-                                }}
-                            />
-                            <KeyboardDatePicker
-                                margin="normal"
-                                id="date-picker-dialog"
-                                label={t('next calibration')}
-                                format="MM/dd/yyyy"
-                                style={{color:"#fff"}}
-                                value={next_calibration}
-                                onChange={handleDateNext_Calibration}
-                                KeyboardButtonProps={{
-                                    'aria-label': 'change date',
-                                }}
-                            /><br/>
+ <TextField
+    id="date"
+    label={t('Calibration'}
+    type="date"
+style={{color:"#fff"}}
+    defaultValue="12-06-2019"
+value={calibration}
+    className={classes.textField}
+    InputLabelProps={{
+      shrink: true,
+    }}
+  />
+                           <TextField
+    id="date"
+    label={t('Next Calibration')}
+    type="date"
+    style={{color:"#fff"}}
+    value={next_calibration}
+    defaultValue="12-06-2020"
+    className={classes.textField}
+    InputLabelProps={{
+      shrink: true,
+    }}
+  /><br/>
 
                 <RaisedButton onClick={addmydevice} style={{backgroundColor:"rgba(0,1,47,0.84)", color:"white"}}>{t('Add')}</RaisedButton>
             </FormControl>)}}}
