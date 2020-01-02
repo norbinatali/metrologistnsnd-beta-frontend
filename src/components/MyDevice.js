@@ -26,7 +26,7 @@ import MyDeviceForm from "./MyDeviceForm";
 
 
 const authToken = localStorage.getItem(AUTH_TOKEN);
-
+const drawerWidth = 240;
 
 const StyledTableCell = withStyles(theme => ({
     head: {
@@ -41,7 +41,7 @@ const StyledTableCell = withStyles(theme => ({
 
 const useStyles = makeStyles(theme => ({
     root: {
-        width:"70%",
+        width: 'calc(100% - ${drawerWidth}px)',
         maxWidth:"100%",
          marginRight:"auto",
         marginLeft:"auto",
