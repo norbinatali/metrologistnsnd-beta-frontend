@@ -56,7 +56,7 @@ maxWidth:"60%",
         backgroundColor:"#fff"
     },
     container: {
-    maxHeight: 70%,
+    maxHeight: "70%",
   },
 }));
 
