@@ -22,8 +22,11 @@ import history from '../history';
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
 import TableContainer from '@material-ui/core/TableContainer';
 import DeleteIcon from "@material-ui/icons/Delete"
-const authToken = localStorage.getItem(AUTH_TOKEN);
 import MyDeviceForm from "./MyDeviceForm";
+
+
+const authToken = localStorage.getItem(AUTH_TOKEN);
+
 
 const StyledTableCell = withStyles(theme => ({
     head: {
