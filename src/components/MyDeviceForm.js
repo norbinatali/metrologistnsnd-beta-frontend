@@ -31,12 +31,13 @@ import UserMenu from "./UserMenu";
 import LinearDeterminate from "./LinearDeterminate";
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
 import DeleteIcon from "@material-ui/icons/Delete"
+import TableContainer from '@material-ui/core/TableContainer';
 const drawerWidth = 240;
  const userId = localStorage.getItem(GC_USER_ID);
 const authToken = localStorage.getItem(AUTH_TOKEN)
 const useStyles = makeStyles(theme => ({
   root: {
-        width: '70%',
+        maxWidth: '70%',
         overflow: 'auto',
         marginRight:"auto",
         marginLeft:"auto",
@@ -77,7 +78,7 @@ function MyDeviceForm({t,className, rest}) {
     };
  
     return(  
-                   <div className={classes.root}>
+                  
                      
                 <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={500} >
                     {( {loading, error, data} ) =>  {
@@ -87,6 +88,7 @@ function MyDeviceForm({t,className, rest}) {
                        if(authToken){           
                            return(
                 <Paper >
+                            <TableContainer>
                     <Table stickyHeader>
                         <TableHead  >
                             <TableRow >
@@ -114,11 +116,10 @@ function MyDeviceForm({t,className, rest}) {
             </IconButton></TableCell>
                                 </TableRow>))}
                         </TableBody>
-                    </Table>
+                    </Table></TableContainer>
                 </Paper>)}else return null}}  
                                 </Query>
 
-            </div>
        
     )
 
