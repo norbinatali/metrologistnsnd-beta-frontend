@@ -113,35 +113,76 @@ function MyDevice({t,className, rest}) {
     window.location.reload(false); 
 }
     return(
-        <div>
-            <UserMenu/>
+       <div>
+
+                <UserMenu/>
                 <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
-        <div className={classes.root}>
+                    <div  className={classes.root}>
+                        <Grid container spacing={1}>
+                            <Grid item >
+                    <AppBar position="static" elevation={0} style={{borderBottom: '1px solid rgba(0, 0, 0, 0.12)',backgroundColor:"transparent", marginTop:"10%"}} >
+                        <Toolbar>
+                            <Grid container spacing={2} alignItems="center">
+                                <Grid item xs>
+                                    <Typography variant="h5" component="h2">{t('My devices')}</Typography>
+                                </Grid>
 
-<AppBar position="static" elevation={0} style={{borderBottom: '1px solid rgba(0, 0, 0, 0.12)',backgroundColor:"transparent", marginTop:"10%"}} >
-                <Toolbar>
-                    <Grid container spacing={2} alignItems="center">
-                        <Grid item xs>
-            <Typography variant="h5" component="h2">{t('My devices')}</Typography>
+                                <Grid item>
+                                    <span className={classes.spacer} />
+                                    <Button color="primary" variant="contained" >
+                                        <Link component={RouterLink} to="/add-device" variant="h8" style={{color:"#fff"}} >{t('Add Device')}</Link>
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Toolbar>
+                    </AppBar>
+                            </Grid>
+                            <Grid item xs={12}>
+                        <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={500} >
+                            {( {loading, error, data} ) =>  {
+                                if (loading) {return <LinearDeterminate/>}
+                                if (error) { return error.message }
+                                const devicelist = data.me.mydevices;
+                                if(authToken){
+                                    return(
+                                        <Paper className={classes.table}>
+                                            <Table stickyHeader aria-label="sticky table">
+                                                <TableHead  >
+                                                    <TableRow >
+                                                        <StyledTableCell align="right">{t('Device')}</StyledTableCell>
+                                                        <StyledTableCell align="right">{t('Category')}</StyledTableCell>
+                                                        <StyledTableCell align="right">{t('Module')}</StyledTableCell>
+
+                                                        <StyledTableCell align="right">{t('Calibration')}</StyledTableCell>
+                                                        <StyledTableCell align="right">{t('Next Calibration')}</StyledTableCell>
+                                                        <StyledTableCell align="right">{t('Delete')} </StyledTableCell>
+                                                    </TableRow>
+                                                </TableHead>
+                                                <TableBody>
+
+                                                    {devicelist.map(device =>(
+                                                        <TableRow>
+                                                            <TableCell lign="center">{device.brand_device}</TableCell>
+                                                            <TableCell lign="center">{device.type_device}</TableCell>
+                                                            <TableCell lign="center">{device.module_device}</TableCell>
+
+                                                            <TableCell lign="center">{device.calibration}</TableCell>
+                                                            <TableCell lign="center">{device.next_calibration}</TableCell>
+                                                            <TableCell lign="center"><IconButton>
+                                                                <DeleteIcon className={classes.block}  />
+                                                            </IconButton></TableCell>
+                                                        </TableRow>))}
+                                                </TableBody>
+                                            </Table>
+                                        </Paper>)}else return null}}
+                        </Query>
+                            </Grid>
+
                         </Grid>
+                </div>
 
-    <Grid item>
-                        <span className={classes.spacer} />
-                        <Button color="primary" variant="contained" > 
-                         <Link component={RouterLink} to="/add-device" variant="h8" style={{color:"#fff"}} >{t('Add Device')}</Link>
-                                </Button>
-          </Grid>
-                   </Grid>
-                </Toolbar>
-</AppBar>
-                <MyDeviceForm />
-                     
-              
+            </main>
         </div>
-
-                                                                         </main>
-                                                                         </div>
-
     )
 
 
