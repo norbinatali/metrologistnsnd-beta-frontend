@@ -23,6 +23,7 @@ import {AUTH_TOKEN, GC_USER_ID} from "../constants";
 import TableContainer from '@material-ui/core/TableContainer';
 import DeleteIcon from "@material-ui/icons/Delete"
 const authToken = localStorage.getItem(AUTH_TOKEN);
+import MyDeviceForm from "./MyDeviceForm";
 
 const StyledTableCell = withStyles(theme => ({
     head: {
@@ -86,47 +87,8 @@ function MyDevice({t}){
                     </IconButton>
                 </Grid>
              <Grid item lg={4} md={6} xl={3}  xs={12}  >
-             <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={500} >
-                            {( {loading, error, data} ) =>  {
-                                if (loading) {return <span>loading</span>}
-                                if (error) { return error.message }
-                                const devicelist = data.me.mydevices;
-
-                   if(authToken){
-                        return(
-                            <Paper className={classes.container}>
-                             <TableContainer >
-                                    <Table stickyHeader aria-label="sticky table" className={classes.table}>
-                                        <TableHead >
-                                            <TableRow >
-                                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
-                                                        <StyledTableCell align="right">{t('Category')}</StyledTableCell>
-                                                        <StyledTableCell align="right">{t('Module')}</StyledTableCell>
-                                                        <StyledTableCell align="right">{t('Calibration')}</StyledTableCell>
-                                                        <StyledTableCell align="right">{t('Next Calibration')}</StyledTableCell>
-                                                        <StyledTableCell align="right">{t('Delete')} </StyledTableCell>
-                                            </TableRow>
-                                        </TableHead>
-                                        <TableBody>
-                                            {devicelist.map(device =>(
-                                                <TableRow>
-                                                     <TableCell lign="center">{device.brand_device}</TableCell>
-                                                            <TableCell lign="center">{device.type_device}</TableCell>
-                                                            <TableCell lign="center">{device.module_device}</TableCell>
-                                                            <TableCell lign="center">{device.calibration}</TableCell>
-                                                            <TableCell lign="center">{device.next_calibration}</TableCell>
-                                                            <TableCell lign="center"><IconButton>
-                                                                <DeleteIcon className={classes.block}  />
-                                                            </IconButton></TableCell>
-                                                        </TableRow> ))}
-                                        </TableBody>
-                                    </Table>
-                                               </TableContainer>
-                                              </Paper>
-                              )}
-                    else return null}
-                }
-            </Query>
+           
+                        <MyDeviceForm />
                 </Grid>
             </Grid>
         </div>
