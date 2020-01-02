@@ -37,21 +37,15 @@ const StyledTableCell = withStyles(theme => ({
 
 const useStyles = makeStyles(theme => ({
     root: {
-              overflow: 'auto',
-        marginRight:"auto",
+         marginRight:"auto",
         marginLeft:"auto",
            },
     table: {
              color:"#fff"
     },
-    inner:{
-        minWidth: "100%"
-    },
-    row:{
-        backgroundColor:"#fff"
-    },
+   
     container: {
-        maxWidth:"30%",
+        maxWidth:"100%",
     maxHeight: "70%",
   },
 }));
@@ -91,7 +85,7 @@ function MyDevice({t}){
                         <ArrowBackIcon style={{color:"white", marginTop:"5%", marginRight:"auto"}} />
                     </IconButton>
                 </Grid>
-                <Grid item xs={12}>
+             <Grid item lg={4} md={6} xl={3}  xs={12}  >
              <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={500} >
                             {( {loading, error, data} ) =>  {
                                 if (loading) {return <span>loading</span>}
@@ -100,7 +94,8 @@ function MyDevice({t}){
 
                    if(authToken){
                         return(
-                             <TableContainer className={classes.container}>
+                            <Paper className={classes.container}>
+                             <TableContainer >
                                     <Table stickyHeader aria-label="sticky table" className={classes.table}>
                                         <TableHead >
                                             <TableRow >
@@ -127,6 +122,7 @@ function MyDevice({t}){
                                         </TableBody>
                                     </Table>
                                                </TableContainer>
+                                              </Paper>
                               )}
                     else return null}
                 }
