@@ -50,8 +50,8 @@ const useStyles = makeStyles(theme => ({
     },
    
     container: {
-        maxWidth:"100%",
-    maxHeight: "70%",
+        width:"100%",
+    height: "100%",
   },
 }));
 
@@ -79,7 +79,7 @@ function MyDevice({t}){
     history.goBack();
 };
     return (
-        <div>
+        <div className={classes.container}>
             <UserMenu/>
             <main style={{ flexGrow: 1, height: '100%',width:"100%", overflow: 'auto'}}>
 
