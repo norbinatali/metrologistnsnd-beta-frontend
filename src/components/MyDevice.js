@@ -81,16 +81,16 @@ function MyDevice({t}){
     return (
         <div>
             <UserMenu/>
-            <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
+            <main style={{ flexGrow: 1, height: '100%',width:"100%", overflow: 'auto'}}>
 
         <div  className={classes.root}>
-            <Grid container spacing={1}>
+            
               
-             <Grid item lg={4} md={6} xl={3}  xs={12}  >
+             
            <MyDeviceForm/>
                        
-                </Grid>
-            </Grid>
+                
+            
         </div>
             </main>
         </div>
