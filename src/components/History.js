@@ -64,6 +64,12 @@ const useStyles = makeStyles(theme => ({
                            <Divider />
                            <CardContent className={classes.content}>
                                <List>
+                                <ListItem>
+                                       <ListItemText  primary={""} secondary={'What is "Metrologist"'}   />
+                                       <IconButton  edge="end"  size="small" onClick={()=> history.push('/what-is-metrologist')} >
+                                           <ArrowRightIcon />
+                                       </IconButton>
+                                   </ListItem>
                                        <ListItem>
                                            <ListItemText  primary={""} secondary={"What is Metrology?"}   />
                                            <IconButton  edge="end" size="small" onClick={()=> history.push('/what-is-metrology')}  >
@@ -76,12 +82,7 @@ const useStyles = makeStyles(theme => ({
                                            <ArrowRightIcon />
                                        </IconButton>
                                    </ListItem>
-                                   <ListItem>
-                                       <ListItemText  primary={""} secondary={""}   />
-                                       <IconButton  edge="end"  size="small" onClick={()=> history.push('/history-metrology')} >
-                                           <ArrowRightIcon />
-                                       </IconButton>
-                                   </ListItem>
+                                  
                                </List>
                            </CardContent>
                            <Divider />
