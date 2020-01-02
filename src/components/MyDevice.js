@@ -41,7 +41,7 @@ const StyledTableCell = withStyles(theme => ({
 
 const useStyles = makeStyles(theme => ({
     root: {
-        width:"100%",
+        width:"70%",
         maxWidth:"100%",
          marginRight:"auto",
         marginLeft:"auto",
