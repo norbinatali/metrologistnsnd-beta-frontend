@@ -87,7 +87,7 @@ function MyDeviceForm({t,className, rest}) {
                         const devicelist = data.me.mydevices;
                        if(authToken){           
                            return(
-                <Paper >
+                <Paper className={classes.root} >
                             <TableContainer>
                     <Table stickyHeader>
                         <TableHead  >
