@@ -20,6 +20,7 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import history from '../history';
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
+import TableContainer from '@material-ui/core/TableContainer';
 import DeleteIcon from "@material-ui/icons/Delete"
 const authToken = localStorage.getItem(AUTH_TOKEN);
 
@@ -37,13 +38,13 @@ const StyledTableCell = withStyles(theme => ({
 const useStyles = makeStyles(theme => ({
     root: {
         width: '90%',
-        overflowX: 'auto',
+        overflow: 'auto',
         marginRight:"auto",
         marginLeft:"auto",
         height:"100%"
     },
     table: {
-maxWidth:"100%",
+maxWidth:"60%",
         maxHeight:"500px",
 
         color:"#fff"
@@ -53,7 +54,10 @@ maxWidth:"100%",
     },
     row:{
         backgroundColor:"#fff"
-    }
+    },
+    container: {
+    maxHeight: 70%,
+  },
 }));
 
 
@@ -100,8 +104,8 @@ function MyDevice({t}){
 
                    if(authToken){
                         return(
-                            <Paper className={classes.table} >
-                                    <Table stickyHeader aria-label="sticky table">
+                             <TableContainer className={classes.container}>
+                                    <Table stickyHeader aria-label="sticky table" className={classes.table}>
                                         <TableHead >
                                             <TableRow >
                                                  <StyledTableCell align="right">{t('Device')}</StyledTableCell>
@@ -126,6 +130,7 @@ function MyDevice({t}){
                                                         </TableRow> ))}
                                         </TableBody>
                                     </Table>
+                                               </TableContainer>
                                </Paper>)}
                     else return null}
                 }
