@@ -131,7 +131,7 @@ function MyDevice({t}){
                                         </TableBody>
                                     </Table>
                                                </TableContainer>
-                               </Paper>)}
+                              )}
                     else return null}
                 }
             </Query>
