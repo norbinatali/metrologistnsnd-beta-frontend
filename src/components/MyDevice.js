@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
         backgroundColor:"#fff"
     },
     container: {
-        maxWidth:"30%"
+        maxWidth:"30%",
     maxHeight: "70%",
   },
 }));
