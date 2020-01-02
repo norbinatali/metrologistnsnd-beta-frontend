@@ -37,17 +37,12 @@ const StyledTableCell = withStyles(theme => ({
 
 const useStyles = makeStyles(theme => ({
     root: {
-        width: '90%',
-        overflow: 'auto',
+              overflow: 'auto',
         marginRight:"auto",
         marginLeft:"auto",
-        height:"100%"
-    },
+           },
     table: {
-maxWidth:"60%",
-        maxHeight:"500px",
-
-        color:"#fff"
+             color:"#fff"
     },
     inner:{
         minWidth: "100%"
