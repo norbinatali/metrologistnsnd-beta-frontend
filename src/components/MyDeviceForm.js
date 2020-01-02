@@ -77,7 +77,7 @@ function MyDeviceForm({t,className, rest}) {
     };
  
     return(  
-                   <div className={classes.content}>
+                   <div className={classes.root}>
                      
                 <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={500} >
                     {( {loading, error, data} ) =>  {
