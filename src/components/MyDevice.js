@@ -37,9 +37,10 @@ const drawerWidth = 240;
 const authToken = localStorage.getItem(AUTH_TOKEN)
 const useStyles = makeStyles(theme => ({
     root: {
-                padding: theme.spacing(3),
-        margin: 'auto',
-         overflow: 'auto'
+           overflow: 'auto',
+        marginRight:"auto",
+        marginLeft:"auto",
+        height:"100%"
 
     },
     row: {
@@ -85,6 +86,12 @@ const useStyles = makeStyles(theme => ({
     },
     content: {
         margin: '40px 16px',
+    },
+  table:{
+        maxWidth:"100%",
+        maxHeight:"500px",
+
+        color:"#fff"
     }
 
 }));
@@ -93,11 +100,11 @@ const StyledTableCell = withStyles(theme => ({
     head: {
         backgroundColor: theme.palette.common.black,
         color: theme.palette.common.white,
-        width:'20px'
+       
     },
     body: {
         fontSize: 12,
-        width:'20px'
+       
     },
 }))(TableCell);
 const GET_MyDevice = gql`query { me{mydevices{type_device, brand_device, module_device, notes,  verification_device, calibration next_calibration} }}`;
