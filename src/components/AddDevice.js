@@ -38,6 +38,7 @@ const useStylesReddit = makeStyles(theme => ({
     root: {
         border: '1px solid #e2e2e1',
         overflow: 'hidden',
+        width:"10%"
         borderRadius: 4,
         backgroundColor: '#fcfcfb',
         transition: theme.transitions.create(['border-color', 'box-shadow']),
@@ -148,6 +149,7 @@ function AddDevice ({t,props}) {
                 <RedditTextField
                     type="text"
                     fullWidth
+                    multiline
                     rows="5"
                     value={notes}
                     onChange={e => {
