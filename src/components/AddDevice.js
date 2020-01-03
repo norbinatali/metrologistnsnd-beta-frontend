@@ -28,9 +28,10 @@ import {
 const authToken = localStorage.getItem(AUTH_TOKEN)
 const useStyles = makeStyles(theme => ({
     root: {
-        width: '70%',
+        width: '100%',
       marginRight:"auto",
-        marginLeft:"auto"
+        marginLeft:"auto",
+        marginTop:"20%",
     },
 
 }));
