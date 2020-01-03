@@ -77,6 +77,9 @@ const CREATE_MYDEVICE =gql `mutation($brand_device:String!, $type_device:String!
 function AddDevice ({t,props}) {
     const { enqueueSnackbar } = useSnackbar();
     const classes = useStyles();
+
+const {  ...rest } = props;
+
   const [brand_device, setStateBrand_device]=useState("");
     const [type_device, setStateType_device]=useState("");
     const [module_device, setStateModule_device]=useState("");
