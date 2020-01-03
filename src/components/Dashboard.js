@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
             <div className={classes.root}>
             
 <div >
-<Typography  align={"justify"}  >
+<Typography  align={"justify"} style={{color:"rgba(0,1,47,0.84)"}} >
     <p>{t('About Metrologist')}<br/></p>
     <p>{t('Why Metrologist is needed')}<br/></p>
     <p>{t('Metrologist test')} <br/></p>
