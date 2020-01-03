@@ -48,7 +48,7 @@ const useStylesReddit = makeStyles(theme => ({
         overflow: 'hidden',
         borderRadius: 4,
         backgroundColor: 'transparent',
-        color:"#fff",
+       
         transition: theme.transitions.create(['border-color', 'box-shadow']),
         '&:hover': {
             backgroundColor: 'transparent',
@@ -72,7 +72,7 @@ const useStyles = makeStyles(theme => ({
         flexWrap: 'wrap',
     },
     margin: {
-        color:"#fff"
+        
     },
 }));
   const HELLO_QUERY = gql`mutation ($email:String!, $password:String!) { login(email:$email , password: $password){token,user{id, posts{id, title}}}}`;
@@ -126,8 +126,8 @@ function LoginForm({t},props){
 
                 return(
         <FormControl >
-            <h3 style={{color:"#fff", marginTop:"50%"}}>{t("Login in")}</h3> <br/>
-            <label style={{color:"#fff"}} htmlFor="email">{t('Email')} </label>
+            <h3 style={{ marginTop:"50%"}}>{t("Login in")}</h3> <br/>
+            <label style={{}} htmlFor="email">{t('Email')} </label>
             <RedditTextField
                             type="text"
                             name={"email"}
@@ -158,7 +158,7 @@ function LoginForm({t},props){
                                 ));
                             }}
                         />
-                        < label style={{color:"#fff"}} htmlFor="password">{t('Password')} </label>
+                        < label style={{}} htmlFor="password">{t('Password')} </label>
                         <RedditTextField
                             type="password"
                             size="medium"
@@ -192,9 +192,9 @@ function LoginForm({t},props){
                         /><br/>
                         <RaisedButton disabled={!formState.isValid} onClick={mutation}>{t('Submit')}
                         </RaisedButton>
-            <Typography style={{color:"#fff"}} variant="body1" >
+            <Typography style={{}} variant="body1" >
                 {t('Dont have an account?')}{' '}
-                <Link component={RouterLink} to="/signup" variant="h8" style={{color:"#fff"}}  >
+                <Link component={RouterLink} to="/signup" variant="h8" style={{}}  >
                     {t('Sign up')}
                 </Link>
             </Typography>
