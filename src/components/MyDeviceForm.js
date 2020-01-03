@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
 maxWidth:"100%",
         maxHeight:"300px",
 
-        color:"#fff"
+        color:"rgba(0,1,47,0.84)"
     },
     inner:{
         minWidth: "60%"
