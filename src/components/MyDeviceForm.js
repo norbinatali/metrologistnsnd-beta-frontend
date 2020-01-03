@@ -118,20 +118,20 @@ function MyDeviceForm({t,className, rest}) {
                     <Table stickyHeader>
                         <TableHead  >
                             <TableRow >
-                                <StyledTableCell align="right">{t('Device')}</StyledTableCell>
-                                <StyledTableCell align="right">{t('Category')}</StyledTableCell>
-                                <StyledTableCell align="right">{t('Module')}</StyledTableCell>
-                                <StyledTableCell align="right">{t('More')} </StyledTableCell>
+                                <StyledTableCell align="center">{t('Device')}</StyledTableCell>
+                                <StyledTableCell align="center">{t('Category')}</StyledTableCell>
+                                <StyledTableCell align="center">{t('Module')}</StyledTableCell>
+                                <StyledTableCell align="center">{t('More')} </StyledTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
 
                             {devicelist.map(device =>(
                                 <TableRow>
-                                    <TableCell lign="center">{device.brand_device}</TableCell>
-                                    <TableCell lign="center">{device.type_device}</TableCell>
-                                    <TableCell lign="center">{device.module_device}</TableCell>
-                                    <TableCell lign="center"><IconButton variant="outlined" color="primary" onClick={handleClickOpen}>
+                                    <TableCell align="center">{device.brand_device}</TableCell>
+                                    <TableCell align="center">{device.type_device}</TableCell>
+                                    <TableCell align="center">{device.module_device}</TableCell>
+                                    <TableCell align="center"><IconButton variant="outlined" color="primary" onClick={handleClickOpen}>
                 <MoreHorizIcon className={classes.block}  />
             </IconButton>  <Dialog open={open} onClose={handleClose} PaperComponent={PaperComponent} aria-labelledby="draggable-dialog-title">
                                                                 <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
@@ -148,10 +148,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <Button autoFocus onClick={handleClose} color="primary">
                                                                      {t('Cancel')}
                                                                     </Button>
-                                                                    <Button onClick={handleClose} color="primary">
-                                                                     {t('Edit')}
-                                                                    </Button>
-                                                                </DialogActions>
+                                                                       </DialogActions>
                                                             </Dialog></TableCell>
                                 </TableRow>))}
                         </TableBody>
