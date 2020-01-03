@@ -72,7 +72,7 @@ const useStyles = makeStyles(theme => ({
         flexWrap: 'wrap',
     },
     margin: {
-        
+        color:"rgba(0,1,47,0.84)"
     },
 }));
   const HELLO_QUERY = gql`mutation ($email:String!, $password:String!) { login(email:$email , password: $password){token,user{id, posts{id, title}}}}`;
@@ -126,8 +126,8 @@ function LoginForm({t},props){
 
                 return(
         <FormControl >
-            <h3 style={{ marginTop:"50%"}}>{t("Login in")}</h3> <br/>
-            <label style={{}} htmlFor="email">{t('Email')} </label>
+            <h3 style={{color:"rgba(0,1,47,0.84)", marginTop:"50%"}}>{t("Login in")}</h3> <br/>
+            <label style={{color:"rgba(0,1,47,0.84)"}} htmlFor="email">{t('Email')} </label>
             <RedditTextField
                             type="text"
                             name={"email"}
@@ -158,7 +158,7 @@ function LoginForm({t},props){
                                 ));
                             }}
                         />
-                        < label style={{}} htmlFor="password">{t('Password')} </label>
+                        < label style={{color:"rgba(0,1,47,0.84)"}} htmlFor="password">{t('Password')} </label>
                         <RedditTextField
                             type="password"
                             size="medium"
@@ -192,9 +192,9 @@ function LoginForm({t},props){
                         /><br/>
                         <RaisedButton disabled={!formState.isValid} onClick={mutation}>{t('Submit')}
                         </RaisedButton>
-            <Typography style={{}} variant="body1" >
+            <Typography style={{color:"rgba(0,1,47,0.84)"}} variant="body1" >
                 {t('Dont have an account?')}{' '}
-                <Link component={RouterLink} to="/signup" variant="h8" style={{}}  >
+                <Link component={RouterLink} to="/signup" variant="h8" style={{color:"rgba(0,1,47,0.84)"}}  >
                     {t('Sign up')}
                 </Link>
             </Typography>
