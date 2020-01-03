@@ -34,12 +34,12 @@ export default class ConfirmResetPassword extends Component {
 
         return(
             <div>
-                <Paper style={{backgroundColor:"white"}}>
+                <Paper >
                     <label  htmlFor="password">Password </label>
                     <TextField type="text" value={this.state.password} onChange={e => {this.setState({ password: e.target.value })}}/>
                     <Mutation mutation={RESET_PASSWORD}  variables={{email, resetToken, password } } onCompleted={() => this._confirm()}>
                         {mutation => (
-                            <Button onClick={mutation}>Submit</Button>)}
+                            <Button style={{color:"rgba(0,1,47,0.84)"}} onClick={mutation}>Submit</Button>)}
                     </Mutation>
 
                 </Paper>
