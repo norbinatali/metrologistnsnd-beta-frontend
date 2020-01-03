@@ -44,12 +44,12 @@ class CheckYourEmail extends Component{
 
                         <Grid item lg={4} md={6} xl={4} xs={12}>
                                 <IconButton onClick={this.handleBack}>
-                                    <ArrowBackIcon style={{color:"white"}} />
+                                    <ArrowBackIcon style={{color:"rgba(0,1,47,0.84)"}} />
                                 </IconButton>
                         </Grid>
                         <Grid item lg={4} md={6} xl={4} xs={12} >
                     <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center'}}>
-                        <Typography>{t('Please Check your email to confirm')}</Typography>
+                        <Typography style={{color:"rgba(0,1,47,0.84)"}}>{t('Please Check your email to confirm')}</Typography>
 
                     </FormControl>
                         </Grid>
