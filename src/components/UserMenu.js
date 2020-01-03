@@ -44,7 +44,8 @@ import ContactUS from "../components/ContactUS";
 import { GC_USER_ID } from '../constants'
 import Auth from '../components/Auth';
 import StandardListGrid from "../components/StandardListGrid";
-
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
 const drawerWidth = 240;
 
@@ -191,6 +192,12 @@ const useStyles = makeStyles(theme => ({
     const [value, setValue] = React.useState(0);
     const [valueLang, setValueLang] = React.useState(''
     );
+     const [lang, setLang] = React.useState('en');
+ const handleChangeLang = event => {
+i18n.changeLanguage(event.target.value);
+    
+
+  };
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -257,9 +264,10 @@ const useStyles = makeStyles(theme => ({
             <Drawer classes={{paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),}} open={open}>
                 <div className={classes.toolbarIcon}>
                     
-                        <button style={{backgroundColor:"#fff",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
-                        <button style={{backgroundColor:"#fff",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
-                    
+                       <Select labelId="demo-simple-select-autowidth-label" id="demo-simple-select-autowidth" value={lang} style={{backgroundColor:"transparent"}} onChange={handleChangeLang} autoWidth>
+   <MenuItem value={'ua'} style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} ><img src={FlagUA}/></MenuItem>
+   <MenuItem value={'en'} style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} ><img src={FlagUS}/></MenuItem>
+                  </Select>  
                     <IconButton onClick={handleDrawerClose} >
                         <ChevronLeftIcon />
                     </IconButton>
