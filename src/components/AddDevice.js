@@ -104,7 +104,7 @@ function AddDevice ({t,props}) {
                 <Grid container style={{ height: '100%'}} >
                     <Grid item >
                          <IconButton onClick={handleBack}>
-                                <ArrowBackIcon style={{color:"rgba(0,1,47,0.84)"}}}} />
+                                <ArrowBackIcon style={{color:"rgba(0,1,47,0.84)"}} />
                             </IconButton>
                     </Grid>
                     <Grid item lg={10} xs={12}>
