@@ -59,7 +59,7 @@ function RedditTextField(props) {
 }
 const GET_MyDevice = gql`query { me{mydevices{type_device, brand_device, module_device, verification_device calibration next_calibration} }}`;
 
-const CREATE_MYDEVICE =gql `mutation($brand_device:String!, $type_device:String!, $module_device:String!,$notes:String, $verification_device:String, $calibration:Date, $next_calibration:Date){createNewMyDevice(module_device:$module_device, brand_device:$brand_device,type_device: $type_device, notes:$notes, verification_device:$verification_device, calibration:$calibration,next_calibration:$next_calibration){
+const CREATE_MYDEVICE =gql `mutation($brand_device:String!, $type_device:String!, $module_device:String!,$notes:String, $verification_device:String, $calibration:String, $next_calibration:String){createNewMyDevice(module_device:$module_device, brand_device:$brand_device,type_device: $type_device, notes:$notes, verification_device:$verification_device, calibration:$calibration,next_calibration:$next_calibration){
     brand_device
     type_device
     module_device
@@ -88,11 +88,11 @@ function AddDevice ({t,props}) {
       
         localStorage.setItem(CREATE_MY_DEVICE, token)
     };
-    const handleDateCalibration = date => {
-        setStateCalibration(date);
+    const handleDateCalibration = e => {
+        setStateCalibration(e.target.value);
     };
-    const handleDateNext_Calibration = date => {
-        setStateNext_calibration(date);
+    const handleDateNext_Calibration = e => {
+        setStateNext_calibration(e.target.value);
     };
     return(
         <div>
@@ -166,9 +166,9 @@ function AddDevice ({t,props}) {
  <TextField id="date"
     label={t('Calibration')}
     type="date"
-style={{color:"rgba(0,1,47,0.84)"}}
+   style={{color:"rgba(0,1,47,0.84)"}}
     defaultValue="12-06-2019"
-value={calibration}
+    value={calibration}
     className={classes.textField}
     InputLabelProps={{
       shrink: true,
