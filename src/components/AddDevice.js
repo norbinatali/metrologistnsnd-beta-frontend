@@ -62,6 +62,7 @@ const CREATE_MYDEVICE =gql `mutation($brand_device:String!, $type_device:String!
     brand_device
     type_device
     module_device
+   verification_device
     calibration
     next_calibration
 }}`;
