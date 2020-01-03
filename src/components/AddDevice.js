@@ -103,13 +103,18 @@ function AddDevice ({t,props}) {
         <div className={classes.root}>
             <MuiThemeProvider>
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        
                 <Grid container style={{ height: '100%'}} >
                     <Grid item >
                          <IconButton onClick={handleBack}>
                                 <ArrowBackIcon style={{color:"rgba(0,1,47,0.84)"}} />
                             </IconButton>
                     </Grid>
-                    <Grid item lg={10} xs={12}>
+                     <Grid item lg={4} md={6} xl={4} xs={12}>
+                                <Card{...rest} >
+              <CardHeader subheader={t("fill the information")} title={t("Add Device")}/>
+              <Divider />
+          
                      <Mutation mutation={CREATE_MYDEVICE}  variables={{ brand_device, type_device,module_device, calibration, next_calibration} } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
                             {( addmydevice,{loading, error, event}) => {
                                  
@@ -117,15 +122,20 @@ function AddDevice ({t,props}) {
                                 if (error) {return (error.message)}
                                     if (authToken){
                                 return(
-                        <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
-
+                                     
+                        <FormControl autoComplete="off" noValidate style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
+  <CardContent>
+                    <Grid container spacing={3}>
+                        <Grid item md={6} xs={12}>
 
                 <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Brand')}</label>
                 <RedditTextField type="text" fullWidth value={brand_device}  onChange={e => {
                     setStateBrand_device(e.target.value);
                 }}
                            required/>
-
+ </Grid>
+                       
+                        <Grid item md={6} xs={12}>
                 <label  htmlFor="type" style={{color:"rgba(0,1,47,0.84)"}}>{t('Type')}</label>
                 <RedditTextField
                     type="text"
@@ -135,7 +145,9 @@ function AddDevice ({t,props}) {
                         setStateType_device(e.target.value);
                     }}  required
                 />
-
+ </Grid>
+                       
+                        <Grid item md={6} xs={12}>
                 <label  htmlFor="module" style={{color:"rgba(0,1,47,0.84)"}}>{t('Module')}</label>
                 <RedditTextField
                     type="text"
@@ -145,6 +157,9 @@ function AddDevice ({t,props}) {
                         setStateModule_device(e.target.value);
                     }} required
                 />
+                         </Grid>
+                       
+                        <Grid item md={6} xs={12}>
                <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Notes')}</label>
                 <RedditTextField
                     type="text"
@@ -156,6 +171,9 @@ function AddDevice ({t,props}) {
                         setStateNotes(e.target.value);
                     }}
                 />
+ </Grid>
+                       
+                        <Grid item md={6} xs={12}>
                 <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Verification')}</label>
                 <RedditTextField
                     type="text" placeholder="Yes/No"
@@ -165,7 +183,12 @@ function AddDevice ({t,props}) {
                         setStateVerification_device(e.target.value);
                     }}
                 /><br/>
+                      <Divider />
+                     </Grid>
+                       
+                        <Grid item md={6} xs={12}>
                 <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Calibration')}</label>
+              <Divider />
  <TextField id="date"
     label={t('Calibration')}
     type="date"
@@ -178,6 +201,8 @@ function AddDevice ({t,props}) {
     }}
     onChange={handleDateCalibration}
   />
+         </Grid>        
+                        <Grid item md={6} xs={12}>
 <TextField
     id="date"
     label={t('Next Calibration')}
@@ -191,11 +216,17 @@ function AddDevice ({t,props}) {
     }}
      onChange={handleDateNext_Calibration}
   /><br/>
-
+</Grid>
+                         </Grid>
+                </CardContent>
+                <Divider />
+                <CardActions>
                 <RaisedButton onClick={addmydevice} style={{color:"rgba(0,1,47,0.84)"}}>{t('Add')}</RaisedButton>
+         </CardActions>
+       
             </FormControl>)}}}
                                                                                                                 
-                        </Mutation> 
+                        </Mutation> </Card>
                     </Grid>
                 </Grid>
                 </MuiPickersUtilsProvider>
