@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     const classes = useStyles();
 return(
     <div className={classes.root}>
-                <Paper style={{backgroundColor:"white"}}>
+                <Paper>
                     <Typography variant="h5" component="h3">
                         {t('Terminology')}<br/></Typography>
                     <Typography>
