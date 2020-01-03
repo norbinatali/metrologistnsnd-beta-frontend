@@ -17,6 +17,11 @@ import {AUTH_TOKEN, CREATE_MY_DEVICE, GC_USER_ID} from "../constants";
 import {fade} from "@material-ui/core/styles";
 import LinearDeterminate from "./LinearDeterminate";
 import UserMenu from "./UserMenu";
+import CardHeader from "@material-ui/core/CardHeader";
+import Divider from "@material-ui/core/Divider";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
 import { SnackbarProvider, useSnackbar } from 'notistack';
 import {
     MuiPickersUtilsProvider,
@@ -56,7 +61,7 @@ const useStylesReddit = makeStyles(theme => ({
 }));
 function RedditTextField(props) {
     const classes = useStylesReddit();
-
+const {  ...rest } = props;
     return <TextField InputProps={{ classes, disableUnderline: true }} {...props} />;
 }
 const GET_MyDevice = gql`query { me{mydevices{type_device, brand_device, module_device, verification_device calibration next_calibration} }}`;
