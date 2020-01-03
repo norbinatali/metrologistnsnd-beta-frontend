@@ -38,7 +38,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
 import Dialog from "@material-ui/core/Dialog";
 import Draggable from 'react-draggable';
-import MoreHorizOutlinedIcon from '@material-ui/icons/MoreHorizOutlinedIcon';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
 const drawerWidth = 240;
  const userId = localStorage.getItem(GC_USER_ID);
@@ -133,7 +133,7 @@ function MyDeviceForm({t,className, rest}) {
                                     <TableCell lign="center">{device.type_device}</TableCell>
                                     <TableCell lign="center">{device.module_device}</TableCell>
                                     <TableCell lign="center"><IconButton variant="outlined" color="primary" onClick={handleClickOpen}>
-                <MoreHorizOutlinedIcon className={classes.block}  />
+                <MoreHorizIcon className={classes.block}  />
                  <Dialog open={open} onClose={handleClose} PaperComponent={PaperComponent} aria-labelledby="draggable-dialog-title">
                                                                 <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
                                                                    More information
