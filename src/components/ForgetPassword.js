@@ -29,7 +29,7 @@ export default class ForgetPassword extends Component {
         const { email} = this.state;
         return(
             <div>
-                <Paper style={{backgroundColor:"white"}}>
+                <Paper>
                 <label  htmlFor="email">Email </label>
                 <TextField type="text" value={this.state.email} onChange={e => {this.setState({ email: e.target.value })}}/>
                 <Mutation mutation={FORGET_PASSWORD}  variables={{ email } } onCompleted={() => this._confirm()}>
