@@ -38,7 +38,7 @@ const useStylesReddit = makeStyles(theme => ({
     root: {
         border: '1px solid #e2e2e1',
         overflow: 'hidden',
-        width:"10%"
+        width:"10%",
         borderRadius: 4,
         backgroundColor: '#fcfcfb',
         transition: theme.transitions.create(['border-color', 'box-shadow']),
