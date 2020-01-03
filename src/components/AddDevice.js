@@ -102,7 +102,7 @@ function AddDevice ({t,props}) {
                 <Grid container style={{ height: '100%'}} >
                     <Grid item >
                          <IconButton onClick={handleBack}>
-                                <ArrowBackIcon style={{color:"white"}} />
+                                <ArrowBackIcon style={{}} />
                             </IconButton>
                     </Grid>
                     <Grid item lg={10} xs={12}>
@@ -116,13 +116,13 @@ function AddDevice ({t,props}) {
                         <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
 
 
-                <label  htmlFor="brand" style={{color:"#fff"}}>{t('Brand')}</label>
+                <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Brand')}</label>
                 <RedditTextField type="text" fullWidth value={brand_device}  onChange={e => {
                     setStateBrand_device(e.target.value);
                 }}
                            required/>
 
-                <label  htmlFor="type" style={{color:"#fff"}}>{t('Type')}</label>
+                <label  htmlFor="type" style={{color:"rgba(0,1,47,0.84)"}}>{t('Type')}</label>
                 <RedditTextField
                     type="text"
                     fullWidth
@@ -132,7 +132,7 @@ function AddDevice ({t,props}) {
                     }}  required
                 />
 
-                <label  htmlFor="module" style={{color:"#fff"}}>{t('Module')}</label>
+                <label  htmlFor="module" style={{color:"rgba(0,1,47,0.84)"}}>{t('Module')}</label>
                 <RedditTextField
                     type="text"
                     fullWidth
@@ -141,7 +141,7 @@ function AddDevice ({t,props}) {
                         setStateModule_device(e.target.value);
                     }} required
                 />
-               <label  htmlFor="notes" style={{color:"#fff"}}>{t('Notes')}</label>
+               <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Notes')}</label>
                 <RedditTextField
                     type="text"
                     fullWidth
@@ -151,7 +151,7 @@ function AddDevice ({t,props}) {
                         setStateNotes(e.target.value);
                     }}
                 />
-                <label  htmlFor="notes" style={{color:"#fff"}}>{t('Verification')}</label>
+                <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Verification')}</label>
                 <RedditTextField
                     type="text" placeholder="Yes/No"
                     fullWidth
@@ -160,12 +160,12 @@ function AddDevice ({t,props}) {
                         setStateVerification_device(e.target.value);
                     }}
                 />
-                <label  htmlFor="calibration" style={{color:"#fff"}}>{t('Calibration')}</label>
+                <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Calibration')}</label>
  <TextField
     id="date"
     label={t('Calibration')}
     type="date"
-style={{color:"#fff"}}
+style={{color:"rgba(0,1,47,0.84)"}}
     defaultValue="12-06-2019"
 value={calibration}
     className={classes.textField}
@@ -178,7 +178,7 @@ value={calibration}
     id="date"
     label={t('Next Calibration')}
     type="date"
-    style={{color:"#fff"}}
+    style={{color:"rgba(0,1,47,0.84)"}}
     value={next_calibration}
     defaultValue="12-06-2020"
     className={classes.textField}
@@ -188,7 +188,7 @@ value={calibration}
      onChange={handleDateNext_Calibration}
   /><br/>
 
-                <RaisedButton onClick={addmydevice} style={{backgroundColor:"rgba(0,1,47,0.84)", color:"white"}}>{t('Add')}</RaisedButton>
+                <RaisedButton onClick={addmydevice} style={{color:"rgba(0,1,47,0.84)"}}>{t('Add')}</RaisedButton>
             </FormControl>)}}}
                                                                                                                 
                         </Mutation>
