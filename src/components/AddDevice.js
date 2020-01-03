@@ -17,6 +17,7 @@ import {AUTH_TOKEN, CREATE_MY_DEVICE, GC_USER_ID} from "../constants";
 import {fade} from "@material-ui/core/styles";
 import LinearDeterminate from "./LinearDeterminate";
 import UserMenu from "./UserMenu";
+import { SnackbarProvider, useSnackbar } from 'notistack';
 import {
     MuiPickersUtilsProvider,
     KeyboardTimePicker,
@@ -67,6 +68,7 @@ const CREATE_MYDEVICE =gql `mutation($brand_device:String!, $type_device:String!
     next_calibration
 }}`;
 function AddDevice ({t,props}) {
+    const { enqueueSnackbar } = useSnackbar();
     const classes = useStyles();
   const [brand_device, setStateBrand_device]=useState("");
     const [type_device, setStateType_device]=useState("");
@@ -102,11 +104,11 @@ function AddDevice ({t,props}) {
                 <Grid container style={{ height: '100%'}} >
                     <Grid item >
                          <IconButton onClick={handleBack}>
-                                <ArrowBackIcon style={{}} />
+                                <ArrowBackIcon style={{color:"rgba(0,1,47,0.84)"}}}} />
                             </IconButton>
                     </Grid>
                     <Grid item lg={10} xs={12}>
-                     <Mutation mutation={CREATE_MYDEVICE}  variables={{ brand_device, type_device,module_device, calibration, next_calibration} } onCompleted={(data) => confirm(data)}>
+                     <Mutation mutation={CREATE_MYDEVICE}  variables={{ brand_device, type_device,module_device, calibration, next_calibration} } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
                             {( addmydevice,{loading, error, event}) => {
                                  
                                 if (loading) { return (<LinearDeterminate /> )}
@@ -159,10 +161,9 @@ function AddDevice ({t,props}) {
                     onChange={e => {
                         setStateVerification_device(e.target.value);
                     }}
-                />
+                /><br/>
                 <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Calibration')}</label>
- <TextField
-    id="date"
+ <TextField id="date"
     label={t('Calibration')}
     type="date"
 style={{color:"rgba(0,1,47,0.84)"}}
@@ -174,7 +175,7 @@ value={calibration}
     }}
     onChange={handleDateCalibration}
   />
-                           <TextField
+<TextField
     id="date"
     label={t('Next Calibration')}
     type="date"
@@ -191,7 +192,7 @@ value={calibration}
                 <RaisedButton onClick={addmydevice} style={{color:"rgba(0,1,47,0.84)"}}>{t('Add')}</RaisedButton>
             </FormControl>)}}}
                                                                                                                 
-                        </Mutation>
+                        </Mutation> 
                     </Grid>
                 </Grid>
                 </MuiPickersUtilsProvider>
