@@ -28,7 +28,7 @@ import i18n from "../menu/translations/i18n";
 const StyledTableCell = withStyles(theme => ({
     head: {
         backgroundColor: theme.palette.common.black,
-        color: theme.palette.common.white,
+        color:"rgba(0,1,47,0.84)",
     },
     body: {
         fontSize: 14,
