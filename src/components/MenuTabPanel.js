@@ -186,7 +186,7 @@ i18n.changeLanguage(event.target.value);
                     </div>
                 </TabPanel>
                 <TabPanel value={value} index={2} dir={theme.direction} className={classes.panel}>
-                  <div style={{marginRight:"auto", marginLeft:"auto", marginTop:"30%"}}>
+                  <div style={{marginRight:"auto", marginLeft:"auto", marginTop:"5%"}}>
                         <ContactUS />
 
                     </div>
