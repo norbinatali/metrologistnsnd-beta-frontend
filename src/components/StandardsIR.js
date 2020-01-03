@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
 maxWidth:"100%",
         maxHeight:"500px",
 
-        color:"#fff"
+        color:"rgba(0,1,47,0.84)"
     },
     inner:{
         minWidth: "100%"
@@ -85,7 +85,7 @@ function StandardsIR({t}){
             <Grid container spacing={1}>
                 <Grid item >
                     <IconButton onClick={handleBack}>
-                        <ArrowBackIcon style={{color:"white", marginTop:"5%", marginRight:"auto"}} />
+                        <ArrowBackIcon style={{color:"rgba(0,1,47,0.84)", marginTop:"5%", marginRight:"auto"}} />
                     </IconButton>
                 </Grid>
                 <Grid item xs={12}>
