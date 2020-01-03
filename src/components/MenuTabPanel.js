@@ -123,7 +123,7 @@ function MenuTabPanel({t}) {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-const [lang, setLang] = React.useState('');
+const [lang, setLang] = React.useState('en');
  const handleChangeLang = event => {
     setLang(event.target.value);
   };
@@ -148,8 +148,8 @@ const [lang, setLang] = React.useState('');
   <Grid item spacing={6}>
                     <div style={{marginRight:"auto"}}>
   <Select labelId="demo-simple-select-autowidth-label" id="demo-simple-select-autowidth" value={lang} onChange={changeLanguage} autoWidth>
-   <MenuItem value="ua"><button style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button></MenuItem>
-   <MenuItem value="en"><button style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button></MenuItem>
+   <MenuItem style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></MenuItem>
+   <MenuItem style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></MenuItem>
                   </Select>  </div>
 </Grid>
 </Grid>
