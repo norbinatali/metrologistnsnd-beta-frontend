@@ -40,7 +40,7 @@ const useStylesReddit = makeStyles(theme => ({
         overflow: 'hidden',
         borderRadius: 4,
         backgroundColor: 'transparent',
-        color:"#fff",
+       color:"rgba(0,1,47,0.84)",
         transition: theme.transitions.create(['border-color', 'box-shadow']),
         '&:hover': {
             backgroundColor: 'transparent',
@@ -91,23 +91,23 @@ const [formState, setFormState] = useState({
             <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
             <FormControl  >
                 <MuiThemeProvider>
-                    <label style={{color:"#fff", marginTop:"50px"}} htmlFor="from">{t("Email")} </label>
+                    <label style={{color:"rgba(0,1,47,0.84)", marginTop:"80px"}} htmlFor="from">{t("Email")} </label>
                     <RedditTextField variant="outlined"  type="text"
                             name={"from"}
                         value={from} 
                             placeholder={"example@example.com"}
                                onChange={e => setFrom( e.target.value )   } required/>
-                    < label style={{color:"#fff"}} htmlFor="subject">{t("Subject")} </label>
+                    < label style={{color:"rgba(0,1,47,0.84)"}} htmlFor="subject">{t("Subject")} </label>
                     <RedditTextField variant="outlined"
                               type="text" value={subject} onChange={e => setSubject(e.target.value )} required
                     />
-                    <label style={{color:"#fff"}} htmlFor="text">{t("Text")} </label>
+                    <label style={{color:"rgba(0,1,47,0.84)"}} htmlFor="text">{t("Text")} </label>
                     <RedditTextField variant="outlined"
                                 id="outlined-multiline-static" multiline  rows="5" type="text"  margin="normal" variant="outlined" value={text}  onChange={e => setText( e.target.value )}
                     /><br/>
                     <Mutation mutation={LETTER_MUTATION}  variables={{ from,subject, text } }  onCompleted={() => confirm()  }>
                         {send => (
-                            <RaisedButton style={{marginBottom:"10%"}} onClick={send}>{t("Send")} </RaisedButton>)}
+                            <RaisedButton style={{marginBottom:"10%",color:"rgba(0,1,47,0.84)"}} onClick={send}>{t("Send")} </RaisedButton>)}
                     </Mutation>
 
 
