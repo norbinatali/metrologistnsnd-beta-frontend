@@ -87,13 +87,13 @@ const GET_MyDevice = gql`query { me{mydevices{type_device, brand_device, module_
 
 function MyDeviceForm({t,className, rest}) {
     const classes = useStyles();
-
+ const [open, setOpen] = React.useState(false);
     const [expanded, setExpanded] = React.useState(false);
     const [component, setComponent] = React.useState(' ');
     const handleChange = panel => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
-  const [open, setOpen] = React.useState(false);
+ 
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -136,21 +136,21 @@ function MyDeviceForm({t,className, rest}) {
                 <MoreHorizIcon className={classes.block}  />
                  <Dialog open={open} onClose={handleClose} PaperComponent={PaperComponent} aria-labelledby="draggable-dialog-title">
                                                                 <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
-                                                                   More information
+                                                                 {t('More information')}
                                                                 </DialogTitle>
                                                                 <DialogContent>
                                                                     <DialogContentText>
-                                                                       Calibration : {device.calibration}
-                                                                       Next Calibration : {device.next_calibration}
-                                                                       Verification: {device.verification_device}
+                                                                  {t('Calibration')} : {device.calibration}<br/>
+                                                                   {t('Next Calibration')} : {device.next_calibration} <br/>
+                                                                   {t('Verification')}: {device.verification_device}<br/>
                                                                     </DialogContentText>
                                                                 </DialogContent>
                                                                 <DialogActions>
                                                                     <Button autoFocus onClick={handleClose} color="primary">
-                                                                        Cancel
+                                                                     {t('Cancel')}
                                                                     </Button>
                                                                     <Button onClick={handleClose} color="primary">
-                                                                        Subscribe
+                                                                     {t('Edit')}
                                                                     </Button>
                                                                 </DialogActions>
                                                             </Dialog>
