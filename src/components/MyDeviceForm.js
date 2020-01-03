@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
         overflow: 'auto',
         marginRight:"auto",
         marginLeft:"auto",
-       
+       backgroundColor:"transparent",
     },
     table: {
 maxWidth:"100%",
@@ -62,7 +62,8 @@ maxWidth:"100%",
     },
     row:{
         backgroundColor:"#fff"
-    }
+    },
+  paper:{ backgroundColor:"transparent"},
 }));
   
 
