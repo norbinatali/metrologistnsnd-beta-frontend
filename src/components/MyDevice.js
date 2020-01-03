@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
         marginLeft:"auto",
            },
     table: {
-             color:"#fff"
+             color:"rgba(0,1,47,0.84)"
     },
    
     container: {
