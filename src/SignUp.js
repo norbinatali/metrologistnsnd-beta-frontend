@@ -42,7 +42,7 @@ class SignUp extends Component{
                     <Grid item>
                     <div style={{marginTop:"0px"}} >
                         <IconButton onClick={this.handleBack}>
-                            <ArrowBackIcon style={{color:"white"}} />
+                            <ArrowBackIcon style={{}} />
                         </IconButton>
                     </div>
                     </Grid>
