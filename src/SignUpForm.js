@@ -127,9 +127,9 @@ function SignUpForm({t},props){
 
                 return(
                     <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
-                        <h3 style={{}} >{t("Registration")}</h3><br/>
+                        <h3 style={{color:"rgba(0,1,47,0.84)"}} >{t("Registration")}</h3><br/>
 
-                        <label style={{}} htmlFor="email">{t("Email")} </label>
+                        <label style={{color:"rgba(0,1,47,0.84)"}} htmlFor="email">{t("Email")} </label>
                         <RedditTextField
                             type="text"
                             name={"email"}
@@ -161,7 +161,7 @@ function SignUpForm({t},props){
                             }}
                             required
                         />
-                        < label style={{}} htmlFor="password">{t("Password")} </label>
+                        < label style={{color:"rgba(0,1,47,0.84)"}} htmlFor="password">{t("Password")} </label>
                         <RedditTextField
                             type="password"
                             size="medium"
@@ -190,7 +190,7 @@ function SignUpForm({t},props){
 
                             }} required
                         />
-                        <label style={{}} htmlFor="name">{t("Name")} </label>
+                        <label style={{color:"rgba(0,1,47,0.84)"}} htmlFor="name">{t("Name")} </label>
                         <RedditTextField
                             type="name"
                             size="medium"
@@ -222,7 +222,7 @@ function SignUpForm({t},props){
                                 setStateName(e.target.value)
                             }}
                         />
-                        <label style={{}} htmlFor="companyName">{t("Company Name")} </label>
+                        <label style={{color:"rgba(0,1,47,0.84)"}} htmlFor="companyName">{t("Company Name")} </label>
                         <RedditTextField
                             type="companyName"
                             size="medium"
@@ -249,7 +249,7 @@ function SignUpForm({t},props){
 
                             }}
 
-                        /><label style={{}} htmlFor="country">{t("Country")} </label>
+                        /><label style={{color:"rgba(0,1,47,0.84)"}} htmlFor="country">{t("Country")} </label>
                         <RedditTextField
                             type="country"
                             size="medium"
@@ -277,7 +277,7 @@ function SignUpForm({t},props){
                             }}
 
                         /><br/>
-                                    <RaisedButton disabled={!formState.isValid}  onClick={signup}>{t("Submit")} </RaisedButton>
+                                    <RaisedButton disabled={!formState.isValid} style={{color:"rgba(0,1,47,0.84)"}} onClick={signup}>{t("Submit")} </RaisedButton>
 
                     </FormControl>
                 )}}
