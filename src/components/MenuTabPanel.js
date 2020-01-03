@@ -38,6 +38,8 @@ import FrontPic from "../menu/style/Screen Shot 2019-11-28 at 9.19.01 PM.png"
 import logo from "../menu/style/LogoMakr_6pZrzB.png"
 import FlagUA from "../menu/style/LogoMakr_1Xl0t4.png";
 import FlagUS from "../menu/style/LogoMakr_4V1dPm.png";
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
 const classes = makeStyles(theme => ({
     root: {
@@ -121,7 +123,10 @@ function MenuTabPanel({t}) {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
+const [lang, setLang] = React.useState('');
+ const handleChangeLang = event => {
+    setLang(event.target.value);
+  };
     const handleChangeIndex = index => {
         setValue(index);
     };
@@ -142,9 +147,10 @@ function MenuTabPanel({t}) {
 </Grid>
   <Grid item spacing={6}>
                     <div style={{marginRight:"auto"}}>
-                        <button style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button>
-                        <button style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button>
-                    </div>
+  <Select labelId="demo-simple-select-autowidth-label" id="demo-simple-select-autowidth" value={lang} onChange={changeLanguage} autoWidth>
+   <MenuItem value="ua"><button style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('ua')}><img src={FlagUA}/></button></MenuItem>
+   <MenuItem value="en"><button style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} onClick={() => changeLanguage('en')}><img src={FlagUS}/></button></MenuItem>
+                  </Select>  </div>
 </Grid>
 </Grid>
                 </Toolbar>
