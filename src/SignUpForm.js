@@ -46,7 +46,6 @@ const useStylesReddit = makeStyles(theme => ({
         overflow: 'hidden',
         borderRadius: 4,
         backgroundColor: 'transparent',
-        color:"#fff",
         transition: theme.transitions.create(['border-color', 'box-shadow']),
         '&:hover': {
             backgroundColor: 'transparent',
@@ -73,7 +72,7 @@ const useStyles = makeStyles(theme => ({
         flexWrap: 'wrap',
     },
     margin: {
-        color:"#fff"
+        
     },
 }));
 
@@ -128,9 +127,9 @@ function SignUpForm({t},props){
 
                 return(
                     <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
-                        <h3 style={{color:"#fff"}} >{t("Registration")}</h3><br/>
+                        <h3 style={{}} >{t("Registration")}</h3><br/>
 
-                        <label style={{color:"#fff"}} htmlFor="email">{t("Email")} </label>
+                        <label style={{}} htmlFor="email">{t("Email")} </label>
                         <RedditTextField
                             type="text"
                             name={"email"}
@@ -162,7 +161,7 @@ function SignUpForm({t},props){
                             }}
                             required
                         />
-                        < label style={{color:"#fff"}} htmlFor="password">{t("Password")} </label>
+                        < label style={{}} htmlFor="password">{t("Password")} </label>
                         <RedditTextField
                             type="password"
                             size="medium"
@@ -191,7 +190,7 @@ function SignUpForm({t},props){
 
                             }} required
                         />
-                        <label style={{color:"#fff"}} htmlFor="name">{t("Name")} </label>
+                        <label style={{}} htmlFor="name">{t("Name")} </label>
                         <RedditTextField
                             type="name"
                             size="medium"
@@ -223,7 +222,7 @@ function SignUpForm({t},props){
                                 setStateName(e.target.value)
                             }}
                         />
-                        <label style={{color:"#fff"}} htmlFor="companyName">{t("Company Name")} </label>
+                        <label style={{}} htmlFor="companyName">{t("Company Name")} </label>
                         <RedditTextField
                             type="companyName"
                             size="medium"
@@ -250,7 +249,7 @@ function SignUpForm({t},props){
 
                             }}
 
-                        /><label style={{color:"#fff"}} htmlFor="country">{t("Country")} </label>
+                        /><label style={{}} htmlFor="country">{t("Country")} </label>
                         <RedditTextField
                             type="country"
                             size="medium"
