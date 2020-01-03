@@ -32,6 +32,14 @@ import LinearDeterminate from "./LinearDeterminate";
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
 import DeleteIcon from "@material-ui/icons/Delete"
 import TableContainer from '@material-ui/core/TableContainer';
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogActions from "@material-ui/core/DialogActions";
+import Dialog from "@material-ui/core/Dialog";
+import Draggable from 'react-draggable';
+import MoreHorizOutlinedIcon from '@material-ui/icons/MoreHorizOutlinedIcon';
+
 const drawerWidth = 240;
  const userId = localStorage.getItem(GC_USER_ID);
 const authToken = localStorage.getItem(AUTH_TOKEN)
@@ -67,7 +75,16 @@ const StyledTableCell = withStyles(theme => ({
         fontSize: 10,
     },
 }))(TableCell);
+function PaperComponent(props) {
+    return (
+        <Draggable cancel={'[class*="MuiDialogContent-root"]'}>
+            <Paper {...props} />
+        </Draggable>
+    );
+}
+
 const GET_MyDevice = gql`query { me{mydevices{type_device, brand_device, module_device, notes,  verification_device, calibration next_calibration} }}`;
+
 function MyDeviceForm({t,className, rest}) {
     const classes = useStyles();
 
@@ -76,7 +93,15 @@ function MyDeviceForm({t,className, rest}) {
     const handleChange = panel => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
- 
+  const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     return(  
                   
                      
@@ -88,6 +113,8 @@ function MyDeviceForm({t,className, rest}) {
                        if(authToken){           
                            return(
                 <Paper className={classes.root} >
+                             <Button variant="outlined" color="primary"><Link to={"/add-device"}> {t('Add device')}</Link>
+                            </Button>
                             <TableContainer>
                     <Table stickyHeader>
                         <TableHead  >
@@ -95,10 +122,7 @@ function MyDeviceForm({t,className, rest}) {
                                 <StyledTableCell align="right">{t('Device')}</StyledTableCell>
                                 <StyledTableCell align="right">{t('Category')}</StyledTableCell>
                                 <StyledTableCell align="right">{t('Module')}</StyledTableCell>
-                                
-                                <StyledTableCell align="right">{t('Calibration')}</StyledTableCell>
-                                <StyledTableCell align="right">{t('Next Calibration')}</StyledTableCell>
-                                   <StyledTableCell align="right">{t('Delete')} </StyledTableCell>
+                                <StyledTableCell align="right">{t('More')} </StyledTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -108,11 +132,28 @@ function MyDeviceForm({t,className, rest}) {
                                     <TableCell lign="center">{device.brand_device}</TableCell>
                                     <TableCell lign="center">{device.type_device}</TableCell>
                                     <TableCell lign="center">{device.module_device}</TableCell>
-                                   
-                                    <TableCell lign="center">{device.calibration}</TableCell>
-                                    <TableCell lign="center">{device.next_calibration}</TableCell>
-                                    <TableCell lign="center"><IconButton>
-                <DeleteIcon className={classes.block}  />
+                                    <TableCell lign="center"><IconButton variant="outlined" color="primary" onClick={handleClickOpen}>
+                <MoreHorizOutlinedIcon className={classes.block}  />
+                 <Dialog open={open} onClose={handleClose} PaperComponent={PaperComponent} aria-labelledby="draggable-dialog-title">
+                                                                <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
+                                                                   More information
+                                                                </DialogTitle>
+                                                                <DialogContent>
+                                                                    <DialogContentText>
+                                                                       Calibration : {device.calibration}
+                                                                       Next Calibration : {device.next_calibration}
+                                                                       Verification: {device.verification_device}
+                                                                    </DialogContentText>
+                                                                </DialogContent>
+                                                                <DialogActions>
+                                                                    <Button autoFocus onClick={handleClose} color="primary">
+                                                                        Cancel
+                                                                    </Button>
+                                                                    <Button onClick={handleClose} color="primary">
+                                                                        Subscribe
+                                                                    </Button>
+                                                                </DialogActions>
+                                                            </Dialog>
             </IconButton></TableCell>
                                 </TableRow>))}
                         </TableBody>
