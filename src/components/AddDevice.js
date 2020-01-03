@@ -51,6 +51,7 @@ const useStylesReddit = makeStyles(theme => ({
         },
     },
     focused: {},
+    paper:{ backgroundColor:"transparent"},
 }));
 function RedditTextField(props) {
     const classes = useStylesReddit();
