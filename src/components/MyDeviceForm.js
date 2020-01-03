@@ -26,7 +26,6 @@ import TableRow from "@material-ui/core/TableRow";
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
 import i18n from "../menu/translations/i18n";
-import Link from "@material-ui/core/Link";
 import UserMenu from "./UserMenu";
 import LinearDeterminate from "./LinearDeterminate";
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
@@ -39,6 +38,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Dialog from "@material-ui/core/Dialog";
 import Draggable from 'react-draggable';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import history from '../history.js'
 
 const drawerWidth = 240;
  const userId = localStorage.getItem(GC_USER_ID);
@@ -103,8 +103,7 @@ function MyDeviceForm({t,className, rest}) {
         setOpen(false);
     };
     return(  
-                  
-                     
+                                  
                 <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={500} >
                     {( {loading, error, data} ) =>  {
                         if (loading) {return <LinearDeterminate />}
@@ -113,7 +112,7 @@ function MyDeviceForm({t,className, rest}) {
                        if(authToken){           
                            return(
                 <Paper className={classes.root} >
-                             <Button variant="outlined" color="primary"><Link to={"/add-device"}> {t('Add device')}</Link>
+                             <Button variant="outlined" color="primary" onClick={()=> history.push('/add-device')}> {t('Add device')}
                             </Button>
                             <TableContainer>
                     <Table stickyHeader>
@@ -134,7 +133,7 @@ function MyDeviceForm({t,className, rest}) {
                                     <TableCell lign="center">{device.module_device}</TableCell>
                                     <TableCell lign="center"><IconButton variant="outlined" color="primary" onClick={handleClickOpen}>
                 <MoreHorizIcon className={classes.block}  />
-                 <Dialog open={open} onClose={handleClose} PaperComponent={PaperComponent} aria-labelledby="draggable-dialog-title">
+            </IconButton>  <Dialog open={open} onClose={handleClose} PaperComponent={PaperComponent} aria-labelledby="draggable-dialog-title">
                                                                 <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
                                                                  {t('More information')}
                                                                 </DialogTitle>
@@ -153,8 +152,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                      {t('Edit')}
                                                                     </Button>
                                                                 </DialogActions>
-                                                            </Dialog>
-            </IconButton></TableCell>
+                                                            </Dialog></TableCell>
                                 </TableRow>))}
                         </TableBody>
                     </Table></TableContainer>
