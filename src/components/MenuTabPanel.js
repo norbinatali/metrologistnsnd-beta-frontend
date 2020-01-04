@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component,useState, useEffect } from 'react';
 import Navbar, { ElementsWrapper } from '../menu/navbar';
 import SignUp from '../SignUp';
-
-import Grid from '@material-ui/core/Grid';
+import Input from "@material-ui/core/Input";
+import RaisedButton from "material-ui/RaisedButton";
 import FormControl from '@material-ui/core/FormControl';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -10,15 +10,15 @@ import SwipeableViews from 'react-swipeable-views';
 import TextField from '@material-ui/core/TextField';
 import {withStyles, makeStyles, useTheme } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-
+import {Grid, IconButton} from "@material-ui/core";
 import gql from 'graphql-tag';
 import{Mutation} from 'react-apollo';
-import { AUTH_TOKEN , GC_USER_ID} from '../constants';
+import { AUTH_TOKEN , GC_USER_ID,CREATE_LETTER} from '../constants';
 import {PopupboxManager, PopupboxContainer} from 'react-popupbox';
 import '../style/login.css';
 import ContactUS from "./ContactUS";
 import Link from "@material-ui/core/Link";
-
+import { useSnackbar } from 'notistack';
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -27,7 +27,7 @@ import ListItem from "@material-ui/core/ListItem";
 import {Button} from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
 import i18n from "../menu/translations/i18n";
-
+import gql from "graphql-tag";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Login from "./Login";
@@ -87,6 +87,31 @@ function a11yProps(index) {
         'aria-controls': `full-width-tabpanel-${index}`,
     };
 }
+const useStylesReddit = makeStyles(theme => ({
+    root: {
+        border: '1px solid #e2e2e1',
+        overflow: 'hidden',
+        borderRadius: 4,
+        backgroundColor: 'transparent',
+       color:"rgba(0,1,47,0.84)",
+        transition: theme.transitions.create(['border-color', 'box-shadow']),
+        '&:hover': {
+            backgroundColor: 'transparent',
+        },
+        '&$focused': {
+            backgroundColor: 'transparent',
+            boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+            borderColor: theme.palette.primary.main,
+        },
+    },
+    focused: {},
+}));
+
+function RedditTextField(props) {
+    const classes = useStylesReddit();
+
+    return <TextField InputProps={{ classes, disableUnderline: true }} {...props} />;
+}
 
 
 const useStyles = makeStyles(theme => ({
@@ -115,6 +140,7 @@ marginRight:"auto",
 
 
 }));
+const LETTER_MUTATION = gql`mutation ($from: String!, $text: String!, $subject: String!){createNewLetter(text:$text , subject: $subject,from:$from){text,subject,from}}`
 
 function MenuTabPanel({t}) {
     const [value, setValue] = React.useState(0);
@@ -123,11 +149,11 @@ function MenuTabPanel({t}) {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-const [lang, setLang] = React.useState('en');
- const handleChangeLang = event => {
-i18n.changeLanguage(event.target.value);
-    
-
+const [lang, setLang] = React.useState('');
+ 
+const handleChangeLang = event => {
+setLang(event.target.value);
+i18n.changeLanguage(event.target.value);  
   };
     const handleChangeIndex = index => {
         setValue(index);
@@ -136,6 +162,14 @@ i18n.changeLanguage(event.target.value);
         i18n.changeLanguage(lng);
 
     };
+ const confirm = async data => {
+        const { token } = sendMail;
+        saveLetterData(token);
+        enqueueSnackbar('Thank you for your request. Дякую за Ваше звернення')
+    };
+ const saveLetterData = token => {
+        localStorage.setItem(CREATE_LETTER, token)
+    }
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -187,8 +221,31 @@ i18n.changeLanguage(event.target.value);
                     </div>
                 </TabPanel>
                 <TabPanel value={value} index={2} dir={theme.direction} className={classes.panel}>
-                  <div style={{marginRight:"auto", marginLeft:"auto", marginTop:"30%"}}>
-                        <ContactUS />
+                  <div style={{marginRight:"auto", marginLeft:"auto", marginTop:"55px"}}>
+                   <FormControl  >
+                <MuiThemeProvider>
+                    <label style={{color:"rgba(0,1,47,0.84)", marginTop:"80px"}} htmlFor="from">{t("Email")} </label>
+                    <RedditTextField variant="outlined"  type="text"
+                            name={"from"}
+                        value={from} 
+                            placeholder={"example@example.com"}
+                               onChange={e => setFrom( e.target.value )   } required/>
+                    < label style={{color:"rgba(0,1,47,0.84)"}} htmlFor="subject">{t("Subject")} </label>
+                    <RedditTextField variant="outlined"
+                              type="text" value={subject} onChange={e => setSubject(e.target.value )} required
+                    />
+                    <label style={{color:"rgba(0,1,47,0.84)"}} htmlFor="text">{t("Text")} </label>
+                    <RedditTextField variant="outlined"
+                                id="outlined-multiline-static" multiline  rows="5" type="text"  margin="normal" variant="outlined" value={text}  onChange={e => setText( e.target.value )}
+                    /><br/>
+                    <Mutation mutation={LETTER_MUTATION}  variables={{ from,subject, text } }  onCompleted={() => confirm()  }>
+                        {send => (
+                            <RaisedButton style={{marginBottom:"10%",color:"rgba(0,1,47,0.84)"}} onClick={send}>{t("Send")} </RaisedButton>)}
+                    </Mutation>
+
+
+                </MuiThemeProvider>
+            </FormControl>   
 
                     </div>
                 </TabPanel>
