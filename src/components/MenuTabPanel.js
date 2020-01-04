@@ -2,7 +2,7 @@ import React, { Component,useState, useEffect } from 'react';
 import Navbar, { ElementsWrapper } from '../menu/navbar';
 import SignUp from '../SignUp';
 import Input from "@material-ui/core/Input";
-import RaisedButton from "material-ui/RaisedButton";
+
 import FormControl from '@material-ui/core/FormControl';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -11,7 +11,6 @@ import TextField from '@material-ui/core/TextField';
 import {withStyles, makeStyles, useTheme } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import {Grid, IconButton} from "@material-ui/core";
-import gql from 'graphql-tag';
 import{Mutation} from 'react-apollo';
 import { AUTH_TOKEN , GC_USER_ID,CREATE_LETTER} from '../constants';
 import {PopupboxManager, PopupboxContainer} from 'react-popupbox';
@@ -142,7 +141,7 @@ marginRight:"auto",
 }));
 const LETTER_MUTATION = gql`mutation ($from: String!, $text: String!, $subject: String!){createNewLetter(text:$text , subject: $subject,from:$from){text,subject,from}}`
 
-function MenuTabPanel({t}) {
+function MenuTabPanel({t,props}) {
     const [value, setValue] = React.useState(0);
     const classes = useStyles();
     const theme = useTheme();
