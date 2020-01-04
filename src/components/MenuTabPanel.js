@@ -148,7 +148,7 @@ function MenuTabPanel({t,props}) {
     const [value, setValue] = React.useState(0);
     const classes = useStyles();
 const { enqueueSnackbar } = useSnackbar();
-    const [sendMail,classes]= useState(true);
+    const [sendMail]= useState(true);
      const [from, setFrom] =useState("");
      const [subject, setSubject] = useState("");
     const [text, setText] = useState("");
