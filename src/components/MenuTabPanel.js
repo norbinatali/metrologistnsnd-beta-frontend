@@ -39,6 +39,9 @@ import FlagUA from "../menu/style/LogoMakr_1Xl0t4.png";
 import FlagUS from "../menu/style/LogoMakr_4V1dPm.png";
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import {
+    fade
+} from '@material-ui/core/styles';
 
 const classes = makeStyles(theme => ({
     root: {
@@ -144,6 +147,17 @@ const LETTER_MUTATION = gql`mutation ($from: String!, $text: String!, $subject: 
 function MenuTabPanel({t,props}) {
     const [value, setValue] = React.useState(0);
     const classes = useStyles();
+const { enqueueSnackbar } = useSnackbar();
+    const [sendMail,classes]= useState(true);
+     const [from, setFrom] =useState("");
+     const [subject, setSubject] = useState("");
+    const [text, setText] = useState("");
+const [formState, setFormState] = useState({
+        isValid: false,
+        values: {from},
+        touched: {},
+        errors: {}
+    });
     const theme = useTheme();
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -161,8 +175,8 @@ i18n.changeLanguage(event.target.value);
         i18n.changeLanguage(lng);
 
     };
- const confirm = async data => {
-        const { token } = sendMail;
+ const confirm = async {token, e} => {
+       
         saveLetterData(token);
         enqueueSnackbar('Thank you for your request. Дякую за Ваше звернення')
     };
