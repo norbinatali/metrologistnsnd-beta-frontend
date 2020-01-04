@@ -175,7 +175,7 @@ i18n.changeLanguage(event.target.value);
         i18n.changeLanguage(lng);
 
     };
- const confirm = async {token, e} => {
+ const confirm = async (token, e) => {
        
         saveLetterData(token);
         enqueueSnackbar('Thank you for your request. Дякую за Ваше звернення')
