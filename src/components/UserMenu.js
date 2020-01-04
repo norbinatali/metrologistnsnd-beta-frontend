@@ -194,6 +194,7 @@ const useStyles = makeStyles(theme => ({
     );
      const [lang, setLang] = React.useState('en');
  const handleChangeLang = event => {
+     setLang(event.target.value);
 i18n.changeLanguage(event.target.value);
     
 
