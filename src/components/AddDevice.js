@@ -116,8 +116,8 @@ const {  ...rest } = props;
                                 <ArrowBackIcon style={{color:"rgba(0,1,47,0.84)"}} />
                             </IconButton>
                     </Grid>
-                     <Grid item justify="center" alignItems="center" md={6} xs={12}>
-                                <Card{...rest} style={{marginRight:"auto", marginLeft:"auto"}}  >
+                     <Grid item justify="center" alignItems="center" xs={12}>
+                                <Card{...rest} justify="center" style={{marginRight:"auto", marginLeft:"auto", width:'70%'}}  >
               <CardHeader subheader={t("fill the information")} title={t("Add Device")}/>
               <Divider />
           
@@ -188,9 +188,9 @@ const {  ...rest } = props;
                     onChange={e => {
                         setStateVerification_device(e.target.value);
                     }}
-                /><br/>
+                />
                       <Divider />
-                     </Grid>
+                     </Grid><br/>
                        
                         <Grid item md={6} xs={12}>
                 <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Calibration')}</label>
@@ -199,7 +199,6 @@ const {  ...rest } = props;
     label={t('Calibration')}
     type="date"
    style={{color:"rgba(0,1,47,0.84)", width:"120px"}}
-    defaultValue="12-06-2019"
     value={calibration}
     className={classes.textField}
     InputLabelProps={{
@@ -215,7 +214,6 @@ const {  ...rest } = props;
     type="date"
     style={{color:"rgba(0,1,47,0.84)",width:"120px"}}
     value={next_calibration}
-    defaultValue="12-06-2020"
     className={classes.textField}
     InputLabelProps={{
       shrink: true,
