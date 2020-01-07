@@ -192,7 +192,7 @@ const useStyles = makeStyles(theme => ({
     const [value, setValue] = React.useState(0);
     const [valueLang, setValueLang] = React.useState(''
     );
-     const [lang, setLang] = React.useState('en');
+     const [lang, setLang] = React.useState(i18n.language);
  const handleChangeLang = event => {
      setLang(event.target.value);
 i18n.changeLanguage(event.target.value);
@@ -262,7 +262,7 @@ i18n.changeLanguage(event.target.value);
                                 </Toolbar>
 
             </AppBar>
-            <Drawer classes={{paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),}} open={open}>
+            <Drawer classes={{paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),}} onClose={() => setOpen(false)} open={open}>
                 <div className={classes.toolbarIcon}>
                     
                        <Select labelId="demo-simple-select-autowidth-label" id="demo-simple-select-autowidth" value={lang} style={{backgroundColor:"transparent"}} onChange={handleChangeLang} autoWidth>
