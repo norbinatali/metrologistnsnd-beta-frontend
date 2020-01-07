@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
     return(
         <div>
             <UserMenu/>
-                <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
+                <main style={{ flexGrow: 1, height: '100%', overflow: 'auto',width:'100%'}}>
                     <div style={{ marginTop: 40 }}>
                         <div style={{ marginTop: 20, padding:30}}>
                         <div style={{display:'flex'}}>
