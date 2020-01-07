@@ -191,7 +191,9 @@ const {  ...rest } = props;
                 />
                       <Divider />
                      </Grid><br/>
+                    </Grid>
                        </CardContent>
+             <Grid container spacing={3}>
                         <Grid item md={6} xs={12}>
                 <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Calibration')}</label>
               <Divider />
