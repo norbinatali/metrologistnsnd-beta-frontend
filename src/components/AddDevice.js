@@ -180,12 +180,12 @@ const {  ...rest } = props;
                     </Grid>
                        
              <Grid container spacing={3}>
-                        <Grid item md={6} xs={12}>
-                <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Calibration')}</label>
+                        <Grid item md={6} xs={12}>          
             
  <TextField id="date"
     label={t('Calibration')}
     type="date"
+     variant="outlined"
    style={{color:"rgba(0,1,47,0.84)", width:"120px"}}
     value={calibration}
     className={classes.textField}
@@ -200,6 +200,7 @@ const {  ...rest } = props;
     id="date"
     label={t('Next Calibration')}
     type="date"
+    variant="outlined"
     style={{color:"rgba(0,1,47,0.84)",width:"120px"}}
     value={next_calibration}
     className={classes.textField}
