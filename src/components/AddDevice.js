@@ -116,7 +116,7 @@ const {  ...rest } = props;
                                 <ArrowBackIcon style={{color:"rgba(0,1,47,0.84)"}} />
                             </IconButton>
                     </Grid>
-                     <Grid item md={6} xs={12}>
+                     <Grid item justify="center" alignItems="center" md={6} xs={12}>
                                 <Card{...rest} style={{marginRight:"auto", marginLeft:"auto"}}  >
               <CardHeader subheader={t("fill the information")} title={t("Add Device")}/>
               <Divider />
