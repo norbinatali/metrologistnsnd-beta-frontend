@@ -162,7 +162,7 @@ const [formState, setFormState] = useState({
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-const [lang, setLang] = React.useState('en');
+const [lang, setLang] = React.useState(i18n.language);
  
 const handleChangeLang = event => {
 setLang(event.target.value);
