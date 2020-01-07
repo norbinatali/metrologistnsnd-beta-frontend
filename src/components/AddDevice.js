@@ -191,7 +191,7 @@ const {  ...rest } = props;
                 />
                       <Divider />
                      </Grid><br/>
-                       
+                       </CardContent>
                         <Grid item md={6} xs={12}>
                 <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Calibration')}</label>
               <Divider />
@@ -222,7 +222,7 @@ const {  ...rest } = props;
   /><br/>
 </Grid>
                          </Grid>
-                </CardContent>
+                
                 <Divider />
                 <CardActions>
                 <RaisedButton onClick={addmydevice} style={{color:"rgba(0,1,47,0.84)"}}>{t('Add')}</RaisedButton>
