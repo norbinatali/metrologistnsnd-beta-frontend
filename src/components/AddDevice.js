@@ -34,9 +34,7 @@ const authToken = localStorage.getItem(AUTH_TOKEN)
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
-      marginRight:"auto",
-        marginLeft:"auto",
-        marginTop:"20%",
+     
     },
 
 }));
@@ -108,18 +106,18 @@ const {  ...rest } = props;
         <div>
         <UserMenu />
          <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
-        <div className={classes.root}>
+        
             <MuiThemeProvider>
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        
+        <div className={classes.root}>
                 <Grid container style={{ height: '100%'}} >
                     <Grid item >
                          <IconButton onClick={handleBack}>
                                 <ArrowBackIcon style={{color:"rgba(0,1,47,0.84)"}} />
                             </IconButton>
                     </Grid>
-                     <Grid item lg={4} md={6} xl={4} xs={12}>
-                                <Card{...rest} >
+                     <Grid item md={6} xs={12}>
+                                <Card{...rest} style={{marginRight:"auto", marginLeft:"auto"}}  >
               <CardHeader subheader={t("fill the information")} title={t("Add Device")}/>
               <Divider />
           
@@ -237,10 +235,11 @@ const {  ...rest } = props;
                         </Mutation> </Card>
                     </Grid>
                 </Grid>
+                   </div>
                 </MuiPickersUtilsProvider>
             </MuiThemeProvider>
 
-        </div>
+        
                                                                                                                   </main>
 </div>
     )
