@@ -65,21 +65,21 @@ const useStyles = makeStyles(theme => ({
                            <Divider />
                            <CardContent className={classes.content}>
                                <List>
-                                <ListItem>
+                                <ListItem button onClick={()=> history.push('/what-is-metrologist')}>
                                        <ListItemText  primary={""} secondary={'What is "Metrologist"'}   />
-                                       <IconButton  edge="end"  size="small" onClick={()=> history.push('/what-is-metrologist')} >
+                                       <IconButton  edge="end"  size="small"  >
                                            <ArrowRightIcon />
                                        </IconButton>
                                    </ListItem>
-                                       <ListItem>
+                                       <ListItem button onClick={()=> history.push('/what-is-metrology')}>
                                            <ListItemText  primary={""} secondary={"What is Metrology?"}   />
-                                           <IconButton  edge="end" size="small" onClick={()=> history.push('/what-is-metrology')}  >
+                                           <IconButton  edge="end" size="small"   >
                                                <ArrowRightIcon />
                                            </IconButton>
                                        </ListItem>
-                                   <ListItem>
+                                   <ListItem button onClick={()=> history.push('/history-metrology')}>
                                        <ListItemText  primary={""} secondary={"History"}   />
-                                       <IconButton  edge="end" size="small"  onClick={()=> history.push('/history-metrology')} >
+                                       <IconButton  edge="end" size="small"   >
                                            <ArrowRightIcon />
                                        </IconButton>
                                    </ListItem>
@@ -98,27 +98,27 @@ const useStyles = makeStyles(theme => ({
                                 <Divider />
                                 <CardContent className={classes.content}>
                                     <List>
-                                        <ListItem>
+                                        <ListItem button onClick={()=> history.push('/what-is-conformity-assessment')}>
                                             <ListItemText  primary={""} secondary={"What is conformity assessment"}   />
-                                            <IconButton  edge="end" size="small" onClick={()=> history.push('/what-is-conformity-assessment')}>
+                                            <IconButton  edge="end" size="small" >
                                                 <ArrowRightIcon />
                                             </IconButton>
                                         </ListItem>
-                                        <ListItem>
+                                        <ListItem button onClick={()=> history.push('/modules')}>
                                             <ListItemText  primary={""} secondary={"Modules"}   />
-                                            <IconButton  edge="end" size="small" onClick={()=> history.push('/modules')}  >
+                                            <IconButton  edge="end" size="small"   >
                                                 <ArrowRightIcon />
                                             </IconButton>
                                         </ListItem>
-                                        <ListItem>
+                                        <ListItem button onClick={()=> history.push('/technical-reglaments')} >
                                             <ListItemText  primary={""} secondary={"Technical Reglaments"} />
-                                            <IconButton  edge="end" size="small" onClick={()=> history.push('/technical-reglaments')} >
+                                            <IconButton  edge="end" size="small" >
                                                 <ArrowRightIcon />
                                             </IconButton>
                                         </ListItem>
-                                         <ListItem>
+                                         <ListItem button onClick={()=> history.push('/procedure-conformity-assessment')}>
                                         <ListItemText  primary={""} secondary={"Procesure"} />
-                                        <IconButton  edge="end" size="small" onClick={()=> history.push('/procedure-conformity-assessment')} >
+                                        <IconButton  edge="end" size="small"  >
                                             <ArrowRightIcon />
                                         </IconButton>
                                     </ListItem>
@@ -136,21 +136,21 @@ const useStyles = makeStyles(theme => ({
                             <Divider />
                             <CardContent className={classes.content}>
                                 <List>
-                                    <ListItem>
+                                    <ListItem button onClick={()=> history.push('/what-is-quality-system')}>
                                         <ListItemText  primary={""} secondary={"What is quality system?"}   />
-                                        <IconButton  edge="end" size="small" onClick={()=> history.push('/what-is-quality-system')} >
+                                        <IconButton  edge="end" size="small"  >
                                             <ArrowRightIcon />
                                         </IconButton>
                                     </ListItem>
-                                    <ListItem>
+                                    <ListItem button onClick={()=> history.push('/documents-of-quality-system')}>
                                         <ListItemText  primary={""} secondary={"Documents of quality system"}   />
-                                        <IconButton  edge="end" size="small" onClick={()=> history.push('/documents-of-quality-system')} >
+                                        <IconButton  edge="end" size="small"  >
                                             <ArrowRightIcon />
                                         </IconButton>
                                     </ListItem>
-                                    <ListItem>
-                                        <ListItemText  primary={""} secondary={""}   />
-                                        <IconButton  edge="end"    size="small"  >
+                                    <ListItem onClick={()=> history.push('/standards-information')}>
+                                        <ListItemText  primary={""} secondary={"Standards"}   />
+                                        <IconButton  edge="end" size="small"  >
                                             <ArrowRightIcon />
                                         </IconButton>
                                     </ListItem>
