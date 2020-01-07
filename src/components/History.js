@@ -132,7 +132,7 @@ const useStyles = makeStyles(theme => ({
                     <Grid item>
                     <Paper elevation={3}>
                         <Card {...rest} className={clsx(classes.root)}>
-                            <CardHeader><Typography gutterBottom variant="h5" component="h2">{t('Quality Management")}</Typography></CardHeader>
+                            <CardHeader><Typography gutterBottom variant="h5" component="h2">{t('Quality Management')}</Typography></CardHeader>
                             <Divider />
                             <CardContent className={classes.content}>
                                 <List>
