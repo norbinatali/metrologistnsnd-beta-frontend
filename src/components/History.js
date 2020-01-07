@@ -55,13 +55,13 @@ const useStyles = makeStyles(theme => ({
                 <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
                     <div style={{ marginTop: 40 }}>
                         <div style={{ marginTop: 20, padding:30}}>
-                       
+                        <div style={{display:'flex'}}>
                 <Grid container spacing={2} >
-           <div style={{display:'flex'}}>
-                    <Grid item spacing={3}>
+          
+                    <Grid item >
                    <Paper elevation={3}>
                        <Card {...rest} className={clsx(classes.root)}>
-                           <CardHeader subtitle={` in total`} title="About metrology"/>
+                           <CardHeader><Typography gutterBottom variant="h5" component="h2">{t('About')}</Typography></CardHeader>
                            <Divider />
                            <CardContent className={classes.content}>
                                <List>
@@ -91,16 +91,16 @@ const useStyles = makeStyles(theme => ({
                    </Paper>
 
                 </Grid>
-                      <Grid item spacing={3}>
+                      <Grid item >
                         <Paper elevation={3}>
                             <Card {...rest} className={clsx(classes.root)}>
-                                <CardHeader subtitle={` in total`} title="Conformity assessment"/>
+                                <CardHeader><Typography gutterBottom variant="h5" component="h2">{t('Conformity assessment')}</Typography></CardHeader>
                                 <Divider />
                                 <CardContent className={classes.content}>
                                     <List>
                                         <ListItem>
                                             <ListItemText  primary={""} secondary={"What is conformity assessment"}   />
-                                            <IconButton  edge="end"    size="small" onClick={()=> history.push('/what-is-conformity-assessment')}>
+                                            <IconButton  edge="end" size="small" onClick={()=> history.push('/what-is-conformity-assessment')}>
                                                 <ArrowRightIcon />
                                             </IconButton>
                                         </ListItem>
@@ -129,10 +129,10 @@ const useStyles = makeStyles(theme => ({
                         </Paper>
 
                     </Grid>
-                    <Grid item spacing={3}>
+                    <Grid item>
                     <Paper elevation={3}>
                         <Card {...rest} className={clsx(classes.root)}>
-                            <CardHeader subtitle={` in total`} title="Quality Management"/>
+                            <CardHeader><Typography gutterBottom variant="h5" component="h2">{t('Quality Management")}</Typography></CardHeader>
                             <Divider />
                             <CardContent className={classes.content}>
                                 <List>
@@ -159,9 +159,9 @@ const useStyles = makeStyles(theme => ({
                             <Divider />
                         </Card>
                     </Paper>
-                </Grid> </div>
+                </Grid> 
                 </Grid>
-       
+       </div>
                         </div>
                     </div>
                 </main>
