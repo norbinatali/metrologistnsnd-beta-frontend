@@ -56,11 +56,11 @@ const useStyles = makeStyles(theme => ({
                     <div style={{ marginTop: 40 }}>
                         <div style={{ marginTop: 20, padding:30}}>
                         <div style={{display:'flex'}}>
-                <Grid container spacing={2} className={clsx(classes.root)}>
+                <Grid container spacing={2} >
           
-                    <Grid item >
+                    <Grid item xs={12} md={6} >
                    <Paper elevation={3}>
-                       <Card {...rest} >
+                       <Card {...rest} className={clsx(classes.root)} >
                            <CardHeader><Typography gutterBottom variant="h5" component="h2">{t('About')}</Typography></CardHeader>
                            <Divider />
                            <CardContent className={classes.content}>
@@ -91,7 +91,7 @@ const useStyles = makeStyles(theme => ({
                    </Paper>
 
                 </Grid>
-                      <Grid item >
+                      <Grid item xs={12} md={6}>
                         <Paper elevation={3}>
                             <Card {...rest} className={clsx(classes.root)}>
                                 <CardHeader><Typography gutterBottom variant="h5" component="h2">{t('Conformity assessment')}</Typography></CardHeader>
@@ -129,7 +129,7 @@ const useStyles = makeStyles(theme => ({
                         </Paper>
 
                     </Grid>
-                    <Grid item>
+                    <Grid item xs={12} md={6}>
                     <Paper elevation={3}>
                         <Card {...rest} className={clsx(classes.root)}>
                             <CardHeader><Typography gutterBottom variant="h5" component="h2">{t('Quality Management')}</Typography></CardHeader>
