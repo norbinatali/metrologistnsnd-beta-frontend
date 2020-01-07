@@ -164,21 +164,7 @@ const {  ...rest } = props;
                     }} required
                 />
                          </Grid>
-                       
-                        <Grid item md={6} xs={12}>
-               <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Notes')}</label>
-                <RedditTextField
-                    type="text"
-                    fullWidth
-                    multiline
-                    rows="5"
-                    value={notes}
-                    onChange={e => {
-                        setStateNotes(e.target.value);
-                    }}
-                />
- </Grid>
-                       
+                    
                         <Grid item md={6} xs={12}>
                 <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Verification')}</label>
                 <RedditTextField
@@ -192,11 +178,11 @@ const {  ...rest } = props;
                       <Divider />
                      </Grid><br/>
                     </Grid>
-                       </CardContent>
+                       
              <Grid container spacing={3}>
                         <Grid item md={6} xs={12}>
                 <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Calibration')}</label>
-              <Divider />
+            
  <TextField id="date"
     label={t('Calibration')}
     type="date"
@@ -223,8 +209,20 @@ const {  ...rest } = props;
      onChange={handleDateNext_Calibration}
   /><br/>
 </Grid>
-                         </Grid>
-                
+                         
+                 <Grid item md={6} xs={12}>
+               <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Notes')}</label>
+                <RedditTextField
+                    type="text"
+                    fullWidth
+                    multiline
+                    rows="5"
+                    value={notes}
+                    onChange={e => {
+                        setStateNotes(e.target.value);
+                    }}
+                />
+ </Grid></Grid></CardContent>
                 <Divider />
                 <CardActions>
                 <RaisedButton onClick={addmydevice} style={{color:"rgba(0,1,47,0.84)"}}>{t('Add')}</RaisedButton>
