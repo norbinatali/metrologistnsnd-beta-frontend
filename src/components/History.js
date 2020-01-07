@@ -55,9 +55,10 @@ const useStyles = makeStyles(theme => ({
                 <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
                     <div style={{ marginTop: 40 }}>
                         <div style={{ marginTop: 20, padding:30}}>
-                        <div style={{display:'flex'}}>
+                       
                 <Grid container spacing={2} >
-                    <Grid item>
+           <div style={{display:'flex'}}>
+                    <Grid item spacing={3}>
                    <Paper elevation={3}>
                        <Card {...rest} className={clsx(classes.root)}>
                            <CardHeader subtitle={` in total`} title="About metrology"/>
@@ -90,7 +91,7 @@ const useStyles = makeStyles(theme => ({
                    </Paper>
 
                 </Grid>
-                      <Grid item>
+                      <Grid item spacing={3}>
                         <Paper elevation={3}>
                             <Card {...rest} className={clsx(classes.root)}>
                                 <CardHeader subtitle={` in total`} title="Conformity assessment"/>
@@ -128,7 +129,7 @@ const useStyles = makeStyles(theme => ({
                         </Paper>
 
                     </Grid>
-                    <Grid item>
+                    <Grid item spacing={3}>
                     <Paper elevation={3}>
                         <Card {...rest} className={clsx(classes.root)}>
                             <CardHeader subtitle={` in total`} title="Quality Management"/>
@@ -158,9 +159,9 @@ const useStyles = makeStyles(theme => ({
                             <Divider />
                         </Card>
                     </Paper>
+                </Grid> </div>
                 </Grid>
-                </Grid>
-        </div>
+       
                         </div>
                     </div>
                 </main>
