@@ -56,7 +56,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const GET_MyDevice = gql`query { me{mydevices{type_device, brand_device, module_device, verification_device calibration next_calibration} }}`;
 
 
 function MyDevice({t}){
