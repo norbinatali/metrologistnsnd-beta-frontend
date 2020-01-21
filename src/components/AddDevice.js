@@ -62,13 +62,22 @@ function RedditTextField(props) {
 const {  ...rest } = props;
     return <TextField InputProps={{ classes, disableUnderline: true }} {...props} />;
 }
-const GET_MyDevice = gql`query { me{mydevices{type_device, brand_device, module_device, verification_device calibration next_calibration} }}`;
 
-const CREATE_MYDEVICE =gql `mutation($brand_device:String!, $type_device:String!, $module_device:String!,$notes:String, $verification_device:String, $calibration:String, $next_calibration:String){createNewMyDevice(module_device:$module_device, brand_device:$brand_device,type_device: $type_device, notes:$notes, verification_device:$verification_device, calibration:$calibration,next_calibration:$next_calibration){
-    brand_device
-    type_device
-    module_device
-   verification_device
+const CREATE_MYDEVICE =gql `mutation($name_device: String!,$brand_device: String!,$series_device: String!,$type_device: String!,$certification_calibration:String,$certification_verification:String,$certification_conformity:String,$module_device: String,$certification_number:String, $department_center:String,$conformity_data:String, $next_conformity:String,$valid_verification:String,$notes:String,$calibration: String,$next_calibration: String){ createNewMyDevice(name_device:$name_device,brand_device:$brand_device,series_device:$series_device,type_device:$type_device,certification_calibration:$certification_calibration,certification_verification:$certification_verification,certification_conformity:$certification_conformity,module_device:$module_device,certification_number:$certification_number,department_center:$department_center,conformity_data:$conformity_data,next_conformity:$next_conformity,valid_verification:$valid_verification,notes:$notes,calibration:$calibration,next_calibration:$next_calibration){
+     name_device
+  brand_device
+  series_device
+  type_device
+  certification_calibration
+  certification_verification
+  certification_conformity
+  module_device
+  certification_number
+  department_center
+  conformity_data
+  next_conformity
+  valid_verification
+  notes
     calibration
     next_calibration
 }}`;
