@@ -88,6 +88,7 @@ function AddDevice ({t,props}) {
 const {  ...rest } = props;
 
   const [brand_device, setStateBrand_device]=useState("");
+    const [series_device, setStateSeries_device]=useState("");
     const [type_device, setStateType_device]=useState("");
     const [module_device, setStateModule_device]=useState("");
      const [notes, setStateNotes]=useState("");
@@ -134,7 +135,7 @@ const {  ...rest } = props;
                             {( addmydevice,{loading, error, event}) => {
                                  
                                 if (loading) { return (<LinearDeterminate /> )}
-                                if (error) {return (error.message)}
+                                if (error) {return (enqueueSnackbar(error.message))}
                                     if (authToken){
                                 return(
                                      
