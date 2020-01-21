@@ -145,7 +145,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                   {t('Calibration')} : {device.calibration}<br/>
                                                                    {t('Next Calibration')} : {device.next_calibration} <br/>
                                                                    {t('Verification')}: {device.verification_device}<br/>
-                                                                   {t('Certification of calibration')} : {device.certification_calibration}</br>
+                                                                   {t('Certification of calibration')} : {device.certification_calibration}<br/>
                                                                     </DialogContentText>
                                                                 </DialogContent>
                                                                 <DialogActions>
