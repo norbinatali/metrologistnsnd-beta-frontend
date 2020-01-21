@@ -84,7 +84,7 @@ function PaperComponent(props) {
     );
 }
 
-const GET_MyDevice = gql`query { me{mydevices{type_device, brand_device, module_device, notes,  verification_device, calibration next_calibration} }}`;
+const GET_MyDevice = gql`query { me{mydevices{name_device,brand_device,series_device,type_device,certification_calibration,certification_verification,certification_conformity,module_device,certification_number,department_center,conformity_data,next_conformity,valid_verification,notes,calibration,next_calibration} }}`;
 
 function MyDeviceForm({t,className, rest}) {
     const classes = useStyles();
@@ -119,9 +119,9 @@ function MyDeviceForm({t,className, rest}) {
                     <Table stickyHeader>
                         <TableHead  >
                             <TableRow >
-                                <StyledTableCell align="center">{t('Device')}</StyledTableCell>
-                                <StyledTableCell align="center">{t('Category')}</StyledTableCell>
-                                <StyledTableCell align="center">{t('Module')}</StyledTableCell>
+                                <StyledTableCell align="center">{t('Device ')}</StyledTableCell>
+                                <StyledTableCell align="center">{t('Brand')}</StyledTableCell>
+                                <StyledTableCell align="center">{t('Series Number')}</StyledTableCell>
                                 <StyledTableCell align="center">{t('More')} </StyledTableCell>
                             </TableRow>
                         </TableHead>
@@ -129,9 +129,9 @@ function MyDeviceForm({t,className, rest}) {
 
                             {devicelist.map(device =>(
                                 <TableRow>
+                                    <TableCell align="center">{device.name_device}</TableCell>
                                     <TableCell align="center">{device.brand_device}</TableCell>
-                                    <TableCell align="center">{device.type_device}</TableCell>
-                                    <TableCell align="center">{device.module_device}</TableCell>
+                                    <TableCell align="center">{device.series_device}</TableCell>
                                     <TableCell align="center"><IconButton variant="outlined" color="primary" onClick={handleClickOpen}>
                 <MoreHorizIcon className={classes.block}  />
             </IconButton>  <Dialog open={open} onClose={handleClose} PaperComponent={PaperComponent} aria-labelledby="draggable-dialog-title">
@@ -140,9 +140,12 @@ function MyDeviceForm({t,className, rest}) {
                                                                 </DialogTitle>
                                                                 <DialogContent>
                                                                     <DialogContentText>
+                                                                  
+                                                                   {t('Type device')} : {device.type_device}<br/>
                                                                   {t('Calibration')} : {device.calibration}<br/>
                                                                    {t('Next Calibration')} : {device.next_calibration} <br/>
                                                                    {t('Verification')}: {device.verification_device}<br/>
+                                                                   {t('Certification of calibration')} : {device.certification_calibration}</br>
                                                                     </DialogContentText>
                                                                 </DialogContent>
                                                                 <DialogActions>
