@@ -25,7 +25,7 @@ import { Link as RouterLink, withRouter } from 'react-router-dom';
 import TableRow from "@material-ui/core/TableRow";
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
-import i18n from "../menu/translations/i18n";
+import i18n from "../menu/translation/i18n";
 import UserMenu from "./UserMenu";
 import LinearDeterminate from "./LinearDeterminate";
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
@@ -41,18 +41,18 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import history from '../history.js'
 
 const drawerWidth = 240;
- const userId = localStorage.getItem(GC_USER_ID);
-const authToken = localStorage.getItem(AUTH_TOKEN)
+const userId = localStorage.getItem(GC_USER_ID);
+const authToken = localStorage.getItem(AUTH_TOKEN);
 const useStyles = makeStyles(theme => ({
-  root: {
+    root: {
         maxWidth: '70%',
         overflow: 'auto',
         marginRight:"auto",
         marginLeft:"auto",
-       backgroundColor:"transparent",
+        backgroundColor:"transparent",
     },
     table: {
-maxWidth:"100%",
+        maxWidth:"100%",
         maxHeight:"300px",
 
         color:"rgba(0,1,47,0.84)"
@@ -63,9 +63,9 @@ maxWidth:"100%",
     row:{
         backgroundColor:"#fff"
     },
-  paper:{ backgroundColor:"transparent"},
+    paper:{ backgroundColor:"transparent"},
 }));
-  
+
 
 const StyledTableCell = withStyles(theme => ({
     head: {
@@ -84,17 +84,17 @@ function PaperComponent(props) {
     );
 }
 
-const GET_MyDevice = gql`query { me{mydevices{name_device,brand_device,series_device,type_device,certification_calibration,certification_verification,certification_conformity,module_device,certification_number,department_center,conformity_data,next_conformity,valid_verification,notes,calibration,next_calibration} }}`;
+const GET_MyDevice = gql`query { me{mydevices{type_device, brand_device, module_device, notes, calibration next_calibration} }}`;
 
 function MyDeviceForm({t,className, rest}) {
     const classes = useStyles();
- const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
     const [expanded, setExpanded] = React.useState(false);
     const [component, setComponent] = React.useState(' ');
     const handleChange = panel => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
- 
+
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -103,64 +103,61 @@ function MyDeviceForm({t,className, rest}) {
     const handleClose = () => {
         setOpen(false);
     };
-    return(  
-                                  
-                <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={500} >
-                    {( {loading, error, data} ) =>  {
-                        if (loading) {return <LinearDeterminate />}
-                        if (error) { return error.message }
-                        const devicelist = data.me.mydevices;
-                       if(authToken){           
-                           return(
-                <Paper className={classes.root} >
-                             <Button variant="outlined" color="primary" onClick={()=> history.push('/add-device')}> {t('Add device')}
+    return(
+
+        <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={500} >
+            {( {loading, error, data} ) =>  {
+                if (loading) {return <LinearDeterminate />}
+                if (error) { return error.message }
+                const devicelist = data.me.mydevices;
+                if(authToken){
+                    return(
+                        <Paper className={classes.root} >
+                            <Button variant="outlined" color="primary" onClick={()=> history.push('/add-device')}> {t('Add device')}
                             </Button>
                             <TableContainer>
-                    <Table stickyHeader>
-                        <TableHead  >
-                            <TableRow >
-                                <StyledTableCell align="center">{t('Device ')}</StyledTableCell>
-                                <StyledTableCell align="center">{t('Brand')}</StyledTableCell>
-                                <StyledTableCell align="center">{t('Series Number')}</StyledTableCell>
-                                <StyledTableCell align="center">{t('More')} </StyledTableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
+                                <Table stickyHeader>
+                                    <TableHead  >
+                                        <TableRow >
+                                            <StyledTableCell align="center">{t('Device')}</StyledTableCell>
+                                            <StyledTableCell align="center">{t('Category')}</StyledTableCell>
+                                            <StyledTableCell align="center">{t('Module')}</StyledTableCell>
+                                            <StyledTableCell align="center">{t('More')} </StyledTableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
 
-                            {devicelist.map(device =>(
-                                <TableRow>
-                                    <TableCell align="center">{device.name_device}</TableCell>
-                                    <TableCell align="center">{device.brand_device}</TableCell>
-                                    <TableCell align="center">{device.series_device}</TableCell>
-                                    <TableCell align="center"><IconButton variant="outlined" color="primary" onClick={handleClickOpen}>
-                <MoreHorizIcon className={classes.block}  />
-            </IconButton>  <Dialog open={open} onClose={handleClose} PaperComponent={PaperComponent} aria-labelledby="draggable-dialog-title">
-                                                                <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
-                                                                 {t('More information')}
-                                                                </DialogTitle>
-                                                                <DialogContent>
-                                                                    <DialogContentText>
-                                                                  
-                                                                   {t('Type device')} : {device.type_device}<br/>
-                                                                  {t('Calibration')} : {device.calibration}<br/>
-                                                                   {t('Next Calibration')} : {device.next_calibration} <br/>
-                                                                   {t('Verification')}: {device.verification_device}<br/>
-                                                                   {t('Certification of calibration')} : {device.certification_calibration}<br/>
-                                                                    </DialogContentText>
-                                                                </DialogContent>
-                                                                <DialogActions>
-                                                                    <Button autoFocus onClick={handleClose} color="primary">
-                                                                     {t('Cancel')}
-                                                                    </Button>
-                                                                       </DialogActions>
-                                                            </Dialog></TableCell>
-                                </TableRow>))}
-                        </TableBody>
-                    </Table></TableContainer>
-                </Paper>)}else return null}}  
-                                </Query>
+                                        {devicelist.map(device =>(
+                                            <TableRow>
+                                                <TableCell align="center">{device.brand_device}</TableCell>
+                                                <TableCell align="center">{device.type_device}</TableCell>
+                                                <TableCell align="center">{device.module_device}</TableCell>
+                                                <TableCell align="center"><IconButton variant="outlined" color="primary" onClick={handleClickOpen}>
+                                                    <MoreHorizIcon className={classes.block}  />
+                                                </IconButton>  <Dialog open={open} onClose={handleClose} PaperComponent={PaperComponent} aria-labelledby="draggable-dialog-title">
+                                                    <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
+                                                        {t('More information')}
+                                                    </DialogTitle>
+                                                    <DialogContent>
+                                                        <DialogContentText>
+                                                            {t('Calibration')} : {device.calibration}<br/>
+                                                            {t('Next Calibration')} : {device.next_calibration} <br/>
 
-       
+                                                        </DialogContentText>
+                                                    </DialogContent>
+                                                    <DialogActions>
+                                                        <Button autoFocus onClick={handleClose} color="primary">
+                                                            {t('Cancel')}
+                                                        </Button>
+                                                    </DialogActions>
+                                                </Dialog></TableCell>
+                                            </TableRow>))}
+                                    </TableBody>
+                                </Table></TableContainer>
+                        </Paper>)}else return null}}
+        </Query>
+
+
     )
 
 
