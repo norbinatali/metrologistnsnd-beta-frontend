@@ -41,6 +41,11 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import Dialog from "@material-ui/core/Dialog";
 import Fab from "@material-ui/core/Fab";
 import Typography from "@material-ui/core/Typography";
+import Table from "@material-ui/core/Table";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
+import TableBody from "@material-ui/core/TableBody";
 
 
 const authToken = localStorage.getItem(AUTH_TOKEN)
@@ -75,7 +80,20 @@ function RedditTextField(props) {
     const {  ...rest } = props;
     return <TextField InputProps={{ classes, disableUnderline: true }} {...props} />;
 }
-
+function createData(mi, activities) {
+  return { mi, activities };   
+}
+const rows = [
+  createData('Автоматичні зважувальні прилади: ваги безперервної дії для сумарного обліку;ваги дискретної дії та бункерні ваги для сумарного обліку;ваги для зважування розділених вантажів;вагові дозатори дискретної дії;прилади автоматичні для зважування дорожніх транспортних засобів у русі та вимірювання навантажень на вісь;залізничні платформні ваги;контрольні ваги', '7) торговельно-комерційні операції та розрахунки між покупцем (споживачем) і продавцем (постачальником, виробником, виконавцем), у тому числі під час надання транспортних, побутових, комунальних, телекомунікаційних послуг, послуг поштового зв’язку, постачання та/або споживання енергетичних і матеріальних ресурсів (електричної і теплової енергії, газу, води, нафтопродуктів тощо),8) обчислення сум податків і зборів, податковий та митний контроль;'),
+  createData('Автомобільні цистерни для нафтопродуктів та харчових продуктів', '7) торговельно-комерційні операції та розрахунки між покупцем (споживачем) і продавцем (постачальником, виробником, виконавцем), у тому числі під час надання транспортних, побутових, комунальних, телекомунікаційних послуг, послуг поштового зв’язку, постачання та/або споживання енергетичних і матеріальних ресурсів (електричної і теплової енергії, газу, води, нафтопродуктів тощо),8) обчислення сум податків і зборів, податковий та митний контроль;'),
+  createData('Аналізатори медичного призначення:біохімічні;гематологічні;електролітів та газу в крові;імуноферментні;флуоресцентні;хемілюміносцентні;електрохімічні', '1) забезпечення захисту життя та охорони здоров’я громадян;'),
+  createData(' Аналізатори показників сільськогосподарської та харчової продукції: молока, зерна, цукрових буряків, олійних культур та продуктів їх переробки', '2) контроль якості та безпечності харчових продуктів і лікарських засобів;'),
+  createData('Аналізатори рідин турбідиметричні та нефелометричні для здійснення контролю вод', '1) забезпечення захисту життя та охорони здоров’я громадян;3) контроль стану навколишнього природного середовища;'),
+    createData('Аналізатори спектра та характеристик систем зв’язку', '10) роботи із забезпечення технічного захисту інформації згідно із законодавством;'),
+    createData('Аудіометри чистого тону', 'контроль безпеки умов праці;'),
+    createData('Блоки детектування іонізуючого випромінення', '1) забезпечення захисту життя та охорони здоров’я громадян;2) контроль якості та безпечності харчових продуктів і лікарських засобів;3) контроль стану навколишнього природного середовища;4) контроль безпеки умов праці;'),
+    createData('Вимірювальні антени та приймачі, що використовуються органами державного нагляду (контролю) під час виконання робіт з технічного захисту інформації', '1) забезпечення захисту життя та охорони здоров’я громадян;4) контроль безпеки умов праці;10) роботи із забезпечення технічного захисту інформації згідно із законодавством;'),
+];
 const CREATE_MYDEVICE =gql `mutation($name_device: String!,$brand_device: String!,$series_device: String!,$type_device: String!,$certification_calibration:String,$certification_verification:String,$certification_conformity:String,$module_device: String,$certification_number:String, $department_center:String,$conformity_data:String, $next_conformity:String,$valid_verification:String,$notes:String,$calibration: String,$next_calibration: String){ createNewMyDevice(name_device:$name_device,brand_device:$brand_device,series_device:$series_device,type_device:$type_device,certification_calibration:$certification_calibration,certification_verification:$certification_verification,certification_conformity:$certification_conformity,module_device:$module_device,certification_number:$certification_number,department_center:$department_center,conformity_data:$conformity_data,next_conformity:$next_conformity,valid_verification:$valid_verification,notes:$notes,calibration:$calibration,next_calibration:$next_calibration){
     name_device
     brand_device
@@ -348,46 +366,45 @@ const [valid_verification, setValid_verification]=useState("");
                                                                         </Grid>
 
                                                                     )}
-                                                                    {none === true && (
-                                                                        <FormControl component="fieldset">
-                                                                        <Divider />
-                                                                            <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Legal metrology?')}</label><IconButton  size="small" onClick={handleClickOpen('paper')}><HelpOutlineIcon fontSize="inherit"/></IconButton><br/>
-                                                                        <RadioGroup value={valueVerification} row onChange={handleChangeVerification}>
+                                                                   {none === true && (
+                                                                        <Grid item xs={12}>
+
+                                                                            <Divider />
+                                                                            <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Legal metrology?')} <IconButton  size="small" onClick={handleClickOpen('paper')}><HelpOutlineIcon fontSize="inherit"/></IconButton></Typography>
+                                                                            <RadioGroup value={valueVerification} row onChange={handleChangeVerification}>
                                                                                 <FormControlLabel control={<Radio />} label={<Typography variant={"overline"}>{t('Yes')}</Typography>} value="yes"/>
                                                                                 <FormControlLabel control={<Radio/>} label={<Typography variant={"overline"}>{t('No')}</Typography>} value="no"/>
                                                                             </RadioGroup>
                                                                             {valueVerification === 'yes' && (
-                                                                               <Grid container spacing={3}>
+                                                                                <Grid container spacing={3}>
                                                                                     <Divider />
 
                                                                                     <Grid item md={6} xs={12}>
-                                                                                   
-                                                                                    <label  htmlFor="type_device" style={{color:"rgba(0,1,47,0.84)"}}>{t('Type')}</label>
-                                                                                    <RedditTextField
-                                                                                        type="text"
-                                                                                        fullWidth
-                                                                                        value={type_device}
-                                                                                        onChange={e => {
-                                                                                            setStateType_device(e.target.value);
-                                                                                        }}
-                                                                                    />
- </Grid>
+
+                                                                                        <label  htmlFor="type_device" style={{color:"rgba(0,1,47,0.84)"}}>{t('Type')}</label>
+                                                                                        <RedditTextField
+                                                                                            type="text"
+                                                                                            fullWidth
+                                                                                            value={type_device}
+                                                                                            onChange={e => {
+                                                                                                setStateType_device(e.target.value);
+                                                                                            }}
+                                                                                        />
+                                                                                    </Grid>
                                                                                     <Grid item md={6} xs={12}>
-                                                                                    <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Module')}</label>
-                                                                                    <RedditTextField
-                                                                                        type="text"
-                                                                                        fullWidth
-                                                                                        value={module_device}
-                                                                                        onChange={e => {
-                                                                                            setStateModule_device(e.target.value);
-                                                                                        }}
-                                                                                    />
+                                                                                        <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Module')}</label>
+                                                                                        <RedditTextField
+                                                                                            type="text"
+                                                                                            fullWidth
+                                                                                            value={module_device}
+                                                                                            onChange={e => {
+                                                                                                setStateModule_device(e.target.value);
+                                                                                            }}
+                                                                                        />
+                                                                                    </Grid>
                                                                                 </Grid>
-</Grid>
                                                                             )}
-                                                                        </FormControl>
-
-
+                                                                        </Grid>
                                                                     )}
                                                                     <Grid item xs={12}>
                                                                         <Divider />
@@ -416,42 +433,43 @@ const [valid_verification, setValid_verification]=useState("");
                                         </Mutation> </Card>
                                 </Grid>
                             </Grid>
-                                <Dialog
-                                    open={open}
-                                    onClose={handleClose}
-                                    scroll={scroll}
-                                    aria-labelledby="scroll-dialog-title"
-                                    aria-describedby="scroll-dialog-description"
-                                >
-                                    <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle>
-                                    <DialogContent dividers={scroll === 'paper'}>
-                                        <DialogContentText
-                                            id="scroll-dialog-description"
-                                            ref={descriptionElementRef}
-                                            tabIndex={-1}
-                                        >
-                                            {[...new Array(50)]
-                                                .map(
-                                                    () => `Cras mattis consectetur purus sit amet fermentum.
-Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-                                                )
-                                                .join('\n')}
-                                        </DialogContentText>
-                                    </DialogContent>
-                                    <DialogActions>
-                                        <Button onClick={handleClose} color="primary">
-                                            Cancel
-                                        </Button>
-                                        <Button onClick={handleClose} color="primary">
-                                            Subscribe
-                                        </Button>
-                                    </DialogActions>
-                                </Dialog>
-                            </div>
-                        </MuiPickersUtilsProvider>
-                    </MuiThemeProvider>
+                            <Dialog
+                                open={open}
+                                onClose={handleClose}
+                                scroll={scroll}
+                                aria-labelledby="scroll-dialog-title"
+                                aria-describedby="scroll-dialog-description"
+                            >
+                                <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle>
+                                <DialogContent dividers={scroll === 'paper'}>
+                                    <Typography>{t('Legal metrology of measuring instruments')} </Typography>
+                                    <Table>
+                                        <TableHead  >
+                                            <TableRow >
+                                                <TableCell align="right">{t('Measuring Instruments')}</TableCell>
+                                                <TableCell align="right">{t('Kind of activity')}</TableCell>
+
+                                            </TableRow>
+                                        </TableHead>
+                                        <TableBody>
+                                            {rows.map(row => (
+                                            <TableRow>
+                                                <TableCell lign="center">{row.mi}</TableCell>
+                                                <TableCell lign="center">{row.activities}</TableCell>
+
+                                            </TableRow>))}
+                                        </TableBody>
+                                    </Table>
+                                </DialogContent>
+                                <DialogActions>
+                                    <Button onClick={handleClose} color="primary">
+                                        Cancel
+                                    </Button>
+                                </DialogActions>
+                            </Dialog>
+                        </div>
+                    </MuiPickersUtilsProvider>
+                </MuiThemeProvider>
 
 
             </main>
