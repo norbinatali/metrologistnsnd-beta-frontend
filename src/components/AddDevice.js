@@ -232,17 +232,18 @@ const [valid_verification, setValid_verification]=useState("");
                                                                                          required/>
                                                                     </Grid>
 
-                                                                    <FormGroup row >
-                                                                        <FormControlLabel control={<Checkbox checked={certification_conformity} size="small" onChange={handleChange('certification_conformity')} value="certification_conformity"/>}  labelPlacement="top" label={<Typography>{t('conformity certificate')}</Typography>} />
-                                                                        <FormControlLabel control={<Checkbox checked={certification_verification} size="small" value="certification_verification"   onChange={handleChange('certification_verification')}/>} labelPlacement="top" label={<Typography>{t('verification certificate')}</Typography>} />
-                                                                        <FormControlLabel control={<Checkbox checked={certification_calibration} size="small" value="certification_calibration" onChange={handleChange('certification_calibration')}/>} labelPlacement="top" label={<Typography>{t('calibration certificate')}</Typography> }/>
-                                                                        <FormControlLabel control={<Checkbox value="none" size="small" checked={none} onChange={handleChangeNone('none')}/>} labelPlacement="top" label={<Typography>{t('none')}</Typography> }/>
+                                                                     <FormGroup >
+                                                                        <FormControlLabel control={<Checkbox checked={certification_conformity} size="small" onChange={handleChange('certification_conformity')} value="certification_conformity"/>}   label={<Typography variant={"overline"}>{t('conformity certificate')}</Typography>}/>
+                                                                        <FormControlLabel control={<Checkbox checked={certification_verification} size="small" value="certification_verification"   onChange={handleChange('certification_verification')}/>}   label={<Typography variant={"overline"}>{t('verification certificate')}</Typography>}/>
+                                                                        <FormControlLabel control={<Checkbox checked={certification_calibration} size="small" value="certification_calibration" onChange={handleChange('certification_calibration')}/>}  label={ <Typography variant={"overline"}>{t('calibration certificate')}</Typography>}/>
+                                                                        <FormControlLabel control={<Checkbox value="none" size="small" checked={none} onChange={handleChangeNone('none')}/>}  label={<Typography variant={"overline"}>{t('none')}</Typography>}/>
                                                                     </FormGroup>
 
                                                                     {certification_conformity === true && (
 
                                                                         <Grid item xs={12}>
-                                                                            <Divider />
+                                                                              <Divider />
+                                                                         <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of conforminy assessment')}</Typography>
                                                                             <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
                                                                             <RedditTextField
                                                                                 type="text"
@@ -287,7 +288,9 @@ const [valid_verification, setValid_verification]=useState("");
                                                                         </Grid>)}
                                                                     {certification_verification === true && (
                                                                         <Grid item xs={12}>
-                                                                            <Divider />
+                                                                         <Divider />
+                                                                         <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of verification')}</Typography>
+                                                                           
                                                                             <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
                                                                             <RedditTextField
                                                                                 type="text"
@@ -316,7 +319,9 @@ const [valid_verification, setValid_verification]=useState("");
                                                                     )}
                                                                     {certification_calibration === true && (
                                                                         <Grid item xs={12}>
-                                                                            <Divider />
+                                                                         <Divider />
+                                                                         <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of calibration')}</Typography>
+                                                                           
                                                                             <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
                                                                             <RedditTextField
                                                                                 type="text"
@@ -345,14 +350,18 @@ const [valid_verification, setValid_verification]=useState("");
                                                                     )}
                                                                     {none === true && (
                                                                         <FormControl component="fieldset">
+                                                                        <Divider />
                                                                             <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Legal metrology?')}</label><IconButton  size="small" onClick={handleClickOpen('paper')}><HelpOutlineIcon fontSize="inherit"/></IconButton><br/>
-                                                                       <RadioGroup value={valueVerification} row onChange={handleChangeVerification}>
-                                                                           <FormControlLabel control={<Radio />} label={'yes'} value="yes"/>
-                                                                           <FormControlLabel control={<Radio/>} label={'no'} value="no"/>
-                                                                       </RadioGroup>
+                                                                        <RadioGroup value={valueVerification} row onChange={handleChangeVerification}>
+                                                                                <FormControlLabel control={<Radio />} label={<Typography variant={"overline"}>{t('Yes')}</Typography>} value="yes"/>
+                                                                                <FormControlLabel control={<Radio/>} label={<Typography variant={"overline"}>{t('No')}</Typography>} value="no"/>
+                                                                            </RadioGroup>
                                                                             {valueVerification === 'yes' && (
-                                                                                <Grid item md={6} xs={12}>
+                                                                               <Grid container spacing={3}>
                                                                                     <Divider />
+
+                                                                                    <Grid item md={6} xs={12}>
+                                                                                   
                                                                                     <label  htmlFor="type_device" style={{color:"rgba(0,1,47,0.84)"}}>{t('Type')}</label>
                                                                                     <RedditTextField
                                                                                         type="text"
@@ -362,6 +371,8 @@ const [valid_verification, setValid_verification]=useState("");
                                                                                             setStateType_device(e.target.value);
                                                                                         }}
                                                                                     />
+ </Grid>
+                                                                                    <Grid item md={6} xs={12}>
                                                                                     <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Module')}</label>
                                                                                     <RedditTextField
                                                                                         type="text"
@@ -372,6 +383,7 @@ const [valid_verification, setValid_verification]=useState("");
                                                                                         }}
                                                                                     />
                                                                                 </Grid>
+</Grid>
                                                                             )}
                                                                         </FormControl>
 
