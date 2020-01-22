@@ -204,132 +204,74 @@ const [valid_verification, setValid_verification]=useState("");
                                     <Card{...rest} style={{marginRight:"auto", marginLeft:"auto", width:"50%"}} >
                                         <CardHeader subheader={t("fill the information")} title={t("Add Device")}/>
                                         <Divider />
+  <Mutation mutation={CREATE_MYDEVICE}  variables={{name_device,conformity_data, series_device,brand_device,certification_number, type_device,module_device, valid_verification,calibration, next_calibration} } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
+   {( addmydevice,{loading, error, event}) => {
+ if (loading) { return (<LinearDeterminate /> )}
+  if (error) {return (error.message)}
+   if (authToken){
+  return(
+ <FormControl autoComplete="off" noValidate style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
+  <CardContent>
+  <Grid container spacing={3}>
+  <Grid item md={6} xs={12}>
+  <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Name')}</label>
+   <RedditTextField type="text" fullWidth value={name_device}  onChange={e => { setStateName_device(e.target.value);  }}  required/>
+     </Grid>
+        <Grid item md={6} xs={12}>
+  <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Brand')}</label>
+<RedditTextField type="text" fullWidth value={brand_device}  onChange={e => { setStateBrand_device(e.target.value);  }} required/>
+     </Grid>
+ <Grid item md={6} xs={12}>
+<label  htmlFor="type" style={{color:"rgba(0,1,47,0.84)"}}>{t('Series number')}</label>
+    <RedditTextField  type="text" fullWidth value={series_device} onChange={e => { setStateSeries_device(e.target.value);  }}  required  />
+ </Grid>
+  <Grid item md={6} xs={12}>
 
-                                        <Mutation mutation={CREATE_MYDEVICE}  variables={{name_device,conformity_data, series_device,brand_device,certification_number, type_device,module_device, valid_verification,calibration, next_calibration} } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
-                                            {( addmydevice,{loading, error, event}) => {
+   <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Type')}</label>
+   <RedditTextField type="text" fullWidth value={type_device}  onChange={e => { setStateType_device(e.target.value);}} required/>
+      </Grid>
 
-                                                if (loading) { return (<LinearDeterminate /> )}
-                                                if (error) {return (error.message)}
-                                                if (authToken){
-                                                    return(
+ <FormGroup >
+ <FormControlLabel control={<Checkbox checked={certification_conformity} size="small" onChange={handleChange('certification_conformity')} value="certification_conformity"/>}   label={<Typography variant={"overline"}>{t('conformity certificate')}</Typography>}/>
+  <FormControlLabel control={<Checkbox checked={certification_verification} size="small" value="certification_verification"   onChange={handleChange('certification_verification')}/>}   label={<Typography variant={"overline"}>{t('verification certificate')}</Typography>}/>
+  <FormControlLabel control={<Checkbox checked={certification_calibration} size="small" value="certification_calibration" onChange={handleChange('certification_calibration')}/>}  label={ <Typography variant={"overline"}>{t('calibration certificate')}</Typography>}/>
+   <FormControlLabel control={<Checkbox value="none" size="small" checked={none} onChange={handleChangeNone('none')}/>}  label={<Typography variant={"overline"}>{t('none')}</Typography>}/>
+   </FormGroup>
 
-                                                        <FormControl autoComplete="off" noValidate style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
-                                                            <CardContent>
-                                                                <Grid container spacing={3}>
-                                                                    <Grid item md={6} xs={12}>
-
-                                                                        <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Name')}</label>
-                                                                        <RedditTextField type="text" fullWidth value={name_device}  onChange={e => {
-                                                                            setStateName_device(e.target.value);
-                                                                        }}
-                                                                                         required/>
-                                                                    </Grid>
-                                                                    <Grid item md={6} xs={12}>
-
-                                                                        <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Brand')}</label>
-                                                                        <RedditTextField type="text" fullWidth value={brand_device}  onChange={e => {
-                                                                            setStateBrand_device(e.target.value);
-                                                                        }}
-                                                                                         required/>
-                                                                    </Grid>
-
-
-                                                                    <Grid item md={6} xs={12}>
-                                                                        <label  htmlFor="type" style={{color:"rgba(0,1,47,0.84)"}}>{t('Series number')}</label>
-                                                                        <RedditTextField
-                                                                            type="text"
-                                                                            fullWidth
-                                                                            value={series_device}
-                                                                            onChange={e => {
-                                                                                setStateSeries_device(e.target.value);
-                                                                            }}  required
-                                                                        />
-                                                                    </Grid>
-                                                                    <Grid item md={6} xs={12}>
-
-                                                                        <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Type')}</label>
-                                                                        <RedditTextField type="text" fullWidth value={type_device}  onChange={e => {
-                                                                            setStateType_device(e.target.value);
-                                                                        }}
-                                                                                         required/>
-                                                                    </Grid>
-
-                                                                     <FormGroup >
-                                                                        <FormControlLabel control={<Checkbox checked={certification_conformity} size="small" onChange={handleChange('certification_conformity')} value="certification_conformity"/>}   label={<Typography variant={"overline"}>{t('conformity certificate')}</Typography>}/>
-                                                                        <FormControlLabel control={<Checkbox checked={certification_verification} size="small" value="certification_verification"   onChange={handleChange('certification_verification')}/>}   label={<Typography variant={"overline"}>{t('verification certificate')}</Typography>}/>
-                                                                        <FormControlLabel control={<Checkbox checked={certification_calibration} size="small" value="certification_calibration" onChange={handleChange('certification_calibration')}/>}  label={ <Typography variant={"overline"}>{t('calibration certificate')}</Typography>}/>
-                                                                        <FormControlLabel control={<Checkbox value="none" size="small" checked={none} onChange={handleChangeNone('none')}/>}  label={<Typography variant={"overline"}>{t('none')}</Typography>}/>
-                                                                    </FormGroup>
-
-                                                                    {certification_conformity === true && (
-
-                                                                        <Grid item xs={12}>
-                                                                              <Divider />
-                                                                         <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of conforminy assessment')}</Typography>
-                                                                            <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
-                                                                            <RedditTextField
-                                                                                type="text"
-                                                                                fullWidth
-                                                                                value={certification_number}
-                                                                                onChange={e => {
-                                                                                    setCertification_number(e.target.value);
-                                                                                }}
-                                                                            />
-                                                                            <label  htmlFor="module_device" style={{color:"rgba(0,1,47,0.84)"}}>{t('Module')}</label>
-                                                                            <RedditTextField
-                                                                                type="text"
-                                                                                fullWidth
-                                                                                value={module_device}
-                                                                                onChange={e => {
-                                                                                    setStateModule_device(e.target.value);
-                                                                                }}
-                                                                            />
-                                                                            <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Department center')}</label>
-                                                                            <RedditTextField
-                                                                                type="text"
-                                                                                fullWidth
-                                                                                value={department_center}
-                                                                                onChange={e => {
-                                                                                    setDepartment_center(e.target.value);
-                                                                                }}
-                                                                            />
-                                                                            <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
-                                                                            <Divider />
-                                                                            <TextField id="date"
-                                                                                       label={t('Date')}
-                                                                                       type="date"
-                                                                                       style={{color:"rgba(0,1,47,0.84)", width:"120px"}}
-                                                                                       defaultValue="12-06-2019"
-                                                                                       value={conformity_data}
+    {certification_conformity === true && (
+       <Grid item xs={12}>
+     <Divider />
+      <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of conforminy assessment')}</Typography>
+     <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
+     <RedditTextField    type="text"   fullWidth   value={certification_number} onChange={e => { setCertification_number(e.target.value); }}  />
+      <label  htmlFor="module_device" style={{color:"rgba(0,1,47,0.84)"}}>{t('Module')}</label>
+        <RedditTextField   type="text" fullWidth value={module_device} onChange={e => { setStateModule_device(e.target.value);  }} />
+    <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Department center')}</label>
+  <RedditTextField  type="text"  fullWidth  value={department_center} onChange={e => { setDepartment_center(e.target.value); }} />
+ <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
+ <Divider />
+   <TextField id="date" label={t('Date')}  type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019" value={conformity_data}
                                                                                        className={classes.textField}
                                                                                        InputLabelProps={{
                                                                                            shrink: true,
                                                                                        }}
                                                                                        onChange={handleDateCalibration}
                                                                             />
-                                                                        </Grid>)}
-                                                                    {certification_verification === true && (
-                                                                        <Grid item xs={12}>
-                                                                         <Divider />
-                                                                         <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of verification')}</Typography>
+  </Grid>)}
+{certification_verification === true && (
+    <Grid item xs={12}>
+    <Divider />
+    <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of verification')}</Typography>
                                                                            
-                                                                            <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
-                                                                            <RedditTextField
-                                                                                type="text"
-                                                                                fullWidth
-                                                                                value={certification_number}
-                                                                                onChange={e => {
+     <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
+    <RedditTextField type="text" fullWidth value={certification_number} onChange={e => {
                                                                                     setCertification_number(e.target.value);
                                                                                 }}
                                                                             />
 
-                                                                            <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
-                                                                            <Divider />
-                                                                            <TextField id="date"
-                                                                                       label={t('Date')}
-                                                                                       type="date"
-                                                                                       style={{color:"rgba(0,1,47,0.84)", width:"120px"}}
-                                                                                       defaultValue="12-06-2019"
+   <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
+  <Divider />
+  <TextField id="date"   label={t('Date')} type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019"
                                                                                        value={valid_verification}
                                                                                        className={classes.textField}
                                                                                        InputLabelProps={{
@@ -339,27 +281,15 @@ const [valid_verification, setValid_verification]=useState("");
                                                                             />
                                                                         </Grid>
                                                                     )}
-                                                                    {certification_calibration === true && (
-                                                                        <Grid item xs={12}>
-                                                                         <Divider />
-                                                                         <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of calibration')}</Typography>
-                                                                           
-                                                                            <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
-                                                                            <RedditTextField
-                                                                                type="text"
-                                                                                fullWidth
-                                                                                value={certification_number}
-                                                                                onChange={e => {
-                                                                                    setCertification_number(e.target.value);
-                                                                                }}
-                                                                            />
-                                                                            <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
-                                                                            <Divider />
-                                                                            <TextField id="date"
-                                                                                       label={t('Date')}
-                                                                                       type="date"
-                                                                                       style={{color:"rgba(0,1,47,0.84)", width:"120px"}}
-                                                                                       defaultValue="12-06-2019"
+  {certification_calibration === true && (
+ <Grid item xs={12}>
+  <Divider />
+ <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of calibration')}</Typography>
+ <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
+ <RedditTextField  type="text"   fullWidth value={certification_number} onChange={e => { setCertification_number(e.target.value); }} />
+ <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
+    <Divider />
+  <TextField id="date"   label={t('Date')} type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019"
                                                                                        value={valid_verification}
                                                                                        className={classes.textField}
                                                                                        InputLabelProps={{
@@ -367,118 +297,84 @@ const [valid_verification, setValid_verification]=useState("");
                                                                                        }}
                                                                                        onChange={handleDateCalibration}
                                                                             />
-                                                                        </Grid>
+        </Grid>
 
                                                                     )}
-                                                                   {none === true && (
-                                                                        <Grid item xs={12}>
-
-                                                                            <Divider />
-                                                                            <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Legal metrology?')} <IconButton  size="small" onClick={handleClickOpen('paper')}><HelpOutlineIcon fontSize="inherit"/></IconButton></Typography>
-                                                                            <RadioGroup value={valueVerification} row onChange={handleChangeVerification}>
-                                                                                <FormControlLabel control={<Radio />} label={<Typography variant={"overline"}>{t('Yes')}</Typography>} value="yes"/>
-                                                                                <FormControlLabel control={<Radio/>} label={<Typography variant={"overline"}>{t('No')}</Typography>} value="no"/>
-                                                                            </RadioGroup>
-                                                                            {valueVerification === 'yes' && (
-                                                                                <Grid container spacing={3}>
-                                                                                    <Divider />
-
-                                                                                    <Grid item md={6} xs={12}>
-
-                                                                                        <label  htmlFor="type_device" style={{color:"rgba(0,1,47,0.84)"}}>{t('Type')}</label>
-                                                                                        <RedditTextField
-                                                                                            type="text"
-                                                                                            fullWidth
-                                                                                            value={type_device}
-                                                                                            onChange={e => {
-                                                                                                setStateType_device(e.target.value);
+   {none === true && (
+ <Grid item xs={12}>
+   <Divider />
+  <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Legal metrology?')} <IconButton  size="small" onClick={handleClickOpen('paper')}><HelpOutlineIcon fontSize="inherit"/></IconButton></Typography>
+  <RadioGroup value={valueVerification} row onChange={handleChangeVerification}>
+   <FormControlLabel control={<Radio />} label={<Typography variant={"overline"}>{t('Yes')}</Typography>} value="yes"/>
+   <FormControlLabel control={<Radio/>} label={<Typography variant={"overline"}>{t('No')}</Typography>} value="no"/>
+ </RadioGroup>
+  {valueVerification === 'yes' && (
+   <Grid container spacing={3}>
+    <Divider />
+  <Grid item md={6} xs={12}>
+ <label  htmlFor="type_device" style={{color:"rgba(0,1,47,0.84)"}}>{t('Type')}</label>
+  <RedditTextField type="text" fullWidth value={type_device} onChange={e => { setStateType_device(e.target.value);
                                                                                             }}
                                                                                         />
-                                                                                    </Grid>
-                                                                                    <Grid item md={6} xs={12}>
-                                                                                        <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Module')}</label>
-                                                                                        <RedditTextField
-                                                                                            type="text"
-                                                                                            fullWidth
-                                                                                            value={module_device}
-                                                                                            onChange={e => {
-                                                                                                setStateModule_device(e.target.value);
+    </Grid>
+  <Grid item md={6} xs={12}>
+ <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Module')}</label>
+  <RedditTextField type="text"    fullWidth   value={module_device} onChange={e => {setStateModule_device(e.target.value);
                                                                                             }}
                                                                                         />
-                                                                                    </Grid>
-                                                                                </Grid>
+ </Grid>
+ </Grid>
                                                                             )}
-                                                                        </Grid>
+   </Grid>
                                                                     )}
-                                                                    <Grid item xs={12}>
-                                                                        <Divider />
-                                                                        <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Notes')}</label>
-                                                                        <RedditTextField
-                                                                            type="text"
-                                                                            fullWidth
-                                                                            multiline
-                                                                            rows="5"
-                                                                            value={notes}
-                                                                            onChange={e => {
-                                                                                setStateNotes(e.target.value);
+  <Grid item xs={12}>
+   <Divider />
+  <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Notes')}</label>
+    <RedditTextField  type="text"      fullWidth    multiline rows="5" value={notes} onChange={e => { setStateNotes(e.target.value);
                                                                             }}
                                                                         />
-                                                                    </Grid>
-                                                                </Grid>
-
-                                                            </CardContent>
-                                                            <Divider />
-                                                            <CardActions>
-                                                                <RaisedButton onClick={addmydevice} style={{color:"rgba(0,1,47,0.84)"}}>{t('Add')}</RaisedButton>
-                                                            </CardActions>
-
-                                                        </FormControl>)}}}
-
-                                        </Mutation> </Card>
-                                </Grid>
-                            </Grid>
-                            <Dialog
-                                open={open}
-                                onClose={handleClose}
-                                scroll={scroll}
-                                aria-labelledby="scroll-dialog-title"
-                                aria-describedby="scroll-dialog-description"
+</Grid>
+ </Grid>
+</CardContent>
+ <Divider />
+<CardActions>
+  <RaisedButton onClick={addmydevice} style={{color:"rgba(0,1,47,0.84)"}}>{t('Add')}</RaisedButton>
+</CardActions>
+ </FormControl>)}}}
+</Mutation> </Card>
+ </Grid>
+  </Grid>
+ <Dialog  open={open} onClose={handleClose}  scroll={scroll} aria-labelledby="scroll-dialog-title" aria-describedby="scroll-dialog-description"
                             >
-                                <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle>
-                                <DialogContent dividers={scroll === 'paper'}>
-                                    <Typography>{t('Legal metrology of measuring instruments')} </Typography>
-                                                 <TableContainer component={Paper}>
-                                    <Table className={classes.table}>
-                                        <TableHead  >
-                                            <TableRow >
-                                                <TableCell align="right">{t('Measuring Instruments')}</TableCell>
-                                                <TableCell align="right">{t('Kind of activity')}</TableCell>
-
-                                            </TableRow>
-                                        </TableHead>
-                                        <TableBody>
-                                            {rows.map(row => (
-                                            <TableRow>
-                                                <TableCell lign="center">{row.mi}</TableCell>
-                                                <TableCell lign="center">{row.activities}</TableCell>
-
-                                            </TableRow>))}
-                                        </TableBody>
-                                    </Table>
+  <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle>
+ <DialogContent dividers={scroll === 'paper'}>
+ <Typography>{t('Legal metrology of measuring instruments')} </Typography>
+  <TableContainer component={Paper}>
+     <Table className={classes.table}>
+ <TableHead  >
+ <TableRow >
+ <TableCell align="right">{t('Measuring Instruments')}</TableCell>
+  <TableCell align="right">{t('Kind of activity')}</TableCell>
+ </TableRow>
+</TableHead>
+  <TableBody>
+ {rows.map(row => (
+ <TableRow>
+  <TableCell lign="center">{row.mi}</TableCell>
+ <TableCell lign="center">{row.activities}</TableCell>
+ </TableRow>))}
+ </TableBody>
+ </Table>
 </TableContainer>
-                                </DialogContent>
-                                <DialogActions>
-                                    <Button onClick={handleClose} color="primary">
-                                        Cancel
-                                    </Button>
-                                </DialogActions>
-                            </Dialog>
-                        </div>
-                    </MuiPickersUtilsProvider>
-                </MuiThemeProvider>
-
-
-            </main>
+ </DialogContent>
+ <DialogActions>
+  <Button onClick={handleClose} color="primary"> Cancel</Button>
+ </DialogActions>
+ </Dialog>
+ </div>
+ </MuiPickersUtilsProvider>
+ </MuiThemeProvider>
+ </main>
         </div>
     )
 }
