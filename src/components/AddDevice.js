@@ -346,9 +346,8 @@ const [valid_verification, setValid_verification]=useState("");
   </Grid>
  <Dialog  open={open} onClose={handleClose}  scroll={scroll} aria-labelledby="scroll-dialog-title" aria-describedby="scroll-dialog-description"
                             >
-  <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle>
+  <DialogTitle id="scroll-dialog-title"><Typography>{t('Legal metrology of measuring instruments')} </Typography></DialogTitle>
  <DialogContent dividers={scroll === 'paper'}>
- <Typography>{t('Legal metrology of measuring instruments')} </Typography>
   <TableContainer component={Paper}>
      <Table className={classes.table}>
  <TableHead  >
@@ -360,7 +359,7 @@ const [valid_verification, setValid_verification]=useState("");
   <TableBody>
  {rows.map(row => (
  <TableRow>
-  <TableCell lign="center">{row.mi}</TableCell>
+  <TableCell style={{width:"30%"}} lign="center">{row.mi}</TableCell>
  <TableCell lign="center">{row.activities}</TableCell>
  </TableRow>))}
  </TableBody>
