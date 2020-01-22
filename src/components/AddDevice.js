@@ -46,6 +46,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
+import TableContainer from '@material-ui/core/TableContainer';
 
 
 const authToken = localStorage.getItem(AUTH_TOKEN)
@@ -53,6 +54,9 @@ const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
     },
+     table: {
+    minWidth: 650,
+  },
 
 }));
 const useStylesReddit = makeStyles(theme => ({
@@ -443,7 +447,8 @@ const [valid_verification, setValid_verification]=useState("");
                                 <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle>
                                 <DialogContent dividers={scroll === 'paper'}>
                                     <Typography>{t('Legal metrology of measuring instruments')} </Typography>
-                                    <Table>
+                                                 <TableContainer component={Paper}>
+                                    <Table className={classes.table}>
                                         <TableHead  >
                                             <TableRow >
                                                 <TableCell align="right">{t('Measuring Instruments')}</TableCell>
@@ -460,6 +465,7 @@ const [valid_verification, setValid_verification]=useState("");
                                             </TableRow>))}
                                         </TableBody>
                                     </Table>
+</TableContainer>
                                 </DialogContent>
                                 <DialogActions>
                                     <Button onClick={handleClose} color="primary">
