@@ -25,7 +25,7 @@ import { Link as RouterLink, withRouter } from 'react-router-dom';
 import TableRow from "@material-ui/core/TableRow";
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
-import i18n from "../menu/translation/i18n";
+import i18n from "../menu/translations/i18n";
 import UserMenu from "./UserMenu";
 import LinearDeterminate from "./LinearDeterminate";
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
