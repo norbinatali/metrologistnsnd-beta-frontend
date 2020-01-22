@@ -149,7 +149,7 @@ const [valid_verification, setValid_verification]=useState("");
        setValueVerification(e.target.value)
    };
     const handleChange = name => event => {
-        setValue({ ...value, [name]: event.target.checked });
+        setValue({ ...value, [name]: event.target.checked, none:false });
     };
     const handleChangeNone = name => event => {
         setValue({ ...value, [name]: event.target.checked, certification_calibration: false, certification_conformity: false, certification_verification: false });
