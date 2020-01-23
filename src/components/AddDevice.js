@@ -167,7 +167,9 @@ const [valid_verification, setValid_verification]=useState("");
     const handleClose = () => {
         setOpen(false);
     };
-
+const handleChangeVer = e => {
+        setValueVer(e.target.value)
+    };
     const handleChangeVerification = e => {
        setValueVerification(e.target.value)
    };
@@ -302,31 +304,71 @@ const [valid_verification, setValid_verification]=useState("");
 
                                                                     )}
    {none === true && (
- <Grid item xs={12}>
-   <Divider />
-  <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Legal metrology?')} <IconButton  size="small" onClick={handleClickOpen('paper')}><HelpOutlineIcon fontSize="inherit"/></IconButton></Typography>
-  <RadioGroup value={valueVerification} row onChange={handleChangeVerification}>
-   <FormControlLabel control={<Radio />} label={<Typography variant={"overline"}>{t('Yes')}</Typography>} value="yes"/>
+<Grid item xs={12}>
+  <Divider />
+  <Card className={classes.card}>
+ <CardContent>
+  <Typography className={classes.title} gutterBottom>{t('Recommendation')}</Typography>
+ <Typography variant="body2" component="p">{t('Choose option')}</Typography>
+ <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Legal metrology?')} <IconButton  size="small" onClick={handleClickOpen('paper')}><HelpOutlineIcon fontSize="inherit"/></IconButton></Typography>
+ <RadioGroup value={valueVerification} row onChange={handleChangeVerification}>
+ <FormControlLabel control={<Radio />} label={<Typography variant={"overline"}>{t('Yes')}</Typography>} value="yes"/>
    <FormControlLabel control={<Radio/>} label={<Typography variant={"overline"}>{t('No')}</Typography>} value="no"/>
- </RadioGroup>
-  {valueVerification === 'yes' && (
-   <Grid container spacing={3}>
+   </RadioGroup>
+   {valueVerification === 'yes' && (
+    <Grid container spacing={3}>
+     <Divider />
+       <Grid item xs={12}>
+        <Card>
+    <CardContent>
+ <Typography> {t('Had verification')}</Typography>
+   <RadioGroup value={valueVer} row onChange={handleChangeVer}>
+   <FormControlLabel control={<Radio />} label={<Typography variant={"overline"}>{t('Yes')}</Typography>} value="yes"/>
+    <FormControlLabel control={<Radio/>} label={<Typography variant={"overline"}>{t('No')}</Typography>} value="no"/>
+     </RadioGroup>
+ </CardContent>
+    </Card>
+      </Grid>
+   {valueVer === 'yes' && (
+<Grid container spacing={3}>
+  <Divider />
+   <Grid item xs={12}>
+ <Card>
+        <CardContent>
+    <Typography> {t('conformity assessment or calibration')}</Typography>
+      </CardContent>
+         </Card>
+  </Grid>
+ </Grid>
+    )}
+  {valueVer === 'no' && (
+ <Grid container spacing={3}>
+   <Divider />
+     <Grid item xs={12}>
+      <Card>
+      <CardContent>
+    <Typography> {t('Do verification')}</Typography>
+   </CardContent>
+     </Card>
+     </Grid>
+  </Grid>
+    )}
+   </Grid>)}
+  {valueVerification === 'no' && (
+     <Grid container spacing={3}>
     <Divider />
-  <Grid item md={6} xs={12}>
- <label  htmlFor="type_device" style={{color:"rgba(0,1,47,0.84)"}}>{t('Type')}</label>
-  <RedditTextField type="text" fullWidth value={type_device} onChange={e => { setStateType_device(e.target.value);
-                                                                                            }}
-                                                                                        />
-    </Grid>
-  <Grid item md={6} xs={12}>
- <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Module')}</label>
-  <RedditTextField type="text"    fullWidth   value={module_device} onChange={e => {setStateModule_device(e.target.value);
-                                                                                            }}
-                                                                                        />
- </Grid>
- </Grid>
-                                                                            )}
-   </Grid>
+   <Grid item xs={12}>
+ <Card>
+      <CardContent>
+  <Typography> {t('calibration')}</Typography>
+   </CardContent>
+     </Card>
+        </Grid>
+        </Grid>
+       )}
+       </CardContent>
+        </Card>
+         </Grid>
                                                                     )}
   <Grid item xs={12}>
    <Divider />
