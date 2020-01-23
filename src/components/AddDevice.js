@@ -140,6 +140,7 @@ const [valid_verification, setValid_verification]=useState("");
     const [conformity_data, setConformity_data]=useState('');
     const [valueVerification, setValueVerification]=useState('');
     const [open, setOpen] = React.useState(false);
+    const [valueVer, setValueVer]=useState('');
     const [scroll, setScroll] = React.useState('paper');
     const { none,certification_calibration,certification_verification,certification_conformity } = value;
     const [addmydevice] = useState(true);
