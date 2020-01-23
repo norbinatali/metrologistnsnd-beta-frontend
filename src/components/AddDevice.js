@@ -17,6 +17,7 @@ import {AUTH_TOKEN, CREATE_MY_DEVICE, GC_USER_ID} from "../constants";
 import {fade} from "@material-ui/core/styles";
 import LinearDeterminate from "./LinearDeterminate";
 import UserMenu from "./UserMenu";
+import LegalMetrology from "./LegalMetrology"
 import CardHeader from "@material-ui/core/CardHeader";
 import Divider from "@material-ui/core/Divider";
 import Checkbox from '@material-ui/core/Checkbox';
@@ -348,23 +349,7 @@ const [valid_verification, setValid_verification]=useState("");
                             >
   <DialogTitle id="scroll-dialog-title"><Typography>{t('Legal metrology of measuring instruments')} </Typography></DialogTitle>
  <DialogContent dividers={scroll === 'paper'}>
-  <TableContainer component={Paper}>
-     <Table className={classes.table}>
- <TableHead  >
- <TableRow >
- <TableCell align="right">{t('Measuring Instruments')}</TableCell>
-  <TableCell align="right">{t('Kind of activity')}</TableCell>
- </TableRow>
-</TableHead>
-  <TableBody>
- {rows.map(row => (
- <TableRow>
-  <TableCell style={{width:"30%"}} lign="center">{row.mi}</TableCell>
- <TableCell lign="center">{row.activities}</TableCell>
- </TableRow>))}
- </TableBody>
- </Table>
-</TableContainer>
+<LegalMetrology />
  </DialogContent>
  <DialogActions>
   <Button onClick={handleClose} color="primary"> Cancel</Button>
