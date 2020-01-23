@@ -119,7 +119,12 @@
  "Notes":"Notes",
  "Legal metrology of measuring instruments":"Legal metrology of measuring instruments",
  "Ok":"OK",
- 
+ "Choose option": "If you dont know what you have to do for your measuring instruments. Fist check if it is a legal metrology measuring instrument",
+  "Had verification ": "Had your measuring instrument verification(module F)? You can find the information it is in the instrument's documentation ",
+  "conformity assessment or calibration": "If it is a legal metrology measuring instrument, you can apply for the conformity assessmnet or do calibration",
+  "calibration": "You can do only calibration for your measuring instrument",
+  "Do verification": "You need to do verification(module F) if your purpose is conformity assessment certificate",
+  "Recommendation": "Recommendation",
   
   
   "Measuring Instrument": "Measuring Instrument",
