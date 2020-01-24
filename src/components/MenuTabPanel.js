@@ -1,5 +1,4 @@
 import React, { Component,useState, useEffect } from 'react';
-import Navbar, { ElementsWrapper } from '../menu/navbar';
 import SignUp from '../SignUp';
 import Input from "@material-ui/core/Input";
 
