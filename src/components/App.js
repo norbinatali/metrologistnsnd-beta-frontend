@@ -6,7 +6,6 @@ import SignUp from "../SignUp";
 import history from '../history';
 import {Router} from "react-router-dom";
 import { GC_USER_ID, RESET_TOKEN as resetToken} from '../constants'
-import UserMenu from "./UserMenu";
 import ForgetPassword from "./ForgetPassword";
 import ConfirmResetPassword from "./ConfirmResetPassword";
 import MenuTabPanel from "./MenuTabPanel";
@@ -68,16 +67,7 @@ class App extends Component {
                            <PrivateRoute path="/documents-of-quality-system" component={History} />
                            <PrivateRoute path="/add-device" component={AddDevice} />
                            <PrivateRoute path="/mydevices" component={MyDevice} />
-                           <PrivateRoute path="/standards-L" component={Standards} />
-                           <PrivateRoute path="/standards" component={StandardListGrid} />
-                           <PrivateRoute path="/standards-M" component={StandardsM} />
-                           <PrivateRoute path="/standards-EM" component={StandardsEM} />
-                           <PrivateRoute path="/standards-T" component={StandardsT} />
-                           <PrivateRoute path="/standards-TF" component={StandardsTF} />
-                           <PrivateRoute path="/standards-PR" component={StandardsPR} />
-                           <PrivateRoute path="/standards-IR" component={StandardsIR} />
-                           <PrivateRoute path="/standards-AUV" component={StandardsAUV} />
-                           <PrivateRoute path="/standards-QM" component={StandardsQM} />
+                           
                            <PrivateRoute path="/account" component={UserProfile} />
                            <PrivateRoute path="/contactus" component={ContactUS} />
                          
