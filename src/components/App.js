@@ -56,15 +56,7 @@ class App extends Component {
                            <PrivateRoute path="/user" component={Dashboard} />
                            <PrivateRoute path="/dashboard" component={Dashboard} />
                            <PrivateRoute path="/metrology" component={History} />
-                           <PrivateRoute path="/what-is-metrologist" component={WhatIsMetrologist} />
-                           <PrivateRoute path="/what-is-metrology" component={WhatIsMetrology} />
-                           <PrivateRoute path="/history-metrology" component={HistoryMetrology} />
-                           <PrivateRoute path="/what-is-conformity-assessment" component={History} />
-                           <PrivateRoute path="/modules" component={History} />
-                           <PrivateRoute path="/technical-reglaments" component={History} />
-                           <PrivateRoute path="/procedure-conformity-assessment" component={History} />
-                           <PrivateRoute path="/what-is-quality-system" component={History} />
-                           <PrivateRoute path="/documents-of-quality-system" component={History} />
+                           
                            <PrivateRoute path="/add-device" component={AddDevice} />
                            <PrivateRoute path="/mydevices" component={MyDevice} />
                            
