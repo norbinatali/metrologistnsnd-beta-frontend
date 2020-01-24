@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navbar, { ElementsWrapper } from '../menu/navbar';
 import SignUp from '../SignUp';
 
 import Grid from '@material-ui/core/Grid';
