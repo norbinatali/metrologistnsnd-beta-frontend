@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import FormControl from '@material-ui/core/FormControl';
 import {withTranslation} from "react-i18next";
 import TextField from "@material-ui/core/TextField";
-import PropTypes from 'prop-types';
 import {Grid, IconButton, makeStyles} from "@material-ui/core";
 import history from '../history.js'
 import RaisedButton from 'material-ui/RaisedButton';
@@ -25,11 +24,9 @@ import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import { SnackbarProvider, useSnackbar } from 'notistack';
+import { useSnackbar } from 'notistack';
 import {
     MuiPickersUtilsProvider,
-    KeyboardTimePicker,
-    KeyboardDatePicker,
 } from '@material-ui/pickers';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -38,9 +35,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import Dialog from "@material-ui/core/Dialog";
-import Fab from "@material-ui/core/Fab";
 import Typography from "@material-ui/core/Typography";
 import Paper from '@material-ui/core/Paper';
 
