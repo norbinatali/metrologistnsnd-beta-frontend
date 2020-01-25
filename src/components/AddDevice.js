@@ -296,53 +296,33 @@ const handleChangeVer = e => {
 
                                                                     )}
 {none === true && (
-   <Grid item xs={12}>
-         <Divider />
-         <Typography className={classes.title} gutterBottom>{t('Recommendation')}</Typography>
-         <Typography variant="body2" component="p">{t('Choose option')}</Typography>
-         <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Legal metrology?')} <IconButton  size="small" onClick={handleClickOpen('paper')}><HelpOutlineIcon fontSize="inherit"/></IconButton></Typography>
-         <RadioGroup value={valueVerification} row onChange={handleChangeVerification}>
-              <FormControlLabel control={<Radio />} label={<Typography variant={"overline"}>{t('Yes')}</Typography>} value="yes"/>
-              <FormControlLabel control={<Radio/>} label={<Typography variant={"overline"}>{t('No')}</Typography>} value="no"/>
+  <Grid item xs={12}>
+      <Divider />
+        <Typography className={classes.title} gutterBottom>{t('Recommendation')}</Typography>
+        <Typography variant="body2" component="p">{t('Choose option')}</Typography>
+        <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Legal metrology?')} <IconButton  size="small" onClick={handleClickOpen('paper')}><HelpOutlineIcon fontSize="inherit"/></IconButton></Typography>
+        <RadioGroup value={valueVerification} row onChange={handleChangeVerification}>
+           <FormControlLabel control={<Radio />} label={<Typography variant={"overline"}>{t('Yes')}</Typography>} value="yes"/>
+           <FormControlLabel control={<Radio/>} label={<Typography variant={"overline"}>{t('No')}</Typography>} value="no"/>
          </RadioGroup>
-   {valueVerification === 'yes' && (
-        <Grid container spacing={3}>
-          <Divider />
-             <Grid item xs={12}>
-                   <Typography> {t('Had verification')}</Typography>
-                   <RadioGroup value={valueVer} row onChange={handleChangeVer}>
-                      <FormControlLabel control={<Radio />} label={<Typography variant={"overline"}>{t('Yes')}</Typography>} value="yes"/>
-                      <FormControlLabel control={<Radio/>} label={<Typography variant={"overline"}>{t('No')}</Typography>} value="no"/>
-                    </RadioGroup>
-               </Grid>
-    {valueVer === 'yes' && (
-        <Grid container spacing={3}>
-            <Divider />
-               <Grid item xs={12}>
-                  <Typography> {t('conformity assessment or calibration')}</Typography>
-
-               </Grid>
-        </Grid>
- )}
-    {valueVer === 'no' && (
-        <Grid container spacing={3}>
-           <Divider />
-             <Grid item xs={12}>
-                 <Typography> {t('Do verification')}</Typography>
-             </Grid>
-        </Grid>
- )}
-     </Grid>)}
-{valueVerification === 'no' && (
+  {valueVerification === 'yes' && (
       <Grid container spacing={3}>
-           <Divider />
-               <Grid item xs={12}>
-                   <Typography> {t('calibration')}</Typography>
-               </Grid>
-       </Grid>
-  )}
+         <Divider />
+         <Grid item xs={12}>
+             <Typography> {t('conformity assessment or calibration')}</Typography>
+         </Grid>
+
+     </Grid>)}
+ {valueVerification === 'no' && (
+     <Grid container spacing={3}>
+       <Divider />
+        <Grid item xs={12}>
+           <Typography> {t('calibration')}</Typography>
+        </Grid>
       </Grid>
-  )}
+    )}
+   </Grid>
+     )}
   <Grid item xs={12}>
    <Divider />
   <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Notes')}</label>
