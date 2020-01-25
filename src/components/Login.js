@@ -1,32 +1,14 @@
 import React, { Component } from 'react';
-import SignUp from '../SignUp';
-
 import Grid from '@material-ui/core/Grid';
-import FormControl from '@material-ui/core/FormControl';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
-import SwipeableViews from 'react-swipeable-views';
-import TextField from '@material-ui/core/TextField';
 import {withStyles, makeStyles, useTheme } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
 import history from "../history"
 import gql from 'graphql-tag';
-import{Mutation} from 'react-apollo';
-import { AUTH_TOKEN , GC_USER_ID} from '../constants';
-import {PopupboxManager, PopupboxContainer} from 'react-popupbox';
 import '../style/login.css';
-import ContactUS from "./ContactUS";
-import Link from "@material-ui/core/Link";
-import ForgetPassword from "./ForgetPassword";
-import AppBar from "@material-ui/core/AppBar";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import ListItem from "@material-ui/core/ListItem";
-import {Button} from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
 import i18n from "../menu/translations/i18n";
-import MenuTabPanel from "./MenuTabPanel";
 import {withTranslation} from "react-i18next";
 import { Link as RouterLink, withRouter } from 'react-router-dom';
 import Auth from './Auth';
@@ -74,8 +56,7 @@ class Login extends Component{
     render() {
         const { classes } = this.props;
         const { t } = this.props;
-        const HELLO_QUERY = gql`mutation ($email:String!, $password:String!) { login(email:$email , password: $password){token,user{id, posts{id, title}}}}`;
-        const {email, password, id} = this.state;
+    
         return (
           <div style={{marginLeft: "auto", marginRight:"auto", display:"flex"}}> 
                       <MuiThemeProvider>
@@ -92,18 +73,7 @@ class Login extends Component{
                 </div>
         )
     }
-    _confirm = async data => {
-        const { token } = this.state.login;
-        if (this.state.login){
-            this._saveUserData(token);
-            Auth.authenticate();
-            history.push('/user')}
-        else { history.push('/')}
-    };
-    _saveUserData = (id,token) => {
-        localStorage.setItem(GC_USER_ID, id);
-        localStorage.setItem(AUTH_TOKEN, token)
-    }
+   
 }
 export default withTranslation()(Login);
 
