@@ -205,31 +205,33 @@ const handleChangeVer = e => {
   return(
  <FormControl autoComplete="off" noValidate style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
   <CardContent>
-  <Grid container spacing={3}>
-  <Grid item md={6} xs={12}>
-  <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Name')}</label>
-   <RedditTextField type="text" fullWidth value={name_device}  onChange={e => { setStateName_device(e.target.value);  }}  required/>
-     </Grid>
-        <Grid item md={6} xs={12}>
-  <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Brand')}</label>
-<RedditTextField type="text" fullWidth value={brand_device}  onChange={e => { setStateBrand_device(e.target.value);  }} required/>
-     </Grid>
+<Grid container spacing={3}>
  <Grid item md={6} xs={12}>
-<label  htmlFor="type" style={{color:"rgba(0,1,47,0.84)"}}>{t('Series number')}</label>
+      <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Name')}</label>
+      <RedditTextField type="text" fullWidth value={name_device}  onChange={e => { setStateName_device(e.target.value);  }}  required/>
+</Grid>
+<Grid item md={6} xs={12}>
+       <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Brand')}</label>
+       <RedditTextField type="text" fullWidth value={brand_device}  onChange={e => { setStateBrand_device(e.target.value);  }} required/>
+</Grid>
+<Grid item md={6} xs={12}>
+    <label  htmlFor="type" style={{color:"rgba(0,1,47,0.84)"}}>{t('Series number')}</label>
     <RedditTextField  type="text" fullWidth value={series_device} onChange={e => { setStateSeries_device(e.target.value);  }}  required  />
  </Grid>
   <Grid item md={6} xs={12}>
-
-   <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Type')}</label>
-   <RedditTextField type="text" fullWidth value={type_device}  onChange={e => { setStateType_device(e.target.value);}} required/>
-      </Grid>
-
- <FormGroup >
- <FormControlLabel control={<Checkbox checked={certification_conformity} size="small" onChange={handleChange('certification_conformity')} value="certification_conformity"/>}   label={<Typography variant={"overline"}>{t('conformity certificate')}</Typography>}/>
-  <FormControlLabel control={<Checkbox checked={certification_verification} size="small" value="certification_verification"   onChange={handleChange('certification_verification')}/>}   label={<Typography variant={"overline"}>{t('verification certificate')}</Typography>}/>
-  <FormControlLabel control={<Checkbox checked={certification_calibration} size="small" value="certification_calibration" onChange={handleChange('certification_calibration')}/>}  label={ <Typography variant={"overline"}>{t('calibration certificate')}</Typography>}/>
-   <FormControlLabel control={<Checkbox value="none" size="small" checked={none} onChange={handleChangeNone('none')}/>}  label={<Typography variant={"overline"}>{t('none')}</Typography>}/>
-   </FormGroup>
+       <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Type')}</label>
+       <RedditTextField type="text" fullWidth value={type_device}  onChange={e => { setStateType_device(e.target.value);}} required/>  </Grid>
+ <Grid item md={6} xs={12}>
+      <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Do you have any certificate')}</Typography><br/>
+ </Grid>
+<Grid item md={6} xs={12}>
+     <FormGroup >
+        <FormControlLabel control={<Checkbox checked={certification_conformity} size="small" onChange={handleChange('certification_conformity')} value="certification_conformity"/>}   label={<Typography variant={"overline"}>{t('conformity certificate')}</Typography>}/>
+           <FormControlLabel control={<Checkbox checked={certification_verification} size="small" value="certification_verification"   onChange={handleChange('certification_verification')}/>}   label={<Typography variant={"overline"}>{t('verification certificate')}</Typography>}/>
+           <FormControlLabel control={<Checkbox checked={certification_calibration} size="small" value="certification_calibration" onChange={handleChange('certification_calibration')}/>}  label={ <Typography variant={"overline"}>{t('calibration certificate')}</Typography>}/>
+           <FormControlLabel control={<Checkbox value="none" size="small" checked={none} onChange={handleChangeNone('none')}/>}  label={<Typography variant={"overline"}>{t('none')}</Typography>}/>
+      </FormGroup>
+</Grid>
 
     {certification_conformity === true && (
        <Grid item xs={12}>
@@ -240,9 +242,9 @@ const handleChangeVer = e => {
       <label  htmlFor="module_device" style={{color:"rgba(0,1,47,0.84)"}}>{t('Module')}</label>
         <RedditTextField   type="text" fullWidth value={module_device} onChange={e => { setStateModule_device(e.target.value);  }} />
     <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Department center')}</label>
-  <RedditTextField  type="text"  fullWidth  value={department_center} onChange={e => { setDepartment_center(e.target.value); }} />
- <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
- <Divider />
+    <RedditTextField  type="text"  fullWidth  value={department_center} onChange={e => { setDepartment_center(e.target.value); }} />
+    <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
+    <Divider />
    <TextField id="date" label={t('Date')}  type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019" value={conformity_data}
                                                                                        className={classes.textField}
                                                                                        InputLabelProps={{
@@ -276,13 +278,13 @@ const handleChangeVer = e => {
                                                                     )}
   {certification_calibration === true && (
  <Grid item xs={12}>
-  <Divider />
- <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of calibration')}</Typography>
- <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
- <RedditTextField  type="text"   fullWidth value={certification_number} onChange={e => { setCertification_number(e.target.value); }} />
- <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
     <Divider />
-  <TextField id="date"   label={t('Date')} type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019"
+    <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of calibration')}</Typography>
+    <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
+    <RedditTextField  type="text"   fullWidth value={certification_number} onChange={e => { setCertification_number(e.target.value); }} />
+    <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
+    <Divider />
+    <TextField id="date"   label={t('Date')} type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019"
                                                                                        value={valid_verification}
                                                                                        className={classes.textField}
                                                                                        InputLabelProps={{
