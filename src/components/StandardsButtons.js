@@ -1,52 +1,22 @@
 import React from 'react';
-import clsx from 'clsx';
-import Auth from '../components/Auth';
 import SearchIcon from '@material-ui/icons/Search';
-import { fade,makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
+import {makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExitToApp from '@material-ui/icons/ExitToApp';
-import AssignmentIcon from '@material-ui/icons/Assignment';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import PropTypes from 'prop-types';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import FolderIcon from '@material-ui/icons/Folder';
-import PeopleIcon from '@material-ui/icons/People';
-import InfoIcon from '@material-ui/icons/Info';
-import ImportantDevicesIcon from '@material-ui/icons/ImportantDevices';
-import Box from '@material-ui/core/Box';
 import history from '../history';
-import History from "../components/History";
 import { Link as RouterLink, withRouter } from 'react-router-dom';
-import AssessmentTheory from "../components/AssessmentTheory";
-import QM from "../components/QM";
-import Standards from "../components/Standards";
 import { withTranslation} from 'react-i18next';
 import i18n from "../menu/translations/i18n";
-import ListSubheader from "@material-ui/core/ListSubheader";
 import Paper from "@material-ui/core/Paper";
 import Dashboard from "../components/Dashboard";
 import MyDevice from "../components/MyDevice";
 import { AUTH_TOKEN } from '../constants';
 import ContactUS from "../components/ContactUS";
-import { GC_USER_ID } from '../constants'
-import UserProfile from "../components/UserProfile";
 import Grid from "@material-ui/core/Grid";
 import ButtonBase from "@material-ui/core/ButtonBase";
-import Link from "@material-ui/core/Link";
-
-
-
 
 
 const useStyles = makeStyles(theme => ({
