@@ -62,7 +62,25 @@ class App extends Component {
                            
                            <PrivateRoute path="/account" component={UserProfile} />
                            <PrivateRoute path="/contactus" component={ContactUS} />
-                         
+                         <PrivateRoute path="/standards-L" component={Standards} />
+                           <PrivateRoute path="/standards" component={StandardListGrid} />
+                           <PrivateRoute path="/standards-M" component={StandardsM} />
+                           <PrivateRoute path="/standards-EM" component={StandardsEM} />
+                           <PrivateRoute path="/standards-T" component={StandardsT} />
+                           <PrivateRoute path="/standards-TF" component={StandardsTF} />
+                           <PrivateRoute path="/standards-PR" component={StandardsPR} />
+                           <PrivateRoute path="/standards-IR" component={StandardsIR} />
+                           <PrivateRoute path="/standards-AUV" component={StandardsAUV} />
+                           <PrivateRoute path="/standards-QM" component={StandardsQM} />
+<PrivateRoute path="/what-is-metrologist" component={WhatIsMetrologist} />
+                           <PrivateRoute path="/what-is-metrology" component={WhatIsMetrology} />
+                           <PrivateRoute path="/history-metrology" component={HistoryMetrology} />
+                           <PrivateRoute path="/what-is-conformity-assessment" component={History} />
+                           <PrivateRoute path="/modules" component={History} />
+                           <PrivateRoute path="/technical-reglaments" component={History} />
+                           <PrivateRoute path="/procedure-conformity-assessment" component={History} />
+                           <PrivateRoute path="/what-is-quality-system" component={History} />
+                           <PrivateRoute path="/documents-of-quality-system" component={History} />
                         </Router>
                     </Switch>
 
