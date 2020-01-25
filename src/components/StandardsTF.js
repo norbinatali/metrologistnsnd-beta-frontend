@@ -9,7 +9,6 @@ import TableRow from '@material-ui/core/TableRow';
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
 import { withTranslation} from 'react-i18next';
-import LinearProgress from '@material-ui/core/LinearProgress';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Paper from '@material-ui/core/Paper';
 import CardContent from "@material-ui/core/CardContent";
@@ -60,19 +59,7 @@ const GET_Device = gql`query { dtc(id:"ck4colaq2snfv0993khmfrn0y") {id name_EN n
 function StandardsTF({t}){
     const classes = useStyles();
     const [completed, setCompleted] = React.useState(0);
-    React.useEffect(() => {
-        function progress() {
-            setCompleted(oldCompleted => {
-                if (oldCompleted === 100) {
-                    return 0;}
-                const diff = Math.random() * 10;
-                return Math.min(oldCompleted + diff, 100);
-            });}
-        const timer = setInterval(progress, 500);
-        return () => {
-            clearInterval(timer);
-        };
-    }, [1]);
+    
      const handleBack = () => {
     history.goBack();
 };
