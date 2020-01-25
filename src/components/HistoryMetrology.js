@@ -1,26 +1,11 @@
 import React, { Component } from 'react';
-
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import {Grid, makeStyles, Typography, withStyles} from "@material-ui/core";
-
-import StepConnector from "@material-ui/core/StepConnector";
-import clsx from "clsx";
-import Check from '@material-ui/icons/Check';
 import PropTypes from "prop-types";
-import GeneralInfo from "./GeneralInfo";
-import ModulesInfo from "./ModulesInfo";
 import {withTranslation} from "react-i18next";
-import AssessmentTheory from "./AssessmentTheory";
 import UserMenu from "./UserMenu";
 import Paper from "@material-ui/core/Paper";
-
 import Divider from "@material-ui/core/Divider";
-
-import IconButton from "@material-ui/core/IconButton";
-import {ArrowRightIcon} from "@material-ui/pickers/_shared/icons/ArrowRightIcon";
 import history from '../history'
 
 const useStyles = makeStyles(theme => ({
