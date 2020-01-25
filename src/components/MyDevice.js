@@ -19,15 +19,6 @@ import MyDeviceForm from "./MyDeviceForm";
 const authToken = localStorage.getItem(AUTH_TOKEN);
 const drawerWidth = 240;
 
-const StyledTableCell = withStyles(theme => ({
-    head: {
-        backgroundColor: theme.palette.common.black,
-        color: theme.palette.common.white,
-    },
-    body: {
-        fontSize: 12,
-    },
-}))(TableCell);
 
 
 const useStyles = makeStyles(theme => ({
