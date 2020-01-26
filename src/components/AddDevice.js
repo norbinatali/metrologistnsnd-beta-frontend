@@ -145,8 +145,9 @@ function AddDevice ({t,props}) {
         history.goBack();
     };
     const confirm = async (data, e) => {
+         saveUserData(data.createNewMyDevice.id)
         history.push('/mydevices');
-        saveUserData(data.createMyDevice.id)
+
     };
     const saveUserData = (id) => {
 
