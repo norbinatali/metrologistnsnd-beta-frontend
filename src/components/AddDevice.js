@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import FormControl from '@material-ui/core/FormControl';
 import {withTranslation} from "react-i18next";
 import TextField from "@material-ui/core/TextField";
+import PropTypes from 'prop-types';
 import {Grid, IconButton, makeStyles} from "@material-ui/core";
 import history from '../history.js'
 import RaisedButton from 'material-ui/RaisedButton';
@@ -16,7 +17,6 @@ import {AUTH_TOKEN, CREATE_MY_DEVICE, GC_USER_ID} from "../constants";
 import {fade} from "@material-ui/core/styles";
 import LinearDeterminate from "./LinearDeterminate";
 import UserMenu from "./UserMenu";
-import LegalMetrology from "./LegalMetrology"
 import CardHeader from "@material-ui/core/CardHeader";
 import Divider from "@material-ui/core/Divider";
 import Checkbox from '@material-ui/core/Checkbox';
@@ -24,9 +24,11 @@ import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import { useSnackbar } from 'notistack';
+import { SnackbarProvider, useSnackbar } from 'notistack';
 import {
     MuiPickersUtilsProvider,
+    KeyboardTimePicker,
+    KeyboardDatePicker,
 } from '@material-ui/pickers';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -35,18 +37,27 @@ import FormGroup from "@material-ui/core/FormGroup";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
 import Dialog from "@material-ui/core/Dialog";
+import Fab from "@material-ui/core/Fab";
 import Typography from "@material-ui/core/Typography";
+import Table from "@material-ui/core/Table";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
+import TableBody from "@material-ui/core/TableBody";
+import TableContainer from '@material-ui/core/TableContainer';
 import Paper from '@material-ui/core/Paper';
+import LegalMetrology from "./LegalMetrology";
 
 const authToken = localStorage.getItem(AUTH_TOKEN)
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
     },
-     table: {
-    minWidth: 650,
-  },
+    table: {
+        minWidth: 650,
+    },
 
 }));
 const useStylesReddit = makeStyles(theme => ({
@@ -74,37 +85,29 @@ function RedditTextField(props) {
     const {  ...rest } = props;
     return <TextField InputProps={{ classes, disableUnderline: true }} {...props} />;
 }
-function createData(mi, activities) {
-  return { mi, activities };   
-}
-const rows = [
-  createData('Автоматичні зважувальні прилади: ваги безперервної дії для сумарного обліку;ваги дискретної дії та бункерні ваги для сумарного обліку;ваги для зважування розділених вантажів;вагові дозатори дискретної дії;прилади автоматичні для зважування дорожніх транспортних засобів у русі та вимірювання навантажень на вісь;залізничні платформні ваги;контрольні ваги', '7) торговельно-комерційні операції та розрахунки між покупцем (споживачем) і продавцем (постачальником, виробником, виконавцем), у тому числі під час надання транспортних, побутових, комунальних, телекомунікаційних послуг, послуг поштового зв’язку, постачання та/або споживання енергетичних і матеріальних ресурсів (електричної і теплової енергії, газу, води, нафтопродуктів тощо),8) обчислення сум податків і зборів, податковий та митний контроль;'),
-  createData('Автомобільні цистерни для нафтопродуктів та харчових продуктів', '7) торговельно-комерційні операції та розрахунки між покупцем (споживачем) і продавцем (постачальником, виробником, виконавцем), у тому числі під час надання транспортних, побутових, комунальних, телекомунікаційних послуг, послуг поштового зв’язку, постачання та/або споживання енергетичних і матеріальних ресурсів (електричної і теплової енергії, газу, води, нафтопродуктів тощо),8) обчислення сум податків і зборів, податковий та митний контроль;'),
-  createData('Аналізатори медичного призначення:біохімічні;гематологічні;електролітів та газу в крові;імуноферментні;флуоресцентні;хемілюміносцентні;електрохімічні', '1) забезпечення захисту життя та охорони здоров’я громадян;'),
-  createData(' Аналізатори показників сільськогосподарської та харчової продукції: молока, зерна, цукрових буряків, олійних культур та продуктів їх переробки', '2) контроль якості та безпечності харчових продуктів і лікарських засобів;'),
-  createData('Аналізатори рідин турбідиметричні та нефелометричні для здійснення контролю вод', '1) забезпечення захисту життя та охорони здоров’я громадян;3) контроль стану навколишнього природного середовища;'),
-    createData('Аналізатори спектра та характеристик систем зв’язку', '10) роботи із забезпечення технічного захисту інформації згідно із законодавством;'),
-    createData('Аудіометри чистого тону', 'контроль безпеки умов праці;'),
-    createData('Блоки детектування іонізуючого випромінення', '1) забезпечення захисту життя та охорони здоров’я громадян;2) контроль якості та безпечності харчових продуктів і лікарських засобів;3) контроль стану навколишнього природного середовища;4) контроль безпеки умов праці;'),
-    createData('Вимірювальні антени та приймачі, що використовуються органами державного нагляду (контролю) під час виконання робіт з технічного захисту інформації', '1) забезпечення захисту життя та охорони здоров’я громадян;4) контроль безпеки умов праці;10) роботи із забезпечення технічного захисту інформації згідно із законодавством;'),
-];
-const CREATE_MYDEVICE =gql `mutation($name_device: String!,$brand_device: String!,$series_device: String!,$type_device: String!,$certification_calibration:String,$certification_verification:String,$certification_conformity:String,$module_device: String,$certification_number:String, $department_center:String,$conformity_data:String, $next_conformity:String,$valid_verification:String,$notes:String,$calibration: String,$next_calibration: String){ createNewMyDevice(name_device:$name_device,brand_device:$brand_device,series_device:$series_device,type_device:$type_device,certification_calibration:$certification_calibration,certification_verification:$certification_verification,certification_conformity:$certification_conformity,module_device:$module_device,certification_number:$certification_number,department_center:$department_center,conformity_data:$conformity_data,next_conformity:$next_conformity,valid_verification:$valid_verification,notes:$notes,calibration:$calibration,next_calibration:$next_calibration){
+
+
+const CREATE_MYDEVICE =gql `mutation($name_device: String!,$brand_device:String!,$series_device:String!,$kind_device: String!,$certificate_calibration:Boolean,$certificate_verification:Boolean,$certificate_conformity:Boolean,$module_device: String, $tr_device:String,$certificate_assessment_number:String,$certificate_verification_number:String,$certificate_calibration_number:String, $department_assessment_center:String,$department_verification_center:String,$department_calibration_center:String,$conformity_data:String, $calibration_data:String,$valid_verification:String,$notes:String,){ createNewMyDevice(name_device:$name_device,brand_device:$brand_device,series_device:$series_device,kind_device:$kind_device,certificate_calibration:$certificate_calibration,certificate_verification:$certificate_verification,certificate_conformity:$certificate_conformity,module_device:$module_device, tr_device: $tr_device,certificate_assessment_number: $certificate_assessment_number, certificate_calibration_number: $certificate_calibration_number, certificate_verification_number: $certificate_verification_number,department_assessment_center: $department_assessment_center, department_calibration_center: $department_calibration_center,department_verification_center: $department_verification_center,conformity_data:$conformity_data,calibration_data: $calibration_data,valid_verification:$valid_verification,notes:$notes){
     name_device
     brand_device
     series_device
-    type_device
-    certification_calibration
-    certification_verification
-    certification_conformity
+    kind_device
+    certificate_calibration
+    certificate_verification
+    certificate_conformity
     module_device
-    certification_number
-    department_center
+    tr_device
+    certificate_assessment_number
+    certificate_verification_number
+    certificate_calibration_number
+    department_assessment_center
+    department_verification_center
+    department_calibration_center
     conformity_data
-    next_conformity
+    calibration_data
     valid_verification
     notes
-    calibration
-    next_calibration
+    
 }}`;
 function AddDevice ({t,props}) {
     const { enqueueSnackbar } = useSnackbar();
@@ -116,39 +119,43 @@ function AddDevice ({t,props}) {
 
     const [ setStateNone]=useState("");
     const [brand_device, setStateBrand_device]=useState("");
-    const [type_device, setStateType_device]=useState("");
+    const [kind_device, setStateKind_device]=useState("");
     const [series_device, setStateSeries_device]=useState("");
     const [name_device, setStateName_device]=useState("");
-const [valid_verification, setValid_verification]=useState("");
-    const [certification_number, setCertification_number]=useState("");
+    const [valid_verification, setValid_verification]=useState("");
+    const [certificate_assessment_number, setCertification_assessment_number]=useState("");
+    const [certificate_verification_number, setCertification_verification_number]=useState("");
+    const [certificate_calibration_number, setCertification_calibration_number]=useState("");
     const [module_device, setStateModule_device]=useState("");
+    const [tr_device, setStateTr_device]=useState("");
     const [notes, setStateNotes]=useState("");
-    const [department_center, setDepartment_center]=useState("");
-    const [calibration, setStateCalibration]=useState('');
-    const [next_calibration, setStateNext_calibration]=useState('');
-    const [conformity_data, setConformity_data]=useState('');
+    const [department_assessment_center, setDepartment_assessment_center]=useState("");
+    const [department_verification_center, setDepartment_verification_center]=useState("");
+    const [department_calibration_center, setDepartment_calibration_center]=useState("");
+    const [, setStateCalibration]=useState('');
+    const [conformity_data, setStateConformity_data]=useState('');
+    const [calibration_data, setCalibration_data]=useState('');
     const [valueVerification, setValueVerification]=useState('');
-    const [open, setOpen] = React.useState(false);
     const [valueVer, setValueVer]=useState('');
+    const [open, setOpen] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
-    const { none,certification_calibration,certification_verification,certification_conformity } = value;
+    const { none,certificate_calibration,certificate_verification,certificate_conformity } = value;
     const [addmydevice] = useState(true);
     const handleBack = () => {
         history.goBack();
     };
     const confirm = async (data, e) => {
-        history.push('/mydevices')
+        history.push('/mydevices');
+        saveUserData(data.createMyDevice.id)
     };
-    const saveUserData = (token) => {
+    const saveUserData = (id) => {
 
-        localStorage.setItem(CREATE_MY_DEVICE, token)
+        localStorage.setItem(CREATE_MY_DEVICE, id)
     };
     const handleDateCalibration = e => {
-        setStateCalibration(e.target.value);
+        setStateConformity_data(e.target.value);
     };
-    const handleDateNext_Calibration = e => {
-        setStateNext_calibration(e.target.value);
-    };
+   
     const handleClickOpen = scrollType => () => {
         setOpen(true);
         setScroll(scrollType);
@@ -157,12 +164,11 @@ const [valid_verification, setValid_verification]=useState("");
     const handleClose = () => {
         setOpen(false);
     };
-const handleChangeVer = e => {
-        setValueVer(e.target.value)
-    };
+
     const handleChangeVerification = e => {
-       setValueVerification(e.target.value)
-   };
+        setValueVerification(e.target.value)
+    };
+   
     const handleChange = name => event => {
         setValue({ ...value, [name]: event.target.checked, none:false });
     };
@@ -184,9 +190,9 @@ const handleChangeVer = e => {
             <UserMenu />
             <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
 
-                    <MuiThemeProvider>
-                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                            <div className={classes.root}>
+                <MuiThemeProvider>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <div className={classes.root}>
                             <Grid container xs={12} >
                                 <Grid item >
                                     <IconButton onClick={handleBack}>
@@ -197,77 +203,104 @@ const handleChangeVer = e => {
                                     <Card{...rest} style={{marginRight:"auto", marginLeft:"auto", width:"50%"}} >
                                         <CardHeader subheader={t("fill the information")} title={t("Add Device")}/>
                                         <Divider />
-  <Mutation mutation={CREATE_MYDEVICE}  variables={{name_device,conformity_data, series_device,brand_device,certification_number, type_device,module_device, valid_verification,calibration, next_calibration} } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
-   {( addmydevice,{loading, error, event}) => {
- if (loading) { return (<LinearDeterminate /> )}
-  if (error) {return (error.message)}
-   if (authToken){
-  return(
- <FormControl autoComplete="off" noValidate style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
-  <CardContent>
-<Grid container spacing={3}>
- <Grid item md={6} xs={12}>
-      <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Name')}</label>
-      <RedditTextField type="text" fullWidth value={name_device}  onChange={e => { setStateName_device(e.target.value);  }}  required/>
-</Grid>
-<Grid item md={6} xs={12}>
-       <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Brand')}</label>
-       <RedditTextField type="text" fullWidth value={brand_device}  onChange={e => { setStateBrand_device(e.target.value);  }} required/>
-</Grid>
-<Grid item md={6} xs={12}>
-    <label  htmlFor="type" style={{color:"rgba(0,1,47,0.84)"}}>{t('Series number')}</label>
-    <RedditTextField  type="text" fullWidth value={series_device} onChange={e => { setStateSeries_device(e.target.value);  }}  required  />
- </Grid>
-  <Grid item md={6} xs={12}>
-       <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Type')}</label>
-       <RedditTextField type="text" fullWidth value={type_device}  onChange={e => { setStateType_device(e.target.value);}} required/>  </Grid>
- <Grid item md={6} xs={12}>
-      <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Do you have any certificate')}</Typography><br/>
- </Grid>
-<Grid item md={6} xs={12}>
-     <FormGroup >
-        <FormControlLabel control={<Checkbox checked={certification_conformity} size="small" onChange={handleChange('certification_conformity')} value="certification_conformity"/>}   label={<Typography variant={"overline"}>{t('conformity certificate')}</Typography>}/>
-           <FormControlLabel control={<Checkbox checked={certification_verification} size="small" value="certification_verification"   onChange={handleChange('certification_verification')}/>}   label={<Typography variant={"overline"}>{t('verification certificate')}</Typography>}/>
-           <FormControlLabel control={<Checkbox checked={certification_calibration} size="small" value="certification_calibration" onChange={handleChange('certification_calibration')}/>}  label={ <Typography variant={"overline"}>{t('calibration certificate')}</Typography>}/>
-           <FormControlLabel control={<Checkbox value="none" size="small" checked={none} onChange={handleChangeNone('none')}/>}  label={<Typography variant={"overline"}>{t('none')}</Typography>}/>
-      </FormGroup>
-</Grid>
+                                        <Mutation mutation={CREATE_MYDEVICE}  variables={{name_device,brand_device,series_device,kind_device,certificate_calibration,certificate_verification,certificate_conformity,module_device,tr_device,certificate_assessment_number,certificate_verification_number,certificate_calibration_number,department_assessment_center,department_verification_center,department_calibration_center,conformity_data,calibration_data,valid_verification,notes} } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
+                                            {( addmydevice,{loading, error, event}) => {
+                                                if (loading) { return (<LinearDeterminate /> )}
+                                                if (error) {return (error.message)}
+                                                if (authToken){
+                                                    return(
+                                                        <FormControl autoComplete="off" noValidate style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%",overflow: 'auto'}}>
+                                                            <CardContent>
+                                                                <Grid container spacing={3}>
+                                                                    <Grid item md={6} xs={12}>
+                                                                        <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Name device')}</label>
+                                                                        <RedditTextField type="text" fullWidth value={name_device}  onChange={e => { setStateName_device(e.target.value);  }}  required/>
+                                                                    </Grid>
+                                                                    <Grid item md={6} xs={12}>
+                                                                        <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Brand')}</label>
+                                                                        <RedditTextField type="text" fullWidth value={brand_device}  onChange={e => { setStateBrand_device(e.target.value);  }} required/>
+                                                                    </Grid>
+                                                                    <Grid item md={6} xs={12}>
+                                                                        <label  htmlFor="type" style={{color:"rgba(0,1,47,0.84)"}}>{t('Series number')}</label>
+                                                                        <RedditTextField  type="text" fullWidth value={series_device} onChange={e => { setStateSeries_device(e.target.value);  }}  required  />
+                                                                    </Grid>
+                                                                    <Grid item md={6} xs={12}>
 
-    {certification_conformity === true && (
-       <Grid item xs={12}>
-     <Divider />
-      <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of conforminy assessment')}</Typography>
-     <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
-     <RedditTextField    type="text"   fullWidth   value={certification_number} onChange={e => { setCertification_number(e.target.value); }}  />
-      <label  htmlFor="module_device" style={{color:"rgba(0,1,47,0.84)"}}>{t('Module')}</label>
-        <RedditTextField   type="text" fullWidth value={module_device} onChange={e => { setStateModule_device(e.target.value);  }} />
-    <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Department center')}</label>
-    <RedditTextField  type="text"  fullWidth  value={department_center} onChange={e => { setDepartment_center(e.target.value); }} />
-    <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
-    <Divider />
-   <TextField id="date" label={t('Date')}  type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019" value={conformity_data}
+                                                                        <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Type')}</label>
+                                                                        <RedditTextField type="text" fullWidth value={kind_device}  onChange={e => { setStateKind_device(e.target.value);}} required/>
+                                                                    </Grid>
+                                                                    <Divider />
+                                                                    <Grid item md={6} xs={12}>
+                                                                    <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Do you have any certificate')}</Typography>
+                                                                    </Grid>
+                                                                    <Grid item xs={12}>
+                                                                    <FormGroup >
+                                                                        <FormControlLabel control={<Checkbox checked={certificate_conformity} size="small" onChange={handleChange('certificate_conformity')} value={certificate_conformity}/>}   label={<Typography variant={"overline"}>{t('conformity certificate')}</Typography>}/>
+                                                                        <FormControlLabel control={<Checkbox checked={certificate_verification} size="small" value={certificate_verification}   onChange={handleChange('certificate_verification')}/>}   label={<Typography variant={"overline"}>{t('verification certificate')}</Typography>}/>
+                                                                        <FormControlLabel control={<Checkbox checked={certificate_calibration} size="small" value={certificate_calibration} onChange={handleChange('certificate_calibration')}/>}  label={ <Typography variant={"overline"}>{t('calibration certificate')}</Typography>}/>
+                                                                        <FormControlLabel control={<Checkbox value="none" size="small" checked={none} onChange={handleChangeNone('none')}/>}  label={<Typography variant={"overline"}>{t('none')}</Typography>}/>
+                                                                    </FormGroup>
+                                                                    </Grid>
+                                                                    {certificate_conformity === true && (
+                                                                        <Grid item xs={12}>
+                                                                            <Divider />
+                                                                            <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of conforminy assessment')}</Typography>
+
+                                                                            <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
+                                                                            <RedditTextField    type="text"   fullWidth   value={certificate_assessment_number} onChange={e => { setCertification_assessment_number(e.target.value); }}  />
+                                                                            <label  htmlFor="module_device" style={{color:"rgba(0,1,47,0.84)"}}>{t('Module')}</label>
+                                                                            <RedditTextField   type="text" fullWidth value={module_device} onChange={e => { setStateModule_device(e.target.value);  }} />
+
+                                                                            <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Department center')}</label>
+                                                                            <RedditTextField  type="text"  fullWidth  value={department_assessment_center} onChange={e => { setDepartment_assessment_center(e.target.value); }} />
+                                                                            <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
+                                                                            <Divider />
+                                                                            <TextField id="date" label={t('Date')}  type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019" value={conformity_data}
                                                                                        className={classes.textField}
                                                                                        InputLabelProps={{
                                                                                            shrink: true,
                                                                                        }}
                                                                                        onChange={handleDateCalibration}
                                                                             />
-  </Grid>)}
-{certification_verification === true && (
-    <Grid item xs={12}>
-    <Divider />
-    <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of verification')}</Typography>
-                                                                           
-     <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
-    <RedditTextField type="text" fullWidth value={certification_number} onChange={e => {
-                                                                                    setCertification_number(e.target.value);
-                                                                                }}
-                                                                            />
+                                                                        </Grid>)}
+                                                                    {certificate_verification === true && (
+                                                                        <Grid item xs={12}>
+                                                                            <Divider />
+                                                                            <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of verification')}</Typography>
 
-   <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
-  <Divider />
-  <TextField id="date"   label={t('Date')} type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019"
+                                                                            <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
+                                                                            <RedditTextField type="text" fullWidth value={certificate_verification_number} onChange={e => {
+                                                                                setCertification_verification_number(e.target.value);
+                                                                            }}
+                                                                            />
+                                                                            <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Department center')}</label>
+                                                                            <RedditTextField  type="text"  fullWidth  value={department_verification_center} onChange={e => { setDepartment_verification_center(e.target.value); }} />
+
+                                                                            <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
+                                                                            <Divider />
+                                                                            <TextField id="date"   label={t('Date')} type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019"
                                                                                        value={valid_verification}
+                                                                                       className={classes.textField}
+                                                                                       InputLabelProps={{
+                                                                                           shrink: true,
+                                                                                       }}
+                                                                                       onChange={handleChangeVerification}
+                                                                            />
+                                                                        </Grid>
+                                                                    )}
+                                                                    {certificate_calibration === true && (
+                                                                        <Grid item xs={12}>
+                                                                            <Divider />
+                                                                            <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of calibration')}</Typography>
+                                                                            <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
+                                                                            <RedditTextField  type="text"   fullWidth value={certificate_calibration_number} onChange={e => { setCertification_calibration_number(e.target.value); }} />
+                                                                            <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Department center')}</label>
+                                                                            <RedditTextField  type="text"  fullWidth  value={department_calibration_center} onChange={e => { setDepartment_calibration_center(e.target.value); }} />
+
+                                                                            <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
+                                                                            <Divider />
+                                                                            <TextField id="date"   label={t('Date')} type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019"
+                                                                                       value={calibration_data}
                                                                                        className={classes.textField}
                                                                                        InputLabelProps={{
                                                                                            shrink: true,
@@ -275,85 +308,74 @@ const handleChangeVer = e => {
                                                                                        onChange={handleDateCalibration}
                                                                             />
                                                                         </Grid>
-                                                                    )}
-  {certification_calibration === true && (
- <Grid item xs={12}>
-    <Divider />
-    <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Cetrificate of calibration')}</Typography>
-    <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Certificate number')}</label>
-    <RedditTextField  type="text"   fullWidth value={certification_number} onChange={e => { setCertification_number(e.target.value); }} />
-    <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
-    <Divider />
-    <TextField id="date"   label={t('Date')} type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019"
-                                                                                       value={valid_verification}
-                                                                                       className={classes.textField}
-                                                                                       InputLabelProps={{
-                                                                                           shrink: true,
-                                                                                       }}
-                                                                                       onChange={handleDateCalibration}
-                                                                            />
-        </Grid>
 
                                                                     )}
-{none === true && (
-  <Grid item xs={12}>
-      <Divider />
-        <Typography className={classes.title} gutterBottom>{t('Recommendation')}</Typography>
-        <Typography variant="body2" component="p">{t('Choose option')}</Typography>
-        <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Legal metrology?')} <IconButton  size="small" onClick={handleClickOpen('paper')}><HelpOutlineIcon fontSize="inherit"/></IconButton></Typography>
-        <RadioGroup value={valueVerification} row onChange={handleChangeVerification}>
-           <FormControlLabel control={<Radio />} label={<Typography variant={"overline"}>{t('Yes')}</Typography>} value="yes"/>
-           <FormControlLabel control={<Radio/>} label={<Typography variant={"overline"}>{t('No')}</Typography>} value="no"/>
-         </RadioGroup>
-  {valueVerification === 'yes' && (
-      <Grid container spacing={3}>
-         <Divider />
-         <Grid item xs={12}>
-             <Typography> {t('conformity assessment or calibration')}</Typography>
-         </Grid>
+                                                                    {none === true && (
+                                                                        <Grid item xs={12}>
+                                                                            <Divider />
 
-     </Grid>)}
- {valueVerification === 'no' && (
-     <Grid container spacing={3}>
-       <Divider />
-        <Grid item xs={12}>
-           <Typography> {t('calibration')}</Typography>
-        </Grid>
-      </Grid>
-    )}
-   </Grid>
-     )}
-  <Grid item xs={12}>
-   <Divider />
-  <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Notes')}</label>
-    <RedditTextField  type="text"      fullWidth    multiline rows="5" value={notes} onChange={e => { setStateNotes(e.target.value);
-                                                                            }}
+                                                                                    <Typography className={classes.title} gutterBottom>{t('Recommendation')}</Typography>
+                                                                                    <Typography variant="body2" component="p">{t('Choose option')}</Typography>
+                                                                                    <Typography  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Legal metrology?')} <IconButton  size="small" onClick={handleClickOpen('paper')}><HelpOutlineIcon fontSize="inherit"/></IconButton></Typography>
+                                                                                    <RadioGroup value={valueVerification} row onChange={handleChangeVerification}>
+                                                                                        <FormControlLabel control={<Radio />} label={<Typography variant={"overline"}>{t('Yes')}</Typography>} value="yes"/>
+                                                                                        <FormControlLabel control={<Radio/>} label={<Typography variant={"overline"}>{t('No')}</Typography>} value="no"/>
+                                                                                    </RadioGroup>
+                                                                                    {valueVerification === 'yes' && (
+                                                                                        <Grid container spacing={3}>
+                                                                                            <Divider />
+                                                                                                    <Grid item xs={12}>
+                                                                                                                <Typography> {t('conformity assessment or calibration')}</Typography>
+                                                                                                    </Grid>
+
+                                                                                        </Grid>)}
+                                                                                    {valueVerification === 'no' && (
+                                                                                        <Grid container spacing={3}>
+                                                                                            <Divider />
+                                                                                            <Grid item xs={12}>
+
+                                                                                                    <Typography> {t('calibration')}</Typography>
+
+                                                                                            </Grid>
+
+                                                                                        </Grid>
+                                                                                    )}
+
+                                                                        </Grid>
+                                                                    )}
+                                                                    <Grid item xs={12}>
+                                                                        <Divider />
+                                                                        <label  htmlFor="notes" style={{color:"rgba(0,1,47,0.84)"}}>{t('Notes')}</label>
+                                                                        <RedditTextField  type="text"      fullWidth    multiline rows="5" value={notes} onChange={e => { setStateNotes(e.target.value);
+                                                                        }}
                                                                         />
-</Grid>
- </Grid>
-</CardContent>
- <Divider />
-<CardActions>
-  <RaisedButton onClick={addmydevice} style={{color:"rgba(0,1,47,0.84)"}}>{t('Add')}</RaisedButton>
-</CardActions>
- </FormControl>)}}}
-</Mutation> </Card>
- </Grid>
-  </Grid>
- <Dialog  open={open} onClose={handleClose}  scroll={scroll} aria-labelledby="scroll-dialog-title" aria-describedby="scroll-dialog-description"
+                                                                    </Grid>
+
+                                                                </Grid>
+                                                            </CardContent>
+                                                            <Divider />
+                                                            <CardActions>
+                                                                <RaisedButton onClick={addmydevice} style={{color:"rgba(0,1,47,0.84)"}}>{t('Add')}</RaisedButton>
+                                                            </CardActions>
+                                                        </FormControl>)}}}
+                                        </Mutation> </Card>
+                                </Grid>
+
+                            </Grid>
+                            <Dialog  open={open} onClose={handleClose}  scroll={scroll} aria-labelledby="scroll-dialog-title" aria-describedby="scroll-dialog-description"
                             >
-  <DialogTitle id="scroll-dialog-title"><Typography>{t('Legal metrology of measuring instruments')} </Typography></DialogTitle>
- <DialogContent dividers={scroll === 'paper'}>
-<LegalMetrology />
- </DialogContent>
- <DialogActions>
-  <Button onClick={handleClose} color="primary"> Cancel</Button>
- </DialogActions>
- </Dialog>
- </div>
- </MuiPickersUtilsProvider>
- </MuiThemeProvider>
- </main>
+                                <DialogTitle id="scroll-dialog-title"><Typography>{t('Legal metrology of measuring instruments')} </Typography></DialogTitle>
+                                <DialogContent dividers={scroll === 'paper'}>
+                                  <LegalMetrology/>
+                                </DialogContent>
+                                <DialogActions>
+                                    <Button onClick={handleClose} color="primary">{t('Ok')}</Button>
+                                </DialogActions>
+                            </Dialog>
+                        </div>
+                    </MuiPickersUtilsProvider>
+                </MuiThemeProvider>
+            </main>
         </div>
     )
 }
