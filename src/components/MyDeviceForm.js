@@ -180,7 +180,7 @@ function MyDeviceForm({t,className, rest}) {
                                                             <StyledTableCell align="center">{t('Type')}</StyledTableCell>
                                                             <StyledTableCell align="center">{t('Certificate number')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Module')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Department')} </StyledTableCell>
+                                                            <StyledTableCell align="center">{t('Department center')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Date')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Notes')} </StyledTableCell>
                                                             <StyledTableCell align="center"> </StyledTableCell>
@@ -240,7 +240,7 @@ function MyDeviceForm({t,className, rest}) {
                                                             <StyledTableCell align="center">{t('Device')}</StyledTableCell>
                                                             <StyledTableCell align="center">{t('Series number')}</StyledTableCell>
                                                             <StyledTableCell align="center">{t('Type')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Certificate number')} </StyledTableCell>
+                                                            <StyledTableCell align="center">{t('Department center')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Department')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Date')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Notes')} </StyledTableCell>
@@ -298,7 +298,7 @@ function MyDeviceForm({t,className, rest}) {
                                                             <StyledTableCell align="center">{t('Series number')}</StyledTableCell>
                                                             <StyledTableCell align="center">{t('Type')}</StyledTableCell>
                                                             <StyledTableCell align="center">{t('Certificate number')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Department')} </StyledTableCell>
+                                                            <StyledTableCell align="center">{t('Department center')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Date')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Notes')} </StyledTableCell>
                                                             <StyledTableCell align="center"></StyledTableCell>
