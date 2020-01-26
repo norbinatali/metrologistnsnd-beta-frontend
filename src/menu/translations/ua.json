@@ -148,9 +148,9 @@
  "Department center":"Ким виданий",
  "Enspire Data":"Дійсний до",
  "Date":"дата",
- "Cetrificate of verification":"сертифікат повірки",
- "Cetrificate of calibration":"сертифікат калібрування",
- "Legal metrology":"законодавчо регульована метрологія",
+ "Cetrificate of verification":"Cертифікат повірки",
+ "Cetrificate of calibration":"Cертифікат калібрування",
+ "Legal metrology?":"законодавчо регульована метрологія",
  "Yes":"Так",
  "No":"Ні",
  "Notes":"Нотатки",
@@ -162,6 +162,8 @@
   "calibration": "You can do only calibration for your measuring instrument",
 "Do verification": "Вам необхідно виконати повірку(модуль F), якщо Ваша ціль - сертифікат оцінки відповідності",
   "Recommendation": "Рекомендація",
+ "Delete":"Видалити",
+ "Conformity assessment":"Оцінка відповідності",
  
  
  "Update password":"Оновити пароль",
