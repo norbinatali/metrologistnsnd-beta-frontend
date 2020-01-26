@@ -145,7 +145,7 @@ function MyDeviceForm({t,className, rest}) {
     const handleClose = () => {setOpen(false);};
     return(
         <div  className={classes.root}>
-        <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={100} >
+        <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={80} >
             {( {loading, error, data} ) =>  {
                 if (loading) {return <LinearDeterminate />}
                 if (error) { return error.message }
@@ -201,7 +201,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell align="center">{device.conformity_data}</TableCell>
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
-                                                                        <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={500}>
+                                                                        <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)}>
                                                                             {( deleteDevice,{loading, error, data}) => {
                                                                                 if (loading) { return (<LinearDeterminate /> )}
                                                                                 if (error) {return (error.message)}
