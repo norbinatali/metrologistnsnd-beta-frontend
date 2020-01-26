@@ -153,10 +153,12 @@ function AddDevice ({t,props}) {
 
         localStorage.setItem(CREATE_MY_DEVICE, id)
     };
-    const handleDateCalibration = e => {
+   const handleDateConformity = e => {
         setStateConformity_data(e.target.value);
     };
-   
+    const handleDateNext_Calibration = e => {
+        setCalibration_data(e.target.value);
+    };
     const handleClickOpen = scrollType => () => {
         setOpen(true);
         setScroll(scrollType);
@@ -167,7 +169,7 @@ function AddDevice ({t,props}) {
     };
 
     const handleChangeVerification = e => {
-        setValueVerification(e.target.value)
+        setValid_verification(e.target.value)
     };
    
     const handleChange = name => event => {
@@ -261,7 +263,7 @@ function AddDevice ({t,props}) {
                                                                                        InputLabelProps={{
                                                                                            shrink: true,
                                                                                        }}
-                                                                                       onChange={handleDateCalibration}
+                                                                                      onChange={handleDateConformity}
                                                                             />
                                                                         </Grid>)}
                                                                     {certificate_verification === true && (
@@ -306,7 +308,7 @@ function AddDevice ({t,props}) {
                                                                                        InputLabelProps={{
                                                                                            shrink: true,
                                                                                        }}
-                                                                                       onChange={handleDateCalibration}
+                                                                                       onChange={handleDateNext_Calibration}
                                                                             />
                                                                         </Grid>
 
