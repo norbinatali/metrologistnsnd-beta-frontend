@@ -37,6 +37,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import IconButton from "@material-ui/core/IconButton";
 import {Mutation} from "react-apollo";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const drawerWidth = 240;
 const deviceid = localStorage.getItem(CREATE_MY_DEVICE);
@@ -144,7 +145,7 @@ function MyDeviceForm({t,className, rest}) {
     const handleClose = () => {setOpen(false);};
     return(
         <div  className={classes.root}>
-        <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={500} >
+        <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={100} >
             {( {loading, error, data} ) =>  {
                 if (loading) {return <LinearDeterminate />}
                 if (error) { return error.message }
@@ -182,7 +183,7 @@ function MyDeviceForm({t,className, rest}) {
                                                             <StyledTableCell align="center">{t('Department')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Date')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Notes')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Delete')} </StyledTableCell>
+                                                            <StyledTableCell align="center"> </StyledTableCell>
                                                         </TableRow>
                                                     </TableHead>
                                                     {devicelist.map(device =>(
@@ -200,7 +201,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell align="center">{device.conformity_data}</TableCell>
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
-                                                                        <Mutation mutation={DELETE_MYDevice}  variables={id}  onCompleted={(data) => confirm(data)}>
+                                                                        <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={500}>
                                                                             {( deleteDevice,{loading, error, data}) => {
                                                                                 if (loading) { return (<LinearDeterminate /> )}
                                                                                 if (error) {return (error.message)}
@@ -208,8 +209,9 @@ function MyDeviceForm({t,className, rest}) {
                                                                                 if (authToken){
 
                                                                                     return(
-
+                                                                                        <Tooltip title={t('Delete')}>
                                                                         <IconButton onClick={deleteDevice}><DeleteIcon /></IconButton>
+                                                                                        </Tooltip>
                                                                                         )}}}
                                                                         </Mutation>
                                                                         </TableCell>
@@ -242,7 +244,7 @@ function MyDeviceForm({t,className, rest}) {
                                                             <StyledTableCell align="center">{t('Department')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Date')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Notes')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Delete')} </StyledTableCell>
+                                                            <StyledTableCell align="center"></StyledTableCell>
                                                         </TableRow>
                                                     </TableHead>
                                                     {devicelist.map(device =>(
@@ -258,7 +260,22 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell align="center">{device.department_calibration_center}</TableCell>
                                                                     <TableCell align="center">{device.calibration_data}</TableCell>
                                                                     <TableCell> {device.notes}</TableCell>
-                                                                    <TableCell><IconButton><DeleteIcon/></IconButton></TableCell>
+                                                                    <TableCell>
+                                                                    <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)}>
+                                                                        {( deleteDevice,{loading, error, data}) => {
+                                                                            if (loading) { return (<LinearDeterminate /> )}
+                                                                            if (error) {return (error.message)}
+
+                                                                            if (authToken){
+
+                                                                                return(
+
+                                                                                    <Tooltip title={t('Delete')}>
+                                                                                        <IconButton onClick={deleteDevice}><DeleteIcon /></IconButton>
+                                                                                    </Tooltip>
+                                                                                )}}}
+                                                                    </Mutation>
+                                                                </TableCell>
                                                                 </TableRow>  )}
                                                         </TableBody>))}
                                                 </Table>
@@ -284,7 +301,7 @@ function MyDeviceForm({t,className, rest}) {
                                                             <StyledTableCell align="center">{t('Department')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Date')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Notes')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Delete')} </StyledTableCell>
+                                                            <StyledTableCell align="center"></StyledTableCell>
                                                         </TableRow>
                                                     </TableHead>
                                                     {devicelist.map(device =>(
@@ -300,7 +317,22 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell align="center">{device.department_verification_center}</TableCell>
                                                                     <TableCell align="center">{device.valid_verification}</TableCell>
                                                                     <TableCell> {device.notes}</TableCell>
-                                                                    <TableCell><IconButton><DeleteIcon/></IconButton></TableCell>
+                                                                    <TableCell>
+                                                                    <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)}>
+                                                                        {( deleteDevice,{loading, error, data}) => {
+                                                                            if (loading) { return (<LinearDeterminate /> )}
+                                                                            if (error) {return (error.message)}
+
+                                                                            if (authToken){
+
+                                                                                return(
+
+                                                                                    <Tooltip title={t('Delete')}>
+                                                                                        <IconButton onClick={deleteDevice}><DeleteIcon /></IconButton>
+                                                                                    </Tooltip>
+                                                                                )}}}
+                                                                    </Mutation>
+                                                                </TableCell>
                                                                 </TableRow> )}
                                                         </TableBody>))}
                                                 </Table>
