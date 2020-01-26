@@ -125,10 +125,11 @@
   "calibration": "You can do only calibration for your measuring instrument",
   "Do verification": "You need to do verification(module F) if your purpose is conformity assessment certificate",
   "Recommendation": "Recommendation",
-  "Do you have any certificate":"Do you have any certificate",
+  "Do you have any certificate":"Do you have any certificate?",
   "More":"More",
   "More information":"More information",
   "Cancel":"Cancel",
+  "Delete":"Delete",
   
   
   
