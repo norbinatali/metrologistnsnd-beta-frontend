@@ -4,6 +4,7 @@ import {makeStyles} from "@material-ui/core";
 import { withStyles } from '@material-ui/core/styles';
 import ExpandMoreIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import Typography from "@material-ui/core/Typography";
+import RaisedButton from 'material-ui/RaisedButton';
 import PropTypes from 'prop-types';
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
@@ -35,10 +36,10 @@ import SwipeableViews from 'react-swipeable-views';
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import IconButton from "@material-ui/core/IconButton";
-import {Mutation} from "@apollo/react-components";
+import {Mutation} from "react-apollo";
 
 const drawerWidth = 240;
-const userId = localStorage.getItem(GC_USER_ID);
+const deviceid = localStorage.getItem(CREATE_MY_DEVICE);
 const authToken = localStorage.getItem(AUTH_TOKEN);
 const useStyles = makeStyles(theme => ({
 
@@ -115,7 +116,7 @@ function PaperComponent(props) {
 }
 
 const GET_MyDevice = gql`query { me{mydevices{ id name_device,brand_device,series_device,kind_device,certificate_calibration,certificate_verification,certificate_conformity,module_device,tr_device,certificate_assessment_number,certificate_verification_number,certificate_calibration_number,department_assessment_center,department_verification_center,department_calibration_center,conformity_data,calibration_data,valid_verification,notes} }}`;
-const DELETE_MYDevice =gql`mutation ($id:ID!){deleteMyDevice(id:$id){ id name_device,brand_device,series_device,kind_device,certificate_calibration,certificate_verification,certificate_conformity,module_device,tr_device,certificate_assessment_number,certificate_verification_number,certificate_calibration_number,department_assessment_center,department_verification_center,department_calibration_center,conformity_data,calibration_data,valid_verification,notes}}`
+const DELETE_MYDevice =gql`mutation ($id:ID!){deleteMyDevice(id:$id){ id }}`
 function MyDeviceForm({t,className, rest}) {
     const classes = useStyles();
     const theme = useTheme();
@@ -133,7 +134,8 @@ function MyDeviceForm({t,className, rest}) {
     };
     const handleClickOpen = () => {setOpen(true);};
     const confirm = async (data, e) => {
-
+        console.log(data.deleteMyDevice.id);
+        const id=setId(deviceid)
     };
     const saveUserData = (token) => {
 
@@ -198,15 +200,16 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell align="center">{device.conformity_data}</TableCell>
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
-                                                                        <Mutation mutation={DELETE_MYDevice} variables={id}>
-                                                                            {( addmydevice,{loading, error, data}) => {
+                                                                        <Mutation mutation={DELETE_MYDevice}  variables={id}  onCompleted={(data) => confirm(data)}>
+                                                                            {( deleteDevice,{loading, error, data}) => {
                                                                                 if (loading) { return (<LinearDeterminate /> )}
                                                                                 if (error) {return (error.message)}
+
                                                                                 if (authToken){
-                                                                                    data.devices.id=data.deleteMyDevice.id
+
                                                                                     return(
 
-                                                                        <IconButton><DeleteIcon onClick={(data)=> confirm(data)}/></IconButton>
+                                                                        <IconButton onClick={deleteDevice}><DeleteIcon /></IconButton>
                                                                                         )}}}
                                                                         </Mutation>
                                                                         </TableCell>
