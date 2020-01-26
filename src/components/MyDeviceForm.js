@@ -154,7 +154,7 @@ function MyDeviceForm({t,className, rest}) {
                     return(
                         <Grid container spacing={2} xs={12}>
                             <Grid item xs={12} >
-    <Button variant="outlined" color="primary" style={{marginRight:"auto", marginTop: "0px", marginLeft: "auto",}} onClick={()=> history.push('/add-device')}> {t('Add Device')}
+    <Button variant="outlined" color="primary" style={{marginRight:"auto", marginTop: "55px", marginLeft: "auto",}} onClick={()=> history.push('/add-device')}> {t('Add Device')}
     </Button>
                             </Grid>
                             <AppBar position="static" color="default">
