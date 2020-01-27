@@ -14,7 +14,7 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
-
+import DateFnsUtils from '@date-io/date-fns';
 import TableRow from "@material-ui/core/TableRow";
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
@@ -38,7 +38,6 @@ import Box from "@material-ui/core/Box";
 import IconButton from "@material-ui/core/IconButton";
 import {Mutation} from "react-apollo";
 import Tooltip from "@material-ui/core/Tooltip";
-
 const drawerWidth = 240;
 const deviceid = localStorage.getItem(CREATE_MY_DEVICE);
 const authToken = localStorage.getItem(AUTH_TOKEN);
@@ -142,13 +141,22 @@ function MyDeviceForm({t,className, rest}) {
 
         localStorage.setItem(CREATE_MY_DEVICE, token)
     };
+
     const handleClose = () => {setOpen(false);};
     return(
         <div  className={classes.root}>
-        <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={80} >
+        <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={100} >
             {( {loading, error, data} ) =>  {
                 if (loading) {return <LinearDeterminate />}
                 if (error) { return error.message }
+
+                const currentDate =new Date();
+                const startDate= new Date(currentDate.setHours(2,0,0,0)).toISOString();
+const  endDate = new Date(currentDate.setHours(22,0,0,0)).toISOString();
+
+                console.log(currentDate);
+                console.log(startDate);
+
                 const devicelist = data.me.mydevices;
                 if(authToken){
                     return(
@@ -166,9 +174,12 @@ function MyDeviceForm({t,className, rest}) {
                             </AppBar>
                             <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
                                 <TabPanel value={value} index={0} dir={theme.direction} style={{ width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
+
                                     <Grid item justify={"center"} xs={12}>
+<Paper className={classes.table}>
                                             <TableContainer >
-                                                <Table stickyHeader className={classes.table}>
+
+                                                <Table stickyHeader   >
                                                     <TableHead >
                                                         <TableRow >
                                                             <StyledTableCell align="center">{t('Name device')}</StyledTableCell>
@@ -177,16 +188,17 @@ function MyDeviceForm({t,className, rest}) {
                                                             <StyledTableCell align="center">{t('Type')}</StyledTableCell>
                                                             <StyledTableCell align="center">{t('Certificate number')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Module')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Department center')} </StyledTableCell>
+                                                            <StyledTableCell align="center">{t('Department')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Date')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Notes')} </StyledTableCell>
-                                                            <StyledTableCell align="center"> </StyledTableCell>
+                                                            <StyledTableCell align="center">{t('Delete')} </StyledTableCell>
                                                         </TableRow>
                                                     </TableHead>
                                                     {devicelist.map(device =>(
-                                                        <TableBody >
 
+                                                        <TableBody>
                                                             {device.certificate_conformity=== true &&(
+
                                                                 <TableRow key={device.id}>
                                                                     <TableCell  align="center">{device.name_device}</TableCell>
                                                                     <TableCell  align="center">{device.brand_device}</TableCell>
@@ -195,16 +207,15 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell  align="center"> {device.certificate_assessment_number}</TableCell>
                                                                     <TableCell align="center">{device.module_device}</TableCell>
                                                                     <TableCell align="center">{device.department_assessment_center}</TableCell>
-                                                                    <TableCell align="center">{device.conformity_data}</TableCell>
+                                                                    { device.conformity_data >= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}> {device.conformity_data}</TableCell>)}
+                                                                    {device.conformity_data < startDate &&(<TableCell align="center">{device.conformity_data}</TableCell>)}
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
-                                                                        <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)}>
+                                                                        <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={500}>
                                                                             {( deleteDevice,{loading, error, data}) => {
                                                                                 if (loading) { return (<LinearDeterminate /> )}
                                                                                 if (error) {return (error.message)}
-
                                                                                 if (authToken){
-
                                                                                     return(
                                                                                         <Tooltip title={t('Delete')}>
                                                                         <IconButton onClick={deleteDevice}><DeleteIcon /></IconButton>
@@ -212,17 +223,20 @@ function MyDeviceForm({t,className, rest}) {
                                                                                         )}}}
                                                                         </Mutation>
                                                                         </TableCell>
-                                                                </TableRow>
-                                                            )}
-                                                        </TableBody>))}
+                                                                </TableRow>)}
+                                                                </TableBody> ))}
                                                 </Table>
-                                            </TableContainer>
+                                            </TableContainer></Paper>
+
+
+
                                     </Grid>
+
                                 </TabPanel>
                                 <TabPanel value={value} index={1} dir={theme.direction} style={{width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
-
                                     <Grid justify={"center"} item xs={12}>
-                                              <TableContainer >
+
+                                            <TableContainer >
                                                 <Table stickyHeader className={classes.table} >
 
                                                     <TableHead  >
@@ -231,11 +245,11 @@ function MyDeviceForm({t,className, rest}) {
                                                             <StyledTableCell align="center">{t('Device')}</StyledTableCell>
                                                             <StyledTableCell align="center">{t('Series number')}</StyledTableCell>
                                                             <StyledTableCell align="center">{t('Type')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Department center')} </StyledTableCell>
+                                                            <StyledTableCell align="center">{t('Certificate number')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Department')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Date')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Notes')} </StyledTableCell>
-                                                            <StyledTableCell align="center"></StyledTableCell>
+                                                            <StyledTableCell align="center">{t('Delete')} </StyledTableCell>
                                                         </TableRow>
                                                     </TableHead>
                                                     {devicelist.map(device =>(
@@ -249,7 +263,8 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell  align="center">{device.kind_device}</TableCell>
                                                                     <TableCell  align="center"> {device.certificate_calibration_number}</TableCell>
                                                                     <TableCell align="center">{device.department_calibration_center}</TableCell>
-                                                                    <TableCell align="center">{device.calibration_data}</TableCell>
+                                                                    {device.calibration_data >= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.calibration_data}</TableCell>)}
+                                                                    {device.calibration_data < startDate &&(<TableCell align="center">{device.calibration_data}</TableCell>)}
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
                                                                     <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)}>
@@ -272,8 +287,9 @@ function MyDeviceForm({t,className, rest}) {
                                                 </Table>
                                             </TableContainer>
 
-                                       
+
                                     </Grid>
+
                                 </TabPanel>
                                 <TabPanel value={value} index={2} dir={theme.direction} style={{width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                     <Grid  justify={"center"} item xs={12}>
@@ -286,10 +302,10 @@ function MyDeviceForm({t,className, rest}) {
                                                             <StyledTableCell align="center">{t('Series number')}</StyledTableCell>
                                                             <StyledTableCell align="center">{t('Type')}</StyledTableCell>
                                                             <StyledTableCell align="center">{t('Certificate number')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Department center')} </StyledTableCell>
+                                                            <StyledTableCell align="center">{t('Department')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Date')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Notes')} </StyledTableCell>
-                                                            <StyledTableCell align="center"></StyledTableCell>
+                                                            <StyledTableCell align="center">{t('Delete')} </StyledTableCell>
                                                         </TableRow>
                                                     </TableHead>
                                                     {devicelist.map(device =>(
@@ -303,7 +319,8 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell  align="center">{device.kind_device}</TableCell>
                                                                     <TableCell  align="center"> {device.certificate_verification_number}</TableCell>
                                                                     <TableCell align="center">{device.department_verification_center}</TableCell>
-                                                                    <TableCell align="center">{device.valid_verification}</TableCell>
+                                                                    {device.valid_verification >= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.valid_verification}</TableCell>)}
+                                                                    {device.valid_verification < startDate &&(<TableCell align="center">{device.valid_verification}</TableCell>)}
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
                                                                     <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)}>
@@ -324,10 +341,18 @@ function MyDeviceForm({t,className, rest}) {
                                                                 </TableRow> )}
                                                         </TableBody>))}
                                                 </Table>
+
                                             </TableContainer>
+
+
+
+
                                     </Grid>
                                 </TabPanel>
                             </SwipeableViews>
+
+
+
                           </Grid>
                         )}else return null}}
         </Query>
