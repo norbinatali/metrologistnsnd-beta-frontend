@@ -176,10 +176,10 @@ function MyDeviceForm({t,className, rest}) {
                                 <TabPanel value={value} index={0} dir={theme.direction} style={{ width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
 
                                     <Grid item justify={"center"} xs={12}>
-                                      <Paper className={classes.table}>
+                                    
                                            
 
-                                                <Table stickyHeader   >
+                                                <Table stickyHeader className={classes.table}   >
                                                     <TableHead >
                                                         <TableRow >
                                                             <StyledTableCell align="center">{t('Name device')}</StyledTableCell>
@@ -226,7 +226,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                 </TableRow>)}
                                                                 </TableBody> ))}
                                                 </Table>
-                                           </Paper>
+                                           
 
 
 
@@ -235,11 +235,11 @@ function MyDeviceForm({t,className, rest}) {
                                 </TabPanel>
                                 <TabPanel value={value} index={1} dir={theme.direction} style={{width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                     <Grid justify={"center"} item xs={12}>
-<Paper className={classes.table}>
+
                                           
                                                 <Table stickyHeader className={classes.table} >
 
-                                                    <TableHead  >
+                                                    <TableHead className={classes.table} >
                                                         <TableRow >
                                                             <StyledTableCell align="center">{t('Name device')}</StyledTableCell>
                                                             <StyledTableCell align="center">{t('Device')}</StyledTableCell>
@@ -286,7 +286,7 @@ function MyDeviceForm({t,className, rest}) {
                                                         </TableBody>))}
                                                 </Table>
                                             
-</Paper>
+
 
                                     </Grid>
 
