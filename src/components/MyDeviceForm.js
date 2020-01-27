@@ -45,7 +45,7 @@ const authToken = localStorage.getItem(AUTH_TOKEN);
 const useStyles = makeStyles(theme => ({
 
     table: {
-        maxWidth:"100%",
+        width:"100%",
         height:"340px",
         marginRight:"auto",
         marginLeft:"auto",
@@ -167,11 +167,8 @@ function MyDeviceForm({t,className, rest}) {
                             <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
                                 <TabPanel value={value} index={0} dir={theme.direction} style={{ width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                     <Grid item justify={"center"} xs={12}>
-
-                                        <Paper className={classes.table} >
-
                                             <TableContainer >
-                                                <Table stickyHeader >
+                                                <Table stickyHeader className={classes.table}>
                                                     <TableHead >
                                                         <TableRow >
                                                             <StyledTableCell align="center">{t('Name device')}</StyledTableCell>
@@ -220,19 +217,13 @@ function MyDeviceForm({t,className, rest}) {
                                                         </TableBody>))}
                                                 </Table>
                                             </TableContainer>
-
-                                        </Paper>
-
                                     </Grid>
                                 </TabPanel>
                                 <TabPanel value={value} index={1} dir={theme.direction} style={{width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
 
                                     <Grid justify={"center"} item xs={12}>
-
-                                        <Paper className={classes.table} >
-
-                                            <TableContainer >
-                                                <Table stickyHeader >
+                                              <TableContainer >
+                                                <Table stickyHeader className={classes.table} >
 
                                                     <TableHead  >
                                                         <TableRow >
@@ -281,16 +272,13 @@ function MyDeviceForm({t,className, rest}) {
                                                 </Table>
                                             </TableContainer>
 
-                                        </Paper>
+                                       
                                     </Grid>
                                 </TabPanel>
                                 <TabPanel value={value} index={2} dir={theme.direction} style={{width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                     <Grid  justify={"center"} item xs={12}>
-
-                                        <Paper className={classes.table} >
-
                                             <TableContainer >
-                                                <Table stickyHeader >
+                                                <Table stickyHeader className={classes.table}>
                                                     <TableHead  >
                                                         <TableRow >
                                                             <StyledTableCell align="center">{t('Name device')}</StyledTableCell>
@@ -336,18 +324,10 @@ function MyDeviceForm({t,className, rest}) {
                                                                 </TableRow> )}
                                                         </TableBody>))}
                                                 </Table>
-
                                             </TableContainer>
-
-                                        </Paper>
-
-
                                     </Grid>
                                 </TabPanel>
                             </SwipeableViews>
-
-
-
                           </Grid>
                         )}else return null}}
         </Query>
