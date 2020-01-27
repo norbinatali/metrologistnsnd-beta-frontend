@@ -41,14 +41,10 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import Dialog from "@material-ui/core/Dialog";
 import Fab from "@material-ui/core/Fab";
 import Typography from "@material-ui/core/Typography";
-import Table from "@material-ui/core/Table";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import TableCell from "@material-ui/core/TableCell";
-import TableBody from "@material-ui/core/TableBody";
-import TableContainer from '@material-ui/core/TableContainer';
+
 import Paper from '@material-ui/core/Paper';
 import LegalMetrology from "./LegalMetrology";
+
 
 const authToken = localStorage.getItem(AUTH_TOKEN)
 const useStyles = makeStyles(theme => ({
@@ -87,7 +83,8 @@ function RedditTextField(props) {
 }
 
 
-const CREATE_MYDEVICE =gql `mutation($name_device: String!,$brand_device:String!,$series_device:String!,$kind_device: String!,$certificate_calibration:Boolean,$certificate_verification:Boolean,$certificate_conformity:Boolean,$module_device: String, $tr_device:String,$certificate_assessment_number:String,$certificate_verification_number:String,$certificate_calibration_number:String, $department_assessment_center:String,$department_verification_center:String,$department_calibration_center:String,$conformity_data:String, $calibration_data:String,$valid_verification:String,$notes:String,){ createNewMyDevice(name_device:$name_device,brand_device:$brand_device,series_device:$series_device,kind_device:$kind_device,certificate_calibration:$certificate_calibration,certificate_verification:$certificate_verification,certificate_conformity:$certificate_conformity,module_device:$module_device, tr_device: $tr_device,certificate_assessment_number: $certificate_assessment_number, certificate_calibration_number: $certificate_calibration_number, certificate_verification_number: $certificate_verification_number,department_assessment_center: $department_assessment_center, department_calibration_center: $department_calibration_center,department_verification_center: $department_verification_center,conformity_data:$conformity_data,calibration_data: $calibration_data,valid_verification:$valid_verification,notes:$notes){
+const CREATE_MYDEVICE =gql `mutation($name_device: String!,$brand_device:String!,$series_device:String!,$kind_device: String!,$certificate_calibration:Boolean,$certificate_verification:Boolean,$certificate_conformity:Boolean,$module_device: String, $tr_device:String,$certificate_assessment_number:String,$certificate_verification_number:String,$certificate_calibration_number:String, $department_assessment_center:String,$department_verification_center:String,$department_calibration_center:String,$conformity_data:Date, $calibration_data:Date,$valid_verification:Date,$notes:String,){ createNewMyDevice(name_device:$name_device,brand_device:$brand_device,series_device:$series_device,kind_device:$kind_device,certificate_calibration:$certificate_calibration,certificate_verification:$certificate_verification,certificate_conformity:$certificate_conformity,module_device:$module_device, tr_device: $tr_device,certificate_assessment_number: $certificate_assessment_number, certificate_calibration_number: $certificate_calibration_number, certificate_verification_number: $certificate_verification_number,department_assessment_center: $department_assessment_center, department_calibration_center: $department_calibration_center,department_verification_center: $department_verification_center,conformity_data:$conformity_data,calibration_data: $calibration_data,valid_verification:$valid_verification,notes:$notes){
+    id
     name_device
     brand_device
     series_device
@@ -116,13 +113,13 @@ function AddDevice ({t,props}) {
     const {  ...rest } = props;
     const [ value,setValue]=useState({none:false,certification_calibration:false,certification_verification:false,certification_conformity:false});
 
-
+    const {id} = React.useState("");
     const [ setStateNone]=useState("");
     const [brand_device, setStateBrand_device]=useState("");
     const [kind_device, setStateKind_device]=useState("");
     const [series_device, setStateSeries_device]=useState("");
     const [name_device, setStateName_device]=useState("");
-    const [valid_verification, setValid_verification]=useState("");
+    const [valid_verification, setValid_verification]=useState(new Date(''));
     const [certificate_assessment_number, setCertification_assessment_number]=useState("");
     const [certificate_verification_number, setCertification_verification_number]=useState("");
     const [certificate_calibration_number, setCertification_calibration_number]=useState("");
@@ -133,9 +130,9 @@ function AddDevice ({t,props}) {
     const [department_verification_center, setDepartment_verification_center]=useState("");
     const [department_calibration_center, setDepartment_calibration_center]=useState("");
     const [, setStateCalibration]=useState('');
-    const [conformity_data, setStateConformity_data]=useState('');
-    const [calibration_data, setCalibration_data]=useState('');
-    const [valueVerification, setValueVerification]=useState('');
+    const [conformity_data, setStateConformity_data]=useState(new Date(''));
+    const [calibration_data, setCalibration_data]=useState(new Date(''));
+    const [valueVerification, setValueVerification]=useState(new Date(''));
     const [valueVer, setValueVer]=useState('');
     const [open, setOpen] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
@@ -145,7 +142,7 @@ function AddDevice ({t,props}) {
         history.goBack();
     };
     const confirm = async (data, e) => {
-         saveUserData(data.createNewMyDevice.id)
+        saveUserData(data.createNewMyDevice.id)
         history.push('/mydevices');
 
     };
@@ -153,8 +150,13 @@ function AddDevice ({t,props}) {
 
         localStorage.setItem(CREATE_MY_DEVICE, id)
     };
-   const handleDateConformity = e => {
-        setStateConformity_data(e.target.value);
+    const handleDateCalibration = date => {
+        if (conformity_data === new Date()){
+            console.log(new Date().toLocaleDateString());
+            return Error
+        }
+        else return setStateConformity_data(date);
+
     };
     const handleDateNext_Calibration = e => {
         setCalibration_data(e.target.value);
@@ -171,7 +173,9 @@ function AddDevice ({t,props}) {
     const handleChangeVerification = e => {
         setValid_verification(e.target.value)
     };
-   
+    const handleChangeVer = e => {
+        setValueVer(e.target.value)
+    };
     const handleChange = name => event => {
         setValue({ ...value, [name]: event.target.checked, none:false });
     };
@@ -206,7 +210,7 @@ function AddDevice ({t,props}) {
                                     <Card{...rest} style={{marginRight:"auto", marginLeft:"auto", width:"50%"}} >
                                         <CardHeader subheader={t("fill the information")} title={t("Add Device")}/>
                                         <Divider />
-                                        <Mutation mutation={CREATE_MYDEVICE}  variables={{name_device,brand_device,series_device,kind_device,certificate_calibration,certificate_verification,certificate_conformity,module_device,tr_device,certificate_assessment_number,certificate_verification_number,certificate_calibration_number,department_assessment_center,department_verification_center,department_calibration_center,conformity_data,calibration_data,valid_verification,notes} } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
+                                        <Mutation mutation={CREATE_MYDEVICE}  variables={{id,name_device,brand_device,series_device,kind_device,certificate_calibration,certificate_verification,certificate_conformity,module_device,tr_device,certificate_assessment_number,certificate_verification_number,certificate_calibration_number,department_assessment_center,department_verification_center,department_calibration_center,conformity_data,calibration_data,valid_verification,notes} } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
                                             {( addmydevice,{loading, error, event}) => {
                                                 if (loading) { return (<LinearDeterminate /> )}
                                                 if (error) {return (error.message)}
@@ -258,13 +262,21 @@ function AddDevice ({t,props}) {
                                                                             <RedditTextField  type="text"  fullWidth  value={department_assessment_center} onChange={e => { setDepartment_assessment_center(e.target.value); }} />
                                                                             <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
                                                                             <Divider />
-                                                                            <TextField id="date" label={t('Date')}  type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019" value={conformity_data}
-                                                                                       className={classes.textField}
-                                                                                       InputLabelProps={{
-                                                                                           shrink: true,
-                                                                                       }}
-                                                                                      onChange={handleDateConformity}
-                                                                            />
+                                                                            <Typography>{t('Date')}</Typography>
+                                                                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                                                                <Grid container justify="space-around">
+                                                                                    <KeyboardDatePicker
+                                                                                        disableToolbar
+                                                                                        variant="inline"
+                                                                                        format="MM/dd/yyyy"
+                                                                                        margin="normal"
+                                                                                        id="date-picker-inline"
+                                                                                        value={conformity_data}
+                                                                                        onChange={handleDateCalibration}
+                                                                                        KeyboardButtonProps={{
+                                                                                            'aria-label': 'change date',
+                                                                                        }}
+                                                                                    /></Grid></MuiPickersUtilsProvider>
                                                                         </Grid>)}
                                                                     {certificate_verification === true && (
                                                                         <Grid item xs={12}>
@@ -302,7 +314,7 @@ function AddDevice ({t,props}) {
 
                                                                             <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
                                                                             <Divider />
-                                                                            <TextField id="date"   label={t('Date')} type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019"
+                                                                            <TextField id="date" label={t('Date')} type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019"
                                                                                        value={calibration_data}
                                                                                        className={classes.textField}
                                                                                        InputLabelProps={{
