@@ -44,17 +44,18 @@ const authToken = localStorage.getItem(AUTH_TOKEN);
 const useStyles = makeStyles(theme => ({
 
     table: {
-        width:"100%",
-        height:"340px",
+        maxWidth:"100%",
+        height:"350px",
         marginRight:"auto",
         marginLeft:"auto",
         overflow: 'auto',
-        color:"#fff"
+        color:"#fff",
+         overflowX: 'auto',
     },
     root: {
         maxWidth: '100%',
         height:"100%",
-
+        overflowX: 'auto',
         marginRight:"auto",
         marginLeft:"auto",
         backgroundColor:"transparent",
@@ -177,9 +178,9 @@ function MyDeviceForm({t,className, rest}) {
 
                                     <Grid item justify={"center"} xs={12}>
                                     
-                                           
+                                           <Paper className={classes.table}>
 
-                                                <Table stickyHeader className={classes.table}   >
+                                                <Table stickyHeader    >
                                                     <TableHead >
                                                         <TableRow >
                                                             <StyledTableCell align="center">{t('Name device')}</StyledTableCell>
@@ -227,7 +228,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                 </TableBody> ))}
                                                 </Table>
                                            
-
+</Paper>
 
 
                                     </Grid>
@@ -235,7 +236,7 @@ function MyDeviceForm({t,className, rest}) {
                                 </TabPanel>
                                 <TabPanel value={value} index={1} dir={theme.direction} style={{width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                     <Grid justify={"center"} item xs={12}>
-
+<Paper className={classes.table}>
                                           
                                                 <Table stickyHeader className={classes.table} >
 
@@ -286,7 +287,7 @@ function MyDeviceForm({t,className, rest}) {
                                                         </TableBody>))}
                                                 </Table>
                                             
-
+</Paper>
 
                                     </Grid>
 
