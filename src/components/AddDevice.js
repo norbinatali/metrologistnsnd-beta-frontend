@@ -207,7 +207,7 @@ function AddDevice ({t,props}) {
                                     </IconButton>
                                 </Grid>
                                 <Grid item justify="center" alignItems="center" mxs={12}>
-                                    <Card{...rest} style={{marginRight:"auto", marginLeft:"auto", width:"50%"}} >
+                                    <Card{...rest} style={{marginRight:"auto", marginLeft:"auto", width:"60%"}} >
                                         <CardHeader subheader={t("fill the information")} title={t("Add Device")}/>
                                         <Divider />
                                         <Mutation mutation={CREATE_MYDEVICE}  variables={{id,name_device,brand_device,series_device,kind_device,certificate_calibration,certificate_verification,certificate_conformity,module_device,tr_device,certificate_assessment_number,certificate_verification_number,certificate_calibration_number,department_assessment_center,department_verification_center,department_calibration_center,conformity_data,calibration_data,valid_verification,notes} } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
