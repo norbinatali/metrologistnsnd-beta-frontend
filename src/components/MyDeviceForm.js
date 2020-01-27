@@ -177,7 +177,7 @@ function MyDeviceForm({t,className, rest}) {
 
                                     <Grid item justify={"center"} xs={12}>
                                       <Paper className={classes.table}>
-                                            <TableContainer >
+                                           
 
                                                 <Table stickyHeader   >
                                                     <TableHead >
@@ -226,7 +226,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                 </TableRow>)}
                                                                 </TableBody> ))}
                                                 </Table>
-                                            </TableContainer></Paper>
+                                           </Paper>
 
 
 
@@ -236,7 +236,7 @@ function MyDeviceForm({t,className, rest}) {
                                 <TabPanel value={value} index={1} dir={theme.direction} style={{width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                     <Grid justify={"center"} item xs={12}>
 <Paper className={classes.table}>
-                                            <TableContainer >
+                                          
                                                 <Table stickyHeader className={classes.table} >
 
                                                     <TableHead  >
@@ -285,7 +285,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                 </TableRow>  )}
                                                         </TableBody>))}
                                                 </Table>
-                                            </TableContainer>
+                                            
 </Paper>
 
                                     </Grid>
@@ -294,7 +294,7 @@ function MyDeviceForm({t,className, rest}) {
                                 <TabPanel value={value} index={2} dir={theme.direction} style={{width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                     <Grid  justify={"center"} item xs={12}>
 <Paper className={classes.table}>
-                                            <TableContainer >
+                                          
                                                 <Table stickyHeader className={classes.table}>
                                                     <TableHead  >
                                                         <TableRow >
@@ -343,7 +343,7 @@ function MyDeviceForm({t,className, rest}) {
                                                         </TableBody>))}
                                                 </Table>
 
-                                            </TableContainer>
+                                           
 
 
 </Paper>
