@@ -152,7 +152,7 @@ function MyDeviceForm({t,className, rest}) {
 
                 const currentDate =new Date();
                 const startDate= new Date(currentDate.setHours(2,0,0,0)).toISOString();
-const  endDate = new Date(currentDate.setHours(22,0,0,0)).toISOString();
+ const endDate = new Date(new Date().setDate(new Date().getDate() + 1)).toISOString();
 
                 console.log(currentDate);
                 console.log(startDate);
@@ -207,8 +207,8 @@ const  endDate = new Date(currentDate.setHours(22,0,0,0)).toISOString();
                                                                     <TableCell  align="center"> {device.certificate_assessment_number}</TableCell>
                                                                     <TableCell align="center">{device.module_device}</TableCell>
                                                                     <TableCell align="center">{device.department_assessment_center}</TableCell>
-                                                                    { device.conformity_data >= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}> {device.conformity_data}</TableCell>)}
-                                                                    {device.conformity_data < startDate &&(<TableCell align="center">{device.conformity_data}</TableCell>)}
+                                                                   {device.conformity_data >= endDate  &&(<TableCell align="center" > {device.conformity_data}</TableCell>)}
+                                                                    {device.conformity_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.conformity_data}</TableCell>)}
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
                                                                         <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={500}>
@@ -263,8 +263,8 @@ const  endDate = new Date(currentDate.setHours(22,0,0,0)).toISOString();
                                                                     <TableCell  align="center">{device.kind_device}</TableCell>
                                                                     <TableCell  align="center"> {device.certificate_calibration_number}</TableCell>
                                                                     <TableCell align="center">{device.department_calibration_center}</TableCell>
-                                                                    {device.calibration_data >= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.calibration_data}</TableCell>)}
-                                                                    {device.calibration_data < startDate &&(<TableCell align="center">{device.calibration_data}</TableCell>)}
+                                                                    {device.calibration_data >= endDate &&(<TableCell align="center" >{device.calibration_data}</TableCell>)}
+                                                                    {device.calibration_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.calibration_data}</TableCell>)}
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
                                                                     <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)}>
@@ -320,8 +320,8 @@ const  endDate = new Date(currentDate.setHours(22,0,0,0)).toISOString();
                                                                     <TableCell  align="center">{device.kind_device}</TableCell>
                                                                     <TableCell  align="center"> {device.certificate_verification_number}</TableCell>
                                                                     <TableCell align="center">{device.department_verification_center}</TableCell>
-                                                                    {device.valid_verification >= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.valid_verification}</TableCell>)}
-                                                                    {device.valid_verification < startDate &&(<TableCell align="center">{device.valid_verification}</TableCell>)}
+                                                                    {device.valid_verification >= endDate &&(<TableCell align="center" >{device.valid_verification}</TableCell>)}
+                                                                    {device.valid_verification <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.valid_verification}</TableCell>)}
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
                                                                     <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)}>
