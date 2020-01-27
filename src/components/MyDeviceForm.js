@@ -176,7 +176,7 @@ const  endDate = new Date(currentDate.setHours(22,0,0,0)).toISOString();
                                 <TabPanel value={value} index={0} dir={theme.direction} style={{ width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
 
                                     <Grid item justify={"center"} xs={12}>
-<Paper className={classes.table}>
+                                      <Paper className={classes.table}>
                                             <TableContainer >
 
                                                 <Table stickyHeader   >
@@ -235,7 +235,7 @@ const  endDate = new Date(currentDate.setHours(22,0,0,0)).toISOString();
                                 </TabPanel>
                                 <TabPanel value={value} index={1} dir={theme.direction} style={{width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                     <Grid justify={"center"} item xs={12}>
-
+<Paper className={classes.table}>
                                             <TableContainer >
                                                 <Table stickyHeader className={classes.table} >
 
@@ -286,13 +286,14 @@ const  endDate = new Date(currentDate.setHours(22,0,0,0)).toISOString();
                                                         </TableBody>))}
                                                 </Table>
                                             </TableContainer>
-
+</Paper>
 
                                     </Grid>
 
                                 </TabPanel>
                                 <TabPanel value={value} index={2} dir={theme.direction} style={{width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                     <Grid  justify={"center"} item xs={12}>
+<Paper className={classes.table}>
                                             <TableContainer >
                                                 <Table stickyHeader className={classes.table}>
                                                     <TableHead  >
@@ -345,7 +346,7 @@ const  endDate = new Date(currentDate.setHours(22,0,0,0)).toISOString();
                                             </TableContainer>
 
 
-
+<Paper>
 
                                     </Grid>
                                 </TabPanel>
