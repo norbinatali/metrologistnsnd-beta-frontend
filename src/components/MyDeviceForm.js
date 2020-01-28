@@ -38,6 +38,8 @@ import Box from "@material-ui/core/Box";
 import IconButton from "@material-ui/core/IconButton";
 import {Mutation} from "react-apollo";
 import Tooltip from "@material-ui/core/Tooltip";
+import { SnackbarProvider, useSnackbar } from 'notistack';
+
 const drawerWidth = 240;
 const deviceid = localStorage.getItem(CREATE_MY_DEVICE);
 const authToken = localStorage.getItem(AUTH_TOKEN);
@@ -121,6 +123,7 @@ const DELETE_MYDevice =gql`mutation ($id:ID!){deleteMyDevice(id:$id){ id }}`
 function MyDeviceForm({t,className, rest}) {
     const classes = useStyles();
     const theme = useTheme();
+    const { enqueueSnackbar } = useSnackbar();
     const [open, setOpen] = React.useState(false);
     const [expanded, setExpanded] = React.useState(false);
     const [component, setComponent] = React.useState(' ');
@@ -146,7 +149,7 @@ function MyDeviceForm({t,className, rest}) {
     const handleClose = () => {setOpen(false);};
     return(
         <div  className={classes.root}>
-        <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={100} >
+        <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={100} onError={(error) => enqueueSnackbar(error.message)} >
             {( {loading, error, data} ) =>  {
                 if (loading) {return <LinearDeterminate />}
                 if (error) { return error.message }
@@ -209,7 +212,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell align="center">{device.module_device}</TableCell>
                                                                     <TableCell align="center">{device.department_assessment_center}</TableCell>
                                                                    {device.conformity_data >= endDate  &&(<TableCell align="center" > {device.conformity_data}</TableCell>)}
-                                                                    {device.conformity_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.conformity_data}</TableCell>)}
+                                                                    {device.conformity_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.conformity_data}</TableCell>)&& (enqueueSnackbar('device.name_device')) }
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
                                                                         <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={500}>
@@ -265,7 +268,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell  align="center"> {device.certificate_calibration_number}</TableCell>
                                                                     <TableCell align="center">{device.department_calibration_center}</TableCell>
                                                                     {device.calibration_data >= endDate &&(<TableCell align="center" >{device.calibration_data}</TableCell>)}
-                                                                    {device.calibration_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.calibration_data}</TableCell>)}
+                                                                    {device.calibration_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.calibration_data}</TableCell>)&& (enqueueSnackbar(device.name_device)) }
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
                                                                     <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)}>
@@ -322,7 +325,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell  align="center"> {device.certificate_verification_number}</TableCell>
                                                                     <TableCell align="center">{device.department_verification_center}</TableCell>
                                                                     {device.valid_verification >= endDate &&(<TableCell align="center" >{device.valid_verification}</TableCell>)}
-                                                                    {device.valid_verification <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.valid_verification}</TableCell>)}
+                                                                    {device.valid_verification <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.valid_verification}</TableCell>)&& (enqueueSnackbar('device.name_device')) }
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
                                                                     <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)}>
