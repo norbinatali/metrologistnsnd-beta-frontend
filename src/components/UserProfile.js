@@ -39,14 +39,11 @@ function UserProfile({t,props}) {
     const [newpassword, setNewPassword] = React.useState('');
     const [oldpassword, setOldPassword] = React.useState('');
     const [email, setEmail] = React.useState('');
+    const [companyName, setCompanyName] = React.useState('');
+    const [country, setCountry] = React.useState('');
+    const [name, setName] = React.useState('');
     const [values, setValues] = React.useState({
-        firstName: '',
-        lastName: '',
-        phone: '',
         state: '',
-        country: '',
-        password: '',
-        companyName: ''
     });
     const confirm = async (data, e) => {
         enqueueSnackbar(i18n.t('Your password is successful changed'));
@@ -56,6 +53,9 @@ function UserProfile({t,props}) {
     const saveUserData = () => {
 
         localStorage.setItem()
+    };
+    const confirmUp = async (data,e) =>{
+        enqueueSnackbar(i18n.t('You updated your personal information successfully'));
     };
     const handleChange = event => {
         setValues({
@@ -70,22 +70,29 @@ function UserProfile({t,props}) {
         email
         name
     }}`;
+    const UPGRADE_USER = gql`mutation($email:String!, $country:String, $name:String, $companyName:String){upgradeUser(email: $email,companyName: $companyName,country: $country,name: $name){
+        name
+        companyName
+        country
+    }}`
     return(
+        <Query query={QUERY_USER}>
+            {( {loading, error, data} ) =>  {
+                if (loading) {return <LinearDeterminate />}
+                if (error) { return error.message }
+                const userInfo = data.me;
+                if(authToken) {
+                    return(
         <div>
             <UserMenu/>
             <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
                 <div className={classes.root}>
-                <Query query={QUERY_USER}>
-                    {( {loading, error, data} ) =>  {
-                        if (loading) {return <LinearDeterminate />}
-                        if (error) { return error.message }
-                        const userInfo = data.me;
-                        if(authToken) {
-                            return(
+                    {userInfo.map(info =>
                             <Grid container spacing={4}>
+
                                 <Grid item lg={4} md={6} xl={4} xs={12}>
                                     <Card {...rest}>
-                                        {userInfo.map(info =>
+
                                             <Mutation mutation={CHANGE_PASSWORD} variables={{email:info.email, oldpassword, newpassword}} onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
                                                 {( changepassword,{loading, error, data}) => {
                                                     if (loading) { return (<LinearDeterminate /> )}
@@ -95,7 +102,7 @@ function UserProfile({t,props}) {
                                             <FormControl>
                                                 <CardHeader subheader={t("Update password")} title={t("Password")}/>
                                                 <Divider/>
-                                               
+
                                                     <CardContent>
                                                         <TextField
                                                             fullWidth
@@ -109,7 +116,7 @@ function UserProfile({t,props}) {
                                                         <TextField
                                                             fullWidth
                                                             label={t("New password")}
-                                                            name="confirm"
+
                                                             onChange={(e)=>setNewPassword(e.target.value)}
                                                             style={{marginTop: '1rem'}}
                                                             type="password"
@@ -121,29 +128,37 @@ function UserProfile({t,props}) {
                                                     <CardActions>
                                                         <Button onClick={changepassword} color="primary" variant="outlined"> {t("Update")}</Button>
                                                     </CardActions>
-                                             
+
                                             </FormControl>
-                                                        )}}}  </Mutation>)}
+                                                        )}}}  </Mutation>
                                     </Card>
                                 </Grid>
                                 <Grid item lg={4} md={6} xl={4} xs={12}>
                                     <Card{...rest} >
-                                        <form autoComplete="off" noValidate>
+                                        <Mutation mutation={CHANGE_PASSWORD} variables={{email:info.email, country, companyName, name}} onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirmUp(data)}>
+                                            {( upgradeUser,{loading, error, data}) => {
+                                                if (loading) { return (<LinearDeterminate /> )}
+                                                if (error) {return (error.message)}
+                                                if (authToken){
+                                                    return(
+                                        <FormControl autoComplete="off" noValidate>
                                             <CardHeader subheader={t("The information can be edited")}
                                                         title={t("Profile")}/>
                                             <Divider/>
                                             <CardContent>
+
                                                 <Grid container spacing={3}>
+
                                                     <Grid item md={6} xs={12}>
                                                         <TextField
                                                             fullWidth
-                                                            helperText="Please specify the first name"
-                                                            label={t("First name")}
+                                                            helperText={t('Please specify the full name')}
+                                                            label={t("Name")}
                                                             margin="dense"
-                                                            name="firstName"
-                                                            onChange={handleChange}
+                                                            defaultValue={info.name}
+                                                            onChange={(e)=>setName(e.target.value)}
                                                             required
-                                                            value={values.firstName}
+                                                            value={name}
                                                             variant="outlined"
                                                         />
                                                     </Grid>
@@ -151,51 +166,22 @@ function UserProfile({t,props}) {
                                                     <Grid item md={6} xs={12}>
                                                         <TextField
                                                             fullWidth
-                                                            label={t("Email")}
+                                                            label={t('Company Name')}
                                                             margin="dense"
-                                                            name="email"
-                                                            onChange={handleChange}
-                                                            required
-                                                            value={values.email}
+                                                            defaultValue={info.companyName}
+                                                            onChange={(e)=>setCompanyName(e.target.value)}
+                                                            value={companyName}
                                                             variant="outlined"
                                                         />
                                                     </Grid>
                                                     <Grid item md={6} xs={12}>
                                                         <TextField
                                                             fullWidth
-                                                            label="Phone Number"
+                                                            label={t("Country")}
                                                             margin="dense"
-                                                            name="phone"
-                                                            onChange={handleChange}
-                                                            type="number"
-                                                            value={values.phone}
-                                                            variant="outlined"
-                                                        />
-                                                    </Grid>
-                                                    <Grid item md={6} xs={12}>
-                                                        <TextField
-                                                            fullWidth
-                                                            label={t("Company Name")}
-                                                            margin="dense"
-                                                            name="companyName"
-                                                            onChange={handleChange}
-                                                            required
-                                                            select
-                                                            // eslint-disable-next-line react/jsx-sort-props
-                                                            SelectProps={{native: true}}
-                                                            value={values.companyName}
-                                                            variant="outlined"
-                                                        />
-                                                    </Grid>
-                                                    <Grid item md={6} xs={12}>
-                                                        <TextField
-                                                            fullWidth
-                                                            label="Country"
-                                                            margin="dense"
-                                                            name="country"
-                                                            onChange={handleChange}
-                                                            required
-                                                            value={values.country}
+                                                            defaultValue={info.country}
+                                                            onChange={(e)=>setCountry(e.target.value)}
+                                                            value={country}
                                                             variant="outlined"
                                                         />
                                                     </Grid>
@@ -203,18 +189,20 @@ function UserProfile({t,props}) {
                                             </CardContent>
                                             <Divider/>
                                             <CardActions>
-                                                <Button color="primary" variant="outlined">
+                                                <Button onClick={upgradeUser} color="primary" variant="outlined">
                                                     {t("Save details")}
                                                 </Button>
-                                            </CardActions>)}
-                                        </form>
+                                            </CardActions>
+                                        </FormControl>)}}}
+                                        </Mutation>
                                     </Card>
                                 </Grid>
-                            </Grid>)
-                        }else return null}}
-                </Query></div>
+                            </Grid>)}
+                        </div>
             </main>
-        </div>
+        </div>)
+                }else return null}}
+        </Query>
     );
 };
 
