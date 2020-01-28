@@ -119,7 +119,6 @@ function UserProfile({t,props}) {
                                                                             <TextField
                                                                                 fullWidth
                                                                                 label={t("New password")}
-
                                                                                 onChange={(e) => setNewPassword(e.target.value)}
                                                                                 style={{marginTop: '1rem'}}
                                                                                 type="password"
@@ -183,9 +182,7 @@ function UserProfile({t,props}) {
                                                                                 <Grid item md={6} xs={12}>
                                                                                     <TextField
                                                                                         fullWidth
-                                                                                        helperText={t('Please specify the full name')}
                                                                                         label={t("Full Name")}
-                                                                                        margin="dense"
                                                                                         defaultValue={data.me.name}
                                                                                         onChange={(e) => setName(e.target.value)}
                                                                                         required
@@ -198,7 +195,6 @@ function UserProfile({t,props}) {
                                                                                     <TextField
                                                                                         fullWidth
                                                                                         label={t('Company Name')}
-                                                                                        margin="dense"
                                                                                         defaultValue={data.me.companyName}
                                                                                         onChange={(e) => setCompanyName(e.target.value)}
                                                                                         value={companyName}
@@ -209,7 +205,6 @@ function UserProfile({t,props}) {
                                                                                     <TextField
                                                                                         fullWidth
                                                                                         label={t('Country')}
-                                                                                        margin="dense"
                                                                                         defaultValue={data.me.country}
                                                                                         onChange={(e) => setCountry(e.target.value)}
                                                                                         value={country}
