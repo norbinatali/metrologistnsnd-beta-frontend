@@ -168,7 +168,7 @@ function MyDeviceForm({t,className, rest}) {
                             </Grid>
                             <AppBar position="static" color="default">
                                 <Tabs value={value} onChange={handleChangeTab} indicatorColor="primary" textColor="primary" variant="fullWidth" aria-label="full width tabs example"  centered>
-                                    <Tab label={t('Confirmity assessment')} {...a11yProps(0)} />
+                                    <Tab label={t('Conformity assessment')} {...a11yProps(0)} />
                                     <Tab label={t('Calibration')} {...a11yProps(1)} />
                                     <Tab label={t('Verification')} {...a11yProps(2)} />
                                 </Tabs>
