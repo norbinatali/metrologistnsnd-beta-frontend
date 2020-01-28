@@ -212,7 +212,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell align="center">{device.module_device}</TableCell>
                                                                     <TableCell align="center">{device.department_assessment_center}</TableCell>
                                                                    {device.conformity_data >= endDate  &&(<TableCell align="center" > {device.conformity_data}</TableCell>)}
-                                                                    {device.conformity_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.conformity_data}</TableCell>)&& (enqueueSnackbar('device.name_device')) }
+                                                                    {device.conformity_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.conformity_data}</TableCell>)&& (enqueueSnackbar(device.name_device)) }
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
                                                                         <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={500}>
@@ -325,7 +325,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell  align="center"> {device.certificate_verification_number}</TableCell>
                                                                     <TableCell align="center">{device.department_verification_center}</TableCell>
                                                                     {device.valid_verification >= endDate &&(<TableCell align="center" >{device.valid_verification}</TableCell>)}
-                                                                    {device.valid_verification <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.valid_verification}</TableCell>)&& (enqueueSnackbar('device.name_device')) }
+                                                                    {device.valid_verification <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.valid_verification}</TableCell>)&& (enqueueSnackbar(device.name_device)) }
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
                                                                     <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)}>
