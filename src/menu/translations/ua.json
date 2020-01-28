@@ -34,7 +34,7 @@
   "Add" : "Додати",
 
 "Contact us": "Написати нам",
-  "Company Name": "Назва компанії(не обов'язково)",
+  "Company Name": "Назва компанії",
     "Introduction": "Представлення",
     "Welcome": "Вітаємо",
     "Products": "Продукція",
@@ -175,9 +175,12 @@
  "Update": "Оновити",
  "The information can be edited":"Інформацію яку можна редагувати",
  "Profile": "Профіль",
- "First name": "Повне імя",
+ "Full Name": "Повне імя",
  "Save details": "Зберегти данні",
  "Country":"Країна",
+ "You updated your personal information successfully":"",
+ "Your password is successful changed":"",
+ "Please specify the full name":""
  "Calibration":"Калібрування",
  "Conformity assessment":"Оцінка відповідності",
  "Verification":"Повірка",
