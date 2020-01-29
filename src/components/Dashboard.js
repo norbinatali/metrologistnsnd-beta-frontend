@@ -45,14 +45,9 @@ function Dashboard ({t}){
                                     return (
         <div className={classes.root}>
 
-            <div > <Typography  align={"justify"} className={classes.text}  >{t('Welcome')} {data.me.name}</Typography>
+            <div > <Typography  align={"center"} className={classes.text}  >{t('Welcome')} {data.me.name}</Typography>
 
-                <Typography  align={"justify"} className={classes.root} >
-                    <p>{t('Metrologist')}{t('About Metrologist')}<br/></p>
-                    <p>{t('Metrologist')}{t('Why Metrologist is needed')}<br/></p>
-                    <p>{t('Metrologist')}{t('Metrologist test')} <br/></p>
-                    <p>{t('Metrologist recommendations')}<br/></p>
-                </Typography>
+               
 
             </div>
         </div>)}}}</Query>
