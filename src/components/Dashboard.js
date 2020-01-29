@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     },
 
 }));
-
+ const QUERY_USER = gql`query{me {name, email,country, companyName}}`;
  function Dashboard ({t}){
 
      const classes = useStyles();
@@ -22,8 +22,22 @@ const useStyles = makeStyles(theme => ({
              <div style={{ marginTop: 40 }}>
                         <div style={{ marginTop: 20, padding:30}}>
             <div className={classes.root}>
+             <Query query={QUERY_USER}>
+                    {({loading, error, data}) => {
+                        if (loading) {
+                            return <LinearDeterminate/>
+                        }
+                        if (error) {
+                            return error.message
+                        }
+                        const userInfo = data.me;
+                        console.log(data.me.name)
+                        console.log(data.me.email)
+                        if (authToken) {
+                            return (
             
 <div >
+            <Typography  align={"justify"} style={{color:"rgba(0,1,47,0.84)"}} >{t('Welcome')}</Typography></Typography> {data.me.name}</Typography><br/>
 <Typography  align={"justify"} style={{color:"rgba(0,1,47,0.84)"}} >
     <p>{t('About Metrologist')}<br/></p>
     <p>{t('Why Metrologist is needed')}<br/></p>
@@ -32,6 +46,8 @@ const useStyles = makeStyles(theme => ({
 </Typography>
 
 </div>
+            )}}}
+            </Query>
                 </div>
          </div>
                     </div>
