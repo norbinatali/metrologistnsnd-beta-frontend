@@ -184,6 +184,7 @@ function UserProfile({t,props}) {
                                                                                     <Typography>{t('Full Name')}</Typography>
                                                                                     <TextField
                                                                                         fullWidth
+                                                                                       style={{color:"rgba(0,1,14,0.74)"}}      
                                                                                         defaultValue={data.me.name}
                                                                                         onChange={(e) => setName(e.target.value)}
                                                                                         value={name}
@@ -195,6 +196,7 @@ function UserProfile({t,props}) {
                                                                                     <Typography>{t('Company Name')}</Typography>
                                                                                     <TextField
                                                                                         fullWidth
+                                                                                         style={{color:"rgba(0,1,14,0.74)"}}        
                                                                                         defaultValue={data.me.companyName}
                                                                                         onChange={(e) => setCompanyName(e.target.value)}
                                                                                         value={companyName}
@@ -206,6 +208,7 @@ function UserProfile({t,props}) {
                                                                                     <Typography>{t('Country')}</Typography>
                                                                                     <TextField
                                                                                         fullWidth
+                                                                                         style={{color:"rgba(0,1,14,0.74)"}}      
                                                                                         defaultValue={data.me.country}
                                                                                         onChange={(e) => setCountry(e.target.value)}
                                                                                         value={country}
