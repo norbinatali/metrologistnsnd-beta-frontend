@@ -36,9 +36,9 @@ const authToken = localStorage.getItem(AUTH_TOKEN);
                             return error.message
                         }
                         const userInfo = data.me;
-                        console.log(data.me.name)
-                        console.log(data.me.email)
-                        if (authToken) {
+                        console.log(data.me.name);
+                        console.log(data.me.email);
+                        if (authToken&& data) {
                             return (
             
 <div >
