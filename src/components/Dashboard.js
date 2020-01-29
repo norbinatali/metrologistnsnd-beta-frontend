@@ -3,7 +3,11 @@ import {withTranslation} from "react-i18next";
 import {makeStyles} from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import {AUTH_TOKEN, CREATE_MY_DEVICE, GC_USER_ID} from '../constants';
+import gql from 'graphql-tag';
+import {Mutation, Query} from 'react-apollo';
 import ContactUS from "./ContactUS";
+import LinearDeterminate from "./LinearDeterminate";
 import UserMenu from "./UserMenu";
 const useStyles = makeStyles(theme => ({
     root: {
@@ -11,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     },
 
 }));
+const authToken = localStorage.getItem(AUTH_TOKEN);
  const QUERY_USER = gql`query{me {name, email,country, companyName}}`;
  function Dashboard ({t}){
 
