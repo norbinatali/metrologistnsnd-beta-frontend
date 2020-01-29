@@ -92,7 +92,7 @@ function UserProfile({t,props}) {
                         const userInfo = data.me;
                         console.log(data.me.name)
                         console.log(data.me.email)
-                        if (authToken) {
+                        if (authToken && data) {
                             return (
                                 <div className={classes.root}>
 
