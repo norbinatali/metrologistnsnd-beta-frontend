@@ -20,6 +20,7 @@ import UserMenu from "./UserMenu";
 import LinearDeterminate from "./LinearDeterminate";
 import {useSnackbar} from "notistack";
 import i18n from 'i18next';
+import Typography from "@material-ui/core/Typography";
 
 
 
@@ -178,7 +179,7 @@ function UserProfile({t,props}) {
                                                                         <CardContent>
 
                                                                             <Grid container spacing={3}>
-<Label>{t('Full Name')}</Label>
+<Typography>{t('Full Name')}</Typography>
                                                                                 <Grid item md={6} xs={12}>
                                                                                     <TextField
                                                                                         fullWidth
@@ -190,7 +191,7 @@ function UserProfile({t,props}) {
                                                                                         variant="outlined"
                                                                                     />
                                                                                 </Grid>
-<Label>{t('Company Name')}</Label>
+<Typography>{t('Company Name')}</Typography>
                                                                                 <Grid item md={6} xs={12}>
                                                                                     <TextField
                                                                                         fullWidth
@@ -201,7 +202,7 @@ function UserProfile({t,props}) {
                                                                                         variant="outlined"
                                                                                     />
                                                                                 </Grid>
-                                                                <Label>{t('Country')}</Label>
+                                                                <Typography>{t('Country')}</Typography>
                                                                                 <Grid item md={6} xs={12}>
                                                                                     <TextField
                                                                                         fullWidth
