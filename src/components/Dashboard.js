@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
                             return (
             
 <div >
-            <Typography  align={"justify"} style={{color:"rgba(0,1,47,0.84)"}} >{t('Welcome')}</Typography></Typography> {data.me.name}</Typography><br/>
+            <Typography  align={"justify"} style={{color:"rgba(0,1,47,0.84)"}} >{t('Welcome')}</Typography><Typography> {data.me.name}</Typography><br/>
 <Typography  align={"justify"} style={{color:"rgba(0,1,47,0.84)"}} >
     <p>{t('About Metrologist')}<br/></p>
     <p>{t('Why Metrologist is needed')}<br/></p>
