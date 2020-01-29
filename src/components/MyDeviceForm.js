@@ -183,7 +183,7 @@ function MyDeviceForm({t,className, rest}) {
                                     
                                            <Paper className={classes.table}>
 
-                                                <Table stickyHeader    >
+                                                <Table stickyHeader component={Paper}>   >
                                                     <TableHead >
                                                         <TableRow >
                                                             <StyledTableCell align="center">{t('Name device')}</StyledTableCell>
@@ -241,7 +241,7 @@ function MyDeviceForm({t,className, rest}) {
                                     <Grid justify={"center"} item xs={12}>
 <Paper className={classes.table}>
                                           
-                                                <Table stickyHeader >
+                                                 <Table stickyHeader component={Paper}>   >
 
                                                     <TableHead >
                                                         <TableRow >
@@ -299,7 +299,7 @@ function MyDeviceForm({t,className, rest}) {
                                     <Grid  justify={"center"} item xs={12}>
 <Paper className={classes.table}>
                                           
-                                                <Table stickyHeader>
+                                                 <Table stickyHeader component={Paper}>   >
                                                     <TableHead  >
                                                         <TableRow >
                                                             <StyledTableCell align="center">{t('Name device')}</StyledTableCell>
