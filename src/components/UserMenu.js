@@ -258,44 +258,44 @@ i18n.changeLanguage(event.target.value);
    <MenuItem value={'en'} style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} ><img src={FlagUS}/></MenuItem>
                   </Select>  
                     <IconButton onClick={handleDrawerClose} >
-                        <ChevronLeftIcon style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
+                        <ChevronLeftIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
                     </IconButton>
                 </div>
                 <Divider />
                 <List >
                     <ListItem button onClick={handleDrawerCloseDashboard} >
                     <ListItemIcon>
-                        <DashboardIcon style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
+                        <DashboardIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
                     </ListItemIcon>
                     <ListItemText primary={t('Dashboard')} />
                 </ListItem>
                     <ListItem  button onClick={handleDrawerCloseMetrology}>
                         <ListItemIcon >
-                            <LibraryBooksIcon style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
+                            <LibraryBooksIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
                         </ListItemIcon>
                         <ListItemText primary={t('Metrology')} />
                     </ListItem>
                     <ListItem  button onClick={handleDrawerCloseMyDevice}>
                         <ListItemIcon>
-                            <BuildIcon style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
+                            <BuildIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
                         </ListItemIcon>
                         <ListItemText primary={t('My devices')} />
                     </ListItem>
                     <ListItem button onClick={handleDrawerCloseSand}>
                         <ListItemIcon>
-                            <FolderIcon style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
+                            <FolderIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
                         </ListItemIcon>
                         <ListItemText primary={t('SAND')} />
                     </ListItem>
                     <ListItem button disabled onClick={handleDrawerCloseForum}>
                         <ListItemIcon>
-                            <PeopleIcon style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
+                            <PeopleIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
                         </ListItemIcon>
                         <ListItemText primary={t('Forum')} />
                     </ListItem>
                     <ListItem button disabled onClick={handleDrawerCloseApps}>
                         <ListItemIcon>
-                            <ImportantDevicesIcon style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
+                            <ImportantDevicesIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
                         </ListItemIcon>
                         <ListItemText primary={t('Apps')} />
                     </ListItem>
@@ -305,19 +305,19 @@ i18n.changeLanguage(event.target.value);
                     <ListSubheader inset>{t('Settings')}</ListSubheader>
                     <ListItem button onClick={handleDrawerCloseUserPage}>
                         <ListItemIcon>
-                            <AccountCircleIcon style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}}/>
+                            <AccountCircleIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}}/>
                         </ListItemIcon>
                         <ListItemText primary={t('Change profile')} />
                     </ListItem>
                     <ListItem button disabled>
                         <ListItemIcon>
-                            <AssignmentIcon style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}}/>
+                            <AssignmentIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}}/>
                         </ListItemIcon>
                         <ListItemText  primary={t('About us')} />
                     </ListItem>
                     <ListItem button onClick={handleDrawerCloseContactUS}>
                         <ListItemIcon>
-                            <ContactSupportIcon style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
+                            <ContactSupportIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
                         </ListItemIcon>
                         <ListItemText primary={t('Contacts')} />
                     </ListItem>
@@ -326,7 +326,7 @@ i18n.changeLanguage(event.target.value);
                          history.push('/')
                         }}>
                             <ListItemIcon>
-                                <ExitToApp style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}}/>
+                                <ExitToApp style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}}/>
                             </ListItemIcon>
                             <ListItemText primary={t('logout')}/>
                         </ListItem>
