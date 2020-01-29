@@ -16,7 +16,9 @@ const useStyles = makeStyles(theme => ({
         marginLeft: "5%",
         marginRight:"30%"
     },
-
+text:{
+    color:"rgba(0,1,14,0.74)",
+},
 }));
 const QUERY_USER = gql`query{me {name, email,country, companyName}}`;
 function Dashboard ({t}){
@@ -43,9 +45,9 @@ function Dashboard ({t}){
                                     return (
         <div className={classes.root}>
 
-            <div > <Typography  align={"justify"}  >{t('Welcome')} {data.me.name}</Typography>
+            <div > <Typography  align={"justify"} className={classes.text}  >{t('Welcome')} {data.me.name}</Typography>
 
-                <Typography  align={"justify"}  >
+                <Typography  align={"justify"} className={classes.root} >
                     <p>{t('Metrologist')}{t('About Metrologist')}<br/></p>
                     <p>{t('Metrologist')}{t('Why Metrologist is needed')}<br/></p>
                     <p>{t('Metrologist')}{t('Metrologist test')} <br/></p>
