@@ -178,11 +178,11 @@ function UserProfile({t,props}) {
                                                                         <CardContent>
 
                                                                             <Grid container spacing={3}>
-
+<Label>{t('Full Name')}</Label>
                                                                                 <Grid item md={6} xs={12}>
                                                                                     <TextField
                                                                                         fullWidth
-                                                                                        label={t("Full Name")}
+                                                                                       
                                                                                         defaultValue={data.me.name}
                                                                                         onChange={(e) => setName(e.target.value)}
                                                                                         required
@@ -190,21 +190,22 @@ function UserProfile({t,props}) {
                                                                                         variant="outlined"
                                                                                     />
                                                                                 </Grid>
-
+<Label>{t('Company Name')}</Label>
                                                                                 <Grid item md={6} xs={12}>
                                                                                     <TextField
                                                                                         fullWidth
-                                                                                        label={t('Company Name')}
+                                                                                       
                                                                                         defaultValue={data.me.companyName}
                                                                                         onChange={(e) => setCompanyName(e.target.value)}
                                                                                         value={companyName}
                                                                                         variant="outlined"
                                                                                     />
                                                                                 </Grid>
+                                                                <Label>{t('Country')}</Label>
                                                                                 <Grid item md={6} xs={12}>
                                                                                     <TextField
                                                                                         fullWidth
-                                                                                        label={t('Country')}
+                                                                                       
                                                                                         defaultValue={data.me.country}
                                                                                         onChange={(e) => setCountry(e.target.value)}
                                                                                         value={country}
