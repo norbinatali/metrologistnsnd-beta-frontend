@@ -190,6 +190,9 @@ function LoginForm({t},props){
                                 ));}
                             }
                         /><br/>
+                             <Link component={RouterLink} to="/reset-password" variant="h8" style={{color:"rgba(23, 20, 61, 0.96)"}}  >
+                                    {t('Forgot password?')}
+                                </Link>
                         <RaisedButton disabled={!formState.isValid} onClick={mutation}>{t('Submit')}
                         </RaisedButton>
             <Typography style={{color:"rgba(0,1,47,0.84)"}} variant="body1" >
