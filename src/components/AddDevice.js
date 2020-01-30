@@ -49,28 +49,27 @@ import LegalMetrology from "./LegalMetrology";
 const schema = {
     name_device: {
         presence: { allowEmpty: false, message: 'is required' },
-        name_device: true,
         length: {
             maximum: 64
         }
     },
     kind_device: {
         presence: { allowEmpty: false, message: 'is required' },
-        kind_device:true,
+       
         length: {
             maximum: 128
         }
     },
     series_device: {
         presence: { allowEmpty: false, message: 'is required' },
-        series_device: true,
+       
         length: {
             maximum: 64
         }
     },
     brand_device: {
         presence: { allowEmpty: false, message: 'is required' },
-        brand_device: true,
+       
         length: {
             maximum: 64
         }
@@ -231,7 +230,7 @@ function AddDevice ({t,props}) {
     });
 
     useEffect(() => {
-        const errors = validate(formState.values[name_device,kind_device,brand_device,series_device], schema);
+        const errors = validate(formState.values, schema);
 
         setFormState(formState => ({
             ...formState,
