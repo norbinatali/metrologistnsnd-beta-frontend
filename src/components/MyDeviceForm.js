@@ -170,10 +170,11 @@ function MyDeviceForm({t,className, rest}) {
     </Button>
                             </Grid>
                             <AppBar position="static" color="default">
-                                <Tabs value={value} onChange={handleChangeTab} indicatorColor="primary" textColor="primary" variant="fullWidth" aria-label="full width tabs example"  centered style={{marginLeft:"10px"}}>
+                                <Tabs value={value} onChange={handleChangeTab} indicatorColor="primary" textColor="primary" scrollButtons="auto" variant="scrollable" aria-label="full width tabs example"  centered style={{ flexGrow: 1,width: '100%'}}>
                                     <Tab  label={<Typography variant={"caption"}>{t('Confirmity assessment')}</Typography>} {...a11yProps(0)} />
                                     <Tab label={<Typography variant={"caption"}>{t('Calibrationn')}</Typography>} {...a11yProps(1)} />
                                     <Tab label={<Typography variant={"caption"}>{t('Verification')}</Typography>}  {...a11yProps(2)} />
+                                    <Tab label={<Typography variant={"overline"}>{t('None')}</Typography>}  {...a11yProps(3)} />
                                 </Tabs>
                             </AppBar>
                             <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
@@ -353,6 +354,61 @@ function MyDeviceForm({t,className, rest}) {
 </Paper>
 
                                     </Grid>
+                                </TabPanel>
+  <TabPanel value={value} index={3} dir={theme.direction} style={{ width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
+
+                                    <Grid item justify={"center"} xs={12}>
+                                        <Paper className={classes.table}>
+                                            <TableContainer component={Paper}>
+
+                                                <Table stickyHeader >
+                                                    <TableHead >
+                                                        <TableRow >
+                                                            <StyledTableCell align="center">{t('Name device')}</StyledTableCell>
+                                                            <StyledTableCell align="center">{t('Device')}</StyledTableCell>
+                                                            <StyledTableCell align="center">{t('Series number')}</StyledTableCell>
+                                                            <StyledTableCell align="center">{t('Type')}</StyledTableCell>
+                                                            <StyledTableCell align="center">{t('Notes')} </StyledTableCell>
+                                                            <StyledTableCell align="center">{t('Delete')} </StyledTableCell>
+                                                        </TableRow>
+                                                    </TableHead>
+                                                    {devicelist.map(device =>(
+
+                                                        <TableBody>
+                                                            {(!device.certificate_verification && !device.certificate_calibration && !device.certificate_conformity) &&(
+
+                                                                <TableRow key={device.id}>
+                                                                    <TableCell  align="center">{device.name_device}</TableCell>
+                                                                    <TableCell  align="center">{device.brand_device}</TableCell>
+                                                                    <TableCell  align="center">{device.series_device}</TableCell>
+                                                                    <TableCell  align="center">{device.kind_device}</TableCell>
+                                                                    <TableCell> {device.notes}</TableCell>
+
+                                                                    <TableCell>
+
+                                                                        <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={500}>
+
+                                                                            {( deleteDevice,{loading, error, data}) => {
+
+                                                                                if (loading) { return (<LinearDeterminate /> )}
+                                                                                if (error) {return (error.message)}
+                                                                                if (authToken){
+                                                                                    return(
+                                                                                        <Tooltip title={t('Delete')}>
+                                                                                            <IconButton onClick={deleteDevice}><DeleteIcon /></IconButton>
+                                                                                        </Tooltip>
+                                                                                    )}}}
+                                                                        </Mutation>
+                                                                    </TableCell>
+                                                                </TableRow>)}
+                                                        </TableBody> ))}
+                                                </Table>
+                                            </TableContainer></Paper>
+
+
+
+                                    </Grid>
+
                                 </TabPanel>
                             </SwipeableViews>
 
