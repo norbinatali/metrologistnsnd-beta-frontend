@@ -45,6 +45,36 @@ import Typography from "@material-ui/core/Typography";
 import Paper from '@material-ui/core/Paper';
 import LegalMetrology from "./LegalMetrology";
 
+const schema = {
+    name_device: {
+        presence: { allowEmpty: false, message: 'is required' },
+        name_device: true,
+        length: {
+            maximum: 64
+        }
+    },
+    kind_device: {
+        presence: { allowEmpty: false, message: 'is required' },
+        kind_device:true,
+        length: {
+            maximum: 128
+        }
+    },
+    series_device: {
+        presence: { allowEmpty: false, message: 'is required' },
+        series_device: true,
+        length: {
+            maximum: 64
+        }
+    },
+    brand_device: {
+        presence: { allowEmpty: false, message: 'is required' },
+        brand_device: true,
+        length: {
+            maximum: 64
+        }
+    }
+};
 
 const authToken = localStorage.getItem(AUTH_TOKEN)
 const useStyles = makeStyles(theme => ({
@@ -192,6 +222,24 @@ function AddDevice ({t,props}) {
             }
         }
     }, [open]);
+     const [formState, setFormState] = React.useState({
+        isValid: false,
+        values: {name_device, kind_device,brand_device,series_device},
+        touched: {},
+        errors: {}
+    });
+
+    useEffect(() => {
+        const errors = validate(formState.values[name_device,kind_device,brand_device,series_device], schema);
+
+        setFormState(formState => ({
+            ...formState,
+            isValid: !errors,
+            errors: errors || {}
+        }));
+    }, [formState.values]);
+const hasError = field =>
+        !!(formState.touched[field] && formState.errors[field]);
     return(
         <div>
             <UserMenu />
@@ -221,20 +269,95 @@ function AddDevice ({t,props}) {
                                                                 <Grid container spacing={3}>
                                                                     <Grid item md={6} xs={12}>
                                                                         <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Name device')}</label>
-                                                                        <RedditTextField type="text" fullWidth value={name_device}  onChange={e => { setStateName_device(e.target.value);  }}  required/>
+                                                                        <RedditTextField type="text" fullWidth value={formState.values.name_device || ''} error={hasError('name_device')}
+                                                                                         name={"name_device"}
+                                                                                         helperText={hasError('name_device')? formState.errors.name_device[0] : null}
+                                                                                         onChange={e => { setStateName_device(e.target.value);
+                                                                                         e.persist();
+                                                                                         setFormState(formState => ({
+                                                                                    ...formState,
+                                                                                    values: {
+                                                                                        ...formState.values,
+                                                                                        [e.target.name]:
+                                                                                            e.target.type === 'checkbox'
+                                                                                                ? e.target.checked
+                                                                                                : e.target.value
+                                                                                    },
+                                                                                    touched: {
+                                                                                        ...formState.touched,
+                                                                                        [e.target.name]: true
+                                                                                    }
+                                                                                }
+                                                                            )); }}  required/>
                                                                     </Grid>
                                                                     <Grid item md={6} xs={12}>
                                                                         <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Brand')}</label>
-                                                                        <RedditTextField type="text" fullWidth value={brand_device}  onChange={e => { setStateBrand_device(e.target.value);  }} required/>
+                                                                        <RedditTextField type="text" fullWidth value={formState.values.brand_device || ''}
+                                                                                         error={hasError('brand_device')}
+                                                                                         name={"brand_device"}
+                                                                                         helperText={hasError('brand_device')? formState.errors.brand_device[0] : null}
+                                                                                         onChange={e => { setStateBrand_device(e.target.value); e.persist();
+                                                                            setFormState(formState => ({
+                                                                                    ...formState,
+                                                                                    values: {
+                                                                                        ...formState.values,
+                                                                                        [e.target.name]:
+                                                                                            e.target.type === 'checkbox'
+                                                                                                ? e.target.checked
+                                                                                                : e.target.value
+                                                                                    },
+                                                                                    touched: {
+                                                                                        ...formState.touched,
+                                                                                        [e.target.name]: true
+                                                                                    }
+                                                                                }
+                                                                            )); }} required/>
                                                                     </Grid>
                                                                     <Grid item md={6} xs={12}>
                                                                         <label  htmlFor="type" style={{color:"rgba(0,1,47,0.84)"}}>{t('Series number')}</label>
-                                                                        <RedditTextField  type="text" fullWidth value={series_device} onChange={e => { setStateSeries_device(e.target.value);  }}  required  />
+                                                                        <RedditTextField  type="text" fullWidth value={formState.values.series_device || ''} error={hasError('series_device')}
+                                                                                          name={"series_device"}
+                                                                                          helperText={hasError('series_device')? formState.errors.series_device[0] : null} onChange={e => { setStateSeries_device(e.target.value); e.persist();
+                                                                            setFormState(formState => ({
+                                                                                    ...formState,
+                                                                                    values: {
+                                                                                        ...formState.values,
+                                                                                        [e.target.name]:
+                                                                                            e.target.type === 'checkbox'
+                                                                                                ? e.target.checked
+                                                                                                : e.target.value
+                                                                                    },
+                                                                                    touched: {
+                                                                                        ...formState.touched,
+                                                                                        [e.target.name]: true
+                                                                                    }
+                                                                                }
+                                                                            )); }}    required  />
                                                                     </Grid>
                                                                     <Grid item md={6} xs={12}>
 
                                                                         <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Type')}</label>
-                                                                        <RedditTextField type="text" fullWidth value={kind_device}  onChange={e => { setStateKind_device(e.target.value);}} required/>
+                                                                        <RedditTextField type="text" fullWidth value={formState.values.kind_device || ''}
+                                                                                         error={hasError('kind_device')}
+                                                                                         name={"kind_device"}
+                                                                                         helperText={hasError('kind_device')? formState.errors.kind_device[0] : null}
+                                                                                         onChange={e => { setStateKind_device(e.target.value);
+                                                                                         e.persist();
+                                                                            setFormState(formState => ({
+                                                                                    ...formState,
+                                                                                    values: {
+                                                                                        ...formState.values,
+                                                                                        [e.target.name]:
+                                                                                            e.target.type === 'checkbox'
+                                                                                                ? e.target.checked
+                                                                                                : e.target.value
+                                                                                    },
+                                                                                    touched: {
+                                                                                        ...formState.touched,
+                                                                                        [e.target.name]: true
+                                                                                    }
+                                                                                }
+                                                                            ));}} required/>
                                                                     </Grid>
                                                                     <Divider />
                                                                     <Grid item md={6} xs={12}>
@@ -370,7 +493,7 @@ function AddDevice ({t,props}) {
                                                             </CardContent>
                                                             <Divider />
                                                             <CardActions>
-                                                                <RaisedButton onClick={addmydevice} style={{color:"rgba(0,1,47,0.84)"}}>{t('Add')}</RaisedButton>
+                                                                <RaisedButton onClick={addmydevice} disabled={!formState.isValid} style={{color:"rgba(0,1,47,0.84)"}}>{t('Add')}</RaisedButton>
                                                             </CardActions>
                                                         </FormControl>)}}}
                                         </Mutation> </Card>
