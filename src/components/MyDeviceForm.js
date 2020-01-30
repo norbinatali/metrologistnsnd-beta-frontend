@@ -170,11 +170,11 @@ function MyDeviceForm({t,className, rest}) {
     </Button>
                             </Grid>
                             <AppBar position="static" color="default">
-                                <Tabs value={value} onChange={handleChangeTab} indicatorColor="primary" textColor="primary" scrollButtons="auto" variant="scrollable" aria-label="full width tabs example"  centered style={{ flexGrow: 1,width: '100%'}}>
-                                    <Tab  label={<Typography variant={"caption"}>{t('Conformity assessment')}</Typography>} {...a11yProps(0)} />
-                                    <Tab label={<Typography variant={"caption"}>{t('Calibration')}</Typography>} {...a11yProps(1)} />
-                                    <Tab label={<Typography variant={"caption"}>{t('Verification')}</Typography>}  {...a11yProps(2)} />
-                                    <Tab label={<Typography variant={"overline"}>{t('None')}</Typography>}  {...a11yProps(3)} />
+                                <Tabs value={value} onChange={handleChangeTab} indicatorColor="primary" textColor="primary" scrollButtons="auto" variant="scrollable" aria-label="full width tabs example"  centered style={{ flexGrow: 1,width: '100%', marginRight:"auto", marginLeft:"auto"}}>
+                                    <Tab style={{ marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Conformity assessment')}</Typography>} {...a11yProps(0)} />
+                                    <Tab style={{ marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Calibration')}</Typography>} {...a11yProps(1)} />
+                                    <Tab style={{ marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Verification')}</Typography>}  {...a11yProps(2)} />
+                                    <Tab style={{ marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"overline"}>{t('None')}</Typography>}  {...a11yProps(3)} />
                                 </Tabs>
                             </AppBar>
                             <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
