@@ -185,7 +185,7 @@ function UserProfile({t,props}) {
                                                                                     <TextField
                                                                                         fullWidth
                                                                                        style={{color:"rgba(0,1,14,0.74)"}}      
-                                                                                        defaultValue={data.me.name}
+                                                                                         placeholder={data.me.name}
                                                                                         onChange={(e) => setName(e.target.value)}
                                                                                         value={name}
                                                                                         variant="outlined"
@@ -197,7 +197,7 @@ function UserProfile({t,props}) {
                                                                                     <TextField
                                                                                         fullWidth
                                                                                          style={{color:"rgba(0,1,14,0.74)"}}        
-                                                                                        defaultValue={data.me.companyName}
+                                                                                         placeholder={data.me.companyName}
                                                                                         onChange={(e) => setCompanyName(e.target.value)}
                                                                                         value={companyName}
                                                                                         variant="outlined"
@@ -209,7 +209,7 @@ function UserProfile({t,props}) {
                                                                                     <TextField
                                                                                         fullWidth
                                                                                          style={{color:"rgba(0,1,14,0.74)"}}      
-                                                                                        defaultValue={data.me.country}
+                                                                                         placeholder={data.me.country}
                                                                                         onChange={(e) => setCountry(e.target.value)}
                                                                                         value={country}
                                                                                         variant="outlined"
