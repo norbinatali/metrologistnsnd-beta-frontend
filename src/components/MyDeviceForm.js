@@ -170,10 +170,10 @@ function MyDeviceForm({t,className, rest}) {
     </Button>
                             </Grid>
                             <AppBar position="static" color="default">
-                                <Tabs value={value} onChange={handleChangeTab} indicatorColor="primary" textColor="primary" variant="fullWidth" aria-label="full width tabs example"  centered>
-                                    <Tab label={t('Conformity assessment')} {...a11yProps(0)} />
-                                    <Tab label={t('Calibration')} {...a11yProps(1)} />
-                                    <Tab label={t('Verification')} {...a11yProps(2)} />
+                                <Tabs value={value} onChange={handleChangeTab} indicatorColor="primary" textColor="primary" variant="fullWidth" aria-label="full width tabs example"  centered style={{marginLeft:"10px"}}>
+                                    <Tab  label={<Typography variant={"caption"}>{t('Confirmity assessment')}</Typography>} {...a11yProps(0)} />
+                                    <Tab label={<Typography variant={"caption"}>{t('Calibrationn')}</Typography>} {...a11yProps(1)} />
+                                    <Tab label={<Typography variant={"caption"}>{t('Verification')}</Typography>}  {...a11yProps(2)} />
                                 </Tabs>
                             </AppBar>
                             <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
