@@ -25,6 +25,7 @@ import history from "./history";
 import LinearDeterminate from "./components/LinearDeterminate";
 import Snackbar from "@material-ui/core/Snackbar";
 import { SnackbarProvider, useSnackbar } from 'notistack';
+import i18n from 'i18next';
 import {AUTH_TOKEN, GC_USER_ID,GC_AUTH_TOKEN} from "./constants";
 const schema = {
     email: {
@@ -111,9 +112,9 @@ function SignUpForm({t},props){
 
     const confirm = async (token, e) => {
 
-  
+       enqueueSnackbar(i18n.t('Please Check your email to confirm'))
         saveUserData(token);
-        history.push('/check-email')
+        history.push('/')
     };
     const saveUserData = (id,token) => {
         localStorage.setItem(GC_USER_ID, id);
