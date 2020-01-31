@@ -22,6 +22,7 @@ import FormControl from "@material-ui/core/FormControl";
 import RaisedButton from "material-ui/RaisedButton";
 import Auth from "./Auth";
 import history from "../history";
+import i18n from 'i18next';
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
 import LinearDeterminate from "./LinearDeterminate";
 import Snackbar from "@material-ui/core/Snackbar";
@@ -106,8 +107,10 @@ function LoginForm({t},props){
 
         const confirm = async (data, e) => {
             saveUserData(data.login.token);
+            
             Auth.authenticate();
             history.push('/user')
+            enqueueSnackbar(i18n.t('Welcome')}
        
     };
      const saveUserData = (token,id) => {
