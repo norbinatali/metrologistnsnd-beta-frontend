@@ -23,6 +23,8 @@ import RaisedButton from "material-ui/RaisedButton";
 import Auth from './components/Auth'
 import history from "./history";
 import LinearDeterminate from "./components/LinearDeterminate";
+import Snackbar from "@material-ui/core/Snackbar";
+import { SnackbarProvider, useSnackbar } from 'notistack';
 import {AUTH_TOKEN, GC_USER_ID,GC_AUTH_TOKEN} from "./constants";
 const schema = {
     email: {
@@ -75,9 +77,10 @@ const useStyles = makeStyles(theme => ({
         
     },
 }));
-
+ const SIGNUP_MUTATION = gql `mutation ($email: String!, $password: String!, $name: String!, $companyName:String){signup(email:$email , password: $password,name:$name, companyName: $companyName){token}}`;
+   
 function SignUpForm({t},props){
-    const SIGNUP_MUTATION = gql `mutation ($email: String!, $password: String!, $name: String!, $companyName:String){signup(email:$email , password: $password,name:$name, companyName: $companyName){token}}`;
+    const { enqueueSnackbar } = useSnackbar();
     const [email, setStateEmail]=useState("");
     const [password, setStatePassword]=useState("");
     const [name, setStateName]=useState("");
@@ -121,7 +124,7 @@ function SignUpForm({t},props){
         !!(formState.touched[field] && formState.errors[field]);
 
     return (
-        <Mutation mutation={SIGNUP_MUTATION}  variables={{ email, password,name, companyName, country} } onCompleted={(token) => confirm(token)}>
+        <Mutation mutation={SIGNUP_MUTATION}  variables={{ email, password,name, companyName, country} } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(token) => confirm(token)}>
             {( signup,{loading, error, event}) => {
                 if (loading) { return (<LinearDeterminate /> )}
 
