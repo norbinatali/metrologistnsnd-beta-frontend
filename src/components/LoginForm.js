@@ -110,7 +110,7 @@ function LoginForm({t},props){
             
             Auth.authenticate();
             history.push('/user')
-            enqueueSnackbar(i18n.t('Welcome')}
+            enqueueSnackbar(i18n.t('Welcome'))
        
     };
      const saveUserData = (token,id) => {
