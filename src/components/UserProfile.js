@@ -155,7 +155,7 @@ function UserProfile({t,props}) {
                                             </Grid>
                                             <Grid item lg={4} md={6} xl={4} xs={12}>
                                                 <Card{...rest} >
-                                                    <Mutation mutation={CHANGE_PASSWORD} variables={{
+                                                    <Mutation mutation={UPGRADE_USER} variables={{
                                                         email: data.me.email,
                                                         country,
                                                         companyName,
