@@ -21,7 +21,7 @@ import LinearDeterminate from "./LinearDeterminate";
 import {useSnackbar} from "notistack";
 import i18n from 'i18next';
 import Typography from "@material-ui/core/Typography";
-
+import history from '../history.js'
 
 
 const useStyles = makeStyles(theme => ({
@@ -49,6 +49,7 @@ function UserProfile({t,props}) {
     const confirm = async (data, e) => {
         enqueueSnackbar(i18n.t('Your password is successful changed'));
         console.log();
+        history.push('/account');
 
     };
     const saveUserData = () => {
@@ -57,6 +58,7 @@ function UserProfile({t,props}) {
     };
     const confirmUp = async (data, e) => {
         enqueueSnackbar(i18n.t('You updated your personal information successfully'));
+        history.push('/account');
     };
     const handleChange = event => {
         setValues({
@@ -81,7 +83,7 @@ function UserProfile({t,props}) {
         <div>
             <UserMenu/>
             <main style={{flexGrow: 1, height: '100%', overflow: 'auto'}}>
-                <Query query={QUERY_USER}>
+                <Query query={QUERY_USER} pollInterval={100}>
                     {({loading, error, data}) => {
                         if (loading) {
                             return <LinearDeterminate/>
