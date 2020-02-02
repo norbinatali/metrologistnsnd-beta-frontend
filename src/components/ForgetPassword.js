@@ -32,9 +32,12 @@ export default class ForgetPassword extends Component {
                 <Paper>
                 <label  htmlFor="email">Email </label>
                 <TextField type="text" value={this.state.email} onChange={e => {this.setState({ email: e.target.value })}}/>
-                <Mutation mutation={FORGET_PASSWORD}  variables={{ email } } onCompleted={(data) => this._confirm(data)}>
-                    {mutation => (
-                        <Button onClick={mutation}>Submit</Button>)}
+                <Mutation mutation={FORGET_PASSWORD}  variables={{ email } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => this._confirm(data)}>
+                    {( mutation,{loading, error}) => {
+                if (loading) { return (<LinearDeterminate /> )}
+
+                return(
+                        <Button onClick={mutation}>Submit</Button>)}}
                 </Mutation>
                     </Paper>
             </div>
