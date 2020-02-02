@@ -21,7 +21,7 @@ function ForgetPassword ({t}) {
   
        const confirm = async (data) => {
        saveUserData(data.triggerPasswordReset.resetToken);
-      enqueueSnackbar(i18n.t('Check your email');
+      enqueueSnackbar(i18n.t('Check your email'));
      }
 
     const saveUserData =(resetToken) => {
