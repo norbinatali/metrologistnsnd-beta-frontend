@@ -32,7 +32,7 @@ export default class ForgetPassword extends Component {
                 <Paper>
                 <label  htmlFor="email">Email </label>
                 <TextField type="text" value={this.state.email} onChange={e => {this.setState({ email: e.target.value })}}/>
-                <Mutation mutation={FORGET_PASSWORD}  variables={{ email } } onCompleted={() => this._confirm()}>
+                <Mutation mutation={FORGET_PASSWORD}  variables={{ email } } onCompleted={(data) => this._confirm(data)}>
                     {mutation => (
                         <Button onClick={mutation}>Submit</Button>)}
                 </Mutation>
@@ -41,13 +41,10 @@ export default class ForgetPassword extends Component {
         )
     }
     _confirm = async (data) => {
-        const {resetToken} = this.props.forgetpassword;
-        console.log(resetToken);
-        this._saveUserData(resetToken);
+        this._saveUserData(data.triggerPasswordReset.resetToken);
            };
 
-    _saveUserData =(id, token, resetToken) => {
-        localStorage.setItem(GC_USER_ID, id);
+    _saveUserData =( resetToken) => {
         localStorage.setItem(RESET_TOKEN, resetToken);
     }
 }
