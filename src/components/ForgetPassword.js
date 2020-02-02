@@ -1,4 +1,5 @@
-import React, {Component} from "react";
+import React, { useState, useEffect } from 'react';
+import {withTranslation} from "react-i18next";
 import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import {Button} from "@material-ui/core";
@@ -46,4 +47,4 @@ function ForgetPassword ({t}) {
     
    
 }
-export default withTranslation
+export default withTranslation()(ForgetPassword)
