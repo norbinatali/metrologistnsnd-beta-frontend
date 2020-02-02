@@ -17,14 +17,14 @@ const FORGET_PASSWORD = gql `mutation ($email:String!) { triggerPasswordReset(em
 function ForgetPassword ({t}) {
  const { enqueueSnackbar } = useSnackbar();
   const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const confirm = async (data) => {
+  const [password, setPassword] = useState('');
+  
+       const confirm = async (data) => {
        saveUserData(data.triggerPasswordReset.resetToken);
-      enqueueSnackbar(i18n.t('Check your email')
-       
-           };
+      enqueueSnackbar(i18n.t('Check your email');
+     }
 
-    const saveUserData =( resetToken) => {
+    const saveUserData =(resetToken) => {
         localStorage.setItem(RESET_TOKEN, resetToken);
     }
         
