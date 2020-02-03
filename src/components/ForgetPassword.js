@@ -53,17 +53,17 @@ function ForgetPassword ({t}) {
 
         return(
             <div>
-            <Grid container justify="space-evenly" alignItems="center" xs={12}>
+            <Grid container spacing={6} alignItems="center" xs={12}>
             
-                <Grid item  >
+                <Grid item xs={6} sm={6}>
                <IconButton onClick={handleBack}>
                             <ArrowBackIcon style={{color:"rgba(0,1,47,0.84)"}} />
                         </IconButton>
                </Grid>
-            <Grid item >
+            <Grid item xs={6} sm={6} >
                 <Paper class={classes.root}>
                 <label  htmlFor="email" style={{color:"#00000"}}>{t('Email')} </label>
-                <TextField type="text" value={email} onChange={e => setEmail( e.target.value )}/>
+                <TextField type="text" fullWidth value={email} onChange={e => setEmail( e.target.value )}/>
                 <Mutation mutation={FORGET_PASSWORD}  variables={{ email } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
                     {( mutation,{loading, error}) => {
                 if (loading) { return (<LinearDeterminate /> )}
