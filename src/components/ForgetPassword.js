@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {withTranslation} from "react-i18next";
 import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
-mport IconButton from "@material-ui/core/IconButton";
+import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import {Button} from "@material-ui/core";
 import {AUTH_TOKEN, GC_USER_ID, RESET_TOKEN} from '../constants';
