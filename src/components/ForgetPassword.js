@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Grid from "@material-ui/core/Grid";
 import {Button} from "@material-ui/core";
 import {AUTH_TOKEN, GC_USER_ID, RESET_TOKEN} from '../constants';
 import LinearDeterminate from "./LinearDeterminate";
@@ -52,11 +53,14 @@ function ForgetPassword ({t}) {
 
         return(
             <div>
-                <div  >
-               <IconButton  justify={"left"} onClick={handleBack}>
+            <Grid container direction="row" justify="space-evenly" alignItems="center" xs={12}>
+            
+                <Grid item  >
+               <IconButton onClick={handleBack}>
                             <ArrowBackIcon style={{color:"rgba(0,1,47,0.84)"}} />
                         </IconButton>
-               </div>
+               </Grid>
+            <Grid item >
                 <Paper class={classes.root}>
                 <label  htmlFor="email" style={{color:"#00000"}}>{t('Email')} </label>
                 <TextField type="text" value={email} onChange={e => setEmail( e.target.value )}/><br/>
@@ -68,6 +72,8 @@ function ForgetPassword ({t}) {
                         <Button onClick={mutation}>Submit</Button>)}}
                 </Mutation>
                     </Paper>
+                                       </Grid>
+                                        </Grid>
             </div>
         )
     
