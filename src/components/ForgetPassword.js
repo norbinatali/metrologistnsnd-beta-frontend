@@ -32,8 +32,8 @@ function ForgetPassword ({t}) {
         return(
             <div>
                 <Paper>
-                <label  htmlFor="email">Email </label>
-                <TextField type="text" value={email} onChange={e => setEmail( e.target.value )}/>
+                <label  htmlFor="email" style={{color:"#00000"}}>{t('Email')} </label>
+                <TextField type="text" value={email} onChange={e => setEmail( e.target.value )}/><br/>
                 <Mutation mutation={FORGET_PASSWORD}  variables={{ email } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
                     {( mutation,{loading, error}) => {
                 if (loading) { return (<LinearDeterminate /> )}
