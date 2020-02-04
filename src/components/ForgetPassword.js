@@ -71,7 +71,7 @@ function ForgetPassword ({t}) {
                 if (loading) { return (<LinearDeterminate /> )}
 
                 return(
-                        <Button onClick={mutation}>Submit</Button>)}}
+                        <Button onClick={mutation}>{t('Submit')}</Button>)}}
                 </Mutation>
                                        </FormControl>
                     </Paper>
