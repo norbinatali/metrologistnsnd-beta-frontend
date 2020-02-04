@@ -52,17 +52,19 @@ function ForgetPassword ({t}) {
     };
 
         return(
-            <div>
-            <Grid container spacing={6} alignItems="center" xs={12}>
-            
-                <Grid item xs={6} sm={6}>
-               <IconButton onClick={handleBack}>
+            <div> 
+            <Grid container style={{ height: '100%'}} >
+            <Grid item>
+                    <div style={{marginTop:"0px"}} >
+                        <IconButton onClick={handleBack}>
                             <ArrowBackIcon style={{color:"rgba(0,1,47,0.84)"}} />
                         </IconButton>
-               </Grid>
-            <Grid item xs={6} sm={6} >
+                    </div>
+                    </Grid>
+                    <Grid  item lg={10} xs={12} >
                 <Paper class={classes.root}>
-                <label  htmlFor="email" style={{color:"#00000"}}>{t('Email')} </label>
+             <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
+                <label  htmlFor="email" style={{color:"rgba(0,1,47,0.84)"}}>{t('Email')} </label>
                 <TextField type="text" fullWidth value={email} onChange={e => setEmail( e.target.value )}/>
                 <Mutation mutation={FORGET_PASSWORD}  variables={{ email } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
                     {( mutation,{loading, error}) => {
@@ -71,6 +73,7 @@ function ForgetPassword ({t}) {
                 return(
                         <Button onClick={mutation}>Submit</Button>)}}
                 </Mutation>
+                                       </FormControl>
                     </Paper>
                                        </Grid>
                                         </Grid>
