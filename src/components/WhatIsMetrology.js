@@ -20,6 +20,8 @@ import {ArrowRightIcon} from "@material-ui/pickers/_shared/icons/ArrowRightIcon"
 import history from '../history'
 
 const useStyles = makeStyles(theme => ({
+    h5:{fontWeight: "normal"
+    },
     root: {
         width: '100%',
         marginTop: theme.spacing(3),
