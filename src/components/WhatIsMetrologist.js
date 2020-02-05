@@ -17,7 +17,7 @@ import history from '../history'
 
 const useStyles = makeStyles(theme => ({
     h5:{
-    fontWeight: "normal"}
+    fontWeight: "normal"},
     root: {
         width: '100%',
         marginTop: theme.spacing(3),
