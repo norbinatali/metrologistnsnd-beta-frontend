@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
                     <div style={{ marginTop: 40 }}>
                         <div style={{ marginTop: 20, padding:30}}>
                         <div style={{display:'flex'}}>
-                <Grid container spacing={2} >
+                <Grid container spacing={5} >
           
                     <Grid item xs={12} md={4} >
                    <Paper elevation={3}>
