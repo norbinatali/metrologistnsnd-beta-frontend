@@ -84,6 +84,12 @@
   "Metrologist test": "Metrologist will work in test mode. We will open new functions and provide more information gradually. ",
   "Metrologist recommendations": "If you have any recommendations to improve the platform, please, feel free to contact us.",
 
+  
+ "Metrology info":"Metrology is the science of measurement. It establishes a common understanding of units, crucial in linking human activities.",
+ "Metrology tasks":"Main results of metrology:\n disclosure of theoretical basic unified systems of units; \n create methods for reproducing units of physical values at the level of standards and passing their values from the name for the lowest accuracy; \n create benchmarks and dimensions; \n developed the methods used for viewing; \n The methods developed evaluate the results of the results contained. \n",
+ "Metrology Methods":"Metrology Methods - A set of physical and mathematical methods used to obtain measurement information with a given accuracy and reliability.",
+ "Metrology Methods list":"Methods of metrology: \n methods of measurement transformations; \n methods for measuring and processing observations; \n methods for measuring and processing observations; \n planning a measurement experiment",
+  
   "Terminology": "Terminology",
   "Measuring Instrument is": "Measuring Instrument - instrument intended to measure an electrical or non-electrical quality using electronic means and/or equipped with electronic devices.",
   "Errors": "Measurement error - measured quantity value minus a reference quantity value.",
