@@ -66,19 +66,19 @@ const useStyles = makeStyles(theme => ({
                            <CardContent className={classes.content}>
                                <List>
                                 <ListItem button onClick={()=> history.push('/what-is-metrologist')}>
-                                       <ListItemText  primary={""} secondary={'What is "Metrologist"'}   />
+                                       <ListItemText  primary={""} secondary={t('What is Metrologist')}   />
                                        <IconButton  edge="end"  size="small"  >
                                            <ArrowRightIcon />
                                        </IconButton>
                                    </ListItem>
                                        <ListItem button onClick={()=> history.push('/what-is-metrology')}>
-                                           <ListItemText  primary={""} secondary={"What is Metrology?"}   />
+                                           <ListItemText  primary={""} secondary={t('What is Metrology?')}   />
                                            <IconButton  edge="end" size="small"   >
                                                <ArrowRightIcon />
                                            </IconButton>
                                        </ListItem>
                                    <ListItem button onClick={()=> history.push('/history-metrology')}>
-                                       <ListItemText  primary={""} secondary={"History"}   />
+                                       <ListItemText  primary={""} secondary={t('History')}   />
                                        <IconButton  edge="end" size="small"   >
                                            <ArrowRightIcon />
                                        </IconButton>
@@ -99,25 +99,25 @@ const useStyles = makeStyles(theme => ({
                                 <CardContent className={classes.content}>
                                     <List>
                                         <ListItem button onClick={()=> history.push('/what-is-conformity-assessment')}>
-                                            <ListItemText  primary={""} secondary={"What is conformity assessment"}   />
+                                            <ListItemText  primary={""} secondary={t('What is conformity assessment')}   />
                                             <IconButton  edge="end" size="small" >
                                                 <ArrowRightIcon />
                                             </IconButton>
                                         </ListItem>
                                         <ListItem button onClick={()=> history.push('/modules')}>
-                                            <ListItemText  primary={""} secondary={"Modules"}   />
+                                            <ListItemText  primary={""} secondary={t('Modules')}   />
                                             <IconButton  edge="end" size="small"   >
                                                 <ArrowRightIcon />
                                             </IconButton>
                                         </ListItem>
                                         <ListItem button onClick={()=> history.push('/technical-reglaments')} >
-                                            <ListItemText  primary={""} secondary={"Technical Reglaments"} />
+                                            <ListItemText  primary={""} secondary={t('Technical Reglaments')} />
                                             <IconButton  edge="end" size="small" >
                                                 <ArrowRightIcon />
                                             </IconButton>
                                         </ListItem>
                                          <ListItem button onClick={()=> history.push('/procedure-conformity-assessment')}>
-                                        <ListItemText  primary={""} secondary={"Procesure"} />
+                                        <ListItemText  primary={""} secondary={t('Procesure')} />
                                         <IconButton  edge="end" size="small"  >
                                             <ArrowRightIcon />
                                         </IconButton>
@@ -137,19 +137,19 @@ const useStyles = makeStyles(theme => ({
                             <CardContent className={classes.content}>
                                 <List>
                                     <ListItem button onClick={()=> history.push('/what-is-quality-system')}>
-                                        <ListItemText  primary={""} secondary={"What is quality system?"}   />
+                                        <ListItemText  primary={""} secondary={t('What is quality system?')}   />
                                         <IconButton  edge="end" size="small"  >
                                             <ArrowRightIcon />
                                         </IconButton>
                                     </ListItem>
                                     <ListItem button onClick={()=> history.push('/documents-of-quality-system')}>
-                                        <ListItemText  primary={""} secondary={"Documents of quality system"}   />
+                                        <ListItemText  primary={""} secondary={t('Documents of quality system')}   />
                                         <IconButton  edge="end" size="small"  >
                                             <ArrowRightIcon />
                                         </IconButton>
                                     </ListItem>
                                     <ListItem onClick={()=> history.push('/standards-information')}>
-                                        <ListItemText  primary={""} secondary={"Standards"}   />
+                                        <ListItemText  primary={""} secondary={t('Standards')}   />
                                         <IconButton  edge="end" size="small"  >
                                             <ArrowRightIcon />
                                         </IconButton>
