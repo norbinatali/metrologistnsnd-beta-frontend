@@ -37,8 +37,11 @@ const useStyles = makeStyles(theme => ({
                 <Grid container spacing={2} >
                     <Grid item>
                    <Paper elevation={3}>
-                        <Typography align={"justify"}>
-                         <p><h4>{t('Conformity assessment general')}</h4></p>
+         <Typography align={"justify"} style={{padding:10}} variant="subtitle1">{t('History')} </Typography>
+                        <Typography align={"justify"} style={{padding:30}} variant="subtitle1">
+                         <p>{t('History info')}</p>
+                         <p>{t('History metrology info')}</p>
+                         <p>{t('History metrology')}</p>
 
                      </Typography>
                     </Paper>
