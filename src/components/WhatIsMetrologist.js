@@ -16,6 +16,8 @@ import {ArrowRightIcon} from "@material-ui/pickers/_shared/icons/ArrowRightIcon"
 import history from '../history'
 
 const useStyles = makeStyles(theme => ({
+    h5:{
+    fontWeight: "normal"}
     root: {
         width: '100%',
         marginTop: theme.spacing(3),
@@ -44,10 +46,10 @@ const useStyles = makeStyles(theme => ({
                 <Grid container spacing={2} >
                     <Grid item>
                    <Paper elevation={3}>
-        <Typography align={"center"} style={{padding:20}}><h3>{t('What is Metrologist')}</h3></Typography>
+        <Typography align={"center"} style={{padding:20}}><h4>{t('What is Metrologist')}</h4></Typography>
                         <Typography align={"justify"} style={{padding:30}}>
                       
-                    <p><h5>{t('About Metrologist')}<br/></h5></p>
+                   <p> <h5>{t('About Metrologist')}<br/></h5></p>
                     <p><h5>{t('Why Metrologist is needed')}<br/></h5></p>
                     <p><h5>{t('Metrologist test')} <br/></h5></p>
                     <p><h5>{t('Metrologist recommendations')}<br/></h5></p>
