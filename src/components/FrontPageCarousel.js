@@ -11,7 +11,7 @@ import { autoPlay } from 'react-swipeable-views-utils';
 import Grid from "@material-ui/core/Grid";
 import {withTranslation} from "react-i18next";
 import IconButton from "@material-ui/core/IconButton";
-
+import {Button} from "@material-ui/core";
 
 import Card from "@material-ui/core/Card";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
@@ -140,7 +140,7 @@ function FrontPageCarousel({t}) {
                     <Grid container spacing={5} xs={12}>
                         <Grid item xs={12} md={5} >
                             <Typography style={{color:"rgba(0,1,14,0.74)", marginTop:"55%"}}>  <h4 >{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</h4></Typography>
-                        <IconButton><Typography>{t('Lets start')}</Typography></IconButton>
+                        <Button><Typography>{t('Lets start')}</Typography></Button>
 </Grid>
                         <Grid item xs={12} md={4} lg={8} >
 
