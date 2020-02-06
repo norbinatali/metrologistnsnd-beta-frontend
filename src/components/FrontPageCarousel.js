@@ -12,7 +12,7 @@ import Grid from "@material-ui/core/Grid";
 import {withTranslation} from "react-i18next";
 import IconButton from "@material-ui/core/IconButton";
 import {Button} from "@material-ui/core";
-
+import history from "../history";
 import Card from "@material-ui/core/Card";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Typography from "@material-ui/core/Typography";
@@ -140,7 +140,7 @@ function FrontPageCarousel({t}) {
                     <Grid container spacing={5} xs={12}>
                         <Grid item xs={12} md={5} >
                             <Typography style={{color:"rgba(0,1,14,0.74)", marginTop:"55%"}}>  <h4 >{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</h4></Typography>
-                        <Button><Typography>{t('Lets start')}</Typography></Button>
+                        <Button variant="outlined" color="primary" onClick={()=>history.push('/login')}><Typography>{t('Lets start')}</Typography></Button>
 </Grid>
                         <Grid item xs={12} md={4} lg={8} >
 
