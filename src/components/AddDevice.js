@@ -416,14 +416,22 @@ const hasError = field =>
 
                                                                             <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
                                                                             <Divider />
-                                                                            <TextField id="date"   label={t('Date')} type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019"
-                                                                                       value={valid_verification}
-                                                                                       className={classes.textField}
-                                                                                       InputLabelProps={{
-                                                                                           shrink: true,
-                                                                                       }}
-                                                                                       onChange={handleChangeVerification}
-                                                                            />
+                                                                            <Typography>{t('Date')}</Typography>
+                                                                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                                                                <Grid container justify="space-around">
+                                                                                    <KeyboardDatePicker
+                                                                                        disableToolbar
+                                                                                        variant="inline"
+                                                                                        format="MM/dd/yyyy"
+                                                                                        margin="normal"
+                                                                                        id="date-picker-inline"
+                                                                                        value={valid_verification}
+                                                                                        onChange={handleChangeVerification}
+                                                                                        KeyboardButtonProps={{
+                                                                                            'aria-label': 'change date',
+                                                                                        }}
+                                                                                    /></Grid></MuiPickersUtilsProvider>
+                                                                         
                                                                         </Grid>
                                                                     )}
                                                                     {certificate_calibration === true && (
@@ -437,14 +445,22 @@ const hasError = field =>
 
                                                                             <label  htmlFor="calibration" style={{color:"rgba(0,1,47,0.84)"}}>{t('Enspire Data')}</label>
                                                                             <Divider />
-                                                                            <TextField id="date" label={t('Date')} type="date"  style={{color:"rgba(0,1,47,0.84)", width:"120px"}} defaultValue="12-06-2019"
-                                                                                       value={calibration_data}
-                                                                                       className={classes.textField}
-                                                                                       InputLabelProps={{
-                                                                                           shrink: true,
-                                                                                       }}
-                                                                                       onChange={handleDateNext_Calibration}
-                                                                            />
+                                                                            <Typography>{t('Date')}</Typography>
+                                                                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                                                                <Grid container justify="space-around">
+                                                                                    <KeyboardDatePicker
+                                                                                        disableToolbar
+                                                                                        variant="inline"
+                                                                                        format="MM/dd/yyyy"
+                                                                                        margin="normal"
+                                                                                        id="date-picker-inline"
+                                                                                        value={calibration_data}
+                                                                                        onChange={handleDateNext_Calibration}
+                                                                                        KeyboardButtonProps={{
+                                                                                            'aria-label': 'change date',
+                                                                                        }}
+                                                                                    /></Grid></MuiPickersUtilsProvider>                                                                  
+                                                                            
                                                                         </Grid>
 
                                                                     )}
