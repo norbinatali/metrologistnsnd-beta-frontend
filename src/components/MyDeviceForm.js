@@ -216,7 +216,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                     {device.conformity_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.conformity_data}</TableCell>) }
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
-                                                                        <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={500}>
+                                                                        <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={10}>
                                                                             {( deleteDevice,{loading, error, data}) => {
                                                                                 if (loading) { return (<LinearDeterminate /> )}
                                                                                 if (error) {return (error.message)}
