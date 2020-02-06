@@ -188,8 +188,8 @@ function AddDevice ({t,props}) {
         else return setStateConformity_data(date);
 
     };
-    const handleDateNext_Calibration = e => {
-        setCalibration_data(e.target.value);
+    const handleDateNext_Calibration = date => {
+        setCalibration_data(date);
     };
     const handleClickOpen = scrollType => () => {
         setOpen(true);
@@ -200,8 +200,8 @@ function AddDevice ({t,props}) {
         setOpen(false);
     };
 
-    const handleChangeVerification = e => {
-        setValid_verification(e.target.value)
+    const handleChangeVerification = date => {
+        setValid_verification(date)
     };
     const handleChangeVer = e => {
         setValueVer(e.target.value)
