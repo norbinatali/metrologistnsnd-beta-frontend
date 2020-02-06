@@ -104,12 +104,12 @@ container:{
     {
         label: 'San Francisco – Oakland Bay Bridge, United States',
         imgPath:
-            image3,
+            "",
     },
     {
         label: 'Bird',
         imgPath:
-            image2,
+            "",
     },
 
 ];
