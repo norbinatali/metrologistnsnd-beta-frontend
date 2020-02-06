@@ -18,6 +18,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import PropTypes from "prop-types";
+import image2 from "../menu/style/Screen Shot 2020-02-06 at 4.21.40 PM.png";
 import MenuTabPanel from "./MenuTabPanel";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -138,31 +139,18 @@ function FrontPageCarousel({t}) {
                 <div style={{marginLeft: "auto", marginRight:"auto", display:"flex"}}>
                 <MuiThemeProvider>
                     <Grid container spacing={5} xs={12}>
-                        <Grid item xs={12} md={5} >
-                            <Typography style={{color:"rgba(0,1,14,0.74)", marginTop:"55%"}}>  <h4 >{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</h4></Typography>
-                        <Button variant="outlined" color="primary" onClick={()=>history.push('/login')}><Typography>{t('Lets start')}</Typography></Button>
-</Grid>
-                        <Grid item xs={12} md={4} lg={8} >
-
-                                    <Card style={{backgroundColor:"rgba(0,1,47,0.84)", width:"50%"}}>
-                                        <AutoPlaySwipeableViews
-                                            axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                                            index={activeStep}
-                                            variant="dots"
-                                            onChangeIndex={handleStepChange}
-                                            enableMouseEvents
-                                        >
-                                            {tutorialSteps.map((step, index) => (
-                                                <div key={step.label}>
-                                                    {Math.abs(activeStep - index) <= 2 ? (
-                                                        <img className={classes.img} src={step.imgPath} alt={step.label} />
-                                                    ) : null}
-                                                </div>
-                                            ))}
-                                        </AutoPlaySwipeableViews></Card>
-
+                        <Grid item xs={12} md={3} >
+                            <Typography style={{marginTop:"40%"}}>     <h4 >{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</h4></Typography>
+                            <Button variant={"outlined"} style={{color:"rgba(0,1,14,0.74)"}} ><Typography>{t('Lets start')}</Typography></Button >
 
                         </Grid>
+                            <Grid item xs={12} md={8}   >
+
+                            <img src={image2} style={{width:"50%"}}/>
+                            </Grid>
+
+
+
                     </Grid>
                 </MuiThemeProvider>
                 </div></div>
