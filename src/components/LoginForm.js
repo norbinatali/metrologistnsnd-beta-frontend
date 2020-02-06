@@ -27,6 +27,9 @@ import {AUTH_TOKEN, GC_USER_ID} from "../constants";
 import LinearDeterminate from "./LinearDeterminate";
 import Snackbar from "@material-ui/core/Snackbar";
 import { SnackbarProvider, useSnackbar } from 'notistack';
+import MenuTabPanel from "./MenuTabPanel";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import Box from "@material-ui/core/Box";
 const schema = {
     email: {
         presence: { allowEmpty: false, message: 'is required' },
@@ -41,6 +44,44 @@ const schema = {
             maximum: 128
         }
     }
+};
+const classes = makeStyles(theme => ({
+    root: {
+        marginTop:theme.spacing(1),
+        width: "90%",
+        height:"600px",
+        backgroundImage:"linear-gradient(to right,#000222, rgba(23, 20, 61, 0.96),  #252529);",
+        fontWeight: theme.typography.fontWeightRegular,
+        fontSize: theme.typography.pxToRem(15),
+        marginRight: theme.spacing(1),
+        '&:focus': {
+            opacity: 1,
+        },
+    },
+}));
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+    return (
+        <div >
+            <Typography
+                component="div"
+                role="tabpanel"
+                hidden={value !== index}
+                id={`full-width-tabpanel-${index}`}
+                aria-labelledby={`full-width-tab-${index}`}
+                {...other}
+                className={classes.root}
+            >
+                {value === index && <Box p={3} >{children}</Box>}
+            </Typography>
+        </div>
+    );
+}
+
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.any.isRequired,
+    value: PropTypes.any.isRequired,
 };
 
 const useStylesReddit = makeStyles(theme => ({
@@ -123,6 +164,18 @@ function LoginForm({t},props){
  const [open, setOpen] = React.useState( false);
     return (
         <div>
+         <div>
+                <MenuTabPanel/>
+                <TabPanel value={1} index={1} dir={theme.direction} className={classes.panel} >
+                    <div style={{marginRight:"auto", marginLeft:"auto"}}>
+                        <div style={{marginLeft: "auto", marginRight:"auto", display:"flex"}}>
+                            <MuiThemeProvider>
+                                <Grid container spacing={5} >
+
+                                    <Grid item xs={12} md={2} >
+
+                                    </Grid>
+                                    <Grid item xs={12} md={4} lg={8} >
         <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
             {( mutation,{loading, error}) => {
                 if (loading) { return (<LinearDeterminate /> )}
@@ -209,7 +262,13 @@ function LoginForm({t},props){
 
         </Mutation>
 <Snackbar open={open}  onClose={() => setOpen(false)} message={<span>error.message</span>} autoHideDuration={6000}/>
-                                                               </div>
+                                                                 </Grid>
+                                </Grid>
+                            </MuiThemeProvider>
+                        </div>
+                    </div></TabPanel>
+
+                                    </div>
     )
 
 
