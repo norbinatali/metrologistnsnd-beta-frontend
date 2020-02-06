@@ -31,6 +31,9 @@ import UserProfile from "./UserProfile";
 import StandardListGrid from "./StandardListGrid";
 import ContactUS from "./ContactUS";
 import WhatIsMetrologist from "./WhatIsMetrologist";
+import LoginForm from "./LoginForm";
+import FrontPageCarousel from "./FrontPageCarousel";
+import ContactForm from "./ContactForm";
 
 class App extends Component {
 
@@ -44,11 +47,12 @@ class App extends Component {
 
                     <Switch>
                     <Router history={history}>
-                    <Route exact path="/" component={MenuTabPanel} />
+                    <Route exact path="/" component={FrontPageCarousel} />
                     <Route path={"/check-email"} component={CheckYourEmail}/>
                     <Route path={"/confirm-email"} component={PleaseConfirmEmail}/>
                     <Route path="/reset-password" component={ForgetPassword} />
-                    <Route exact path="/login" component={Login}/>
+                    <Route exact path="/login" component={LoginForm}/>
+             <Route exact path="/contact" component={ContactForm} />
                     <Route exact path={"/reset-password/"+resetToken} component={ConfirmResetPassword}/>
                     <Route exact path="/signup" component={SignUp} />
 
