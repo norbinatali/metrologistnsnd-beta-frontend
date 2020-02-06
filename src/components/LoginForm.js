@@ -163,17 +163,16 @@ function LoginForm({t},props){
         !!(formState.touched[field] && formState.errors[field]);
  const [open, setOpen] = React.useState( false);
     return (
-        <div>
+
          <div>
                 <MenuTabPanel/>
                 <TabPanel value={1} index={1} dir={theme.direction} className={classes.panel} >
                     <div style={{marginRight:"auto", marginLeft:"auto"}}>
                         <div style={{marginLeft: "auto", marginRight:"auto", display:"flex"}}>
                             <MuiThemeProvider>
-                                <Grid container spacing={5} >
-                                    <Grid item xs={12} md={2} >
-                                    </Grid>
-                                    <Grid item xs={12} md={4} lg={8} >
+                                  <Grid container xs={12}>
+
+                                    <Grid item xs={12}  className={classes.root} >
         <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
             {( mutation,{loading, error}) => {
                 if (loading) { return (<LinearDeterminate /> )}
@@ -274,5 +273,5 @@ function LoginForm({t},props){
 LoginForm.propTypes = {
     classes: PropTypes.object.isRequired
 };
-}
+
 export default withTranslation()(LoginForm)
