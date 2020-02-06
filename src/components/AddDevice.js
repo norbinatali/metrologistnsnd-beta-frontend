@@ -255,8 +255,8 @@ const hasError = field =>
                                     </IconButton>
                                 </Grid>
                                 <Grid item justify="center" alignItems="center" mxs={12}>
-                                    <Card{...rest} style={{marginRight:"auto", marginLeft:"auto", width:"60%"}} >
-                                        <CardHeader subheader={t("fill the information")} title={t("Add Device")}/>
+                                    <div style={{marginRight:"auto", marginLeft:"auto", width:"60%"}} >
+                                        <Typography>{t("Add Device")}</Typography>
                                         <Divider />
                                         <Mutation mutation={CREATE_MYDEVICE}  variables={{id,name_device,brand_device,series_device,kind_device,certificate_calibration,certificate_verification,certificate_conformity,module_device,tr_device,certificate_assessment_number,certificate_verification_number,certificate_calibration_number,department_assessment_center,department_verification_center,department_calibration_center,conformity_data,calibration_data,valid_verification,notes} } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
                                             {( addmydevice,{loading, error, event}) => {
@@ -265,7 +265,7 @@ const hasError = field =>
                                                 if (authToken){
                                                     return(
                                                         <FormControl autoComplete="off" noValidate style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%",overflow: 'auto'}}>
-                                                            <CardContent>
+                                                            
                                                                 <Grid container spacing={3}>
                                                                     <Grid item md={6} xs={12}>
                                                                         <label  htmlFor="brand" style={{color:"rgba(0,1,47,0.84)"}}>{t('Name device')}</label>
@@ -506,13 +506,13 @@ const hasError = field =>
                                                                     </Grid>
 
                                                                 </Grid>
-                                                            </CardContent>
+                                                            
                                                             <Divider />
-                                                            <CardActions>
+                                                           
                                                                 <RaisedButton onClick={addmydevice} disabled={!formState.isValid} style={{color:"rgba(0,1,47,0.84)"}}>{t('Add')}</RaisedButton>
-                                                            </CardActions>
+                                                            
                                                         </FormControl>)}}}
-                                        </Mutation> </Card>
+                                        </Mutation> </div>
                                 </Grid>
 
                             </Grid>
