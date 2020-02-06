@@ -125,6 +125,7 @@ function LoginForm({t},props){
     const [email,setStateEmail] = useState("");
     const [password,setStatePassword] = useState("");
     const classes = useStyles();
+ const theme = useTheme();
     const [formState, setFormState] = React.useState({
         isValid: false,
         values: {email, password},
