@@ -20,6 +20,7 @@ import i18n from "../menu/translations/i18n";
 import gql from "graphql-tag";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import history from "../history";
 import Login from "./Login";
 import {withTranslation} from "react-i18next";
 import PropTypes from "prop-types";
@@ -195,64 +196,12 @@ i18n.changeLanguage(event.target.value);
                 </Toolbar>
                 <AppBar position="static" square>
                     <Tabs centered value={value} onChange={handleChange} indicatorColor="white" variant="fullWidth" className ={classes.toolBar}>
-                        <Tab label={t("Welcome")} {...a11yProps(0)} className={classes.tab}/>
-                        <Tab label={t('Login')}  {...a11yProps(1)} className={classes.tab}/>
-                        <Tab label={t('Contacts')} {...a11yProps(2)} className={classes.tab}/>
+                        <Tab label={t("Welcome")} {...a11yProps(0)} className={classes.tab} onClick={()=> history.push('/')} />
+                        <Tab label={t('Login')}  {...a11yProps(1)} className={classes.tab} onClick={()=> history.push('/login')} />
+                        <Tab label={t('Contacts')} {...a11yProps(2)} className={classes.tab} onClick={()=> history.push('/contact')}/>
                     </Tabs>
                 </AppBar>
             </AppBar>
-
-
-            <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}  index={value} onChangeIndex={handleChangeIndex}>
-                <TabPanel value={value} index={0} dir={theme.direction} className={classes.panel}>
-                    <div style={{display:"flex"}}>
-                        <MuiThemeProvider>
-                             <Grid container spacing={5} >
-                                <Grid item xs={12} md={4} >
-                                    <Typography style={{color:"rgba(0,1,14,0.74)", marginTop:"55%"}}>  <h4 >{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</h4></Typography>
-                                </Grid>
-                               <Grid item xs={12} md={4} >
-                                    <img src={FrontPic}/>
-                                </Grid>
-                            </Grid>
-                        </MuiThemeProvider>
-                    </div>
-                </TabPanel>
-                <TabPanel value={value} index={1} dir={theme.direction} className={classes.panel} >
-                    <div style={{marginRight:"auto", marginLeft:"auto"}}>
-                        <Login/>
-                    </div>
-                </TabPanel>
-                <TabPanel value={value} index={2} dir={theme.direction} className={classes.panel}>
-                  <div style={{marginRight:"auto", marginLeft:"auto", marginTop:"55px"}}>
-                   <FormControl  >
-                <MuiThemeProvider>
-                    <label style={{color:"rgba(0,1,47,0.84)", marginTop:"80px"}} htmlFor="from">{t("Email")} </label>
-                    <RedditTextField variant="outlined"  type="text"
-                            name={"from"}
-                        value={from} 
-                            placeholder={"example@example.com"}
-                               onChange={e => setFrom( e.target.value )   } required/>
-                    < label style={{color:"rgba(0,1,47,0.84)"}} htmlFor="subject">{t("Subject")} </label>
-                    <RedditTextField variant="outlined"
-                              type="text" value={subject} onChange={e => setSubject(e.target.value )} required
-                    />
-                    <label style={{color:"rgba(0,1,47,0.84)"}} htmlFor="text">{t("Text")} </label>
-                    <RedditTextField variant="outlined"
-                                id="outlined-multiline-static" multiline  rows="5" type="text"  margin="normal" variant="outlined" value={text}  onChange={e => setText( e.target.value )}
-                    /><br/>
-                    <Mutation mutation={LETTER_MUTATION}  variables={{ from,subject, text } }  onCompleted={() => confirm()  }>
-                        {send => (
-                            <RaisedButton style={{marginBottom:"10%",color:"rgba(0,1,47,0.84)"}} onClick={send}>{t("Send")} </RaisedButton>)}
-                    </Mutation>
-
-
-                </MuiThemeProvider>
-            </FormControl>   
-
-                    </div>
-                </TabPanel>
-            </SwipeableViews>
 
         </div>
     );
