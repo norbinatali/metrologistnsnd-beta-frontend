@@ -8,7 +8,7 @@ import {
     IconButton,
     TextField,
     Link,
-    Typography
+    Typography,useTheme
 } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import {withTranslation} from "react-i18next";
