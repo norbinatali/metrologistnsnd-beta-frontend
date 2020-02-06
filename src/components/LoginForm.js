@@ -171,9 +171,7 @@ function LoginForm({t},props){
                         <div style={{marginLeft: "auto", marginRight:"auto", display:"flex"}}>
                             <MuiThemeProvider>
                                 <Grid container spacing={5} >
-
                                     <Grid item xs={12} md={2} >
-
                                     </Grid>
                                     <Grid item xs={12} md={4} lg={8} >
         <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
@@ -276,4 +274,5 @@ function LoginForm({t},props){
 LoginForm.propTypes = {
     classes: PropTypes.object.isRequired
 };
+}
 export default withTranslation()(LoginForm)
