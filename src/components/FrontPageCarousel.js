@@ -141,7 +141,7 @@ function FrontPageCarousel({t}) {
                     <Grid container spacing={5} xs={12}>
                         <Grid item xs={12} md={3} >
                             <Typography style={{marginTop:"40%",color:"rgba(0,1,47,0.84)"}}>     <h4 >{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</h4></Typography>
-                            <Button variant={"outlined"} style={{color:"rgba(0,1,14,0.74)"}} ><Typography>{t('Lets start')}</Typography></Button >
+                            <Button variant={"outlined"} onClick={()=> history.push('/login')} style={{color:"rgba(0,1,14,0.74)"}} ><Typography>{t('Lets start')}</Typography></Button >
 
                         </Grid>
                             <Grid item xs={12} md={8}   >
