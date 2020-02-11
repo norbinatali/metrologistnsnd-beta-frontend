@@ -17,6 +17,7 @@ import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import MenuList from "@material-ui/core/MenuList";
 import MenuItem from "@material-ui/core/MenuItem";
 import IconButton from "@material-ui/core/IconButton";
+import Typography from '@material-ui/core/Typography';
 import clsx from "clsx";
 import Toolbar from "@material-ui/core/Toolbar";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
