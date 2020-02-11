@@ -165,10 +165,7 @@ function MyDeviceForm({t,className, rest}) {
                 if(authToken){
                     return(
                         <Grid container spacing={2} xs={12}>
-                            <Grid item xs={12} >
-    <Button variant="outlined" color="primary" style={{marginRight:"auto", marginTop: "0px", marginLeft: "auto",}} onClick={()=> history.push('/add-device')}> {t('Add Device')}
-    </Button>
-                            </Grid>
+                           
                             <AppBar position="static" color="default">
                                 <Tabs value={value} onChange={handleChangeTab} indicatorColor="primary" textColor="primary" scrollButtons="auto" variant="scrollable" aria-label="full width tabs example"  centered style={{ flexGrow: 1,width: '100%', marginRight:"auto", marginLeft:"auto"}}>
                                     <Tab style={{ marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Conformity assessment')}</Typography>} {...a11yProps(0)} />
