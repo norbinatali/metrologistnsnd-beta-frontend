@@ -34,9 +34,11 @@ import Auth from '../components/Auth';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import BuildIcon from '@material-ui/icons/Build';
-import ContactSupportIcon from '@material-ui/icons/ContactSupport';
+
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import UserMenuAccount from "./UserMenuAccount";
+import UserMenuMoreOptions from "./UserMenuMoreOptions";
 
 const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
@@ -242,96 +244,17 @@ i18n.changeLanguage(event.target.value);
             <CssBaseline />
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
-                   
-                    <IconButton edge="start" color="inherit" aria-label="open drawer" value={valueLang} onClick={handleDrawerOpen} className={clsx(classes.menuButton, open && classes.menuButtonHidden)}>
-                        <MenuIcon />
-                    </IconButton>
+                   <UserMenuAccount/>
+                    <UserMenuMoreOptions />
+                    <Select labelId="demo-simple-select-autowidth-label" id="demo-simple-select-autowidth" value={lang} style={{backgroundColor:"transparent"}} onChange={handleChangeLang} autoWidth>
+   <MenuItem value={'ua'} style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} ><img src={FlagUA}/></MenuItem>
+   <MenuItem value={'en'} style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} ><img src={FlagUS}/></MenuItem>
+                  </Select>  
                    <img src={LogoV2} style={{marginRight:"auto",marginLeft:"auto"}}/>
                                 </Toolbar>
 
             </AppBar>
-            <Drawer classes={{paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),}} onClose={() => setOpen(false)} open={open}>
-                <div className={classes.toolbarIcon}>
-                    
-                       <Select labelId="demo-simple-select-autowidth-label" id="demo-simple-select-autowidth" value={lang} style={{backgroundColor:"transparent"}} onChange={handleChangeLang} autoWidth>
-   <MenuItem value={'ua'} style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} ><img src={FlagUA}/></MenuItem>
-   <MenuItem value={'en'} style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} ><img src={FlagUS}/></MenuItem>
-                  </Select>  
-                    <IconButton onClick={handleDrawerClose} >
-                        <ChevronLeftIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
-                    </IconButton>
-                </div>
-                <Divider />
-                <List >
-                    <ListItem button onClick={handleDrawerCloseDashboard} >
-                    <ListItemIcon>
-                        <DashboardIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
-                    </ListItemIcon>
-                    <ListItemText primary={t('Dashboard')} />
-                </ListItem>
-                    <ListItem  button onClick={handleDrawerCloseMetrology}>
-                        <ListItemIcon >
-                            <LibraryBooksIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
-                        </ListItemIcon>
-                        <ListItemText primary={t('Metrology')} />
-                    </ListItem>
-                    <ListItem  button onClick={handleDrawerCloseMyDevice}>
-                        <ListItemIcon>
-                            <BuildIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
-                        </ListItemIcon>
-                        <ListItemText primary={t('My devices')} />
-                    </ListItem>
-                    <ListItem button onClick={handleDrawerCloseSand}>
-                        <ListItemIcon>
-                            <FolderIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
-                        </ListItemIcon>
-                        <ListItemText primary={t('SAND')} />
-                    </ListItem>
-                    <ListItem button disabled onClick={handleDrawerCloseForum}>
-                        <ListItemIcon>
-                            <PeopleIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
-                        </ListItemIcon>
-                        <ListItemText primary={t('Forum')} />
-                    </ListItem>
-                    <ListItem button disabled onClick={handleDrawerCloseApps}>
-                        <ListItemIcon>
-                            <ImportantDevicesIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
-                        </ListItemIcon>
-                        <ListItemText primary={t('Apps')} />
-                    </ListItem>
-        </List>
-                <Divider />
-                <List> <div>
-                    <ListSubheader inset>{t('Settings')}</ListSubheader>
-                    <ListItem button onClick={handleDrawerCloseUserPage}>
-                        <ListItemIcon>
-                            <AccountCircleIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}}/>
-                        </ListItemIcon>
-                        <ListItemText primary={t('Change profile')} />
-                    </ListItem>
-                    <ListItem button disabled>
-                        <ListItemIcon>
-                            <AssignmentIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}}/>
-                        </ListItemIcon>
-                        <ListItemText  primary={t('About us')} />
-                    </ListItem>
-                    <ListItem button onClick={handleDrawerCloseContactUS}>
-                        <ListItemIcon>
-                            <ContactSupportIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} />
-                        </ListItemIcon>
-                        <ListItemText primary={t('Contacts')} />
-                    </ListItem>
-                    <ListItem button onClick={() => {
-                         Auth.signout();
-                         history.push('/')
-                        }}>
-                            <ListItemIcon>
-                                <ExitToApp style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}}/>
-                            </ListItemIcon>
-                            <ListItemText primary={t('logout')}/>
-                        </ListItem>
-                </div></List>
-            </Drawer>
+           
            
         </div>
 
