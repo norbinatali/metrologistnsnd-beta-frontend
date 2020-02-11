@@ -14,7 +14,7 @@ import history from '../history';
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
 import DeleteIcon from "@material-ui/icons/Delete"
 import MyDeviceForm from "./MyDeviceForm";
-
+import MyDeviceToolbar from "./MyDeviceToolbar";
 
 const authToken = localStorage.getItem(AUTH_TOKEN);
 const drawerWidth = 240;
@@ -48,7 +48,7 @@ function MyDevice({t}){
         <div className={classes.container}>
             <UserMenu/>
             <main style={{ flexGrow: 1, height: '100%',width:"100%", overflow: 'auto'}}>
-
+<MyDeviceToolbar/>
         <div  className={classes.root}>
             
               
