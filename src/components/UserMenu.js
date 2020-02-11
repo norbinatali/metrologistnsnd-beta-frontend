@@ -246,11 +246,12 @@ i18n.changeLanguage(event.target.value);
                 <Toolbar className={classes.toolbar}>
                    <UserMenuAccount/>
                     <UserMenuMoreOptions />
-                    <Select labelId="demo-simple-select-autowidth-label" id="demo-simple-select-autowidth" value={lang} style={{backgroundColor:"transparent"}} onChange={handleChangeLang} autoWidth>
+                     
+                   <img src={LogoV2} style={{marginRight:"auto",marginLeft:"auto"}}/>
+<Select labelId="demo-simple-select-autowidth-label" id="demo-simple-select-autowidth" value={lang} style={{backgroundColor:"transparent"}} onChange={handleChangeLang} autoWidth>
    <MenuItem value={'ua'} style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} ><img src={FlagUA}/></MenuItem>
    <MenuItem value={'en'} style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} ><img src={FlagUS}/></MenuItem>
-                  </Select>  
-                   <img src={LogoV2} style={{marginRight:"auto",marginLeft:"auto"}}/>
+                  </Select> 
                                 </Toolbar>
 
             </AppBar>
