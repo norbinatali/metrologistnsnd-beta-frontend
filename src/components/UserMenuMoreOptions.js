@@ -115,7 +115,7 @@ const handleDrawerCloseDashboard = () => {
                         <Paper>
                             <ClickAwayListener onClickAway={handleClose}>
                                 <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                                    <MenuItem onClick={handleDrawerCloseDashboard}><ListItem>  <ListItem ><ListItemIcon><DashboardIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} /></ListItemIcon>  <ListItemText primary={<Typography>{t('Dashboard')}</Typography>} /></ListItem></MenuItem>
+                                    <MenuItem onClick={handleDrawerCloseDashboard}> <ListItem ><ListItemIcon><DashboardIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} /></ListItemIcon>  <ListItemText primary={<Typography>{t('Dashboard')}</Typography>} /></ListItem></MenuItem>
                                     <MenuItem onClick={handleDrawerCloseMetrology}><ListItem ><ListItemIcon><LibraryBooksIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} /></ListItemIcon><ListItemText primary={<Typography>{t('Metrology')}</Typography>}/></ListItem></MenuItem>
                                     <MenuItem onClick={handleDrawerCloseMyDevice}><ListItem ><ListItemIcon><BuildIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} /></ListItemIcon><ListItemText primary={<Typography>{t('My devices')}</Typography>}/></ListItem></MenuItem>
                                     <MenuItem onClick={handleDrawerCloseSand}><ListItem ><ListItemIcon><FolderIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} /></ListItemIcon><ListItemText primary={<Typography>{t('SAND')}</Typography>}/></ListItem></MenuItem>
