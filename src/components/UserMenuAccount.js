@@ -90,7 +90,7 @@ return(
                                     <MenuItem onClick={handleDrawerCloseUserPage}><ListItem ><ListItemIcon><AccountCircleIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}}/></ListItemIcon>  <ListItemText primary={<Typography>{t('Change profile')}</Typography>}/></ListItem></MenuItem>
                                     <MenuItem  disabled><ListItem ><ListItemIcon><AssignmentIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}}/></ListItemIcon><ListItemText primary={<Typography>{t('About us')}</Typography>}/></ListItem></MenuItem>
                                     <MenuItem onClick={handleDrawerCloseContactUS}><ListItem ><ListItemIcon> <ContactSupportIcon style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} /></ListItemIcon><ListItemText primary={<Typography>{t('Contacts')}</Typography>}/></ListItem></MenuItem>
-                                    <MenuItem onClick={onClick={() =>{ Auth.signout(); history.push('/')} }>}><ListItem ><ListItemIcon>  <ExitToApp style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}}/></ListItemIcon><ListItemText primary={<Typography>{t('logout')}</Typography>}/></ListItem></MenuItem>
+                                    <MenuItem onClick={() =>{ Auth.signout(); history.push('/')} }><ListItem ><ListItemIcon>  <ExitToApp style={{color:"rgba(0,1,14,0.74)",border:"none",outline:"none"}}/></ListItemIcon><ListItemText primary={<Typography>{t('logout')}</Typography>}/></ListItem></MenuItem>
                                     </MenuList>
                             </ClickAwayListener>
                         </Paper>
