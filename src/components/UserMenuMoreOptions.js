@@ -44,6 +44,7 @@ const useStyles = makeStyles(theme => ({
 }));
 function UserMenuMoreOptions({t}) {
     const classes = useStyles();
+     const [component, setComponent] = React.useState(' ');
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
 
@@ -65,11 +66,11 @@ const handleDrawerCloseDashboard = () => {
      };
      const handleDrawerCloseForum = () => {
          setOpen(false);
-         setComponent('forum')
+          history.push('/forum');
      };
      const handleDrawerCloseApps = () => {
          setOpen(false);
-         setComponent('apps')
+          history.push('/apps');
      };
      
 
