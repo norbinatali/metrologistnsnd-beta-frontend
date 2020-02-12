@@ -54,7 +54,7 @@ function ForumPage ({t},props){
         <div className={classes.container}>
             <UserMenu/>
             <main style={{ flexGrow: 1, height: '100%',width:"100%", overflow: 'auto'}}>
-               <AppBar position={"relative"}  color="default" elevation={5} style={{marginTop:"50px"}}>
+               <AppBar position={"relative"}  color="default" elevation={5} >
                    <Toolbar>
                        <Typography style={{marginRight:"auto", marginLeft:"auto"}}>{t('Forum')}</Typography>
                        <Hidden smDown implementation="css">
