@@ -39,7 +39,7 @@ import IconButton from "@material-ui/core/IconButton";
 import {Mutation} from "react-apollo";
 import Tooltip from "@material-ui/core/Tooltip";
 import { SnackbarProvider, useSnackbar } from 'notistack';
-
+import MyDeviceToolbar from "./MyDeviceToolbar";
 const drawerWidth = 240;
 const deviceid = localStorage.getItem(CREATE_MY_DEVICE);
 const authToken = localStorage.getItem(AUTH_TOKEN);
@@ -149,6 +149,7 @@ function MyDeviceForm({t,className, rest}) {
     const handleClose = () => {setOpen(false);};
     return(
         <div  className={classes.root}>
+<MyDeviceToolbar/>
         <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={100} onError={(error) => enqueueSnackbar(error.message)} >
             {( {loading, error, data} ) =>  {
                 if (loading) {return <LinearDeterminate />}
