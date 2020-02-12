@@ -103,8 +103,8 @@ function a11yProps(index) {
 
 const StyledTableCell = withStyles(theme => ({
     head: {
-        backgroundColor: theme.palette.common.black,
-        color: theme.palette.common.white,
+        backgroundColor: theme.palette.common.white,
+        color: theme.palette.common.black,
     },
     body: {
         fontSize: 10,
