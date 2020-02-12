@@ -34,7 +34,10 @@ const useStyles = makeStyles(theme => ({
         marginLeft: "5%",
         marginRight:"20%"
     },
-
+ container: {
+        width:"100%",
+    height: "100%",
+  },
 }));
 const POSTS_QUERY=gql`query {feed{title,content,author{name}}}`;
 function ForumPage ({t},props){
@@ -48,7 +51,7 @@ function ForumPage ({t},props){
     const classes = useStyles();
     const { color, rightLinks, leftLinks, brand, fixed, absolute } = props;
     return(
-        <div>
+        <div className={classes.container}>
             <UserMenu/>
             <main style={{ flexGrow: 1, height: '100%',width:"100%", overflow: 'auto'}}>
                <AppBar position={"relative"}  color="default" elevation={5} style={{marginTop:"50px"}}>
