@@ -170,7 +170,7 @@ function MyDeviceForm({t,className, rest}) {
             <Toolbar >
                         <Button >{t('Person')}</Button>
 
-                        <Button style={{marginLeft:"auto"}} variant="outlined" onClick={()=> history.push("/add-device")}> {t("Add product")}</Button>
+                        <Button style={{marginLeft:"auto"}} variant="outlined" onClick={()=> history.push("/add-device")}> {t("Add Device")}</Button>
 
 
             </Toolbar>
