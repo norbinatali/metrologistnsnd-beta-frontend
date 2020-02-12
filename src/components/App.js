@@ -34,6 +34,7 @@ import WhatIsMetrologist from "./WhatIsMetrologist";
 import LoginForm from "./LoginForm";
 import FrontPageCarousel from "./FrontPageCarousel";
 import ContactForm from "./ContactForm";
+import ForumPage from "./ForumPage";
 
 class App extends Component {
 
@@ -85,6 +86,7 @@ class App extends Component {
                            <PrivateRoute path="/procedure-conformity-assessment" component={History} />
                            <PrivateRoute path="/what-is-quality-system" component={History} />
                            <PrivateRoute path="/documents-of-quality-system" component={History} />
+                            <PrivateRoute path="/forum" component={ForumPage} />
                         </Router>
                     </Switch>
 
