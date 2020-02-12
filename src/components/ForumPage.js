@@ -54,6 +54,13 @@ function ForumPage ({t},props){
         <div className={classes.container}>
             <UserMenu/>
             <main style={{ flexGrow: 1, height: '100%',width:"100%", overflow: 'auto'}}>
+        <Query query={POSTS_QUERY} fetchPolicy={"network-only"} pollInterval={50} onError={(error) => enqueueSnackbar(error.message)} >
+    {( {loading, error, data} ) =>  {
+        if (loading) {return <LinearDeterminate />}
+        if (error) { return error.message }
+        const postslist = data.feed;
+        return(
+        <Grid container xs={12}>
                <AppBar position={"relative"}  color="default" elevation={5} >
                    <Toolbar>
                        <Typography style={{marginRight:"auto", marginLeft:"auto"}}>{t('Forum')}</Typography>
@@ -81,14 +88,8 @@ function ForumPage ({t},props){
 
                    </Toolbar>
                </AppBar>
-<Query query={POSTS_QUERY} fetchPolicy={"network-only"} pollInterval={50} onError={(error) => enqueueSnackbar(error.message)} >
-    {( {loading, error, data} ) =>  {
-        if (loading) {return <LinearDeterminate />}
-        if (error) { return error.message }
-        const postslist = data.feed;
-        return(
 
-        <Grid container xs={12} spacing={4} style={{marginTop:"40px"}}  >
+        <Grid container xs={12} >
     <Grid item  style={{marginRight:"auto", marginLeft:"auto"}}>
         <TableContainer component={Paper} >
             <Table stickyHeader aria-label="sticky table" >
@@ -112,10 +113,10 @@ function ForumPage ({t},props){
         </TableContainer>
     </Grid>
 
-</Grid>)}}
+</Grid>
+</Grid>
+                )}}
 </Query>
-
-                
             </main>
 
         </div>
