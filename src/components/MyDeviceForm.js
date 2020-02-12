@@ -39,7 +39,7 @@ import IconButton from "@material-ui/core/IconButton";
 import {Mutation} from "react-apollo";
 import Tooltip from "@material-ui/core/Tooltip";
 import { SnackbarProvider, useSnackbar } from 'notistack';
-import MyDeviceToolbar from "./MyDeviceToolbar";
+
 const drawerWidth = 240;
 const deviceid = localStorage.getItem(CREATE_MY_DEVICE);
 const authToken = localStorage.getItem(AUTH_TOKEN);
@@ -149,7 +149,7 @@ function MyDeviceForm({t,className, rest}) {
     const handleClose = () => {setOpen(false);};
     return(
         <div  className={classes.root}>
-<MyDeviceToolbar/>
+
         <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={100} onError={(error) => enqueueSnackbar(error.message)} >
             {( {loading, error, data} ) =>  {
                 if (loading) {return <LinearDeterminate />}
@@ -166,7 +166,14 @@ function MyDeviceForm({t,className, rest}) {
                 if(authToken){
                     return(
                         <Grid container spacing={2} xs={12}>
-                           
+                            <AppBar position={"relative"}  color="default" elevation={5}>
+            <Toolbar >
+                        <Button >{t('Person')}</Button>
+
+                        <Button style={{marginLeft:"auto"}} variant="outlined" onClick={()=> history.push("/add-device")}> {t("Add product")}</Button>
+
+
+            </Toolbar>
                             <AppBar position="static" color="default">
                                 <Tabs value={value} onChange={handleChangeTab} indicatorColor="primary" textColor="primary" scrollButtons="auto" variant="scrollable" aria-label="full width tabs example"  centered style={{ flexGrow: 1,width: '100%', marginRight:"auto", marginLeft:"auto"}}>
                                     <Tab style={{ marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Conformity assessment')}</Typography>} {...a11yProps(0)} />
@@ -175,6 +182,7 @@ function MyDeviceForm({t,className, rest}) {
                                     <Tab style={{ marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"overline"}>{t('None')}</Typography>}  {...a11yProps(3)} />
                                 </Tabs>
                             </AppBar>
+ </AppBar>
                             <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
                                 <TabPanel value={value} index={0} dir={theme.direction} style={{ width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
 
