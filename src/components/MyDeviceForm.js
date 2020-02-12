@@ -174,12 +174,12 @@ function MyDeviceForm({t,className, rest}) {
 
 
             </Toolbar>
-                            <AppBar position="static" color="default">
-                                <Tabs value={value} onChange={handleChangeTab} indicatorColor="primary" textColor="primary" scrollButtons="auto" variant="scrollable" aria-label="full width tabs example"  centered style={{ flexGrow: 1,width: '100%', marginRight:"auto", marginLeft:"auto"}}>
-                                    <Tab style={{ marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Conformity assessment')}</Typography>} {...a11yProps(0)} />
-                                    <Tab style={{ marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Calibration')}</Typography>} {...a11yProps(1)} />
-                                    <Tab style={{ marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Verification')}</Typography>}  {...a11yProps(2)} />
-                                    <Tab style={{ marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"overline"}>{t('None')}</Typography>}  {...a11yProps(3)} />
+                            <AppBar position="static" color="default" square>
+                                <Tabs value={value} onChange={handleChangeTab} indicatorColor="default" textColor="primary" scrollButtons="auto" variant="scrollable" centered style={{ flexGrow: 1,width: '100%', marginRight:"auto", marginLeft:"auto", backgroundColor:"#fff"}}>
+                                    <Tab style={{backgroundColor:"#fff",marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Conformity assessment')}</Typography>} {...a11yProps(0)} />
+                                    <Tab style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Calibration')}</Typography>} {...a11yProps(1)} />
+                                    <Tab style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Verification')}</Typography>}  {...a11yProps(2)} />
+                                    <Tab style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"overline"}>{t('None')}</Typography>}  {...a11yProps(3)} />
                                 </Tabs>
                             </AppBar>
  </AppBar>
