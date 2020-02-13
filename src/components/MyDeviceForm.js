@@ -184,7 +184,7 @@ function MyDeviceForm({t,className, rest}) {
                             </AppBar>
  </AppBar>
                             <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
-                                <TabPanel value={value} index={0} dir={theme.direction} style={{ width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
+                                <TabPanel value={value} index={0} dir={theme.direction} style={{ width:"100%",minHeight: "400px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
 
                                     <Grid item justify={"center"} xs={12}>
                                     
@@ -235,7 +235,7 @@ function MyDeviceForm({t,className, rest}) {
                                     </Grid>
 
                                 </TabPanel>
-                                <TabPanel value={value} index={1} dir={theme.direction} style={{width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
+                                <TabPanel value={value} index={1} dir={theme.direction} style={{width:"100%",minHeight: "375px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                     <Grid justify={"center"} item xs={12}>
 <Paper className={classes.table}>
                                           
@@ -293,7 +293,7 @@ function MyDeviceForm({t,className, rest}) {
                                     </Grid>
 
                                 </TabPanel>
-                                <TabPanel value={value} index={2} dir={theme.direction} style={{width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
+                                <TabPanel value={value} index={2} dir={theme.direction} style={{width:"100%",minHeight: "450px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                     <Grid  justify={"center"} item xs={12}>
 <Paper className={classes.table}>
                                           
