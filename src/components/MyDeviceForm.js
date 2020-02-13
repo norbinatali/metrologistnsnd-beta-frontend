@@ -46,6 +46,7 @@ const authToken = localStorage.getItem(AUTH_TOKEN);
 const useStyles = makeStyles(theme => ({
 
     table: {
+        
         maxWidth:"100%",
         marginRight:"auto",
         marginLeft:"auto",
@@ -165,7 +166,7 @@ function MyDeviceForm({t,className, rest}) {
                 if(authToken){
                     return(
                         <Grid container spacing={2} xs={12}>
-                            <AppBar position={"relative"}  color="default" elevation={5}>
+                            <AppBar position={"relative"}  color="default" elevation={5} style={{marginTop:"0px"}}>
             <Toolbar >
                         <Button >{t('Person')}</Button>
 
