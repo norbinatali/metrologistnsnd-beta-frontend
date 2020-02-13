@@ -29,6 +29,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import { SnackbarProvider, useSnackbar } from 'notistack';
 import MenuTabPanel from "./MenuTabPanel";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import CircularProgressLoading form "./CircularProgressLoading"
 import Box from "@material-ui/core/Box";
 const schema = {
     email: {
@@ -176,7 +177,7 @@ function LoginForm({t},props){
                                     <Grid item xs={12}  className={classes.root} >
         <Mutation mutation={HELLO_QUERY}  variables={{ email, password,id } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
             {( mutation,{loading, error}) => {
-                if (loading) { return (<LinearDeterminate /> )}
+                if (loading) { return (<CircularProgressLoading /> )}
 
                 return(
         <FormControl >
