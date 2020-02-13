@@ -212,7 +212,7 @@ function MyDeviceForm({t,className, rest}) {
                 color="default"
               >{device.series_device}</Typography>} /></ListItem></List></TableCell>
                                                                  
-                                                                   {device.conformity_data >= endDate  &&(<TableCell align="center" > <Typography style={{color:"00DE28"}}>{t('Valid')}</<Typography></TableCell>)}
+                                                                   {device.conformity_data >= endDate  &&(<TableCell align="center" > <Typography style={{color:"00DE28"}}>{t('Valid')}</Typography></TableCell>)}
                                                                     {device.conformity_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.conformity_data}</TableCell>) }
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
