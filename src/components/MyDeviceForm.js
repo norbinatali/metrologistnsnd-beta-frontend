@@ -207,11 +207,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                 <TableRow key={device.id}>
                                                                     <TableCell  align="center"><List>
 <ListItem>
-<ListItemText primary={device.name_device} secondary={ <Typography
-                component="span"
-                variant="body2"
-                color="default"
-              >{device.series_device}</Typography>} /></ListItem></List></TableCell>
+<ListItemText primary={device.name_device} secondary={device.series_device}/></ListItem></List></TableCell>
                                                                  
                                                                    {device.conformity_data >= endDate  &&(<TableCell align="center" > <Typography style={{color:"00DE28"}}>{t('Valid')}</Typography></TableCell>)}
                                                                     {device.conformity_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.conformity_data}</TableCell>) }
