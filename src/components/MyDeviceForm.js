@@ -1,6 +1,6 @@
 import React from "react";
 import {withTranslation} from "react-i18next";
-import {makeStyles} from "@material-ui/core";
+import {List, ListItemText,makeStyles} from "@material-ui/core";
 import { withStyles } from '@material-ui/core/styles';
 import ExpandMoreIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import Typography from "@material-ui/core/Typography";
@@ -28,7 +28,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Draggable from 'react-draggable';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import history from '../history.js'
-
+import ListItem from "@material-ui/core/ListItem";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import useTheme from "@material-ui/core/styles/useTheme";
@@ -193,13 +193,7 @@ function MyDeviceForm({t,className, rest}) {
                                                 <Table stickyHeader component={Paper}>   
                                                     <TableHead >
                                                         <TableRow >
-                                                            <StyledTableCell align="center">{t('Name device')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Device')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Series number')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Type')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Certificate number')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Module')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Department center')} </StyledTableCell>
+                                                            <StyledTableCell align="center">{t('Name device')}</StyledTableCell>  
                                                             <StyledTableCell align="center">{t('Date')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Notes')} </StyledTableCell>
                                                             <StyledTableCell align="center">{t('Delete')} </StyledTableCell>
@@ -211,14 +205,15 @@ function MyDeviceForm({t,className, rest}) {
                                                             {device.certificate_conformity=== true &&(
 
                                                                 <TableRow key={device.id}>
-                                                                    <TableCell  align="center">{device.name_device}</TableCell>
-                                                                    <TableCell  align="center">{device.brand_device}</TableCell>
-                                                                    <TableCell  align="center">{device.series_device}</TableCell>
-                                                                    <TableCell  align="center">{device.kind_device}</TableCell>
-                                                                    <TableCell  align="center"> {device.certificate_assessment_number}</TableCell>
-                                                                    <TableCell align="center">{device.module_device}</TableCell>
-                                                                    <TableCell align="center">{device.department_assessment_center}</TableCell>
-                                                                   {device.conformity_data >= endDate  &&(<TableCell align="center" > {device.conformity_data}</TableCell>)}
+                                                                    <TableCell  align="center"><List>
+<ListItem>
+<ListItemText primary={device.name_device} secondary={ <Typography
+                component="span"
+                variant="body2"
+                color="default"
+              >{device.series_device}</Typography>} /></ListItem></List></TableCell>
+                                                                 
+                                                                   {device.conformity_data >= endDate  &&(<TableCell align="center" > <Typography style={{color:"00DE28"}}>{t('Valid')}</<Typography></TableCell>)}
                                                                     {device.conformity_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.conformity_data}</TableCell>) }
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
