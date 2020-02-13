@@ -47,12 +47,11 @@ const useStyles = makeStyles(theme => ({
 
     table: {
         maxWidth:"100%",
-        height:"350px",
         marginRight:"auto",
         marginLeft:"auto",
-        overflow: 'auto',
         color:"#fff",
-         overflowX: 'auto',
+        overflowX: 'auto',
+         
     },
     root: {
         maxWidth: '100%',
