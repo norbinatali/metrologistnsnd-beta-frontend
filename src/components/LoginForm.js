@@ -29,7 +29,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import { SnackbarProvider, useSnackbar } from 'notistack';
 import MenuTabPanel from "./MenuTabPanel";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import CircularProgressLoading form "./CircularProgressLoading"
+import CircularProgressLoading from "./CircularProgressLoading"
 import Box from "@material-ui/core/Box";
 const schema = {
     email: {
