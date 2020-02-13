@@ -184,7 +184,7 @@ function MyDeviceForm({t,className, rest}) {
                             </AppBar>
  </AppBar>
                             <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
-                                <TabPanel value={value} index={0} dir={theme.direction} style={{ width:"100%",minHeight: "400px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
+                                <TabPanel value={value} index={0} dir={theme.direction} style={{ width:"100%",minHeight: "375px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
 
                                     <Grid item justify={"center"} xs={12}>
                                     
@@ -210,7 +210,7 @@ function MyDeviceForm({t,className, rest}) {
 <ListItemText primary={device.name_device} secondary={device.series_device}/></ListItem></List></TableCell>
                                                                  
                                                                    {device.conformity_data >= endDate  &&(<TableCell align="center" > <Typography style={{color:"00DE28"}}>{t('Valid')}</Typography></TableCell>)}
-                                                                    {device.conformity_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.conformity_data}</TableCell>) }
+                                                                    {device.conformity_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{t('Expired')}</TableCell>) }
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
                                                                         <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={10}>
@@ -227,11 +227,8 @@ function MyDeviceForm({t,className, rest}) {
                                                                         </TableCell>
                                                                 </TableRow>)}
                                                                 </TableBody> ))}
-                                                </Table>
-                                           
+                                                </Table>                                   
 </Paper>
-
-
                                     </Grid>
 
                                 </TabPanel>
@@ -265,11 +262,11 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell  align="center">{device.kind_device}</TableCell>
                                                                     <TableCell  align="center"> {device.certificate_calibration_number}</TableCell>
                                                                     <TableCell align="center">{device.department_calibration_center}</TableCell>
-                                                                    {device.calibration_data >= endDate &&(<TableCell align="center" >{device.calibration_data}</TableCell>)}
-                                                                    {device.calibration_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.calibration_data}</TableCell>)}
+                                                                    {device.calibration_data >= endDate &&(<TableCell align="center" ><Typography style={{color:"00DE28"}}>{t('Valid')}</Typography></TableCell>)}
+                                                                    {device.calibration_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{t('Expired')}</TableCell>)}
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
-                                                                    <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)}>
+                                                                    <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={50}>
                                                                         {( deleteDevice,{loading, error, data}) => {
                                                                             if (loading) { return (<LinearDeterminate /> )}
                                                                             if (error) {return (error.message)}
@@ -293,7 +290,7 @@ function MyDeviceForm({t,className, rest}) {
                                     </Grid>
 
                                 </TabPanel>
-                                <TabPanel value={value} index={2} dir={theme.direction} style={{width:"100%",minHeight: "450px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
+                                <TabPanel value={value} index={2} dir={theme.direction} style={{width:"100%",minHeight: "375px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                     <Grid  justify={"center"} item xs={12}>
 <Paper className={classes.table}>
                                           
@@ -322,11 +319,11 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell  align="center">{device.kind_device}</TableCell>
                                                                     <TableCell  align="center"> {device.certificate_verification_number}</TableCell>
                                                                     <TableCell align="center">{device.department_verification_center}</TableCell>
-                                                                    {device.valid_verification >= endDate &&(<TableCell align="center" >{device.valid_verification}</TableCell>)}
-                                                                    {device.valid_verification <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{device.valid_verification}</TableCell>)}
+                                                                    {device.valid_verification >= endDate &&(<TableCell align="center" ><Typography style={{color:"00DE28"}}>{t('Valid')}</Typography></TableCell>)}
+                                                                    {device.valid_verification <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{t('Expired')}</TableCell>)}
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
-                                                                    <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)}>
+                                                                    <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={50}>
                                                                         {( deleteDevice,{loading, error, data}) => {
                                                                             if (loading) { return (<LinearDeterminate /> )}
                                                                             if (error) {return (error.message)}
@@ -352,7 +349,7 @@ function MyDeviceForm({t,className, rest}) {
 
                                     </Grid>
                                 </TabPanel>
-  <TabPanel value={value} index={3} dir={theme.direction} style={{ width:"100%",height: "100%",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
+  <TabPanel value={value} index={3} dir={theme.direction} style={{ width:"100%",minHeight: "375px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
 
                                     <Grid item justify={"center"} xs={12}>
                                         <Paper className={classes.table}>
@@ -383,7 +380,7 @@ function MyDeviceForm({t,className, rest}) {
 
                                                                     <TableCell>
 
-                                                                        <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={500}>
+                                                                        <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={50}>
 
                                                                             {( deleteDevice,{loading, error, data}) => {
 
