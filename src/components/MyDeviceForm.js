@@ -166,7 +166,7 @@ function MyDeviceForm({t,className, rest}) {
                 if(authToken){
                     return(
                         <Grid container spacing={2} xs={12}>
-                            <AppBar position={"relative"}  color="default" elevation={5} style={{marginTop:"30px"}}>
+                            <AppBar position={"relative"}  color="default" elevation={5} style={{marginTop:"50px"}}>
             <Toolbar >
                         <Button >{t('Person')}</Button>
 
