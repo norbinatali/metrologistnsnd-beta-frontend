@@ -191,23 +191,20 @@ function MyDeviceForm({t,className, rest}) {
                                            <Paper className={classes.table}>
 
                                                 <Table stickyHeader component={Paper}>   
-                                                    <TableHead >
-                                                        <TableRow >
-                                                            <StyledTableCell align="center">{t('Name device')}</StyledTableCell>  
-                                                            <StyledTableCell align="center">{t('Date')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Notes')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Delete')} </StyledTableCell>
-                                                        </TableRow>
-                                                    </TableHead>
+                                                   
                                                     {devicelist.map(device =>(
 
                                                         <TableBody>
                                                             {device.certificate_conformity=== true &&(
 
                                                                 <TableRow key={device.id}>
+                                                                            <TableCell  align="center"><List>
+<ListItem>
+<ListItemText primary={device.name_device} secondary={device.kind_device}/></ListItem></List></TableCell>
                                                                     <TableCell  align="center"><List>
 <ListItem>
-<ListItemText primary={device.name_device} secondary={device.series_device}/></ListItem></List></TableCell>
+<ListItemText primary={device.brand_device} secondary={device.series_device}/></ListItem></List></TableCell>
+
                                                                  
                                                                    {device.conformity_data >= endDate  &&(<TableCell align="center" > <Typography style={{color:"00DE28"}}>{t('Valid')}</Typography></TableCell>)}
                                                                     {device.conformity_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{t('Expired')}</TableCell>) }
@@ -238,33 +235,19 @@ function MyDeviceForm({t,className, rest}) {
                                           
                                                  <Table stickyHeader component={Paper}>  
 
-                                                    <TableHead >
-                                                        <TableRow >
-                                                            <StyledTableCell align="center">{t('Name device')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Device')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Series number')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Type')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Certificate number')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Department center')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Date')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Notes')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Delete')} </StyledTableCell>
-                                                        </TableRow>
-                                                    </TableHead>
+                                                    
                                                     {devicelist.map(device =>(
                                                         <TableBody >
                                                             {device.certificate_calibration=== true &&(
 
                                                                 <TableRow key={device.id}>
-                                                                    <TableCell  align="center">{device.name_device}</TableCell>
-                                                                    <TableCell  align="center">{device.brand_device}</TableCell>
-                                                                    <TableCell  align="center">{device.series_device}</TableCell>
-                                                                    <TableCell  align="center">{device.kind_device}</TableCell>
-                                                                    <TableCell  align="center"> {device.certificate_calibration_number}</TableCell>
-                                                                    <TableCell align="center">{device.department_calibration_center}</TableCell>
+                                                                    <TableCell  align="center"><List>
+<ListItem>
+<ListItemText primary={device.name_device} secondary={device.series_device}/></ListItem></List></TableCell>
+                                                                  
                                                                     {device.calibration_data >= endDate &&(<TableCell align="center" ><Typography style={{color:"00DE28"}}>{t('Valid')}</Typography></TableCell>)}
                                                                     {device.calibration_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{t('Expired')}</TableCell>)}
-                                                                    <TableCell> {device.notes}</TableCell>
+                                                                    <TableCell  align="center">{device.notes}</TableCell>
                                                                     <TableCell>
                                                                     <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={50}>
                                                                         {( deleteDevice,{loading, error, data}) => {
@@ -295,33 +278,23 @@ function MyDeviceForm({t,className, rest}) {
 <Paper className={classes.table}>
                                           
                                                  <Table stickyHeader component={Paper}>  
-                                                    <TableHead  >
-                                                        <TableRow >
-                                                            <StyledTableCell align="center">{t('Name device')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Device')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Series number')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Type')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Certificate number')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Department center')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Date')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Notes')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Delete')} </StyledTableCell>
-                                                        </TableRow>
-                                                    </TableHead>
+                                                   
                                                     {devicelist.map(device =>(
                                                         <TableBody >
 
                                                             {device.certificate_verification===true &&(
                                                                 <TableRow key={device.id}>
-                                                                    <TableCell  align="center">{device.name_device}</TableCell>
-                                                                    <TableCell  align="center">{device.brand_device}</TableCell>
-                                                                    <TableCell  align="center">{device.series_device}</TableCell>
-                                                                    <TableCell  align="center">{device.kind_device}</TableCell>
-                                                                    <TableCell  align="center"> {device.certificate_verification_number}</TableCell>
-                                                                    <TableCell align="center">{device.department_verification_center}</TableCell>
+                                                                    <TableCell  align="center"><List>
+<ListItem>
+<ListItemText primary={device.name_device} secondary={device.kind_device}/></ListItem></List></TableCell>
+                                                                    <TableCell  align="center"><List>
+<ListItem>
+<ListItemText primary={device.brand_device} secondary={device.series_device}/></ListItem></List></TableCell>
+                                                                    
+                                                                
                                                                     {device.valid_verification >= endDate &&(<TableCell align="center" ><Typography style={{color:"00DE28"}}>{t('Valid')}</Typography></TableCell>)}
                                                                     {device.valid_verification <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{t('Expired')}</TableCell>)}
-                                                                    <TableCell> {device.notes}</TableCell>
+                                                                    <TableCell  align="center">{device.notes}</TableCell>
                                                                     <TableCell>
                                                                     <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={50}>
                                                                         {( deleteDevice,{loading, error, data}) => {
@@ -356,28 +329,21 @@ function MyDeviceForm({t,className, rest}) {
                                             <TableContainer component={Paper}>
 
                                                 <Table stickyHeader >
-                                                    <TableHead >
-                                                        <TableRow >
-                                                            <StyledTableCell align="center">{t('Name device')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Device')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Series number')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Type')}</StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Notes')} </StyledTableCell>
-                                                            <StyledTableCell align="center">{t('Delete')} </StyledTableCell>
-                                                        </TableRow>
-                                                    </TableHead>
+                                                
                                                     {devicelist.map(device =>(
 
                                                         <TableBody>
                                                             {(!device.certificate_verification && !device.certificate_calibration && !device.certificate_conformity) &&(
 
                                                                 <TableRow key={device.id}>
-                                                                    <TableCell  align="center">{device.name_device}</TableCell>
-                                                                    <TableCell  align="center">{device.brand_device}</TableCell>
-                                                                    <TableCell  align="center">{device.series_device}</TableCell>
-                                                                    <TableCell  align="center">{device.kind_device}</TableCell>
-                                                                    <TableCell> {device.notes}</TableCell>
-
+                                                                    <TableCell  align="center"><List>
+<ListItem>
+<ListItemText primary={device.name_device} secondary={device.kind_device}/></ListItem></List></TableCell>
+                                                                    <TableCell  align="center"><List>
+<ListItem>
+<ListItemText primary={device.brand_device} secondary={device.series_device}/></ListItem></List></TableCell>
+ 
+ <TableCell  align="center">{device.notes}</TableCell>
                                                                     <TableCell>
 
                                                                         <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={50}>
