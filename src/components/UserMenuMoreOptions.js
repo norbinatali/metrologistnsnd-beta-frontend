@@ -58,6 +58,8 @@ const handleDrawerCloseDashboard = () => {
     };
      const handleDrawerCloseMyDevice = () => {
          setOpen(false);
+          localStorage.removeItem('device-id');
+        localStorage.removeItem('device-name');
         history.push('/mydevices');
      };
      const handleDrawerCloseSand = () => {
