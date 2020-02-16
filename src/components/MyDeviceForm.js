@@ -48,8 +48,8 @@ const useStyles = makeStyles(theme => ({
     table: {
         
         maxWidth:"100%",
-        marginRight:"auto",
-        marginLeft:"auto",
+        marginRight:"0",
+        marginLeft:"0",
         color:"#fff",
         overflowX: 'auto',
          
