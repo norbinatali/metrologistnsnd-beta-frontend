@@ -35,6 +35,11 @@ import LoginForm from "./LoginForm";
 import FrontPageCarousel from "./FrontPageCarousel";
 import ContactForm from "./ContactForm";
 import ForumPage from "./ForumPage";
+import MyDeviceInfo from "./MyDeviceInfo";
+
+import MyDeviceActivity from "./MyDeviceActivity";
+import MyDeviceSchedule from "./MyDeviceSchedule";
+import MyDeviceSetting from "./MyDeviceSetting";
 
 class App extends Component {
 
@@ -63,8 +68,11 @@ class App extends Component {
                            <PrivateRoute path="/metrology" component={History} />
                            
                            <PrivateRoute path="/add-device" component={AddDevice} />
-                           <PrivateRoute path="/mydevices" component={MyDevice} />
-                           
+                           <PrivateRoute exact path="/mydevices" component={MyDevice} />
+                            <PrivateRoute path={"/mydevices/:deviceName" } component={MyDeviceInfo} />
+                            <PrivateRoute path={"/mydevices/:deviceName/activity" } component={MyDeviceActivity} />
+                            <PrivateRoute path={"/mydevices/:deviceName/schedule" } component={MyDeviceSchedule} />
+                            <PrivateRoute path={"/mydevices/:deviceName/setting" } component={MyDeviceSetting} />
                            <PrivateRoute path="/account" component={UserProfile} />
                            <PrivateRoute path="/contactus" component={ContactUS} />
                          <PrivateRoute path="/standards-L" component={Standards} />
