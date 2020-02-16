@@ -5,3 +5,5 @@ export const RESET_TOKEN = 'uuid';
 export const CONFIRM_EMAIL ='uuid';
 export const CREATE_MY_DEVICE ='create-my-device'; 
 export const CREATE_LETTER ='create-letter'; 
+export const DEVICE_NAME = 'device-name';
+export const DEVICE_ID ='device-id'
