@@ -19,6 +19,7 @@ import {
     AppointmentForm,
     DragDropProvider,
     EditRecurrenceMenu,
+    CurrentTimeIndicator,
     AllDayPanel, DateNavigator, DayView,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { ViewState, EditingState } from '@devexpress/dx-react-scheduler';
@@ -87,12 +88,16 @@ function Dashboard ({t}){
                                     >
                                         <ViewState
                                             defaultCurrentDate={currentDate}
+                                                defaultCurrentViewName="Week"
                                         />
+                                                <DayView />
                                         <WeekView />
+                                                <MonthView />
                                         <Toolbar />
                                         <DateNavigator/>
-
+<ViewSwitcher />
                                         <Appointments />
+                                                 <CurrentTimeIndicator/>
                                     </Scheduler>      
                                                 </div>
         </div>)}}}</Query>
