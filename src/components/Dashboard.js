@@ -8,6 +8,20 @@ import UserMenu from "./UserMenu";
 import gql from "graphql-tag";
 import {Mutation, Query} from 'react-apollo';
 import LinearDeterminate from "./LinearDeterminate";
+import {
+    Scheduler,
+    Toolbar,
+    MonthView,
+    WeekView,
+    ViewSwitcher,
+    Appointments,
+    AppointmentTooltip,
+    AppointmentForm,
+    DragDropProvider,
+    EditRecurrenceMenu,
+    AllDayPanel, DateNavigator, DayView,
+} from '@devexpress/dx-react-scheduler-material-ui';
+import { ViewState, EditingState } from '@devexpress/dx-react-scheduler';
 import {AUTH_TOKEN} from "../constants";
 const authToken = localStorage.getItem(AUTH_TOKEN);
 const useStyles = makeStyles(theme => ({
@@ -46,10 +60,25 @@ function Dashboard ({t}){
         <div className={classes.root}>
 
             <div > <Typography  align={"center"} className={classes.text}  >{t('Welcome')} {data.me.name}</Typography>
-
                
-
             </div>
+                                    <div style={{width:"200px"}}>
+                              <Scheduler  data={[
+      { startDate: '2018-10-31 10:00', endDate: '2018-10-31 11:00', title: 'Meeting' },
+      { startDate: '2018-11-01 18:00', endDate: '2018-11-01 19:30', title: 'Go to a gym' },
+    ]}
+                                        height={500} 
+                                    >
+                                        <ViewState
+                                            defaultCurrentDate={currentDate}
+                                        />
+                                        <DayView/>
+                                        <Toolbar />
+                                        <DateNavigator/>
+
+                                        <Appointments />
+                                    </Scheduler>      
+                                                </div>
         </div>)}}}</Query>
                     </div>
                 </div>
