@@ -52,6 +52,7 @@ function Dashboard ({t}){
                                 if (error) {
                                     return error.message
                                 }
+                                    const currentDate=new Date();
                                 const userInfo = data.me;
                                 console.log(data.me.name);
                                 console.log(data.me.email);
