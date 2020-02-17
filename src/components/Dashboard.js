@@ -33,6 +33,21 @@ const useStyles = makeStyles(theme => ({
 text:{
     color:"rgba(0,1,14,0.74)",
 },
+    scheduler:{
+        width: "100%",
+        "@media (min-width: 576px)": {
+            maxWidth: "540px"
+        },
+        "@media (min-width: 768px)": {
+            maxWidth: "720px"
+        },
+        "@media (min-width: 992px)": {
+            maxWidth: "960px"
+        },
+        "@media (min-width: 1200px)": {
+            maxWidth: "1140px"
+        },
+    }
 }));
 const QUERY_USER = gql`query{me {name, email,country, companyName}}`;
 function Dashboard ({t}){
@@ -63,7 +78,7 @@ function Dashboard ({t}){
             <div > <Typography  align={"center"} className={classes.text}  >{t('Welcome')} {data.me.name}</Typography>
                
             </div>
-                                    <div style={{width:"200px"}}>
+                                    <div className={classes.scheduler}>
                               <Scheduler  data={[
       { startDate: '2018-10-31 10:00', endDate: '2018-10-31 11:00', title: 'Meeting' },
       { startDate: '2018-11-01 18:00', endDate: '2018-11-01 19:30', title: 'Go to a gym' },
@@ -73,7 +88,7 @@ function Dashboard ({t}){
                                         <ViewState
                                             defaultCurrentDate={currentDate}
                                         />
-                                        <DayView/>
+                                        <WeekView />
                                         <Toolbar />
                                         <DateNavigator/>
 
