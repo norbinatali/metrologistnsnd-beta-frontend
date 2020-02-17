@@ -35,6 +35,7 @@ text:{
     color:"rgba(0,1,14,0.74)",
 },
     scheduler:{
+        marginTop:"40px",
         width: "100%",
         "@media (min-width: 576px)": {
             maxWidth: "540px"
@@ -79,7 +80,7 @@ function Dashboard ({t}){
             <div > <Typography  align={"center"} className={classes.text}  >{t('Welcome')} {data.me.name}</Typography>
                
             </div>
-                                    <div className={classes.scheduler}>
+                                    <Paper className={classes.scheduler}>
                               <Scheduler  data={[
       { startDate: '2018-10-31 10:00', endDate: '2018-10-31 11:00', title: 'Meeting' },
       { startDate: '2018-11-01 18:00', endDate: '2018-11-01 19:30', title: 'Go to a gym' },
@@ -99,7 +100,7 @@ function Dashboard ({t}){
                                         <Appointments />
                                                  <CurrentTimeIndicator/>
                                     </Scheduler>      
-                                                </div>
+                                                </Paper>
         </div>)}}}</Query>
                     </div>
                 </div>
