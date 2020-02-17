@@ -199,7 +199,7 @@ console.log(data.myDevice.id)
                                     <Toolbar className={classes.container} >
                                         <Button >{t('Person')}</Button>
                                         <ArrowForwardIosIcon/>
-                                        <Button>{deviceName}</Button>
+                                        <Button>{data.myDevice.name_device}</Button>
 
                                         <Button style={{marginLeft:"auto"}} variant="outlined" onClick={()=> history.push("/more")}> {t("More")}</Button>
 
@@ -253,32 +253,32 @@ console.log(data.myDevice.id)
                                                         <List>
 
                                                        <ListItem><ListItemText> {data.myDevice.certificate_assessment_number}</ListItemText></ListItem>
-                                                            <ListItem><ListItemText> {data.myDevice.module_device}</ListItemText></ListItem>
-                                                            <ListItem><ListItemText> {data.myDevice.department_assessment_center}</ListItemText></ListItem>
+                                                            <ListItem><ListItemText> <Typography style={{color: "#000"}}>{data.myDevice.module_device}</Typography></ListItemText></ListItem>
+                                                            <ListItem><ListItemText><Typography style={{color: "#000"}}> {data.myDevice.department_assessment_center}</Typography></ListItemText></ListItem>
                                                             {data.myDevice.conformity_data >= endDate  &&(<ListItem align="center" ><ListItemText> <Typography style={{color:"#00DE28"}}>{data.myDevice.calibration_data}</Typography></ListItemText></ListItem>)}
                                                             {data.myDevice.conformity_data <= startDate &&(<ListItem align="center" style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</ListItem>) }
 
                                                         </List>)}
                                                     {data.myDevice.certificate_verification === true &&(
                                                         <List>
-                                                            <ListItem><ListItemText> {data.myDevice.certificate_verification_number}</ListItemText></ListItem>
-                                                            <ListItem><ListItemText> {data.myDevice.department_verification_center}</ListItemText></ListItem>
+                                                            <ListItem><ListItemText><Typography style={{color: "#000"}}> {data.myDevice.certificate_verification_number}</Typography></ListItemText></ListItem>
+                                                            <ListItem><ListItemText> <Typography style={{color: "#000"}}>{data.myDevice.department_verification_center}</Typography></ListItemText></ListItem>
                                                             {data.myDevice.valid_verification >= endDate  &&(<ListItem align="center" ><ListItemText> <Typography style={{color:"#00DE28"}}>{data.myDevice.valid_verification}</Typography></ListItemText></ListItem>)}
                                                             {data.myDevice.valid_verification <= startDate &&(<ListItem align="center" style={{color:"#ff0737"}}>{data.myDevice.valid_verification}</ListItem>) }
 
                                                         </List>)}
                                                     {data.myDevice.certificate_calibration === true &&(
                                                         <List>
-                                                            <ListItem><ListItemText> {data.myDevice.certificate_calibration_number}</ListItemText></ListItem>
-                                                            <ListItem><ListItemText> {data.myDevice.department_calibration_center}</ListItemText></ListItem>
+                                                            <ListItem><ListItemText><Typography style={{color: "#000"}}>{data.myDevice.certificate_calibration_number}</Typography></ListItemText></ListItem>
+                                                            <ListItem><ListItemText><Typography style={{color: "#000"}}> {data.myDevice.department_calibration_center}</Typography></ListItemText></ListItem>
                                                             {data.myDevice.calibration_data >= endDate  &&(<ListItem align="center" ><ListItemText> <Typography style={{color:"#00DE28"}}>{data.myDevice.calibration_data}</Typography></ListItemText></ListItem>)}
                                                             {data.myDevice.calibration_data <= startDate &&(<ListItem align="center" style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</ListItem>) }
 
                                                         </List>)}
                                                     {data.myDevice.certificate_calibration === true &&(
                                                         <List>
-                                                            <ListItem><ListItemText> {data.myDevice.certificate_calibration_number}</ListItemText></ListItem>
-                                                            <ListItem><ListItemText> {data.myDevice.department_calibration_center}</ListItemText></ListItem>
+                                                            <ListItem><ListItemText><Typography style={{color: "#000"}}> {data.myDevice.certificate_calibration_number}</Typography></ListItemText></ListItem>
+                                                            <ListItem><ListItemText><Typography style={{color: "#000"}}> {data.myDevice.department_calibration_center}</Typography></ListItemText></ListItem>
                                                             {data.myDevice.calibration_data >= endDate  &&(<ListItem align="center" ><ListItemText> <Typography style={{color:"#00DE28"}}>{data.myDevice.calibration_data}</Typography></ListItemText></ListItem>)}
                                                             {data.myDevice.calibration_data <= startDate &&(<ListItem align="center" style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</ListItem>) }
 
