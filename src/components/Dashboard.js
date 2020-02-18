@@ -195,7 +195,7 @@ function Dashboard ({t}){
                                     return (
         <div className={classes.root}>
 
-            <div > <Typography  align={"justify"}  >{t('Welcome')} {data.me.name}</Typography>
+            <div > <Typography  align={"justify"} style={{color:"rgba(0,1,14,0.74)"}} >{t('Welcome')} {data.me.name}</Typography>
             </div>    
                 <Paper className={classes.scheduler}>
                     <Scheduler  data= {appointmentStartDate.map(appointment=>(
