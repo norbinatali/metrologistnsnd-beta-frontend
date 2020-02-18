@@ -5,7 +5,6 @@ import Paper from "@material-ui/core/Paper";
 import PropTypes from 'prop-types';
 import Typography from "@material-ui/core/Typography";
 import ContactUS from "./ContactUS";
-import ChartistGraph from 'react-chartist';
 import clsx from 'clsx';
 import UserMenu from "./UserMenu";
 import gql from "graphql-tag";
