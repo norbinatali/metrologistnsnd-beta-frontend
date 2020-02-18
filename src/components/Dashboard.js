@@ -200,8 +200,8 @@ function Dashboard ({t}){
                 <Paper className={classes.scheduler}>
                     <Scheduler  data= {appointmentStartDate.map(appointment=>(
                         {
-                            startDate: Moment(appointment.start_date).format("YYYY-MM-DD HH:mm"),
-                            endDate: Moment(appointment.end_date).format("YYYY-MM-DD HH:mm"),
+                            startDate: Moment(new Date(appointment.start_date)).format("YYYY-MM-DD HH:mm"),
+                            endDate: Moment(new Date(appointment.end_date)).format("YYYY-MM-DD HH:mm"),
                             title: appointment.title,
                             location: appointment.location
                         }
