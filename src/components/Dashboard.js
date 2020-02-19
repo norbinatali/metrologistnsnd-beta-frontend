@@ -259,13 +259,33 @@ function Dashboard ({t}){
                                                 autoFocus
                                                 variant="outlined"
                                                 id="name"
+                                                size="small"
                                                 label={t('Title')}
                                                 value={title}
                                                 onChange={(event)=>setTitle(event.target.value)}
                                                 fullWidth
                                             /><br/>
-
-                                            <DateTimePicker
+                                           <TextField
+                                                variant="outlined"
+                                                id="name"
+                                                size="small"
+                                                label={t('Location')}
+                                                value={location}
+                                                onChange={(event)=>setLocation(event.target.value)}
+                                                fullWidth
+                                            /><br/>
+                                            <TextField
+                                                multiline
+                                                rows={3}
+                                                id="name"
+                                                size="small"
+                                                label={t('Notes')}
+                                                variant="outlined"
+                                                value={notes}
+                                                onChange={(event)=>setNotes(event.target.value)}
+                                                fullWidth
+                                            /><br/>
+                                                     <DateTimePicker
                                                 label={t('Start Date')}
                                                 clearable
                                                 value={start_date}
@@ -278,25 +298,6 @@ function Dashboard ({t}){
                                                 value={end_date}
                                                 onChange={(date)=>setEnd_date(date)}
                                             />
-
-                                            <TextField
-                                                variant="outlined"
-                                                id="name"
-                                                label={t('Location')}
-                                                value={location}
-                                                onChange={(event)=>setLocation(event.target.value)}
-                                                fullWidth
-                                            /><br/>
-                                            <TextField
-                                                multiline
-                                                rows={3}
-                                                id="name"
-                                                label={t('Notes')}
-                                                variant="outlined"
-                                                value={notes}
-                                                onChange={(event)=>setNotes(event.target.value)}
-                                                fullWidth
-                                            /><br/>
                                         </DialogContent>
 
                                         <DialogActions>
