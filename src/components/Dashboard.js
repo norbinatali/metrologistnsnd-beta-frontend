@@ -317,7 +317,7 @@ function Dashboard ({t}){
                     </div>
                 </div>
             </main>
-<Footer/>
+
         </div>
 
 
