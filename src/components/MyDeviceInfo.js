@@ -286,23 +286,27 @@ console.log(data.myDevice.id)
           <Grid item xs>
             <Typography style={{color: "#000"}}>  {data.myDevice.department_assessment_center}</Typography>
           </Grid>
+
          
              {data.myDevice.conformity_data >= endDate  &&(
+<Grid container>
               <Grid item>
             <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
               </Grid>
              <Grid item xs>
                 <Typography style={{color:"#00DE28"}}>{data.myDevice.calibration_data}</Typography>
-             </Grid>)}
+             </Grid> </Grid>)}
 
-             {data.myDevice.conformity_data <= startDate &&( <Grid item>
+             {data.myDevice.conformity_data <= startDate &&( 
+            <Grid container>
+           <Grid item>
             <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
               </Grid>
              <Grid item xs>
                 <Typography style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</Typography>
-             </Grid>) }
-
-               </Grid>                                        )}
+             </Grid> </Grid>) }
+</Grid>
+                                                 )}
               {data.myDevice.certificate_verification === true &&(
 <Grid container wrap="nowrap" spacing={2}>
                                                         <Grid item>
@@ -318,20 +322,24 @@ console.log(data.myDevice.id)
             <Typography style={{color: "#000"}}>  {data.myDevice.department_verification_center}</Typography>
           </Grid>
          
-              {data.myDevice.valid_verification >= endDate  &&( <Grid item>
+              {data.myDevice.valid_verification >= endDate  &&(
+<Grid container>
+        <Grid item>
             <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
               </Grid>
              <Grid item xs>
                <Typography style={{color:"#00DE28"}}>{data.myDevice.valid_verification}</Typography>
-             </Grid>)}
+             </Grid>
+</Grid>)}
 
-              {data.myDevice.valid_verification <= startDate &&(<Grid item>
+              {data.myDevice.valid_verification <= startDate &&(
+<Grid container><Grid item>
             <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
               </Grid>
              <Grid item xs>
                 <Typography style={{color:"#ff0737"}}>{data.myDevice.valid_verification}</Typography>
              </Grid>) }
-                     </Grid>      )}
+                     </Grid> </Grid>     )}
               {data.myDevice.certificate_calibration === true &&(
 <Grid container wrap="nowrap" spacing={2}>
            <Grid item>
@@ -346,19 +354,22 @@ console.log(data.myDevice.id)
           <Grid item xs>
             <Typography style={{color: "#000"}}> {data.myDevice.department_calibration_center}</Typography>
           </Grid>
-                {data.myDevice.calibration_data >= endDate  &&(<Grid item>
+                {data.myDevice.calibration_data >= endDate  &&(
+<Grid container>
+  <Grid item>
             <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
               </Grid>
              <Grid item xs>
                <Typography style={{color:"#00DE28"}}><Typography style={{color:"#00DE28"}}>{data.myDevice.calibration_data}</Typography></Typography>
-             </Grid> )}
+             </Grid> </Grid>)}
                 {data.myDevice.calibration_data <= startDate &&(
-<Grid>
+<Grid container>
+ <Grid item>
             <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
               </Grid>
              <Grid item xs>
                 <Typography style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</Typography>
-             </Grid>) }
+             </Grid></Grid>) }
             </Grid>   )}
                     {(!data.myDevice.certificate_verification && !data.myDevice.certificate_calibration && !data.myDevice.certificate_conformity) &&(
 
