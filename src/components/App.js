@@ -24,6 +24,7 @@ import StandardsAUV from "./StandardsAUV";
 import StandardsQM from "./StandardsQM";
 import Dashboard from "./Dashboard";
 import MyDevice from "./MyDevice";
+import Footer from "./Footer";
 import History from "./History";
 import WhatIsMetrology from "./WhatIsMetrology";
 import HistoryMetrology from "./HistoryMetrology";
@@ -99,6 +100,7 @@ class App extends Component {
                     </Switch>
 
                 </div>
+            <Footer/>
             </div> )
     }
 }
