@@ -257,7 +257,7 @@ console.log(data.myDevice.id)
             <Typography style={{color: "#000"}}>{t('Brand Device')}</Typography>
           </Grid>
           <Grid item xs>
-            <Typography style={{color: "#000"}}> {{data.myDevice.series_device}}</Typography>
+            <Typography style={{color: "#000"}}> {data.myDevice.series_device}</Typography>
           </Grid>
         
       {data.myDevice.certificate_conformity === true &&(
