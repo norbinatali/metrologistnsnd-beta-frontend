@@ -197,9 +197,9 @@ console.log(data.myDevice.id)
                             <Grid container spacing={2} xs={12}>
                                 <AppBar position={"static"}  color="default" elevation={5} style={{marginTop:"50px"}}>
                                     <Toolbar className={classes.container} >
-                                        <Button >{t('Person')}</Button>
+                                        <Button onClick={()=> history.push('/mydevices')} >{t('Person')}</Button>
                                         <ArrowForwardIosIcon/>
-                                        <Button>{data.myDevice.name_device}</Button>
+                                        <Button onClick={()=> history.push('/mydevices/'+deviceName)}>{data.myDevice.name_device}</Button>
 
                                         <Button style={{marginLeft:"auto"}} variant="outlined" onClick={()=> history.push("/more")}> {t("More")}</Button>
 
@@ -234,65 +234,136 @@ console.log(data.myDevice.id)
                                         <Grid item justify={"center"} xs={12}>
 
                                             <Paper className={classes.table}>
+ <Grid container wrap="nowrap" spacing={2}>
+          <Grid item>
+           <Typography style={{color: "#000"}}>{t('Name Device')}</Typography>
+          </Grid>
+          <Grid item xs>
+            <Typography style={{color: "#000"}}> {data.myDevice.name_device}</Typography>
+          </Grid>
+           <Grid item>
+            <Typography style={{color: "#000"}}>{t('Type Device')}</Typography>
+          </Grid>
+          <Grid item xs>
+            <Typography style={{color: "#000"}}> {data.myDevice.kind_device}</Typography>
+          </Grid>
+         <Grid item>
+            <Typography style={{color: "#000"}}>{t('Brand Device')}</Typography>
+          </Grid>
+          <Grid item xs>
+            <Typography style={{color: "#000"}}> {data.myDevice.brand_device}</Typography>
+          </Grid>
+         <Grid item>
+            <Typography style={{color: "#000"}}>{t('Brand Device')}</Typography>
+          </Grid>
+          <Grid item xs>
+            <Typography style={{color: "#000"}}> {{data.myDevice.series_device}}</Typography>
+          </Grid>
+        
+      {data.myDevice.certificate_conformity === true &&(
+        <Grid item>
+            <Typography style={{color: "#000"}}>{t('Certificate number')}</Typography>
+          </Grid>
+          <Grid item xs>
+            <Typography style={{color: "#000"}}> {data.myDevice.certificate_assessment_number}</Typography>
+          </Grid>
+           <Grid item>
+            <Typography style={{color: "#000"}}>{t('Certificate module')}</Typography>
+          </Grid>
+          <Grid item xs>
+            <Typography style={{color: "#000"}}> {data.myDevice.module_device}</Typography>
+          </Grid>
+           <Grid item>
+            <Typography style={{color: "#000"}}>{t('Issude by')}</Typography>
+          </Grid>
+          <Grid item xs>
+            <Typography style={{color: "#000"}}>  {data.myDevice.department_assessment_center}</Typography>
+          </Grid>
+         
+             {data.myDevice.conformity_data >= endDate  &&(
+              <Grid item>
+            <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
+              </Grid>
+             <Grid item xs>
+                <Typography style={{color:"#00DE28"}}>{data.myDevice.calibration_data}</Typography>
+             </Grid>)}
 
-                                                <List>
-                                                    <ListItem>
-                                                        <ListItemText><Typography
-                                                            style={{color: "#000"}}> {data.myDevice.name_device}</Typography></ListItemText>
-                                                    </ListItem>
-                                                    <ListItem>
-                                                        <ListItemText><Typography style={{color: "#000"}}> {data.myDevice.brand_device}</Typography></ListItemText>
-                                                    </ListItem>
-                                                    <ListItem>
-                                                        <ListItemText><Typography style={{color: "#000"}}> {data.myDevice.series_device}</Typography> </ListItemText>
-                                                    </ListItem>
-                                                    <ListItem>
-                                                        <ListItemText> <Typography style={{color: "#000"}}> {data.myDevice.kind_device}</Typography></ListItemText>
-                                                    </ListItem>
-                                                    {data.myDevice.certificate_conformity === true &&(
-                                                        <List>
+             {data.myDevice.conformity_data <= startDate &&( <Grid item>
+            <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
+              </Grid>
+             <Grid item xs>
+                <Typography style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</Typography>
+             </Grid>) }
 
-                                                       <ListItem><ListItemText> {data.myDevice.certificate_assessment_number}</ListItemText></ListItem>
-                                                            <ListItem><ListItemText> <Typography style={{color: "#000"}}>{data.myDevice.module_device}</Typography></ListItemText></ListItem>
-                                                            <ListItem><ListItemText><Typography style={{color: "#000"}}> {data.myDevice.department_assessment_center}</Typography></ListItemText></ListItem>
-                                                            {data.myDevice.conformity_data >= endDate  &&(<ListItem align="center" ><ListItemText> <Typography style={{color:"#00DE28"}}>{data.myDevice.calibration_data}</Typography></ListItemText></ListItem>)}
-                                                            {data.myDevice.conformity_data <= startDate &&(<ListItem align="center" style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</ListItem>) }
+                                                       )}
+              {data.myDevice.certificate_verification === true &&(
+                                                        <Grid item>
+            <Typography style={{color: "#000"}}>{t('Certificate number')}</Typography>
+          </Grid>
+          <Grid item xs>
+            <Typography style={{color: "#000"}}> {data.myDevice.certificate_verification_number}</Typography>
+          </Grid>
+           <Grid item>
+            <Typography style={{color: "#000"}}>{t('Issude by')}</Typography>
+          </Grid>
+          <Grid item xs>
+            <Typography style={{color: "#000"}}>  {data.myDevice.department_verification_center}</Typography>
+          </Grid>
+         
+              {data.myDevice.valid_verification >= endDate  &&( <Grid item>
+            <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
+              </Grid>
+             <Grid item xs>
+               <Typography style={{color:"#00DE28"}}>{data.myDevice.valid_verification}</Typography>
+             </Grid>)}
 
-                                                        </List>)}
-                                                    {data.myDevice.certificate_verification === true &&(
-                                                        <List>
-                                                            <ListItem><ListItemText><Typography style={{color: "#000"}}> {data.myDevice.certificate_verification_number}</Typography></ListItemText></ListItem>
-                                                            <ListItem><ListItemText> <Typography style={{color: "#000"}}>{data.myDevice.department_verification_center}</Typography></ListItemText></ListItem>
-                                                            {data.myDevice.valid_verification >= endDate  &&(<ListItem align="center" ><ListItemText> <Typography style={{color:"#00DE28"}}>{data.myDevice.valid_verification}</Typography></ListItemText></ListItem>)}
-                                                            {data.myDevice.valid_verification <= startDate &&(<ListItem align="center" style={{color:"#ff0737"}}>{data.myDevice.valid_verification}</ListItem>) }
+              {data.myDevice.valid_verification <= startDate &&(<Grid item>
+            <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
+              </Grid>
+             <Grid item xs>
+                <Typography style={{color:"#ff0737"}}>{data.myDevice.valid_verification}</Typography>
+             </Grid>) }
+                           )}
+              {data.myDevice.certificate_calibration === true &&(
+           <Grid item>
+            <Typography style={{color: "#000"}}>{t('Certificate number')}</Typography>
+          </Grid>
+          <Grid item xs>
+            <Typography style={{color: "#000"}}>{data.myDevice.certificate_calibration_number}</Typography>
+          </Grid>
+           <Grid item>
+            <Typography style={{color: "#000"}}>{t('Issude by')}</Typography>
+          </Grid>
+          <Grid item xs>
+            <Typography style={{color: "#000"}}> {data.myDevice.department_calibration_center}</Typography>
+          </Grid>
+                {data.myDevice.calibration_data >= endDate  &&(<Grid item>
+            <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
+              </Grid>
+             <Grid item xs>
+               <Typography style={{color:"#00DE28"}}><Typography style={{color:"#00DE28"}}>{data.myDevice.calibration_data}</Typography></Typography>
+             </Grid> )}
+                {data.myDevice.calibration_data <= startDate &&(
+<Grid>
+            <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
+              </Grid>
+             <Grid item xs>
+                <Typography style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</Typography>
+             </Grid>) }
+               )}
+                    {(!data.myDevice.certificate_verification && !data.myDevice.certificate_calibration && !data.myDevice.certificate_conformity) &&(
+                                                        Grid>
+            <Typography style={{color: "#000"}}>{t('No Certificate')}</Typography>
+              </Grid>
+                )}
+                                                    <Grid>
+            <Typography style={{color: "#000"}}>{t('Notes')}</Typography>
+              </Grid>
+             <Grid item xs>
+                <Typography style={{color:"#ff0737"}}>{data.myDevice.notes}</Typography>
+             </Grid> 
 
-                                                        </List>)}
-                                                    {data.myDevice.certificate_calibration === true &&(
-                                                        <List>
-                                                            <ListItem><ListItemText><Typography style={{color: "#000"}}>{data.myDevice.certificate_calibration_number}</Typography></ListItemText></ListItem>
-                                                            <ListItem><ListItemText><Typography style={{color: "#000"}}> {data.myDevice.department_calibration_center}</Typography></ListItemText></ListItem>
-                                                            {data.myDevice.calibration_data >= endDate  &&(<ListItem align="center" ><ListItemText> <Typography style={{color:"#00DE28"}}>{data.myDevice.calibration_data}</Typography></ListItemText></ListItem>)}
-                                                            {data.myDevice.calibration_data <= startDate &&(<ListItem align="center" style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</ListItem>) }
-
-                                                        </List>)}
-                                                    {data.myDevice.certificate_calibration === true &&(
-                                                        <List>
-                                                            <ListItem><ListItemText><Typography style={{color: "#000"}}> {data.myDevice.certificate_calibration_number}</Typography></ListItemText></ListItem>
-                                                            <ListItem><ListItemText><Typography style={{color: "#000"}}> {data.myDevice.department_calibration_center}</Typography></ListItemText></ListItem>
-                                                            {data.myDevice.calibration_data >= endDate  &&(<ListItem align="center" ><ListItemText> <Typography style={{color:"#00DE28"}}>{data.myDevice.calibration_data}</Typography></ListItemText></ListItem>)}
-                                                            {data.myDevice.calibration_data <= startDate &&(<ListItem align="center" style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</ListItem>) }
-
-                                                        </List>)}
-                                                    {(!data.myDevice.certificate_verification && !data.myDevice.certificate_calibration && !data.myDevice.certificate_conformity) &&(
-                                                        <List>
-                                                            <ListItem><ListItemText>
-                                                            <Typography style={{color:"#0000"}}>{t('No Certificate')}</Typography>
-                                                            </ListItemText></ListItem>
-
-                                                        </List>)}
-                                                    <ListItem><ListItemText> {data.myDevice.notes}</ListItemText></ListItem>
-
-                                                </List>
+                                               </Grid>
 
                                             </Paper>
                                         </Grid>
