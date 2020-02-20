@@ -24,7 +24,6 @@ import Hidden from "@material-ui/core/Hidden";
 import LinearDeterminate from "./LinearDeterminate";
 import {AUTH_TOKEN, CREATE_MY_DEVICE, DEVICE_ID, DEVICE_NAME, GC_USER_ID} from "../constants";
 import DeleteIcon from "@material-ui/icons/Delete"
-import TableContainer from '@material-ui/core/TableContainer';
 import Toolbar from "@material-ui/core/Toolbar";
 import Draggable from 'react-draggable';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
