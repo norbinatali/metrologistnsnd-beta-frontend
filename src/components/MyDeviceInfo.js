@@ -259,8 +259,15 @@ console.log(data.myDevice.id)
           <Grid item xs>
             <Typography style={{color: "#000"}}> {data.myDevice.series_device}</Typography>
           </Grid>
-        
+            <Grid>
+            <Typography style={{color: "#000"}}>{t('Notes')}</Typography>
+             </Grid>
+             <Grid item xs>
+                <Typography style={{color:"#ff0737"}}>{data.myDevice.notes}</Typography>
+             </Grid> 
+        </Grid>
       {data.myDevice.certificate_conformity === true &&(
+<Grid container wrap="nowrap" spacing={2}>
         <Grid item>
             <Typography style={{color: "#000"}}>{t('Certificate number')}</Typography>
           </Grid>
@@ -295,8 +302,9 @@ console.log(data.myDevice.id)
                 <Typography style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</Typography>
              </Grid>) }
 
-                                                       )}
+               </Grid>                                        )}
               {data.myDevice.certificate_verification === true &&(
+<Grid container wrap="nowrap" spacing={2}>
                                                         <Grid item>
             <Typography style={{color: "#000"}}>{t('Certificate number')}</Typography>
           </Grid>
@@ -323,8 +331,9 @@ console.log(data.myDevice.id)
              <Grid item xs>
                 <Typography style={{color:"#ff0737"}}>{data.myDevice.valid_verification}</Typography>
              </Grid>) }
-                           )}
+                     </Grid>      )}
               {data.myDevice.certificate_calibration === true &&(
+<Grid container wrap="nowrap" spacing={2}>
            <Grid item>
             <Typography style={{color: "#000"}}>{t('Certificate number')}</Typography>
           </Grid>
@@ -350,20 +359,17 @@ console.log(data.myDevice.id)
              <Grid item xs>
                 <Typography style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</Typography>
              </Grid>) }
-               )}
+            </Grid>   )}
                     {(!data.myDevice.certificate_verification && !data.myDevice.certificate_calibration && !data.myDevice.certificate_conformity) &&(
-                                                        Grid>
-            <Typography style={{color: "#000"}}>{t('No Certificate')}</Typography>
-              </Grid>
-                )}
-                                                    <Grid>
-            <Typography style={{color: "#000"}}>{t('Notes')}</Typography>
-              </Grid>
-             <Grid item xs>
-                <Typography style={{color:"#ff0737"}}>{data.myDevice.notes}</Typography>
-             </Grid> 
 
-                                               </Grid>
+                                                       <Grid container wrap="nowrap" spacing={2}>
+<Grid>
+            <Typography style={{color: "#000"}}>{t('No Certificate')}</Typography>
+              </Grid></Grid>
+                )}
+                                              
+
+                                             
 
                                             </Paper>
                                         </Grid>
