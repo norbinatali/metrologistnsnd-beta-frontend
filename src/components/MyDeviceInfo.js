@@ -229,8 +229,8 @@ console.log(data.myDevice.id)
                                         marginLeft: "auto",
                                     }}>
 
-<Grid container xs={12}>
-                                        <Grid item xs={6}>
+<Grid container spacing={3}>
+                                        <Grid item xs={12} md={6}>
 
                                              <TableContainer component={Paper}>
                                                 <Table className={classes.table} aria-label="spanning table">
@@ -260,7 +260,7 @@ console.log(data.myDevice.id)
                                             </TableContainer>
 </Grid>
 
- <Grid item xs={6}>
+ <Grid item xs={12} md={6}>
 <TableContainer component={Paper}>
                                                 <Table className={classes.table} aria-label="spanning table">
                                                     <TableBody>
