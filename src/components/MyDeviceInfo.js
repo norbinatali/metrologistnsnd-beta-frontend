@@ -15,7 +15,7 @@ import Grid from "@material-ui/core/Grid";
 import clsx from 'clsx';
 import InfoIcon from '@material-ui/icons/Info';
 import Button from '@material-ui/core/Button';
-
+import TableContainer from '@material-ui/core/TableContainer';
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
 import i18n from "../menu/translations/i18n";
@@ -233,156 +233,126 @@ console.log(data.myDevice.id)
 
                                         <Grid item justify={"center"} xs={12}>
 
-                                            <Paper className={classes.table}>
- <Grid container wrap="nowrap" spacing={2}>
-          <Grid item>
-           <Typography style={{color: "#000"}}>{t('Name Device')}</Typography>
-          </Grid>
-          <Grid item xs>
-            <Typography style={{color: "#000"}}> {data.myDevice.name_device}</Typography>
-          </Grid>
-           <Grid item>
-            <Typography style={{color: "#000"}}>{t('Type Device')}</Typography>
-          </Grid>
-          <Grid item xs>
-            <Typography style={{color: "#000"}}> {data.myDevice.kind_device}</Typography>
-          </Grid>
-         <Grid item>
-            <Typography style={{color: "#000"}}>{t('Brand Device')}</Typography>
-          </Grid>
-          <Grid item xs>
-            <Typography style={{color: "#000"}}> {data.myDevice.brand_device}</Typography>
-          </Grid>
-         <Grid item>
-            <Typography style={{color: "#000"}}>{t('Brand Device')}</Typography>
-          </Grid>
-          <Grid item xs>
-            <Typography style={{color: "#000"}}> {data.myDevice.series_device}</Typography>
-          </Grid>
-            <Grid>
-            <Typography style={{color: "#000"}}>{t('Notes')}</Typography>
-             </Grid>
-             <Grid item xs>
-                <Typography style={{color:"#ff0737"}}>{data.myDevice.notes}</Typography>
-             </Grid> 
-        </Grid>
-      {data.myDevice.certificate_conformity === true &&(
-<Grid container wrap="nowrap" spacing={2}>
-        <Grid item>
-            <Typography style={{color: "#000"}}>{t('Certificate number')}</Typography>
-          </Grid>
-          <Grid item xs>
-            <Typography style={{color: "#000"}}> {data.myDevice.certificate_assessment_number}</Typography>
-          </Grid>
-           <Grid item>
-            <Typography style={{color: "#000"}}>{t('Certificate module')}</Typography>
-          </Grid>
-          <Grid item xs>
-            <Typography style={{color: "#000"}}> {data.myDevice.module_device}</Typography>
-          </Grid>
-           <Grid item>
-            <Typography style={{color: "#000"}}>{t('Issude by')}</Typography>
-          </Grid>
-          <Grid item xs>
-            <Typography style={{color: "#000"}}>  {data.myDevice.department_assessment_center}</Typography>
-          </Grid>
+                                             <TableContainer component={Paper}>
+                                                <Table className={classes.table} aria-label="spanning table">
+                                                    <TableBody>
+                                                        <TableRow>
+                                                        <TableCell> <Typography style={{color: "#000"}}>{t('Name Device')}</Typography></TableCell>
+                                                        <TableCell><Typography style={{color: "#000"}}> {data.myDevice.name_device}</Typography></TableCell>
+                                                        </TableRow>
+                                                        <TableRow>
+                                                            <TableCell><Typography style={{color: "#000"}}>{t('Type Device')}</Typography></TableCell>
+                                                            <TableCell> <Typography style={{color: "#000"}}> {data.myDevice.kind_device}</Typography></TableCell>
+                                                        </TableRow>
+                                                        <TableRow>
+                                                            <TableCell>   <Typography style={{color: "#000"}}>{t('Brand Device')}</Typography></TableCell>
+                                                            <TableCell> <Typography style={{color: "#000"}}> {data.myDevice.brand_device}</Typography></TableCell>
+                                                        </TableRow>
+                                                        <TableRow>
+                                                            <TableCell><Typography style={{color: "#000"}}>{t('Series Device')}</Typography></TableCell>
+                                                            <TableCell><Typography style={{color: "#000"}}> {data.myDevice.series_device}</Typography></TableCell>
+                                                        </TableRow>
+                                                        <TableRow>
+                                                            <TableCell>  <Typography style={{color: "#000"}}>{t('Notes')}</Typography></TableCell>
+                                                            <TableCell> <Typography style={{color:"#ff0737"}}>{data.myDevice.notes}</Typography></TableCell>
+                                                        </TableRow>
+                                                        {data.myDevice.certificate_conformity === true &&(
+                                                            <div>
+                                                            <TableRow>
+                                                            <TableCell><Typography style={{color: "#000"}}>{t('Certificate number')}</Typography></TableCell>
+                                                            <TableCell><Typography style={{color: "#000"}}> {data.myDevice.certificate_assessment_number}</Typography></TableCell>
+                                                            </TableRow>
+                                                            <TableRow>
+                                                                <TableCell> <Typography style={{color: "#000"}}>{t('Certificate module')}</Typography></TableCell>
+                                                            <TableCell> <Typography style={{color: "#000"}}> {data.myDevice.module_device}</Typography></TableCell>
+                                                            </TableRow>
+                                                                <TableRow>
+                                                                    <TableCell>  <Typography style={{color: "#000"}}>{t('Issude by')}</Typography></TableCell>
+                                                                    <TableCell>  <Typography style={{color: "#000"}}>  {data.myDevice.department_assessment_center}</Typography></TableCell>
+                                                                </TableRow>
 
-         
-             {data.myDevice.conformity_data >= endDate  &&(
-<Grid container>
-              <Grid item>
-            <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
-              </Grid>
-             <Grid item xs>
-                <Typography style={{color:"#00DE28"}}>{data.myDevice.calibration_data}</Typography>
-             </Grid> </Grid>)}
+                                                        {data.myDevice.conformity_data >= endDate  &&(
+                                                            <TableRow>
+                                                                <TableCell><Typography style={{color: "#000"}}>{t('Valid until')}</Typography></TableCell>
 
-             {data.myDevice.conformity_data <= startDate &&( 
-            <Grid container>
-           <Grid item>
-            <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
-              </Grid>
-             <Grid item xs>
-                <Typography style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</Typography>
-             </Grid> </Grid>) }
-</Grid>
-                                                 )}
-              {data.myDevice.certificate_verification === true &&(
-<Grid container wrap="nowrap" spacing={2}>
-                                                        <Grid item>
-            <Typography style={{color: "#000"}}>{t('Certificate number')}</Typography>
-          </Grid>
-          <Grid item xs>
-            <Typography style={{color: "#000"}}> {data.myDevice.certificate_verification_number}</Typography>
-          </Grid>
-           <Grid item>
-            <Typography style={{color: "#000"}}>{t('Issude by')}</Typography>
-          </Grid>
-          <Grid item xs>
-            <Typography style={{color: "#000"}}>  {data.myDevice.department_verification_center}</Typography>
-          </Grid>
-         
-              {data.myDevice.valid_verification >= endDate  &&(
-<Grid container>
-        <Grid item>
-            <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
-              </Grid>
-             <Grid item xs>
-               <Typography style={{color:"#00DE28"}}>{data.myDevice.valid_verification}</Typography>
-             </Grid>
-</Grid>)}
+                                                            <TableCell>
+                                                                <Typography style={{color:"#00DE28"}}>{data.myDevice.calibration_data}</Typography></TableCell>
+                                                            </TableRow>
+                                                            )}
 
-              {data.myDevice.valid_verification <= startDate &&(
-<Grid container><Grid item>
-            <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
-              </Grid>
-             <Grid item xs>
-                <Typography style={{color:"#ff0737"}}>{data.myDevice.valid_verification}</Typography>
-             </Grid>) }
-                     </Grid> </Grid>     )}
-              {data.myDevice.certificate_calibration === true &&(
-<Grid container wrap="nowrap" spacing={2}>
-           <Grid item>
-            <Typography style={{color: "#000"}}>{t('Certificate number')}</Typography>
-          </Grid>
-          <Grid item xs>
-            <Typography style={{color: "#000"}}>{data.myDevice.certificate_calibration_number}</Typography>
-          </Grid>
-           <Grid item>
-            <Typography style={{color: "#000"}}>{t('Issude by')}</Typography>
-          </Grid>
-          <Grid item xs>
-            <Typography style={{color: "#000"}}> {data.myDevice.department_calibration_center}</Typography>
-          </Grid>
-                {data.myDevice.calibration_data >= endDate  &&(
-<Grid container>
-  <Grid item>
-            <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
-              </Grid>
-             <Grid item xs>
-               <Typography style={{color:"#00DE28"}}><Typography style={{color:"#00DE28"}}>{data.myDevice.calibration_data}</Typography></Typography>
-             </Grid> </Grid>)}
-                {data.myDevice.calibration_data <= startDate &&(
-<Grid container>
- <Grid item>
-            <Typography style={{color: "#000"}}>{t('Valid until')}</Typography>
-              </Grid>
-             <Grid item xs>
-                <Typography style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</Typography>
-             </Grid></Grid>) }
-            </Grid>   )}
-                    {(!data.myDevice.certificate_verification && !data.myDevice.certificate_calibration && !data.myDevice.certificate_conformity) &&(
+                                                        {data.myDevice.conformity_data <= startDate &&(
+                                                            <TableRow><TableCell>
+                                                                <Typography style={{color: "#000"}}>{t('Valid until')}</Typography></TableCell>
+                                                            <TableCell>
+                                                                <Typography style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</Typography></TableCell>
+                                                            </TableRow>) }
+                                                            </div>
+                                                           )}
+                                                            {data.myDevice.certificate_verification === true &&(
+                                                                <div>
+                                                            <TableRow>
+                                                              <TableCell>  <Typography style={{color: "#000"}}>{t('Certificate number')}</Typography></TableCell>
+                                                                <TableCell>
+                                                                    <Typography style={{color: "#000"}}> {data.myDevice.certificate_verification_number}</Typography></TableCell>
+                                                            </TableRow>
+                                                                <TableRow><TableCell>
+                                                               <Typography style={{color: "#000"}}>{t('Issude by')}</Typography></TableCell>
+                                                           <TableCell>
+                                                               <Typography style={{color: "#000"}}>  {data.myDevice.department_verification_center}</Typography></TableCell>
+                                                                </TableRow>
 
-                                                       <Grid container wrap="nowrap" spacing={2}>
-<Grid>
-            <Typography style={{color: "#000"}}>{t('No Certificate')}</Typography>
-              </Grid></Grid>
-                )}
-                                              
+                                                            {data.myDevice.valid_verification >= endDate  &&(
+                                                           <TableRow><TableCell>
+                                                               <Typography style={{color: "#000"}}>{t('Valid until')}</Typography></TableCell>
+                                                            <TableCell>
+                                                                <Typography style={{color:"#00DE28"}}>{data.myDevice.valid_verification}</Typography></TableCell>
+                                                                </TableRow>)}
 
-                                             
+                                                            {data.myDevice.valid_verification <= startDate &&(
 
-                                            </Paper>
+                                                                <TableRow><TableCell>
+                                                                    <Typography style={{color: "#000"}}>{t('Valid until')}</Typography></TableCell>
+                                                                    <TableCell>
+                                                                        <Typography style={{color:"#ff0737"}}>{data.myDevice.valid_verification}</Typography></TableCell>
+                                                                </TableRow>) }
+                                                                </div>)}
+
+                                                            {data.myDevice.certificate_calibration === true &&(
+                                                                <div>
+                                                          <TableRow><TableCell>
+                                                              <Typography style={{color: "#000"}}>{t('Certificate number')}</Typography></TableCell>
+                                                           <TableCell>
+                                                               <Typography style={{color: "#000"}}>{data.myDevice.certificate_calibration_number}</Typography></TableCell>
+                                                          </TableRow>
+                                                                    <TableRow><TableCell>
+                                                                        <Typography style={{color: "#000"}}>{t('Issude by')}</Typography></TableCell>
+                                                            <TableCell>
+                                                                <Typography style={{color: "#000"}}> {data.myDevice.department_calibration_center}</Typography></TableCell>
+                                                                    </TableRow>
+
+                                                            {data.myDevice.calibration_data >= endDate  &&(
+                                                           <TableRow><TableCell>
+                                                               <Typography style={{color: "#000"}}>{t('Valid until')}</Typography></TableCell>
+                                                            <TableCell>
+                                                                <Typography style={{color:"#00DE28"}}>{data.myDevice.calibration_data}</Typography></TableCell>
+                                                                </TableRow>)}
+                                                            {data.myDevice.calibration_data <= startDate &&(
+                                                            <TableRow><TableCell>
+                                                                <Typography style={{color: "#000"}}>{t('Valid until')}</Typography></TableCell>
+                                                            <TableCell>
+                                                                <Typography style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</Typography></TableCell>
+                                                                </TableRow>) }
+                                                                </div>   )}
+                                                            {(!data.myDevice.certificate_verification && !data.myDevice.certificate_calibration && !data.myDevice.certificate_conformity) &&(
+
+                                                           <TableRow><TableCell>
+                                                               <Typography style={{color: "#000"}}>{t('No Certificate')}</Typography></TableCell>
+                                                           </TableRow>
+                                                            )}
+
+                                                    </TableBody>
+                                                </Table>
+                                            </TableContainer>
                                         </Grid>
                                     </TabPanel>
 
