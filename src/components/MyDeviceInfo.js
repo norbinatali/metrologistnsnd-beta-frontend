@@ -231,7 +231,7 @@ console.log(data.myDevice.id)
                                     }}>
 
 
-                                        <Grid item justify={"center"} xs={12}>
+                                        <Grid item xs={6}>
 
                                              <TableContainer component={Paper}>
                                                 <Table className={classes.table} aria-label="spanning table">
@@ -256,6 +256,15 @@ console.log(data.myDevice.id)
                                                             <TableCell>  <Typography style={{color: "#000"}}>{t('Notes')}</Typography></TableCell>
                                                             <TableCell> <Typography style={{color:"#ff0737"}}>{data.myDevice.notes}</Typography></TableCell>
                                                         </TableRow>
+</TableBody>
+                                                </Table>
+                                            </TableContainer>
+</Grid>
+
+ <Grid item xs={6}>
+<TableContainer component={Paper}>
+                                                <Table className={classes.table} aria-label="spanning table">
+                                                    <TableBody>
                                                         {data.myDevice.certificate_conformity === true &&(
                                                             <div>
                                                             <TableRow>
