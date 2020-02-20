@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import ContactUS from "./ContactUS";
 import clsx from 'clsx';
 import UserMenu from "./UserMenu";
+import Footer from "./Footer";
 import gql from "graphql-tag";
 import {Mutation, Query} from 'react-apollo';
 import LinearDeterminate from "./LinearDeterminate";
@@ -316,6 +317,7 @@ function Dashboard ({t}){
                     </div>
                 </div>
             </main>
+<Footer/>
         </div>
 
 
