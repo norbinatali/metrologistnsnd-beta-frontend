@@ -229,7 +229,7 @@ console.log(data.myDevice.id)
                                         marginLeft: "auto",
                                     }}>
 
-
+<Grid container xs={12}>
                                         <Grid item xs={6}>
 
                                              <TableContainer component={Paper}>
@@ -361,6 +361,7 @@ console.log(data.myDevice.id)
                                                     </TableBody>
                                                 </Table>
                                             </TableContainer>
+</Grid>
                                         </Grid>
                                     </TabPanel>
 
