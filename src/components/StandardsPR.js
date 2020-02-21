@@ -81,8 +81,6 @@ function StandardsPR({t}){
        <div style={{height:"100%", width:"100%"}}>
             <UserMenu/>
             <div style={{marginTop:"60px"}} >
-
-        <div  className={classes.root}>
             <Grid container spacing={1}>
                 <Grid item >
                       <IconButton onClick={handleBack}>
