@@ -139,7 +139,7 @@ function Standards({t}){
                 </Grid>
             </Grid>
         </div>
-            </main>
+          
         </div>
 
     );
