@@ -275,7 +275,7 @@ console.log(data.myDevice.id)
                                                             <TableCell> <Typography style={{color: "#000"}}> {data.myDevice.module_device}</Typography></TableCell>
                                                             </TableRow>
                                                                 <TableRow>
-                                                                    <TableCell>  <Typography style={{color: "#000"}}>{t('Issude by')}</Typography></TableCell>
+                                                                    <TableCell>  <Typography style={{color: "#000"}}>{t('Issued by')}</Typography></TableCell>
                                                                     <TableCell>  <Typography style={{color: "#000"}}>  {data.myDevice.department_assessment_center}</Typography></TableCell>
                                                                 </TableRow>
 
@@ -304,7 +304,7 @@ console.log(data.myDevice.id)
                                                                     <Typography style={{color: "#000"}}> {data.myDevice.certificate_verification_number}</Typography></TableCell>
                                                             </TableRow>
                                                                 <TableRow><TableCell>
-                                                               <Typography style={{color: "#000"}}>{t('Issude by')}</Typography></TableCell>
+                                                               <Typography style={{color: "#000"}}>{t('Issued by')}</Typography></TableCell>
                                                            <TableCell>
                                                                <Typography style={{color: "#000"}}>  {data.myDevice.department_verification_center}</Typography></TableCell>
                                                                 </TableRow>
@@ -333,7 +333,7 @@ console.log(data.myDevice.id)
                                                                <Typography style={{color: "#000"}}>{data.myDevice.certificate_calibration_number}</Typography></TableCell>
                                                           </TableRow>
                                                                     <TableRow><TableCell>
-                                                                        <Typography style={{color: "#000"}}>{t('Issude by')}</Typography></TableCell>
+                                                                        <Typography style={{color: "#000"}}>{t('Issued by')}</Typography></TableCell>
                                                             <TableCell>
                                                                 <Typography style={{color: "#000"}}> {data.myDevice.department_calibration_center}</Typography></TableCell>
                                                                     </TableRow>
