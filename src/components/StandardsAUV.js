@@ -97,7 +97,7 @@ function StandardsAUV({t}){
                     if (i18n.language === "ua" )  {
                         return(
                             <Paper className={classes.table} >
-                              <MaterialTable  title={i18n.t('L')}
+                              <MaterialTable  title={i18n.t('AUV')}
                                             columns={[{title: i18n.t('Device'), field: 'device'},{title:i18n.t('Category'), field:'category'},{title:i18n.t('Module'), field:'module'}]}
                                                        data={devicelist.map((dev)=> ({device:dev.name_UA, category:dev.tr.name_TR_UA, module:dev.module}))}
                                                        options={{
