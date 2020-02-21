@@ -76,6 +76,7 @@ const useStyles = makeStyles(theme => ({
     },
     paper:{ backgroundColor:"transparent"},
     container:{
+        marginTop:"10px",
         paddingRight: "15px",
         paddingLeft: "15px",
         marginRight: "auto",
@@ -188,9 +189,9 @@ console.log(data.myDevice.id)
                     if(authToken){
                         const tabsMenu= <Tabs value={value} onChange={handleChangeTab} indicatorColor="default" textColor="primary" scrollButtons="auto" variant="scrollable" centered style={{ flexGrow: 1,width: '100%', marginRight:"auto", marginLeft:"auto", backgroundColor:"#fff"}}>
                             <Tab style={{backgroundColor:"#fff",marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Overview')}</Typography>} {...a11yProps(0)} />
-                            <Tab style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Activity')}</Typography>} {...a11yProps(1)} />
-                            <Tab style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Create a schedule')}</Typography>}  {...a11yProps(2)} />
-                            <Tab style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"overline"}>{t('Setting')}</Typography>}  {...a11yProps(3)} />
+                            <Tab disabled style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Activity')}</Typography>} {...a11yProps(1)} />
+                            <Tab disabled style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Create a schedule')}</Typography>}  {...a11yProps(2)} />
+                            <Tab disabled style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"overline"}>{t('Setting')}</Typography>}  {...a11yProps(3)} />
                         </Tabs>
                         return(
                             <Grid container spacing={2} xs={12}>
@@ -212,9 +213,9 @@ console.log(data.myDevice.id)
                                             <Hidden mdUp>
                                                 <Tabs value={value} onChange={handleChangeTab} indicatorColor="default" textColor="primary" scrollButtons="auto" variant="scrollable" centered style={{ flexGrow: 1,width: '100%', marginRight:"auto", marginLeft:"auto", backgroundColor:"#fff"}}>
                                                     <Tab style={{backgroundColor:"#fff",marginRight:"auto", marginLeft:"auto"}} label={ <InfoIcon style={{color:"#000"}}/>} {...a11yProps(0)} onClick={()=>  (localStorage.removeItem('device-name'),history.push('/mydevices/'+deviceName))} />
-                                                    <Tab style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={ <TimelineIcon style={{color:"#000"}}/>} {...a11yProps(1)} onClick={()=> history.push('/mydevices/'+deviceName+'/activity')}/>
-                                                    <Tab style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={ <ScheduleIcon style={{color:"#000"}}/>}  {...a11yProps(2)} onClick={()=> history.push('/mydevices/'+deviceName+'/schedule')}/>
-                                                    <Tab style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={ <SettingsIcon style={{color:"#000"}}/>}  {...a11yProps(3)} onClick={()=> history.push('/mydevices/'+deviceName+'/setting')} />
+                                                    <Tab disabled style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={ <TimelineIcon style={{color:"#000"}}/>} {...a11yProps(1)} onClick={()=> history.push('/mydevices/'+deviceName+'/activity')}/>
+                                                    <Tab disabled style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={ <ScheduleIcon style={{color:"#000"}}/>}  {...a11yProps(2)} onClick={()=> history.push('/mydevices/'+deviceName+'/schedule')}/>
+                                                    <Tab disabled style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={ <SettingsIcon style={{color:"#000"}}/>}  {...a11yProps(3)} onClick={()=> history.push('/mydevices/'+deviceName+'/setting')} />
                                                 </Tabs>
                                             </Hidden>
                                         </div>
@@ -370,11 +371,7 @@ console.log(data.myDevice.id)
                                         <Grid justify={"center"} item xs={12}>
                                             <Paper className={classes.table}>
 
-                                                <Table stickyHeader component={Paper}>
-
-
-
-                                                </Table>
+                                             
 
                                             </Paper>
 
