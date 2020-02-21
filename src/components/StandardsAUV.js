@@ -80,9 +80,7 @@ function StandardsAUV({t}){
     return (
        <div style={{height:"100%", width:"100%"}}>
             <UserMenu/>
-            <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
-
-        <div style={{marginTop:"50px"}} >
+              <div style={{marginTop:"60px"}} >
             <Grid container spacing={1}>
                 <Grid item >
                     <IconButton onClick={handleBack}>
@@ -141,9 +139,9 @@ function StandardsAUV({t}){
                 </Grid>
             </Grid>
         </div>
-            </main>
+          
         </div>
-</div>
+
 
     );
 
