@@ -261,7 +261,7 @@ function Dashboard ({t}){
                                                 variant="outlined"
                                                 id="name"
                                                 size="small"
-                                                placeHolder={t('Title')}
+                                                placeholder={t('Title')}
                                                 value={title}
                                                 onChange={(event)=>setTitle(event.target.value)}
                                                 fullWidth
@@ -270,7 +270,7 @@ function Dashboard ({t}){
                                                 variant="outlined"
                                                 id="name"
                                                 size="small"
-                                                placeHolder={t('Location')}
+                                                placeholder={t('Location')}
                                                 value={location}
                                                 onChange={(event)=>setLocation(event.target.value)}
                                                 fullWidth
@@ -280,7 +280,7 @@ function Dashboard ({t}){
                                                 rows={3}
                                                 id="name"
                                                 size="small"
-                                      placeHolder={t('Notes')}
+                                      placeholder={t('Notes')}
                                                 variant="outlined"
                                                 value={notes}
                                                 onChange={(event)=>setNotes(event.target.value)}
