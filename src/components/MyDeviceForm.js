@@ -46,12 +46,22 @@ const authToken = localStorage.getItem(AUTH_TOKEN);
 const useStyles = makeStyles(theme => ({
 
     table: {
-        
-        maxWidth:"100%",
-        marginRight:"0",
-        marginLeft:"0",
-        color:"#fff",
-        overflowX: 'auto',
+       
+       marginRight:"auto",
+        marginLeft:"auto",
+        backgroundColor:"transparent",
+         "@media (min-width: 576px)": {
+            maxWidth: "540px"
+        },
+        "@media (min-width: 768px)": {
+            maxWidth: "720px"
+        },
+        "@media (min-width: 992px)": {
+            maxWidth: "960px"
+        },
+        "@media (min-width: 1200px)": {
+            maxWidth: "1140px"
+        },
          
     },
     root: {
