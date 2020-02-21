@@ -10,6 +10,16 @@
   "Back": "Назад",
   "Next": "Далі",
   "Reset": "Оновити",
+"Valid":"Дійсний",
+ "Expired":"Прострочений",
+ "Person":"Особисті",
+ "Name Device":"Назва ЗВТ",
+ "Type Device":"Тип ЗВТ",
+ "Brand Device":"Бренд ЗВТ",
+ "Series Device":"Серійний номер ЗВТ",
+ "Certificate module":"Модуль",
+ "Issued by":"Виданий",
+ "Valid until":"Дійсний до",
 
 
   "Dashboard": "Домашня сторінка",
