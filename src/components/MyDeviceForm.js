@@ -200,16 +200,13 @@ function MyDeviceForm({t,className, rest}) {
                                                             {device.certificate_conformity=== true &&(
 
                                                                 <TableRow key={device.id}>
-                                                                    <TableCell  align="center"><List>
-                                                                        <ListItem button onClick={()=>(
+                                                                    <TableCell  align="center" button onClick={()=>(
                                                                             localStorage.setItem(DEVICE_ID,device.id),
                                                                             localStorage.setItem(DEVICE_NAME,device.name_device),
                                                                                 history.push('/mydevices/'+device.name_device)
                                                                             )}>
-                                                                            <ListItemText primary={device.name_device} secondary={device.kind_device}/>
-                                                                    <ListItemText primary={device.brand_device} secondary={device.series_device}/></ListItem></List></TableCell>
-
-                                                                    {device.conformity_data >= endDate  &&(<TableCell align="center" > <Typography style={{color:"#00DE28"}}>{t('Valid')}</Typography></TableCell>)}
+                                                                            {device.name_device} </TableCell>
+                                                                     {device.conformity_data >= endDate  &&(<TableCell align="center" > <Typography style={{color:"#00DE28"}}>{t('Valid')}</Typography></TableCell>)}
                                                                     {device.conformity_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{t('Expired')}</TableCell>) }
                                                                     <TableCell> {device.notes}</TableCell>
                                                                     <TableCell>
@@ -244,17 +241,13 @@ function MyDeviceForm({t,className, rest}) {
                                                             {device.certificate_calibration=== true &&(
 
                                                                 <TableRow key={device.id}>
-                                                                    <TableCell  align="center"><List>
-                                                                        <ListItem button onClick={()=>(
-                                                                            localStorage.setItem(DEVICE_ID,device.id),
+                                                                    <TableCell  align="center" button onClick={()=>(
+                                                                   localStorage.setItem(DEVICE_ID,device.id),
                                                                                 localStorage.setItem(DEVICE_NAME,device.name_device),
                                                                                 history.push('/mydevices/'+device.name_device)
-
-
-
                                                                                )}>
-                                                                            <ListItemText primary={device.name_device} secondary={device.kind_device}/>
-                                                                            <ListItemText primary={device.brand_device} secondary={device.series_device}/></ListItem></List></TableCell>
+                                                                            {device.name_device} 
+                                                                            </TableCell>
                                                                     {device.calibration_data >= endDate &&(<TableCell align="center" ><Typography style={{color:"#00DE28"}}>{t('Valid')}</Typography></TableCell>)}
                                                                     {device.calibration_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{t('Expired')}</TableCell>)}
                                                                     <TableCell  align="center">{device.notes}</TableCell>
@@ -294,15 +287,12 @@ function MyDeviceForm({t,className, rest}) {
 
                                                             {device.certificate_verification===true &&(
                                                                 <TableRow key={device.id}>
-                                                                    <TableCell  align="center"><List>
-                                                                        <ListItem button onClick={()=>(
+                                                                    <TableCell  align="center" button onClick={()=>(
                                                                             localStorage.setItem(DEVICE_ID,device.id),
                                                                                 localStorage.setItem(DEVICE_NAME,device.name_device),
                                                                                 history.push('/mydevices/'+device.name_device)
-
                                                                                 )}>
-                                                                            <ListItemText primary={device.name_device} secondary={device.kind_device}/>
-                                                                            <ListItemText primary={device.brand_device} secondary={device.series_device}/></ListItem></List></TableCell>
+                                                                            {device.name_device} </TableCell>
                                                                     {device.valid_verification >= endDate &&(<TableCell align="center" ><Typography style={{color:"#00DE28"}}>{t('Valid')}</Typography></TableCell>)}
                                                                     {device.valid_verification <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{t('Expired')}</TableCell>)}
                                                                     <TableCell  align="center">{device.notes}</TableCell>
@@ -347,15 +337,14 @@ function MyDeviceForm({t,className, rest}) {
                                                                 {(!device.certificate_verification && !device.certificate_calibration && !device.certificate_conformity) &&(
 
                                                                     <TableRow key={device.id}>
-                                                                        <TableCell  align="center"><List>
-                                                                            <ListItem button onClick={()=>(
+                                                                        <TableCell  align="center" button onClick={()=>(
                                                                                 localStorage.setItem(DEVICE_ID,device.id),
                                                                                     localStorage.setItem(DEVICE_NAME,device.name_device),
                                                                                     history.push('/mydevices/'+device.name_device)
 
                                                                                    )}>
-                                                                                <ListItemText primary={device.name_device} secondary={device.kind_device}/>
-                                                                                <ListItemText primary={device.brand_device} secondary={device.series_device}/></ListItem></List></TableCell>
+                                                                                {device.name_device} 
+                                                                               </TableCell>
                                                                         <TableCell  align="center">{device.notes}</TableCell>
                                                                         <TableCell>
 
