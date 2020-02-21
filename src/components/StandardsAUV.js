@@ -123,7 +123,7 @@ function StandardsAUV({t}){
 
                     if (i18n.language === "en"){
                         return(
-                            <Paper className={classes.table>
+                            <Paper className={classes.table}>
                             <MaterialTable  title={i18n.t('L')}
                                             columns={[{title: i18n.t('Device'), field: 'device'},{title:i18n.t('Reglament'), field:'category'},{title:i18n.t('Module'), field:'module'}]}
                                                        data={devicelist.map((dev)=> ({device:dev.name_EN, category:dev.tr.name_TR_EN, module:dev.module}))}
@@ -131,11 +131,10 @@ function StandardsAUV({t}){
                                                            sorting: true,
                                                            rowStyle: {
                                                                backgroundColor: '#EEE',
-                                                              
-                                                           },
-                                                       }}  
-                                                        />
-                                </Paper>)}
+                                                        },
+                                                       }} />
+                                </Paper>
+)}
                     else return null}
                 }
             </Query>
@@ -144,6 +143,7 @@ function StandardsAUV({t}){
         </div>
             </main>
         </div>
+</div>
 
     );
 
