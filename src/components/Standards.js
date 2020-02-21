@@ -19,6 +19,7 @@ import LinearDeterminate from "./LinearDeterminate";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import history from '../history';
+import MaterialTable from "material-table";
 
 const StyledTableCell = withStyles(theme => ({
     head: {
