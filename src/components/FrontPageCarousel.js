@@ -21,7 +21,9 @@ import PropTypes from "prop-types";
 import image2 from "../menu/style/Screen Shot 2020-02-06 at 4.21.40 PM.png";
 import MenuTabPanel from "./MenuTabPanel";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-
+import {CardContent, Paper} from "@material-ui/core";
+import Parallax from "./Parallax";
+import front from "../menu/style/plain-white-background.jpg"
 const classes = makeStyles(theme => ({
     root: {
         marginTop:theme.spacing(1),
@@ -71,6 +73,26 @@ const useStyles = makeStyles({
         marginRight: "auto",
         marginLeft: "auto",
         width: "100%"
+    },
+button: {
+        background: 'linear-gradient(45deg, #7600FF 5%, rgba(0,1,14,0.74) 95%)',
+        border: 0,
+        borderRadius: 3,
+        boxShadow: '0 3px 5px 2px rgba(18, 1, 13, .76)',
+        color: 'white',
+        height: 48,
+        padding: '0 30px',
+    },
+    buttonSignup: {
+        background: 'linear-gradient(45deg, #ffe400 5%, rgba(0,1,14,0.74) 95%)',
+        border: 0,
+        borderRadius: 3,
+        boxShadow: '0 3px 5px 2px rgba(18, 1, 13, .76)',
+        color: '#fff',
+        height: 48,
+        marginLeft:"20px",
+        padding: '0 30px',
+
     },
 container:{
     "@media (min-width: 576px)": {
@@ -134,27 +156,37 @@ function FrontPageCarousel({t}) {
     return (
         <div>
             <MenuTabPanel/>
-        <TabPanel value={0} index={0} dir={theme.direction} className={classes.panel}>
-            <div style={{marginRight:"auto", marginLeft:"auto"}}>
-                <div style={{marginLeft: "auto", marginRight:"auto", display:"flex"}}>
+      
+            <Parallax image={front} >
+                <div style={{ marginLeft:"auto", marginRight:"auto", width:"100%"}}>
+
                 <MuiThemeProvider>
-                    <Grid container spacing={5} xs={12}>
-                        <Grid item xs={12} md={3} >
-                            <Typography style={{marginTop:"40%",color:"rgba(0,1,47,0.84)"}}>     <h4 >{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</h4></Typography>
-                            <Button variant={"outlined"} onClick={()=> history.push('/login')} style={{color:"rgba(0,1,14,0.74)"}} ><Typography>{t('Lets start')}</Typography></Button >
 
-                        </Grid>
-                            <Grid item xs={12} md={8}   >
+<Grid container xs={12}>
 
-                            <img src={image2} style={{width:"50%"}}/>
-                            </Grid>
+    <Grid item xs={12}  sm={5} style={{marginRight:"auto", marginLeft:"auto"}}>
+                            <Typography  variant={"h6"} justify={"center"}>{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</Typography>
+    </Grid>
+    <Grid item xs={12}>
+        <Button className={classes.button}>{t('Lets start')}</Button >
+        <Button className={classes.buttonSignup}>{t('Sign Up')}</Button >
+    </Grid>
+</Grid>
+                                <br/>
 
 
 
-                    </Grid>
+
+
+
+
+
+
+
                 </MuiThemeProvider>
-                </div></div>
-        </TabPanel>
+
+                </div></Parallax>
+        
         </div>
 
     );
