@@ -159,7 +159,7 @@ function FrontPageCarousel({t}) {
         <div>
             <MenuTabPanel/>
       
-            <Parallax image={front} >
+           
                 <div style={{ marginLeft:"auto", marginRight:"auto", width:"100%"}}>
 
                 <MuiThemeProvider>
@@ -167,7 +167,7 @@ function FrontPageCarousel({t}) {
 <Grid container xs={12}>
 
     <Grid item xs={12}  sm={5} style={{marginRight:"auto", marginLeft:"auto"}}>
-                            <Typography  variant={"h6"} justify={"center"}>{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</Typography>
+                            <Typography  variant={"h6"} justify={"center"} style={{color:"rgba(0,1,14,0.74)"}}>{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</Typography>
     </Grid>
     <Grid item xs={12}>
         <Button className={classes.button} onClick={()=>history.push('/login')}>{t('Lets start')}</Button >
@@ -187,7 +187,7 @@ function FrontPageCarousel({t}) {
 
                 </MuiThemeProvider>
 
-                </div></Parallax>
+                </div>
         
         </div>
 
