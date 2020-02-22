@@ -168,8 +168,8 @@ function FrontPageCarousel({t}) {
                             <Typography  variant={"h6"} justify={"center"}>{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</Typography>
     </Grid>
     <Grid item xs={12}>
-        <Button className={classes.button}>{t('Lets start')}</Button >
-        <Button className={classes.buttonSignup}>{t('Sign Up')}</Button >
+        <Button className={classes.button} onClick={()=>history.push('/login')}>{t('Lets start')}</Button >
+        <Button className={classes.buttonSignup} onClick={()=>history.push('/signup')}>{t('Sign Up')}</Button >
     </Grid>
 </Grid>
                                 <br/>
