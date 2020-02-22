@@ -159,9 +159,8 @@ function FrontPageCarousel({t}) {
         <div>
             <MenuTabPanel/>
       
-           
+           <Parallax image={front} >
                 <div style={{ marginLeft:"auto", marginRight:"auto", width:"100%"}}>
-
                 <MuiThemeProvider>
 
 <Grid container xs={12}>
@@ -187,7 +186,7 @@ function FrontPageCarousel({t}) {
 
                 </MuiThemeProvider>
 
-                </div>
+                </div></Parallax>
         
         </div>
 
