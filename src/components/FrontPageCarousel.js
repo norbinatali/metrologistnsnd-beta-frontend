@@ -20,10 +20,12 @@ import Box from "@material-ui/core/Box";
 import PropTypes from "prop-types";
 import image2 from "../menu/style/Screen Shot 2020-02-06 at 4.21.40 PM.png";
 import MenuTabPanel from "./MenuTabPanel";
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+
 import {CardContent, Paper} from "@material-ui/core";
 import Parallax from "./Parallax";
 import front from "../menu/style/plain-white-background.jpg"
+
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const classes = makeStyles(theme => ({
     root: {
         marginTop:theme.spacing(1),
