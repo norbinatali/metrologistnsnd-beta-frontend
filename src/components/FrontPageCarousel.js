@@ -20,11 +20,11 @@ import Box from "@material-ui/core/Box";
 import PropTypes from "prop-types";
 import image2 from "../menu/style/Screen Shot 2020-02-06 at 4.21.40 PM.png";
 import MenuTabPanel from "./MenuTabPanel";
-
+import Hidden from "@material-ui/core/Hidden";
 import {CardContent, Paper} from "@material-ui/core";
 import Parallax from "./Parallax";
 import front from "../menu/style/plain-white-background.jpg"
-
+import iphonePic from "../menu/style/iphonePic.jpg"
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const classes = makeStyles(theme => ({
     root: {
@@ -83,7 +83,7 @@ button: {
         boxShadow: '0 3px 5px 2px rgba(18, 1, 13, .76)',
         color: 'white',
         height: 48,
-        padding: '0 30px',
+        padding: '0 10px',
     },
     buttonSignup: {
         background: 'linear-gradient(45deg, #ffe400 5%, rgba(0,1,14,0.74) 95%)',
@@ -92,8 +92,8 @@ button: {
         boxShadow: '0 3px 5px 2px rgba(18, 1, 13, .76)',
         color: '#fff',
         height: 48,
-        marginLeft:"20px",
-        padding: '0 30px',
+        marginLeft:"10px",
+        padding: '0 10px',
 
     },
 container:{
@@ -155,41 +155,51 @@ function FrontPageCarousel({t}) {
         slidesToScroll: 1,
         autoplay: false
     };
+const laptopView= <MuiThemeProvider>
+<Parallax image={front}>
+        <Grid container xs={12}>
+
+            <Grid item xs={12}  sm={5} style={{marginRight:"auto", marginLeft:"auto"}}>
+                <Typography  variant={"h6"} justify={"center"}>{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</Typography>
+            </Grid>
+            <Grid item xs={12}>
+               <Button className={classes.button} onClick={()=>history.push('/login')}>{t('Lets start')}</Button >
+        <Button className={classes.buttonSignup} onClick={()=>history.push('/signup')}>{t('Sign Up')}</Button >
+            </Grid>
+        </Grid>
+
+</Parallax>
+    </MuiThemeProvider>
     return (
         <div>
             <MenuTabPanel/>
       
-           <Parallax image={front} >
-                <div style={{ marginLeft:"auto", marginRight:"auto", width:"100%"}}>
+           <div style={{ marginLeft:"auto", marginRight:"auto"}}>
+
+                    <Hidden smDown implementation="css">
                 <MuiThemeProvider>
 
-<Grid container xs={12}>
-
-    <Grid item xs={12}  sm={5} style={{marginRight:"auto", marginLeft:"auto"}}>
-                            <Typography  variant={"h6"} justify={"center"} style={{color:"rgba(0,1,14,0.74)"}}>{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</Typography>
-    </Grid>
-    <Grid item xs={12}>
-        <Button className={classes.button} onClick={()=>history.push('/login')}>{t('Lets start')}</Button >
-        <Button className={classes.buttonSignup} onClick={()=>history.push('/signup')}>{t('Sign Up')}</Button >
-    </Grid>
-</Grid>
-                                <br/>
-
-
-
-
-
-
-
-
-
+                    {laptopView}
 
                 </MuiThemeProvider>
+                    </Hidden>
+                    <Hidden mdUp>
+                        <Parallax image={iphonePic} >
+                            <Grid container xs={7} style={{marginRight:"auto", marginLeft:"auto"}} >
 
-                </div></Parallax>
-        
+                                <Grid item xs={12} md={2} >
+                                    <Typography  variant={"body1"} justify={"center"}>{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</Typography>
+                                </Grid>
+                                <Grid item xs={12} md={2}>
+        <Button className={classes.button} onClick={()=>history.push('/login')}>{t('Lets start')}</Button >
+        <Button className={classes.buttonSignup} onClick={()=>history.push('/signup')}>{t('Sign Up')}</Button >
+     </Grid>
+                            </Grid>
+                        </Parallax>
+                    </Hidden>
+                </div>
+
         </div>
-
     );
 }
 export default withTranslation() (FrontPageCarousel)
