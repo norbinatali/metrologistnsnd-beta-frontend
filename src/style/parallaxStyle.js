@@ -2,7 +2,18 @@ const parallaxStyle = {
     parallax: {
         height: "80vh",
         maxHeight: "600px",
-        width:"100%",
+        "@media (min-width: 568px)": {
+            maxWidth: "540px"
+        },
+        "@media (min-width: 768px)": {
+            maxWidth: "720px"
+        },
+        "@media (min-width: 992px)": {
+            maxWidth: "960px"
+        },
+        "@media (min-width: 1200px)": {
+            maxWidth: "1140px"
+        },
         justifyItems:"center",
 
         overflow: "hidden",
@@ -24,7 +35,18 @@ const parallaxStyle = {
             position: "absolute",
 
             zIndex: "1",
-            width:"100%",
+            "@media (min-width: 568px)": {
+            maxWidth: "540px"
+        },
+        "@media (min-width: 768px)": {
+            maxWidth: "720px"
+        },
+        "@media (min-width: 992px)": {
+            maxWidth: "960px"
+        },
+        "@media (min-width: 1200px)": {
+            maxWidth: "1140px"
+        },
             height: "100%",
             left: "0",
             top: "0",
