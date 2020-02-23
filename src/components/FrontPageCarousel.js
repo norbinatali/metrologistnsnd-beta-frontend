@@ -160,7 +160,7 @@ const laptopView= <MuiThemeProvider>
         <Grid container xs={12}>
 
             <Grid item xs={12}  sm={5} style={{marginRight:"auto", marginLeft:"auto"}}>
-                <Typography  variant={"h6"} justify={"center"}>{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</Typography>
+                <Typography style={{color:"rgba(0,1,14,0.74)"}} variant={"h6"} justify={"center"}>{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</Typography>
             </Grid>
             <Grid item xs={12}>
                <Button className={classes.button} onClick={()=>history.push('/login')}>{t('Lets start')}</Button >
@@ -188,7 +188,7 @@ const laptopView= <MuiThemeProvider>
                             <Grid container xs={7} style={{marginRight:"auto", marginLeft:"auto"}} >
 
                                 <Grid item xs={12} md={2} >
-                                    <Typography  variant={"body1"} justify={"center"}>{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</Typography>
+                                    <Typography style={{color:"rgba(0,1,14,0.74)"}}  variant={"body1"} justify={"center"}>{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</Typography>
                                 </Grid>
                                 <Grid item xs={12} md={2}>
         <Button className={classes.button} onClick={()=>history.push('/login')}>{t('Lets start')}</Button >
