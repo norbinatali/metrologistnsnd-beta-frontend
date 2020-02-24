@@ -124,7 +124,7 @@ function StandardsIR({t}){
                             <Paper className={classes.table}>
                             <MaterialTable  title={i18n.t('IR')}
                                             columns={[{title: i18n.t('Device'), field: 'device'},{title:i18n.t('Reglament'), field:'category'},{title:i18n.t('Module'), field:'module'}]}
-                                                       data={devicelist.map((dev)=> ({device:dev.name_EN, category:dev.tr.name_TR_EN, module:dev.module}))}
+                                                       data={devicelist.map((dev)=> ({device:dev.name_EN, module:dev.module}))}
                                                        options={{
                                                            sorting: true,
                                                            rowStyle: {
