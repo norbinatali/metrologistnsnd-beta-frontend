@@ -285,7 +285,7 @@ console.log(data.myDevice.id)
                                                                 <TableCell><Typography style={{color: "#000"}}>{t('Valid until')}</Typography></TableCell>
 
                                                             <TableCell>
-                                                                <Typography style={{color:"#00DE28"}}>{data.myDevice.calibration_data}</Typography></TableCell>
+                                                                <Typography style={{color:"#00DE28"}}>{data.myDevice.conformity_data}</Typography></TableCell>
                                                             </TableRow>
                                                             )}
 
@@ -293,7 +293,7 @@ console.log(data.myDevice.id)
                                                             <TableRow><TableCell>
                                                                 <Typography style={{color: "#000"}}>{t('Valid until')}</Typography></TableCell>
                                                             <TableCell>
-                                                                <Typography style={{color:"#ff0737"}}>{data.myDevice.calibration_data}</Typography></TableCell>
+                                                                <Typography style={{color:"#ff0737"}}>{data.myDevice.conformity_data}</Typography></TableCell>
                                                             </TableRow>) }
                                                             </div>
                                                            )}
