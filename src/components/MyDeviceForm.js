@@ -64,6 +64,19 @@ const useStyles = makeStyles(theme => ({
         },
          
     },
+    tableCell:{ width:"400px",
+        "@media (min-width: 576px)": {
+                maxWidth: "540px"
+            },
+            "@media (min-width: 768px)": {
+                maxWidth: "720px"
+            },
+            "@media (min-width: 992px)": {
+                maxWidth: "960px"
+            },
+            "@media (min-width: 1200px)": {
+                maxWidth: "1140px"
+            },},
     root: {
         maxWidth: '100%',
         height:"100%",
@@ -210,7 +223,7 @@ function MyDeviceForm({t,className, rest}) {
                                                             {device.certificate_conformity=== true &&(
 
                                                                 <TableRow key={device.id}>
-                                                                    <TableCell  align="center" button onClick={()=>(
+                                                                    <TableCell className={classes.tableCell} align="center" button onClick={()=>(
                                                                             localStorage.setItem(DEVICE_ID,device.id),
                                                                             localStorage.setItem(DEVICE_NAME,device.name_device),
                                                                                 history.push('/mydevices/'+device.name_device)
@@ -251,7 +264,7 @@ function MyDeviceForm({t,className, rest}) {
                                                             {device.certificate_calibration=== true &&(
 
                                                                 <TableRow key={device.id}>
-                                                                    <TableCell  align="center" button onClick={()=>(
+                                                                    <TableCell className={classes.tableCell} align="center" button onClick={()=>(
                                                                    localStorage.setItem(DEVICE_ID,device.id),
                                                                                 localStorage.setItem(DEVICE_NAME,device.name_device),
                                                                                 history.push('/mydevices/'+device.name_device)
@@ -297,7 +310,7 @@ function MyDeviceForm({t,className, rest}) {
 
                                                             {device.certificate_verification===true &&(
                                                                 <TableRow key={device.id}>
-                                                                    <TableCell  align="center" button onClick={()=>(
+                                                                    <TableCell className={classes.tableCell} align="center" button onClick={()=>(
                                                                             localStorage.setItem(DEVICE_ID,device.id),
                                                                                 localStorage.setItem(DEVICE_NAME,device.name_device),
                                                                                 history.push('/mydevices/'+device.name_device)
@@ -346,7 +359,7 @@ function MyDeviceForm({t,className, rest}) {
                                                             <TableBody>
                                                                 {(!device.certificate_verification && !device.certificate_calibration && !device.certificate_conformity) &&(
 
-                                                                    <TableRow key={device.id}>
+                                                                    <TableRow className={classes.tableCell} key={device.id}>
                                                                         <TableCell  align="center" button onClick={()=>(
                                                                                 localStorage.setItem(DEVICE_ID,device.id),
                                                                                     localStorage.setItem(DEVICE_NAME,device.name_device),
