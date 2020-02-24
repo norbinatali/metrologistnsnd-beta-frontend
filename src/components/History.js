@@ -77,7 +77,7 @@ const useStyles = makeStyles(theme => ({
                                                <ArrowRightIcon />
                                            </IconButton>
                                        </ListItem>
-                                   <ListItem button onClick={()=> history.push('/history-metrology')}>
+                                   <ListItem button disabled onClick={()=> history.push('/history-metrology')}>
                                        <ListItemText  primary={""} secondary={t('History')}   />
                                        <IconButton  edge="end" size="small"   >
                                            <ArrowRightIcon />
@@ -98,25 +98,25 @@ const useStyles = makeStyles(theme => ({
                                 <Divider />
                                 <CardContent className={classes.content}>
                                     <List>
-                                        <ListItem button onClick={()=> history.push('/what-is-conformity-assessment')}>
+                                        <ListItem button disabled onClick={()=> history.push('/what-is-conformity-assessment')}>
                                             <ListItemText  primary={""} secondary={t('What is conformity assessment')}   />
                                             <IconButton  edge="end" size="small" >
                                                 <ArrowRightIcon />
                                             </IconButton>
                                         </ListItem>
-                                        <ListItem button onClick={()=> history.push('/modules')}>
+                                        <ListItem button disabled onClick={()=> history.push('/modules')}>
                                             <ListItemText  primary={""} secondary={t('Modules')}   />
                                             <IconButton  edge="end" size="small"   >
                                                 <ArrowRightIcon />
                                             </IconButton>
                                         </ListItem>
-                                        <ListItem button onClick={()=> history.push('/technical-reglaments')} >
+                                        <ListItem button disabled onClick={()=> history.push('/technical-reglaments')} >
                                             <ListItemText  primary={""} secondary={t('Technical Reglaments')} />
                                             <IconButton  edge="end" size="small" >
                                                 <ArrowRightIcon />
                                             </IconButton>
                                         </ListItem>
-                                         <ListItem button onClick={()=> history.push('/procedure-conformity-assessment')}>
+                                         <ListItem button disabled onClick={()=> history.push('/procedure-conformity-assessment')}>
                                         <ListItemText  primary={""} secondary={t('Procesure')} />
                                         <IconButton  edge="end" size="small"  >
                                             <ArrowRightIcon />
@@ -136,19 +136,19 @@ const useStyles = makeStyles(theme => ({
                             <Divider />
                             <CardContent className={classes.content}>
                                 <List>
-                                    <ListItem button onClick={()=> history.push('/what-is-quality-system')}>
+                                    <ListItem button disabled onClick={()=> history.push('/what-is-quality-system')}>
                                         <ListItemText  primary={""} secondary={t('What is quality system?')}   />
                                         <IconButton  edge="end" size="small"  >
                                             <ArrowRightIcon />
                                         </IconButton>
                                     </ListItem>
-                                    <ListItem button onClick={()=> history.push('/documents-of-quality-system')}>
+                                    <ListItem button disabled onClick={()=> history.push('/documents-of-quality-system')}>
                                         <ListItemText  primary={""} secondary={t('Documents of quality system')}   />
                                         <IconButton  edge="end" size="small"  >
                                             <ArrowRightIcon />
                                         </IconButton>
                                     </ListItem>
-                                    <ListItem onClick={()=> history.push('/standards-information')}>
+                                    <ListItem disabled  button onClick={()=> history.push('/standards-information')}>
                                         <ListItemText  primary={""} secondary={t('Standards')}   />
                                         <IconButton  edge="end" size="small"  >
                                             <ArrowRightIcon />
