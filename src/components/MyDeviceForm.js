@@ -178,7 +178,7 @@ function MyDeviceForm({t,className, rest}) {
                         return(
 
                             <Grid container spacing={2} xs={12}>
-                                <AppBar position={"relative"}  color="default" elevation={5} style={{marginTop:"50px"}}>
+                                <AppBar position={"relative"} fixed color="default" elevation={5} style={{marginTop:"50px"}}>
                                     <Toolbar className={classes.toolbar} >
                                         <Button >{t('Person')}</Button>
 
