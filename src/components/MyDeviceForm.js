@@ -190,7 +190,7 @@ function MyDeviceForm({t,className, rest}) {
                     if(authToken){
                         return(
 
-                            <Grid container spacing={2} xs={12}>
+                            <div>
                                 <AppBar position={"relative"} fixed color="default" elevation={5} style={{marginTop:"50px"}}>
                                     <Toolbar className={classes.toolbar} >
                                         <Button >{t('Person')}</Button>
@@ -208,8 +208,9 @@ function MyDeviceForm({t,className, rest}) {
                                         </Tabs>
                                     </AppBar>
                                 </AppBar>
+<Grid container spacing={2} xs={12}>
                                 <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
-                                    <TabPanel value={value} index={0} dir={theme.direction} style={{ width:"100%",minHeight: "375px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
+                                    <TabPanel value={value} index={0} dir={theme.direction} style={{ width:"100%",height: "600px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
 
                                         <Grid item justify={"center"} xs={12}>
 
@@ -252,7 +253,7 @@ function MyDeviceForm({t,className, rest}) {
                                         </Grid>
 
                                     </TabPanel>
-                                    <TabPanel value={value} index={1} dir={theme.direction} style={{width:"100%",minHeight: "375px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
+                                    <TabPanel value={value} index={1} dir={theme.direction} style={{width:"100%",height: "600px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                         <Grid justify={"center"} item xs={12}>
                                             <Paper className={classes.table}>
 
@@ -299,7 +300,7 @@ function MyDeviceForm({t,className, rest}) {
                                         </Grid>
 
                                     </TabPanel>
-                                    <TabPanel value={value} index={2} dir={theme.direction} style={{width:"100%",minHeight: "375px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
+                                    <TabPanel value={value} index={2} dir={theme.direction} style={{width:"100%",height: "600px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                         <Grid  justify={"center"} item xs={12}>
                                             <Paper className={classes.table}>
 
@@ -346,7 +347,7 @@ function MyDeviceForm({t,className, rest}) {
 
                                         </Grid>
                                     </TabPanel>
-                                    <TabPanel value={value} index={3} dir={theme.direction} style={{ width:"100%",minHeight: "375px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
+                                    <TabPanel value={value} index={3} dir={theme.direction} style={{ width:"100%",height: "600px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
 
                                         <Grid item justify={"center"} xs={12}>
                                             <Paper className={classes.table}>
@@ -399,7 +400,7 @@ function MyDeviceForm({t,className, rest}) {
 
 
 
-                            </Grid>
+                            </Grid></div>
                         )}else return null}}
             </Query>
 
