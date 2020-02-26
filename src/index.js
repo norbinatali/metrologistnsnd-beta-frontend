@@ -37,6 +37,11 @@ const linkError = onError(({ graphQLErrors, networkError }) => {
     if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 const client = new ApolloClient({
+
+fetchOptions: {
+    mode: 'no-cors',
+  },
+
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),linkError
     });
