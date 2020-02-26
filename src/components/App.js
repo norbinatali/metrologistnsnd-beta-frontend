@@ -60,7 +60,7 @@ class App extends Component {
                     <Route path="/reset-password" component={ForgetPassword} />
                     <Route exact path="/login" component={LoginForm}/>
              <Route exact path="/contact" component={ContactForm} />
-                    <Route exact path={"/reset-password/"+resetToken} component={ConfirmResetPassword}/>
+                    <Route exact path={"/reset-password/:resetToken"} component={ConfirmResetPassword}/>
                     <Route exact path="/signup" component={SignUp} />
 
                            
