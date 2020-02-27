@@ -23,7 +23,7 @@ const authLink = setContext((_, { headers }) => {
         headers: {
             ...headers,
             "Access-Control-Allow-Origin": "https://metrologistnsnd-beta-frontend.herokuapp.com/",
-            "Access-Control-Allow-Methods": "GET","POST","DELETE",
+            "Access-Control-Allow-Methods": "GET,POST,DELETE",
             "Access-Control-Allow-Credentials":true,
             authorization: token ? `Bearer ${token}` : ''
         }
