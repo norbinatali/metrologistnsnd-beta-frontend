@@ -96,6 +96,25 @@ button: {
         padding: '0 10px',
 
     },
+brand: {
+        marginTop:"50px",
+        color: "rgba(0,1,14,5.74)",
+        textAlign: "left"
+    },
+    subtitle: {
+        fontSize: "1.1rem",
+        textAlign: "center",
+        maxWidth: "500px",
+        margin: "10px 0 0",
+        color:"rgba(0,1,14,0.74)"
+    },
+    info: {
+        fontSize: "0.9rem",
+        textAlign: "center",
+        maxWidth: "500px",
+        margin: "10px 0 0",
+        color:"#9f0018"
+    },
 container:{
     "@media (min-width: 576px)": {
         maxWidth: "540px"
@@ -125,80 +144,35 @@ container:{
     centerPadding: '0px',
     slidesToShow: 1,
     arrows: true}
-});const tutorialSteps = [
-    {
-        label: 'San Francisco – Oakland Bay Bridge, United States',
-        imgPath:
-            "",
-    },
-    {
-        label: 'Bird',
-        imgPath:
-            "",
-    },
-
-];
+});
 function FrontPageCarousel({t}) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
-    const maxSteps = tutorialSteps.length;
-    const handleStepChange = step => {
-        setActiveStep(step);
-    };
-    const settings = {
-        dots: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: false
-    };
-const laptopView= <MuiThemeProvider>
-<Parallax image={front}>
-        <Grid container xs={12}>
-
-            <Grid item xs={12}  sm={5} style={{marginRight:"auto", marginLeft:"auto"}}>
-                <Typography style={{color:"rgba(0,1,14,0.74)"}} variant={"h6"} justify={"center"}>{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</Typography>
-            </Grid>
-            <Grid item xs={12}>
-               <Button className={classes.button} onClick={()=>history.push('/login')}>{t('Lets start')}</Button >
-        <Button className={classes.buttonSignup} onClick={()=>history.push('/signup')}>{t('Sign Up')}</Button >
-            </Grid>
-        </Grid>
-
-</Parallax>
-    </MuiThemeProvider>
+   
+   
     return (
         <div>
             <MenuTabPanel/>
       
-           <div style={{ marginLeft:"auto", marginRight:"auto"}}>
+          <div className={classes.container}>
+                        <Grid container>
+                            <Grid item>
+                                <div className={classes.brand}>
+                                    <Typography  variant={"h2"} className={classes.title}>{t('Metrology Software')}</Typography>
+                                    <Typography  variant={"h4"}  className={classes.subtitle}>{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</Typography>
+                                    <Typography  variant={"body1"}  className={classes.info}>{t('Currently, it is a test version, more information and features will provide soon ')}</Typography>
 
-                    <Hidden smDown implementation="css">
-                <MuiThemeProvider>
-
-                    {laptopView}
-
-                </MuiThemeProvider>
-                    </Hidden>
-                    <Hidden mdUp>
-                        <Parallax image={iphonePic} >
-                            <Grid container xs={7} style={{marginRight:"auto", marginLeft:"auto"}} >
-
-                                <Grid item xs={12} md={2} >
-                                    <Typography style={{color:"rgba(0,1,14,0.74)"}}  variant={"body1"} justify={"center"}>{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</Typography>
+                                </div>
+                                <Grid item>
+                                    <Button className={classes.button} onClick={()=>history.push('/login')}>{t('Lets start')}</Button >
+                                    <Button className={classes.buttonSignup} onClick={()=>history.push('/signup')}>{t('Sign Up')}</Button >
                                 </Grid>
-                                <Grid item xs={12} md={2}>
-        <Button className={classes.button} onClick={()=>history.push('/login')}>{t('Lets start')}</Button >
-        <Button className={classes.buttonSignup} onClick={()=>history.push('/signup')}>{t('Sign Up')}</Button >
-     </Grid>
                             </Grid>
-                        </Parallax>
-                    </Hidden>
-                </div>
-
+                        </Grid>
+    
+                        
         </div>
     );
 }
