@@ -21,8 +21,7 @@ const authLink = setContext((_, { headers }) => {
     const token = localStorage.getItem(AUTH_TOKEN);
     return {
         headers: {
-            "Access-Control-Allow-Credentials" : true,
-            'Access-Control-Allow-Origin': "https://metrologistnsnd-beta-frontend.herokuapp.com",
+            ...headers,
             authorization: token ? `Bearer ${token}` : ''
         }
     }
@@ -44,6 +43,10 @@ const client = new ApolloClient({
         fetchOptions: {
           mode: 'cors',
         },
+    fetch:{
+    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS',
+            "Access-Control-Allow-Credentials" : true,
+            'Access-Control-Allow-Origin': "https://metrologistnsnd-beta-frontend.herokuapp.com"}
     });
 
 
