@@ -58,6 +58,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy":"https://metrologistnsnd-beta-backend.herokuapp.com",
   "eslintConfig": {
     "extends": "react-app"
   },
