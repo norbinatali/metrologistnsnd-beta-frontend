@@ -14,7 +14,8 @@ import { onError } from "apollo-link-error";
 import { SnackbarProvider, useSnackbar } from 'notistack';
 const httpLink = createHttpLink({
     uri: 'https://metrologistnsnd-beta-backend.herokuapp.com/',
-    credentials: 'include'
+    credentials: 'include',
+    Access-Control-Allow-Origin:'https://metrologistnsnd-beta-frontend.herokuapp.com/'
 
 });
 
