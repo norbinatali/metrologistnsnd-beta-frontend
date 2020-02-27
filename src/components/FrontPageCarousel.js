@@ -172,7 +172,7 @@ function FrontPageCarousel({t}) {
                             </Grid>
                         </Grid>
     
-                        
+                        </div>
         </div>
     );
 }
