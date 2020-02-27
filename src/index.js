@@ -14,7 +14,7 @@ import { onError } from "apollo-link-error";
 import { SnackbarProvider, useSnackbar } from 'notistack';
 const httpLink = createHttpLink({
     uri: 'https://metrologistnsnd-beta-backend.herokuapp.com/',
-     credentials: 'include',
+     credentials: 'same-origin',
 
 });
 
@@ -40,9 +40,9 @@ const linkError = onError(({ graphQLErrors, networkError }) => {
 const client = new ApolloClient({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),linkError,
-  credentials: 'include',
+  credentials: 'same-origin',
     fetchOption:{
-    credentials: 'include'}
+    credentials: 'same-origin'}
     });
 
 
