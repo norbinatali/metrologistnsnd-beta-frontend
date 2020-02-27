@@ -22,9 +22,7 @@ const authLink = setContext((_, { headers }) => {
     return {
         headers: {
             ...headers,
-            "Access-Control-Allow-Origin": "https://metrologistnsnd-beta-frontend.herokuapp.com/",
-            "Access-Control-Allow-Methods": "GET,POST,DELETE",
-            "Access-Control-Allow-Credentials":true,
+
             authorization: token ? `Bearer ${token}` : ''
         }
     }
@@ -42,7 +40,8 @@ const linkError = onError(({ graphQLErrors, networkError }) => {
 const client = new ApolloClient({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),linkError,
-   fetch
+   fetchOption:{
+   mode:'no-cors'}
     });
 
 
