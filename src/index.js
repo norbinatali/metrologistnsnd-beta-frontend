@@ -39,7 +39,7 @@ const client = new ApolloClient({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),linkError,
     });
-
+export default client;
 
 ReactDOM.render(
     <BrowserRouter>
