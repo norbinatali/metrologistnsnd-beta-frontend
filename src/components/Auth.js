@@ -11,6 +11,7 @@ const Auth = {
         sessionStorage.clear();
         client.clearStore().then(() => {
                 client.resetStore();})
+        localStorage.clear();
     },
     getAuth() {
         return this.isAuthenticated;
