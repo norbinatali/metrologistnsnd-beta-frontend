@@ -168,7 +168,7 @@ function Dashboard ({t}){
             <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
                 <div style={{ marginTop: 40 }}>
                     <div style={{ marginTop: 20, padding:30}}>
-                        <Query query={QUERY_USER} pollInterval={50} onError={(error) => enqueueSnackbar(error.message)}>
+                        <Query query={QUERY_USER} onError={(error) => enqueueSnackbar(error.message)}>
                             {({loading, error, data}) => {
                                 if (loading) {
                                     return <LinearDeterminate/>
