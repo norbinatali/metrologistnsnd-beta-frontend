@@ -1,4 +1,4 @@
-
+import {client} from '../index.js';
 
 const Auth = {
     isAuthenticated: false,
@@ -7,10 +7,10 @@ const Auth = {
     },
     signout() {
         this.isAuthenticated = false;
-        this.client.cache.reset();
+        client.cache.reset();
         sessionStorage.clear();
-        this.client.clearStore().then(() => {
-                this.client.resetStore();})
+        client.clearStore().then(() => {
+                client.resetStore();})
     },
     getAuth() {
         return this.isAuthenticated;
