@@ -13,7 +13,7 @@ import history from './history';
 import { onError } from "apollo-link-error";
 import { SnackbarProvider, useSnackbar } from 'notistack';
 const httpLink = createHttpLink({
-    uri: 'https://cors-anywhere.herokuapp.com/https://metrologistnsnd-beta-backend.herokuapp.com', withCredentials: 'false'
+    uri: 'https://metrologistnsnd-beta-backend.herokuapp.com', withCredentials: 'false'
 });
 
 const authLink = setContext((_, { headers }) => {
