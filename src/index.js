@@ -13,7 +13,7 @@ import history from './history';
 import { onError } from "apollo-link-error";
 import { SnackbarProvider, useSnackbar } from 'notistack';
 const httpLink = createHttpLink({
-    uri: 'https://metrologistnsnd-beta-backend.herokuapp.com', credentials: false, 
+    uri: 'https://metrologistnsnd-beta-backend.herokuapp.com', credentials: true, 
 });
 
 const authLink = setContext((_, { headers }) => {
