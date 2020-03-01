@@ -312,7 +312,7 @@ function Dashboard ({t}){
             </Dialog>
 
         </div>
-                                        )}}}
+                                        )}else return null}}
                                 </Query>
                     </div>
                 </div>
