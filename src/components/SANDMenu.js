@@ -13,7 +13,7 @@ import i18n from "../menu/translations/i18n";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     root: {
         marginTop:'50px',
         width: "100%",
