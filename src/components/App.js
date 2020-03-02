@@ -76,6 +76,7 @@ class App extends Component {
                            <PrivateRoute path="/account" component={UserProfile} />
                            <PrivateRoute path="/contactus" component={ContactUS} />
                            <PrivateRoute path="/sand" component={QMS} />
+                           <PrivateRoute path="/sand/:sandNumber" component={QMS} />
                            <PrivateRoute path="/standards-L" component={Standards} />
                            <PrivateRoute path="/standards" component={StandardListGrid} />
                            <PrivateRoute path="/standards-M" component={StandardsM} />
