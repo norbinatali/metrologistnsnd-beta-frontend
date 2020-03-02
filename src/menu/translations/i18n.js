@@ -5,6 +5,7 @@ import { initReactI18next } from "react-i18next"
 import backend from "i18next-xhr-backend";
 import en from '../translations/en';
 import ua from '../translations/ua';
+import ru from '../translations/ru';
 
 
 const resources ={
