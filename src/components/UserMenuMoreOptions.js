@@ -64,7 +64,7 @@ const handleDrawerCloseDashboard = () => {
      };
      const handleDrawerCloseSand = () => {
          setOpen(false);
-         history.push('/standards');
+         history.push('/sand');
      };
      const handleDrawerCloseForum = () => {
          setOpen(false);
