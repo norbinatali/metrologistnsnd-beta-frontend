@@ -28,6 +28,7 @@ import FrontPic from "../menu/style/Screen Shot 2019-11-28 at 9.19.01 PM.png"
 import logo from "../menu/style/LogoMakr_6pZrzB.png"
 import FlagUA from "../menu/style/LogoMakr_1Xl0t4.png";
 import FlagUS from "../menu/style/LogoMakr_4V1dPm.png";
+import FlagRU from "../menu/style/LogoMakr_3lAH4j.png;
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import {
@@ -190,6 +191,7 @@ i18n.changeLanguage(event.target.value);
   <Select labelId="demo-simple-select-autowidth-label" id="demo-simple-select-autowidth" value={lang} style={{backgroundColor:"transparent"}} onChange={handleChangeLang} autoWidth>
    <MenuItem value={'ua'} style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} ><img src={FlagUA}/></MenuItem>
    <MenuItem value={'en'} style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} ><img src={FlagUS}/></MenuItem>
+<MenuItem value={'ru'} style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} ><img src={FlagRU}/></MenuItem>
                   </Select>  </div>
 </Grid>
 </Grid>
