@@ -28,6 +28,7 @@ import i18n from "../menu/translations/i18n";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import FlagUA from "../menu/style/LogoMakr_1Xl0t4.png"
 import FlagUS from "../menu/style/LogoMakr_4V1dPm.png"
+import FlagRU from "../menu/style/LogoMakr_3lAH4j.png"
 import LogoV2 from  "../menu/style/LogoMakr_6pZrzB.png"
 import { GC_USER_ID } from '../constants'
 import Auth from '../components/Auth';
@@ -251,6 +252,7 @@ i18n.changeLanguage(event.target.value);
 <Select labelId="demo-simple-select-autowidth-label" id="demo-simple-select-autowidth" value={lang} style={{backgroundColor:"transparent"}} onChange={handleChangeLang} autoWidth>
    <MenuItem value={'ua'} style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} ><img src={FlagUA}/></MenuItem>
    <MenuItem value={'en'} style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} ><img src={FlagUS}/></MenuItem>
+<MenuItem value={'ru'} style={{backgroundColor:"rgba(0,1,14,0.74)",border:"none",outline:"none"}} ><img src={FlagRU}/></MenuItem>
                   </Select> 
                                 </Toolbar>
 
