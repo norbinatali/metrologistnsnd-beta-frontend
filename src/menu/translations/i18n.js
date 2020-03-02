@@ -9,7 +9,9 @@ import ua from '../translations/ua';
 
 const resources ={
     ua: {translation: ua},
-    en: {translation: en}
+    en: {translation: en},
+    ru: {translation: ru}
+
 
 };
 
@@ -19,7 +21,7 @@ i18n
     .use(LanguageDetector)
     .init({
         resources,
-        language:[en, ua],
+        language:[en, ua, ru],
         fallbackLng: en,
         debug: true,
 
