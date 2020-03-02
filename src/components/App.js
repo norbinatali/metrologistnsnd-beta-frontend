@@ -37,6 +37,7 @@ import FrontPageCarousel from "./FrontPageCarousel";
 import ContactForm from "./ContactForm";
 import ForumPage from "./ForumPage";
 import MyDeviceInfo from "./MyDeviceInfo";
+import QMS from "./QMS";
 
 import MyDeviceActivity from "./MyDeviceActivity";
 import MyDeviceSchedule from "./MyDeviceSchedule";
@@ -63,11 +64,9 @@ class App extends Component {
                     <Route exact path={"/reset-password/:resetToken"} component={ConfirmResetPassword}/>
                     <Route exact path="/signup" component={SignUp} />
 
-                           
                            <PrivateRoute path="/user" component={Dashboard} />
                            <PrivateRoute path="/dashboard" component={Dashboard} />
                            <PrivateRoute path="/metrology" component={History} />
-                           
                            <PrivateRoute path="/add-device" component={AddDevice} />
                            <PrivateRoute exact path="/mydevices" component={MyDevice} />
                             <PrivateRoute path={"/mydevices/:deviceName" } component={MyDeviceInfo} />
@@ -76,7 +75,8 @@ class App extends Component {
                             <PrivateRoute path={"/mydevices/:deviceName/setting" } component={MyDeviceSetting} />
                            <PrivateRoute path="/account" component={UserProfile} />
                            <PrivateRoute path="/contactus" component={ContactUS} />
-                         <PrivateRoute path="/standards-L" component={Standards} />
+                           <PrivateRoute path="/sand" component={QMS} />
+                           <PrivateRoute path="/standards-L" component={Standards} />
                            <PrivateRoute path="/standards" component={StandardListGrid} />
                            <PrivateRoute path="/standards-M" component={StandardsM} />
                            <PrivateRoute path="/standards-EM" component={StandardsEM} />
@@ -86,7 +86,7 @@ class App extends Component {
                            <PrivateRoute path="/standards-IR" component={StandardsIR} />
                            <PrivateRoute path="/standards-AUV" component={StandardsAUV} />
                            <PrivateRoute path="/standards-QM" component={StandardsQM} />
-<PrivateRoute path="/what-is-metrologist" component={WhatIsMetrologist} />
+                           <PrivateRoute path="/what-is-metrologist" component={WhatIsMetrologist} />
                            <PrivateRoute path="/what-is-metrology" component={WhatIsMetrology} />
                            <PrivateRoute path="/history-metrology" component={HistoryMetrology} />
                            <PrivateRoute path="/what-is-conformity-assessment" component={History} />
