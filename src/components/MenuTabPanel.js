@@ -80,7 +80,7 @@ function a11yProps(index) {
         id: `full-width-tab-${index}`,
         'aria-controls': `full-width-tabpanel-${index}`,
     };
-}
+};
 const useStylesReddit = makeStyles(theme => ({
     root: {
         border: '1px solid #e2e2e1',
@@ -101,17 +101,12 @@ const useStylesReddit = makeStyles(theme => ({
     focused: {},
 }));
 
-function RedditTextField(props) {
-    const classes = useStylesReddit();
 
-    return <TextField InputProps={{ classes, disableUnderline: true }} {...props} />;
-}
 
 
 const useStyles = makeStyles(theme => ({
     root: {
         width: "90%",
-
 
     },
     toolBar:{
@@ -134,7 +129,6 @@ marginRight:"auto",
 
 
 }));
-const LETTER_MUTATION = gql`mutation ($from: String!, $text: String!, $subject: String!){createNewLetter(text:$text , subject: $subject,from:$from){text,subject,from}}`
 
 function MenuTabPanel({t,props}) {
     const [value, setValue] = React.useState(0);
