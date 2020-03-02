@@ -8,6 +8,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import history from '../history'
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import {withTranslation} from "react-i18next";
 
 const useStyles = makeStyles({
     root: {
