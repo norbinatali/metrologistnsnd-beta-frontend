@@ -101,7 +101,7 @@ const useStyles = makeStyles(theme => ({
         left: 'calc(50% - 9px)',
         transition: theme.transitions.create('opacity'),
     },
-});
+}));
 
 
 function SANDMenu({t}){
