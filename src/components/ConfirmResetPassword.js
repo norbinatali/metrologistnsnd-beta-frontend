@@ -60,4 +60,4 @@ import { withSnackbar } from 'notistack';
               localStorage.setItem(RESET_TOKEN, resetToken)
     }
 }
-export default withTranslation() withSnackbar(ConfirmResetPassword)
+export default withTranslation() (withSnackbar(ConfirmResetPassword))
