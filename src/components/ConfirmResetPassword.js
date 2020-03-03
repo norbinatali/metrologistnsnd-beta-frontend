@@ -27,11 +27,11 @@ const resetTokenUrl = urlObj.searchParams.get('resetToken');
     };
         return(
             <div>
-                <Paper >
+                <Paper ><Mutation mutation={RESET_PASSWORD}  variables={{email:emailUrl, reserToken:resetTokenUrl, password } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => this._confirm(data)}>
+                       
                     <label  htmlFor="password">{t('Password')} </label>
                     <TextField type="text" value={password} onChange={e => setPassword(e.target.value)}/>
-                    <Mutation mutation={RESET_PASSWORD}  variables={{email:emailUrl, reserToken:resetTokenUrl, password } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => this._confirm(data)}>
-                        {mutation => (
+                     {mutation => (
                             <Button style={{color:"rgba(0,1,47,0.84)"}} onClick={mutation}>{t('Submit')}</Button>)}
                     </Mutation>
 
