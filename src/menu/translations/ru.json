@@ -38,7 +38,10 @@
  "logout":"Выйти",
  "Valid":"Действительный",
  "Expired":"Прострочен", 
-
+"Forgot password?":"Забыли пароль?",
+ "Dont have an account?":"Нет учётной записи?",
+ "Sign up":"Регистрация",
+ 
     "Introduction": "Представления",
     "Welcome": "Добро пожаловать",
     "Products": "Продукты",
