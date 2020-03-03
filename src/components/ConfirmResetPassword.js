@@ -37,7 +37,7 @@ import Paper from "@material-ui/core/Paper";
                 <Paper >
                     <label  htmlFor="password">{t('Password')} </label>
                     <TextField type="text" value={this.state.password} onChange={e => {this.setState({ password: e.target.value })}}/>
-                    <Mutation mutation={RESET_PASSWORD}  variables={{email, resetToken, password } } onCompleted={() => this._confirm()}>
+                    <Mutation mutation={RESET_PASSWORD}  variables={{email, resetToken, password } } onCompleted={(data) => this._confirm(data)}>
                         {mutation => (
                             <Button style={{color:"rgba(0,1,47,0.84)"}} onClick={mutation}>{t('Submit')}</Button>)}
                     </Mutation>
@@ -47,8 +47,8 @@ import Paper from "@material-ui/core/Paper";
 
         )
     }
-    _confirm =(resetToken) => {
-         this._saveUserData(resetToken);
+    _confirm =(data) => {
+         this._saveUserData(data.resetToken);
 
     };
 
