@@ -37,7 +37,8 @@ const resetTokenUrl = urlObj.searchParams.get('resetToken');
                     <label  htmlFor="password">{t('Password')} </label>
                     <TextField type="text" value={password} onChange={e => setPassword(e.target.value)}/>
                      
-                            <Button style={{color:"rgba(0,1,47,0.84)"}} onClick={mutation}>{t('Submit')}</Button>)}
+                            <Button style={{color:"rgba(0,1,47,0.84)"}} onClick={mutation}>{t('Submit')}</Button>
+                                                                                            )}}
                     </Mutation>
 
                 </Paper>
