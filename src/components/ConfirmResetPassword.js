@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import {Button} from "@material-ui/core";
@@ -9,36 +9,28 @@ import history from '../history'
 import gql from 'graphql-tag';
 import{Mutation} from 'react-apollo';
 import Paper from "@material-ui/core/Paper";
-import { withSnackbar } from 'notistack';
+import { SnackbarProvider, useSnackbar } from 'notistack';
 
- class ConfirmResetPassword extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            confirmresetpassword:true,
-            id: "",
-            email: '',
-            password: '',
-            classes: true,
-            resetToken:RESET_TOKEN,
-
-
-        };
-
-    }
-
-    render() {
-        const RESET_PASSWORD = gql `mutation ($email:String!, $resetToken:String!,$password:String! ) { passwordReset(email: $email, resetToken: $resetToken, password: $password){ id resetToken password}}`;
-        const { email, resetToken, password} = this.state;
-       const { t } = this.props;
+const RESET_PASSWORD = gql `mutation ($email:String!, $resetToken:String!,$password:String! ) { passwordReset(email: $email, resetToken: $resetToken, password: $password){ id email  }}`;
+const urlObj = new URL(window.location.href);
+function ConfirmResetPassword ({t}) {
+    const [password, setPassword] = useState('');
+    const { enqueueSnackbar } = useSnackbar();
+const emailUrl = urlObj.searchParams.get('email');
+const resetTokenUrl = urlObj.searchParams.get('resetToken');
+        
+    const confirm =async (data) => {
       
+        enqueueSnackbar('Your password has been changed. Пароль був змінено успішно');
+        history.push('/')
+
+    };
         return(
             <div>
                 <Paper >
                     <label  htmlFor="password">{t('Password')} </label>
-                    <TextField type="text" value={this.state.password} onChange={e => {this.setState({ password: e.target.value })}}/>
-                    <Mutation mutation={RESET_PASSWORD}  variables={{email, resetToken, password } } onCompleted={(data) => this._confirm(data)}>
+                    <TextField type="text" value={password} onChange={e => setPassword(e.target.value)}/>
+                    <Mutation mutation={RESET_PASSWORD}  variables={{email:emailUrl, reserToken:resetTokenUrl, password } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => this._confirm(data)}>
                         {mutation => (
                             <Button style={{color:"rgba(0,1,47,0.84)"}} onClick={mutation}>{t('Submit')}</Button>)}
                     </Mutation>
@@ -47,17 +39,9 @@ import { withSnackbar } from 'notistack';
             </div>
 
         )
-    }
-    _confirm =(data) => {
-         this._saveUserData(data.passwordReset.resetToken);
-     this.props.enqueueSnackbar('Your password has been changed. Пароль був змінено успішно')
-     history.push('/')
-
-    };
+    
+   
 
 
-    _saveUserData =(resetToken) => {
-              localStorage.setItem(RESET_TOKEN, resetToken)
-    }
 }
-export default withTranslation() (withSnackbar(ConfirmResetPassword))
+export default withTranslation() (ConfirmResetPassword)
