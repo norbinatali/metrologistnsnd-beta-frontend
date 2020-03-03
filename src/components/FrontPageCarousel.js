@@ -162,7 +162,7 @@ function FrontPageCarousel({t}) {
                                 <div className={classes.brand}>
                                     <Typography  variant={"h2"} className={classes.title}>{t('Metrology Software')}</Typography>
                                     <Typography  variant={"h4"}  className={classes.subtitle}>{t('New software for metrologists, manufacturers and people who want to know more about measuring technology')}</Typography>
-                                    <Typography  variant={"body1"}  className={classes.info}>{t('Currently, it is a test version, more information and features will provide soon ')}</Typography>
+                                    <Typography  variant={"body1"}  className={classes.info}>{t('Currently, it is a beta version, more information and features will provide soon')}</Typography>
 
                                 </div>
                                 <Grid item>
