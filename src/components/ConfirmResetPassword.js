@@ -28,7 +28,7 @@ const resetTokenUrl = urlObj.searchParams.get('resetToken');
     };
         return(
             <div>
-                <Paper ><Mutation mutation={RESET_PASSWORD}  variables={{email:emailUrl, reserToken:resetTokenUrl, password } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
+                <Paper ><Mutation mutation={RESET_PASSWORD}  variables={{email:emailUrl, resetToken:resetTokenUrl, password } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
                         {( mutation,{loading}) => {
                 if (loading) {return <LinearDeterminate />}
                               console.log(emailUrl)
