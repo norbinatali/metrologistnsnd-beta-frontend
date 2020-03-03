@@ -136,7 +136,7 @@ return(
                 color="inherit"
                 className={classes.imageTitle}
             >
-                {t('ISO 17025:2017')}
+                {t('ISO 17025-2017')}
                 <span className={classes.imageMarked} />
             </Typography>
           </span>
@@ -182,7 +182,7 @@ onClick={()=> history.push('/sand/9001')}
                                 <span className={classes.imageBackdrop} />
                                 <span className={classes.imageButton}>
             <Typography component="span" variant="subtitle1" color="inherit" className={classes.imageTitle}>
-                {t('ISO 17065:2012')}
+                {t('ISO 17065-2012')}
                 <span className={classes.imageMarked} />
             </Typography>
           </span>
@@ -196,7 +196,7 @@ onClick={()=> history.push('/sand/9001')}
                                 <span className={classes.imageBackdrop} />
                                 <span className={classes.imageButton}>
             <Typography component="span" variant="subtitle1" color="inherit" className={classes.imageTitle}>
-                {t('ISO 80000:2016')}
+                {t('ISO 80000-2016')}
                 <span className={classes.imageMarked} />
             </Typography>
           </span>
@@ -216,7 +216,7 @@ onClick={()=> history.push('/sand/9001')}
                                 <span className={classes.imageBackdrop} />
                                 <span className={classes.imageButton}>
             <Typography component="span" variant="subtitle1" color="inherit" className={classes.imageTitle}>
-                {t('ISO 17021:2011')}
+                {t('ISO 17021-2011')}
                 <span className={classes.imageMarked} />
             </Typography>
           </span>
