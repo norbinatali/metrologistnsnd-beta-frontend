@@ -110,7 +110,7 @@ const classes = useStyles();
 
 return(
     <div style={{display: 'flex', marginTop:"50px"}}>
-            <Grid container xs={12} spacing={2}>
+            <Grid container justify={center} xs={12} spacing={2}>
         <Grid item lg={4} md={6} xs={12}>
                         <div style={ {display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%',}}>
                             <ButtonBase
