@@ -12,7 +12,7 @@ import{Mutation} from 'react-apollo';
 import Paper from "@material-ui/core/Paper";
 import { SnackbarProvider, useSnackbar } from 'notistack';
 
-const RESET_PASSWORD = gql `mutation ($email:String!, $resetToken:String!,$password:String! ) { passwordReset(email: $email, resetToken: $resetToken, password: $password){ id email  }}`;
+const RESET_PASSWORD = gql `mutation ($email:String!, $resetToken:String!,$password:String! ) { passwordReset(email: $email, resetToken: $resetToken, password: $password){ email  }}`;
 const urlObj = new URL(window.location.href);
 function ConfirmResetPassword ({t}) {
     const [password, setPassword] = useState('');
