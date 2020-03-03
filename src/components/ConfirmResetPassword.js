@@ -5,11 +5,11 @@ import {Button} from "@material-ui/core";
 import {AUTH_TOKEN, GC_USER_ID, RESET_TOKEN} from '../constants';
 import { withTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
-
+import history from '../history'
 import gql from 'graphql-tag';
 import{Mutation} from 'react-apollo';
 import Paper from "@material-ui/core/Paper";
-
+import { withSnackbar } from 'notistack';
 
  class ConfirmResetPassword extends Component {
 
@@ -32,6 +32,7 @@ import Paper from "@material-ui/core/Paper";
         const RESET_PASSWORD = gql `mutation ($email:String!, $resetToken:String!,$password:String! ) { passwordReset(email: $email, resetToken: $resetToken, password: $password){ id resetToken password}}`;
         const { email, resetToken, password} = this.state;
        const { t } = this.props;
+      
         return(
             <div>
                 <Paper >
@@ -48,7 +49,9 @@ import Paper from "@material-ui/core/Paper";
         )
     }
     _confirm =(data) => {
-         this._saveUserData(data.resetToken);
+         this._saveUserData(data.passwordReset.resetToken);
+     this.props.enqueueSnackbar('Your password has been changed. Пароль був змінено успішно')
+     history.push('/')
 
     };
 
@@ -57,4 +60,4 @@ import Paper from "@material-ui/core/Paper";
               localStorage.setItem(RESET_TOKEN, resetToken)
     }
 }
-export default withTranslation() (ConfirmResetPassword)
+export default withTranslation() withSnackbar(ConfirmResetPassword)
