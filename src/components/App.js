@@ -58,7 +58,7 @@ class App extends Component {
                     <Route exact path="/" component={FrontPageCarousel} />
                     <Route path={"/check-email"} component={CheckYourEmail}/>
                     <Route path={"/confirm-email"} component={PleaseConfirmEmail}/>
-                    <Route path="/reset-password" component={ForgetPassword} />
+                    <Route exact path="/reset-password" component={ForgetPassword} />
                     <Route exact path="/login" component={LoginForm}/>
              <Route exact path="/contact" component={ContactForm} />
                     <Route exact path={"/reset-password/:resetToken"} component={ConfirmResetPassword}/>
