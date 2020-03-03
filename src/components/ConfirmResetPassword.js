@@ -7,6 +7,7 @@ import { withTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import history from '../history'
 import gql from 'graphql-tag';
+import LinearDeterminate from "./LinearDeterminate";
 import{Mutation} from 'react-apollo';
 import Paper from "@material-ui/core/Paper";
 import { SnackbarProvider, useSnackbar } from 'notistack';
@@ -28,10 +29,14 @@ const resetTokenUrl = urlObj.searchParams.get('resetToken');
         return(
             <div>
                 <Paper ><Mutation mutation={RESET_PASSWORD}  variables={{email:emailUrl, reserToken:resetTokenUrl, password } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => this._confirm(data)}>
-                       
+                        {( mutation,{loading}) => {
+                if (loading) {return <LinearDeterminate />}
+                              console.log(emailUrl)
+                              console.log(resetTokenUrl)
+                     return(
                     <label  htmlFor="password">{t('Password')} </label>
                     <TextField type="text" value={password} onChange={e => setPassword(e.target.value)}/>
-                     {mutation => (
+                     
                             <Button style={{color:"rgba(0,1,47,0.84)"}} onClick={mutation}>{t('Submit')}</Button>)}
                     </Mutation>
 
