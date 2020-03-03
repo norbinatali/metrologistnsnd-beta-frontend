@@ -34,11 +34,12 @@ const resetTokenUrl = urlObj.searchParams.get('resetToken');
                               console.log(emailUrl)
                               console.log(resetTokenUrl)
                      return(
+                         <FormControl>
                     <label  htmlFor="password">{t('Password')} </label>
                     <TextField type="text" value={password} onChange={e => setPassword(e.target.value)}/>
                      
                             <Button style={{color:"rgba(0,1,47,0.84)"}} onClick={mutation}>{t('Submit')}</Button>
-                                                                                            )}}
+                             </FormControl>                                                                )}}
                     </Mutation>
 
                 </Paper>
