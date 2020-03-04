@@ -45,7 +45,8 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import {DatePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
 import MaterialTable from 'material-table';
-
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const authToken = localStorage.getItem(AUTH_TOKEN);
 const useStyles = makeStyles(theme => ({
@@ -178,7 +179,10 @@ function TeamList({t,className, rest},props) {
     const handleChangeIndex = index => {
         setValue(index);
     };
-
+ const [button, setButton] = React.useState('team');
+    const handleChangeButton = event => {
+        setButton(event.target.value);
+    };
 
     return(
         <div>
@@ -196,19 +200,22 @@ function TeamList({t,className, rest},props) {
                                 <Grid container spacing={2} xs={12}>
                                     <AppBar position={"relative"}  color="default" elevation={5} style={{marginTop:"50px"}}>
                                         <Toolbar className={classes.toolbar} >
-                                            <Button >{t('Team')}</Button>
+                                              <Select value={button} onChange={handleChangeButton} >
+                                            <MenuItem value={'person'} onClick={()=>history.push('/mydevices')}>{t('Person')}</MenuItem>
+                                            <MenuItem value={'team'} onClick={()=> history.push('/mydevices/team')}>{t('Team')}</MenuItem>
+                                        </Select>
 
-                                            <Button style={{marginLeft:"auto "}} variant="outlined" onClick={()=> history.push("/add-device")}> {t("Add Device")}</Button>
+                                            <Button style={{marginLeft:"auto "}} variant="outlined" onClick={()=> history.push("/add-team-member")}> {t("Add Member")}</Button>
 
 
                                         </Toolbar>
-                                        <AppBar position="static" color="default" square>
-                                            <Tabs value={value} onChange={handleChangeTab} indicatorColor="default" textColor="primary" scrollButtons="auto" variant="scrollable" centered style={{ flexGrow: 1,width: '100%', marginRight:"auto", marginLeft:"auto", backgroundColor:"#fff"}}>
-
-                                                <Tab style={{backgroundColor:"#fff",marginRight:"auto", marginLeft:"auto"}} label={<Typography color='primary' variant={"caption"}>{data.me.teams.name}</Typography>} {...a11yProps("auto")} />
-                                               </Tabs>
-                                        </AppBar>
+                                        
                                     </AppBar>
+<List>
+<ListItem>
+<ListItemText style={{color:"#000"}}>{data.me.teams.name}</ListItemText>
+<ListItem>
+</List>
                                 </Grid>
                             )}else return null}}
                 </Query>
