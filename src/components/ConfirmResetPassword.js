@@ -11,6 +11,7 @@ import LinearDeterminate from "./LinearDeterminate";
 import{Mutation} from 'react-apollo';
 import Paper from "@material-ui/core/Paper";
 import { SnackbarProvider, useSnackbar } from 'notistack';
+import MenuForConfirm from './MenuForConfirm'
 
 const RESET_PASSWORD = gql `mutation ($email:String!, $resetToken:String!,$password:String! ) { passwordReset(email: $email, resetToken: $resetToken, password: $password){ email  }}`;
 const urlObj = new URL(window.location.href);
@@ -28,6 +29,7 @@ const resetTokenUrl = urlObj.searchParams.get('resetToken');
     };
         return(
             <div>
+            <MenuForConfirm/>
                 <Paper ><Mutation mutation={RESET_PASSWORD}  variables={{email:emailUrl, resetToken:resetTokenUrl, password } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
                         {( mutation,{loading}) => {
                 if (loading) {return <LinearDeterminate />}
