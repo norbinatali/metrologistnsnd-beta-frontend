@@ -9,6 +9,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {withTranslation} from "react-i18next";
 import TextField from '@material-ui/core/TextField';
 import FormControl from "@material-ui/core/FormControl";
+import MenuForConfirm from './MenuForConfirm';
 import {
     Grid, Button, IconButton,
     Link,
@@ -42,6 +43,7 @@ class PleaseConfirmEmail extends Component{
         const {t}= this.props;
         return (
             <div style={{height: '100%'}} >
+            <MenuForConfirm/>
                 <MuiThemeProvider>
 
                             <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center'}}>
