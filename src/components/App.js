@@ -38,6 +38,7 @@ import ContactForm from "./ContactForm";
 import ForumPage from "./ForumPage";
 import MyDeviceInfo from "./MyDeviceInfo";
 import QMS from "./QMS";
+import TeamList from "./TeamList";
 
 import MyDeviceActivity from "./MyDeviceActivity";
 import MyDeviceSchedule from "./MyDeviceSchedule";
@@ -69,6 +70,7 @@ class App extends Component {
                            <PrivateRoute path="/metrology" component={History} />
                            <PrivateRoute path="/add-device" component={AddDevice} />
                            <PrivateRoute exact path="/mydevices" component={MyDevice} />
+                           <PrivateRoute path="/mydevices/team" component={TeamList} />
                             <PrivateRoute path={"/mydevices/:deviceName" } component={MyDeviceInfo} />
                             <PrivateRoute path={"/mydevices/:deviceName/activity" } component={MyDeviceActivity} />
                             <PrivateRoute path={"/mydevices/:deviceName/schedule" } component={MyDeviceSchedule} />
