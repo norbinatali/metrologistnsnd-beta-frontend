@@ -22,7 +22,7 @@ import {Query} from 'react-apollo';
 import i18n from "../menu/translations/i18n";
 import UserMenu from "./UserMenu";
 import LinearDeterminate from "./LinearDeterminate";
-import {AUTH_TOKEN, CREATE_MY_DEVICE, GC_USER_ID,DEVICE_ID, DEVICE_NAME} from "../constants";
+import {AUTH_TOKEN,TEAM_ID, CREATE_MY_DEVICE, GC_USER_ID,DEVICE_ID, DEVICE_NAME} from "../constants";
 import DeleteIcon from "@material-ui/icons/Delete"
 import TableContainer from '@material-ui/core/TableContainer';
 import Toolbar from "@material-ui/core/Toolbar";
@@ -47,6 +47,9 @@ import {DatePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
 import MaterialTable from 'material-table';
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import FormControl from "@material-ui/core/FormControl";
 
 const authToken = localStorage.getItem(AUTH_TOKEN);
 const useStyles = makeStyles(theme => ({
@@ -161,6 +164,7 @@ const StyledTableCell = withStyles(theme => ({
 }))(TableCell);
 
 
+const MUTATION_CREATETEAM = gql`mutation($name:String! ){createNewTeam(name: $name){id name payment}}`;
 const QUERY_TEAMLIST = gql`query {me{teams{name}}}`;
 function TeamList({t,className, rest},props) {
     const classes = useStyles();
@@ -183,7 +187,23 @@ function TeamList({t,className, rest},props) {
     const handleChangeButton = event => {
         setButton(event.target.value);
     };
+const [name, setName] = useState('');
+    const confirm= async (data)=>{
+       saveData(data.createNewTeam.id);
+setOpen(false);
+   };
+   const saveData=(id)=>{
+       localStorage.setItem(TEAM_ID,id);
+      
+   };
 
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     return(
         <div>
             <UserMenu/>
@@ -205,20 +225,55 @@ function TeamList({t,className, rest},props) {
                                             <MenuItem value={'team'} onClick={()=> history.push('/mydevices/team')}>{t('Team')}</MenuItem>
                                         </Select>
 
-                                            <Button style={{marginLeft:"auto "}} variant="outlined" onClick={()=> history.push("/add-team-member")}> {t("Add Member")}</Button>
+                                            <Button style={{marginLeft:"auto "}} variant="outlined" onClick={handleClickOpen}}> {t("Add Team")}</Button>
 
 
                                         </Toolbar>
                                         
                                     </AppBar>
 <List>
-<ListItem>
+<ListItem button onClick={()=>  localStorage.setItem(TEAM_ID,data.me.teams.id);history.push('/mydevices/team/team-info')}>
 <ListItemText style={{color:"#000"}}>{data.me.teams.name}</ListItemText>
 <ListItem>
 </List>
                                 </Grid>
                             )}else return null}}
                 </Query>
+
+  <Mutation mutation={MUTATION_CREATETEAM} onError={(error) => enqueueSnackbar(error.message)} variables={{name}} onCompleted={(data) => confirm(data)}>
+                {( createteam,{loading, error, event}) => {
+
+                    if (loading) { return (<LinearDeterminate/> )}
+
+                    if (authToken){
+                        return(
+                <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+                    <DialogContent>
+
+                                        <FormControl>
+                                             <Typography>{t('Team Name')}</Typography>
+                                <TextField value={name} onChange={(e)=>e.target.value}/>
+
+                                        </FormControl>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose} color="primary">
+                            {t('Close')}
+                        </Button>
+
+                           <Button  onClick={createteam}>{t('Submit')}</Button>
+
+                    </DialogActions>
+                </Dialog>)}}}
+
+                </Mutation>
+
             </div>
         </div>)
 }
