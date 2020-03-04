@@ -7,3 +7,7 @@ export const CREATE_MY_DEVICE ='create-my-device';
 export const CREATE_LETTER ='create-letter'; 
 export const DEVICE_NAME = 'device-name';
 export const DEVICE_ID ='device-id'
+export const MEMBER_ID ='member-id';
+export const MEMBER_TOKEN = 'member_token';
+export const TEAM_ID ='team-id';
+export const TEAM_NAME = 'team-name';
