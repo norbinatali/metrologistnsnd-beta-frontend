@@ -17,9 +17,6 @@ import MyDeviceForm from "./MyDeviceForm";
 
 
 const authToken = localStorage.getItem(AUTH_TOKEN);
-const drawerWidth = 240;
-
-
 
 const useStyles = makeStyles(theme => ({
     root: {
