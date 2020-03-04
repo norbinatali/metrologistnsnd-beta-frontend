@@ -39,8 +39,9 @@ import IconButton from "@material-ui/core/IconButton";
 import {Mutation} from "react-apollo";
 import Tooltip from "@material-ui/core/Tooltip";
 import { SnackbarProvider, useSnackbar } from 'notistack';
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 
-const drawerWidth = 240;
 const deviceid = localStorage.getItem(CREATE_MY_DEVICE);
 const authToken = localStorage.getItem(AUTH_TOKEN);
 const useStyles = makeStyles(theme => ({
@@ -168,7 +169,10 @@ function MyDeviceForm({t,className, rest}) {
 
         localStorage.setItem(CREATE_MY_DEVICE, token)
     };
-
+  const [button, setButton] = React.useState('person');
+    const handleChangeButton = event => {
+        setButton(event.target.value);
+    };
     const handleClose = () => {setOpen(false);};
     return(
 
@@ -193,7 +197,10 @@ function MyDeviceForm({t,className, rest}) {
                             <div>
                                 <AppBar position={"relative"} fixed color="default" elevation={5} style={{marginTop:"50px"}}>
                                     <Toolbar className={classes.toolbar} >
-                                        <Button >{t('Person')}</Button>
+                                         <Select value={button} onChange={handleChangeButton} >
+                                            <MenuItem value={'person'} onClick={()=>history.push('/mydevices')}>{t('Person')}</MenuItem>
+                                            <MenuItem value={'team'} onClick={()=>history.push('/mydevices/team')}>{t('Team')}</MenuItem>
+                                        </Select>
 
                                         <Button style={{marginLeft:"auto"}} variant="outlined" onClick={()=> history.push("/add-device")}> {t("Add Device")}</Button>
 
