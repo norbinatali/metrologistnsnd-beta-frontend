@@ -19,6 +19,7 @@ import{Mutation} from 'react-apollo';
 import Paper from "@material-ui/core/Paper";
 import Snackbar from "@material-ui/core/Snackbar";
 import { SnackbarProvider, useSnackbar } from 'notistack';
+import MenuForConfirm from './MenuForConfirm'
 const FORGET_PASSWORD = gql `mutation ($email:String!) { triggerPasswordReset(email: $email){ ok,resetToken }}`;
 
 const useStyles = makeStyles(theme => ({
@@ -53,6 +54,7 @@ function ForgetPassword ({t}) {
 
         return(
             <div> 
+            <MenuForConfirm/>
             <Grid container style={{ height: '100%'}} >
             <Grid item>
                     <div style={{marginTop:"0px"}} >
