@@ -198,8 +198,8 @@ function MyDeviceForm({t,className, rest}) {
                                 <AppBar position={"relative"} fixed color="default" elevation={5} style={{marginTop:"50px"}}>
                                     <Toolbar className={classes.toolbar} >
                                          <Select value={button} onChange={handleChangeButton} >
-                                            <MenuItem value={'person'} onClick={()=>history.push('/mydevices')}>{t('Person')}</MenuItem>
-                                            <MenuItem value={'team'} onClick={()=>history.push('/mydevices/team')}>{t('Team')}</MenuItem>
+                                            <MenuItem value={'person'}><Button onClick={()=>history.push('/mydevices')}>{t('Person')}</Button></MenuItem>
+                                            <MenuItem value={'team'} ><Button onClick={()=>history.push('/team')}>{t('Team')}</Button></MenuItem>
                                         </Select>
 
                                         <Button style={{marginLeft:"auto"}} variant="outlined" onClick={()=> history.push("/add-device")}> {t("Add Device")}</Button>
