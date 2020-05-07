@@ -11,3 +11,6 @@ export const MEMBER_ID ='member-id';
 export const MEMBER_TOKEN = 'member_token';
 export const TEAM_ID ='team-id';
 export const TEAM_NAME = 'team-name';
+export const TEAM_MEMBER= 'team-member';
+export const TEAM_MEMBERID= 'team-member-id';
+export const CONFIRM_TEAM_MEMBER = 'confirm-team-member';
