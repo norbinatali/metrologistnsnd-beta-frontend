@@ -22,7 +22,7 @@ import {Query} from 'react-apollo';
 import i18n from "../menu/translations/i18n";
 import UserMenu from "./UserMenu";
 import LinearDeterminate from "./LinearDeterminate";
-import {AUTH_TOKEN,TEAM_ID, CREATE_MY_DEVICE, GC_USER_ID,DEVICE_ID, DEVICE_NAME} from "../constants";
+import {AUTH_TOKEN, TEAM_ID, CREATE_MY_DEVICE, GC_USER_ID, DEVICE_ID, DEVICE_NAME, TEAM_NAME} from "../constants";
 import DeleteIcon from "@material-ui/icons/Delete"
 import TableContainer from '@material-ui/core/TableContainer';
 import Toolbar from "@material-ui/core/Toolbar";
@@ -50,6 +50,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import FormControl from "@material-ui/core/FormControl";
+import DialogContent from "@material-ui/core/DialogContent";
+import TextField from "@material-ui/core/TextField";
+import DialogActions from "@material-ui/core/DialogActions";
 
 const authToken = localStorage.getItem(AUTH_TOKEN);
 const useStyles = makeStyles(theme => ({
@@ -165,7 +168,7 @@ const StyledTableCell = withStyles(theme => ({
 
 
 const MUTATION_CREATETEAM = gql`mutation($name:String! ){createNewTeam(name: $name){id name payment}}`;
-const QUERY_TEAMLIST = gql`query {me{teams{name}}}`;
+const QUERY_TEAMLIST = gql`query {me{name teams{id name}}}`;
 function TeamList({t,className, rest},props) {
     const classes = useStyles();
     const theme = useTheme();
@@ -183,19 +186,19 @@ function TeamList({t,className, rest},props) {
     const handleChangeIndex = index => {
         setValue(index);
     };
- const [button, setButton] = React.useState('team');
+    const [button, setButton] = React.useState('team');
     const handleChangeButton = event => {
         setButton(event.target.value);
     };
-const [name, setName] = useState('');
+    const [name, setName] = React.useState('');
     const confirm= async (data)=>{
-       saveData(data.createNewTeam.id);
-setOpen(false);
-   };
-   const saveData=(id)=>{
-       localStorage.setItem(TEAM_ID,id);
-      
-   };
+        saveData(data.createNewTeam.id);
+        setOpen(false);
+    };
+    const saveData=(id)=>{
+        localStorage.setItem(TEAM_ID,id);
+
+    };
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -209,72 +212,76 @@ setOpen(false);
             <UserMenu/>
             <div  className={classes.root}>
 
-                <Query query={QUERY_TEAMLIST} fetchPolicy={"network-only"} onError={(error) => enqueueSnackbar(error.message)}  >
+                <Query query={QUERY_TEAMLIST} pollInterval={100} fetchPolicy={"network-only"} onError={(error) => enqueueSnackbar(error.message)}  >
                     {( {loading, error, data} ) =>  {
                         if (loading) {return <LinearDeterminate />}
-
+console.log(data.me.teams);
+const teamlist = data.me.teams;
 
                         if(authToken){
+
                             return(
 
                                 <Grid container spacing={2} xs={12}>
                                     <AppBar position={"relative"}  color="default" elevation={5} style={{marginTop:"50px"}}>
                                         <Toolbar className={classes.toolbar} >
-                                              <Select value={button} onChange={handleChangeButton} >
-                                            <MenuItem value={'person'} onClick={()=>history.push('/mydevices')}>{t('Person')}</MenuItem>
-                                            <MenuItem value={'team'} onClick={()=> history.push('/mydevices/team')}>{t('Team')}</MenuItem>
-                                        </Select>
+                                            <Select value={button} onChange={handleChangeButton} >
+                                                <MenuItem value={'person'} onClick={()=>history.push('/mydevices')}>{t('Person')}</MenuItem>
+                                                <MenuItem value={'team'} onClick={()=> history.push('/team')}>{t('Team')}</MenuItem>
+                                            </Select>
 
-                                            <Button style={{marginLeft:"auto "}} variant="outlined" onClick={handleClickOpen}}> {t("Add Team")}</Button>
+                                            <Button style={{marginLeft:"auto "}} variant="outlined" onClick={handleClickOpen}> {t("Add Team")}</Button>
 
 
                                         </Toolbar>
-                                        
+
                                     </AppBar>
 <List>
-<ListItem button onClick={()=>  localStorage.setItem(TEAM_ID,data.me.teams.id);history.push('/mydevices/team/team-info')}>
-<ListItemText style={{color:"#000"}}>{data.me.teams.name}</ListItemText>
-<ListItem>
-</List>
+    {teamlist.map(tea=>
+<ListItem button onClick={()=>  (localStorage.setItem(TEAM_ID,tea.id), history.push('/team/'+tea.id))}>
+<ListItemText style={{color:"#000"}}>{tea.name}</ListItemText>
+</ListItem>)}
+                                        </List>
+                                    <Typography style={{color:"#000"}}>{data.me.teams.name}</Typography>
                                 </Grid>
-                            )}else return null}}
-                </Query>
+                        )}else return null}}
+                        </Query>
 
-  <Mutation mutation={MUTATION_CREATETEAM} onError={(error) => enqueueSnackbar(error.message)} variables={{name}} onCompleted={(data) => confirm(data)}>
-                {( createteam,{loading, error, event}) => {
+                        <Mutation mutation={MUTATION_CREATETEAM} onError={(error) => enqueueSnackbar(error.message)} variables={{name}} onCompleted={(data) => confirm(data)}>
+                            {( createteam,{loading, error, event}) => {
 
-                    if (loading) { return (<LinearDeterminate/> )}
+                                if (loading) { return (<LinearDeterminate/> )}
 
-                    if (authToken){
-                        return(
-                <Dialog
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                >
-                    <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
-                    <DialogContent>
+                                if (authToken){
+                                    return(
+                                        <Dialog
+                                            open={open}
+                                            onClose={handleClose}
+                                            aria-labelledby="alert-dialog-title"
+                                            aria-describedby="alert-dialog-description"
+                                        >
+                                            <DialogTitle id="alert-dialog-title">{"Create new team"}</DialogTitle>
+                                            <DialogContent>
 
-                                        <FormControl>
-                                             <Typography>{t('Team Name')}</Typography>
-                                <TextField value={name} onChange={(e)=>e.target.value}/>
+                                                <FormControl>
+                                                    <Typography>{t('Team Name')}</Typography>
+                                                    <TextField value={name} onChange={(e)=>setName(e.target.value)}/>
 
-                                        </FormControl>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={handleClose} color="primary">
-                            {t('Close')}
-                        </Button>
+                                                </FormControl>
+                                            </DialogContent>
+                                            <DialogActions>
+                                                <Button onClick={handleClose} color="primary">
+                                                    {t('Close')}
+                                                </Button>
 
-                           <Button  onClick={createteam}>{t('Submit')}</Button>
+                                                <Button  onClick={createteam}>{t('Submit')}</Button>
 
-                    </DialogActions>
-                </Dialog>)}}}
+                                            </DialogActions>
+                                        </Dialog>)}}}
 
-                </Mutation>
+                        </Mutation>
 
-            </div>
-        </div>)
-}
-export default withTranslation() (TeamList)
+                        </div>
+                        </div>)
+                        }
+ export default withTranslation() (TeamList)
