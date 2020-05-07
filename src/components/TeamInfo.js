@@ -224,6 +224,8 @@ function TeamInfo({t,className, rest},props) {
                 <Query query={QUERY_TEAMMEMBERS} pollInterval={100} variables={{id:localStorage.getItem('team-id')}} fetchPolicy={"network-only"} onError={(error) => enqueueSnackbar(error.message)}  >
                     {( {loading, error, data} ) =>  {
                         if (loading) {return <LinearDeterminate />}
+console.log(data.teamList);
+console.log(data.teamList.teamMembers);
 const teamMembersList=data.teamList.teamMembers;
 
 
