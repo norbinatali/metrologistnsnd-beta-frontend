@@ -39,7 +39,8 @@ import ForumPage from "./ForumPage";
 import MyDeviceInfo from "./MyDeviceInfo";
 import QMS from "./QMS";
 import TeamList from "./TeamList";
-
+import TeamInfo from "./TeamInfo";
+import ConfirmTeamMember from "./ConfirmTeamMember";
 import MyDeviceActivity from "./MyDeviceActivity";
 import MyDeviceSchedule from "./MyDeviceSchedule";
 import MyDeviceSetting from "./MyDeviceSetting";
@@ -64,13 +65,14 @@ class App extends Component {
              <Route exact path="/contact" component={ContactForm} />
                     <Route exact path={"/reset-password"} component={ConfirmResetPassword}/>
                     <Route exact path="/signup" component={SignUp} />
-
+           <Route path={"/create-team"} component={ConfirmTeamMember}/>
                            <PrivateRoute path="/user" component={Dashboard} />
                            <PrivateRoute path="/dashboard" component={Dashboard} />
                            <PrivateRoute path="/metrology" component={History} />
                            <PrivateRoute path="/add-device" component={AddDevice} />
                            <PrivateRoute exact path="/mydevices" component={MyDevice} />
-                           <PrivateRoute path="/mydevices/team" component={TeamList} />
+                          <PrivateRoute exact path="/team" component={TeamList} />
+                            <PrivateRoute path="/team/:teamID" component={TeamInfo} />
                             <PrivateRoute path={"/mydevices/:deviceName" } component={MyDeviceInfo} />
                             <PrivateRoute path={"/mydevices/:deviceName/activity" } component={MyDeviceActivity} />
                             <PrivateRoute path={"/mydevices/:deviceName/schedule" } component={MyDeviceSchedule} />
