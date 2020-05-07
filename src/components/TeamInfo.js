@@ -224,7 +224,7 @@ function TeamInfo({t,className, rest},props) {
                 <Query query={QUERY_TEAMMEMBERS} pollInterval={100} variables={{id:localStorage.getItem('team-id')}} fetchPolicy={"network-only"} onError={(error) => enqueueSnackbar(error.message)}  >
                     {( {loading, error, data} ) =>  {
                         if (loading) {return <LinearDeterminate />}
-
+const teamMembersList=data.teamList.teamMembers;
 
 
                         if(authToken){
@@ -246,7 +246,7 @@ function TeamInfo({t,className, rest},props) {
 
                                     </AppBar>
                                     <List>
-                                        {data.teamList.teamMembers.map(tea=>
+                                        {teamMembersList.map(tea=>
                                             <ListItem button onClick={()=>  (localStorage.setItem(TEAM_MEMBER,tea.emailMembers), history.push('/mydevices/team/team-info'))}>
                                                 <ListItemText style={{color:"#000"}}>{tea.emailMembers}</ListItemText>
                                                 {tea.memberConfirmed=== true &&<ListItemText style={{color:"#003a9f"}}>{t('Confirmed')}</ListItemText>}
