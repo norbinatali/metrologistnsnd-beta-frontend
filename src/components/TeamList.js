@@ -208,7 +208,7 @@ function TeamList({t,className, rest},props) {
         setOpen(false);
     };
     return(
-        <div>
+       <div>
             <UserMenu/>
             <div  className={classes.root}>
 
@@ -221,21 +221,22 @@ const teamlist = data.me.teams;
                         if(authToken){
 
                             return(
+<div>  <Grid container spacing={2} xs={12}><AppBar position={"relative"}  color="default" elevation={5} style={{marginTop:"60px"}}>
+    <Toolbar className={classes.toolbar} >
+        <Select value={button} onChange={handleChangeButton} >
+            <MenuItem value={'person'}><Button onClick={()=>history.push('/mydevices')}>{t('Person')}</Button></MenuItem>
+            <MenuItem value={'team'}><Button onClick={()=> history.push('/team')}>{t('Team')}</Button></MenuItem>
+        </Select>
 
-                                <Grid container spacing={2} xs={12}>
-                                    <AppBar position={"relative"}  color="default" elevation={5} style={{marginTop:"50px"}}>
-                                        <Toolbar className={classes.toolbar} >
-                                            <Select value={button} onChange={handleChangeButton} >
-                                                <MenuItem value={'person'} onClick={()=>history.push('/mydevices')}>{t('Person')}</MenuItem>
-                                                <MenuItem value={'team'} onClick={()=> history.push('/team')}>{t('Team')}</MenuItem>
-                                            </Select>
-
-                                            <Button style={{marginLeft:"auto "}} variant="outlined" onClick={handleClickOpen}> {t("Add Team")}</Button>
+        <Button style={{marginLeft:"auto "}} variant="outlined" onClick={handleClickOpen}> {t("Add Team")}</Button>
 
 
-                                        </Toolbar>
+    </Toolbar>
 
-                                    </AppBar>
+</AppBar>
+
+
+
 <List>
     {teamlist.map(tea=>
 <ListItem button onClick={()=>  (localStorage.setItem(TEAM_ID,tea.id), history.push('/team/'+tea.id))}>
@@ -243,8 +244,8 @@ const teamlist = data.me.teams;
 </ListItem>)}
                                         </List>
                                     <Typography style={{color:"#000"}}>{data.me.teams.name}</Typography>
-                                </Grid>
-                        )}else return null}}
+                                    </Grid>
+</div>)}else return null}}
                         </Query>
 
                         <Mutation mutation={MUTATION_CREATETEAM} onError={(error) => enqueueSnackbar(error.message)} variables={{name}} onCompleted={(data) => confirm(data)}>
