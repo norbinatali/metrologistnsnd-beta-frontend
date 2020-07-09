@@ -220,7 +220,7 @@ function TeamInfo({t,className, rest},props) {
         setOpen(false);
     };
     return(
-   <div>	        error, event}) => {
+   <div>	        
             <UserMenu/>	
             <div  className={classes.root}>	
 
