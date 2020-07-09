@@ -177,7 +177,7 @@ const StyledTableCell = withStyles(theme => ({
 }))(TableCell);
 
 
-const MUTATION_ADDMEMBER = gql`mutation($emailMembers:String!, $id:ID! ){createTeamMembers(emailMembers: $emailMembers, id:$id){id emailMembers member memberConfirmToken}}`;
+const MUTATION_ADDMEMBER = gql`mutation($emailMember:String!, $id:ID! ){createTeamMembers(emailMember: $emailMember, id:$id){id emailMember member memberConfirmToken}}`;
 const QUERY_TEAMMEMBERS = gql`query($id:ID!) {teamList(id:$id){name teamMembers{emailMembers memberConfirmToken member memberConfirmed} author{name}} }`;
 const QUERY_TEAMDEVICE= gql`query($emailMembers:String!){teamDevices(emailMembers:$emailMembers){brand_device name_device}}`;
 const QUERY_ME= gql`query {me{name, mydevices{name_device}}}`;
