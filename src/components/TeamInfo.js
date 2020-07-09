@@ -263,7 +263,7 @@ const teamMembersList=data.teamList.teamMembers;
                             )}else return null}}	
 
                 </Query>	
-                <Mutation mutation={MUTATION_ADDMEMBER} onError={(error) => enqueueSnackbar(error.message)} variables={{emailMembers, id:localStorage.getItem('team-id'}} onCompleted={(data) => confirm(data)}>	
+                <Mutation mutation={MUTATION_ADDMEMBER} onError={(error) => enqueueSnackbar(error.message)} variables={{emailMembers, id:localStorage.getItem('team-id')}} onCompleted={(data) => confirm(data)}>	
                     {( createteamMember,{loading, error, event}) => {
 
                         if (loading) { return (<LinearDeterminate/> )}
