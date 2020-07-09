@@ -64,6 +64,7 @@ import TextField from "@material-ui/core/TextField";
 import DialogActions from "@material-ui/core/DialogActions";
 
 const authToken = localStorage.getItem(AUTH_TOKEN);
+
 const useStyles = makeStyles(theme => ({
 
 
@@ -176,7 +177,7 @@ const StyledTableCell = withStyles(theme => ({
 }))(TableCell);
 
 
-const MUTATION_ADDMEMBER = gql`mutation($emailMembers:String! ){createTeamMembers(emailMembers: $emailMembers){id emailMembers member memberConfirmToken}}`;
+const MUTATION_ADDMEMBER = gql`mutation($emailMembers:String!, $id:ID! ){createTeamMembers(emailMembers: $emailMembers, id:$id){id emailMembers member memberConfirmToken}}`;
 const QUERY_TEAMMEMBERS = gql`query($id:ID!) {teamList(id:$id){name teamMembers{emailMembers memberConfirmToken member memberConfirmed} author{name}} }`;
 const QUERY_TEAMDEVICE= gql`query($emailMembers:String!){teamDevices(emailMembers:$emailMembers){brand_device name_device}}`;
 const QUERY_ME= gql`query {me{name, mydevices{name_device}}}`;
@@ -219,7 +220,51 @@ function TeamInfo({t,className, rest},props) {
         setOpen(false);
     };
     return(
-        error, event}) => {
+   <div>	        error, event}) => {
+            <UserMenu/>	
+            <div  className={classes.root}>	
+
+                <Query query={QUERY_TEAMMEMBERS} pollInterval={100} variables={{id:localStorage.getItem('team-id')}} fetchPolicy={"network-only"} onError={(error) => enqueueSnackbar(error.message)}  >	
+                    {( {loading, error, data} ) =>  {	
+                        if (loading) {return <LinearDeterminate />}	
+console.log(data.teamList);	
+console.log(data.teamList.teamMembers);	
+const teamMembersList=data.teamList.teamMembers;	
+
+
+                        if(authToken){	
+
+                            return(	
+
+                                <Grid container spacing={2} xs={12}>	
+                                    <AppBar position={"relative"}  color="default" elevation={5} style={{marginTop:"50px"}}>	
+                                        <Toolbar className={classes.toolbar} >	
+                                            <Select value={button} onChange={handleChangeButton} >	
+                                                <MenuItem value={'person'} onClick={()=>history.push('/mydevices')}>{t('Person')}</MenuItem>	
+                                                <MenuItem value={'team'} onClick={()=> history.push('/team')}>{t('Team')}</MenuItem>	
+                                            </Select>	
+
+                                            <Button style={{marginLeft:"auto "}} variant="outlined" onClick={handleClickOpen}> {t("Add a New Team Member")}</Button>	
+
+
+                                        </Toolbar>	
+
+                                    </AppBar>	
+                                    <List>	
+                                        {teamMembersList.map(tea=>	
+                                            <ListItem button onClick={()=>  (localStorage.setItem(TEAM_MEMBER,tea.emailMembers), history.push('/mydevices/team/team-info'))}>	
+                                                <ListItemText style={{color:"#000"}}>{tea.emailMembers}</ListItemText>	
+                                                {tea.memberConfirmed=== true &&<ListItemText style={{color:"#003a9f"}}>{t('Confirmed')}</ListItemText>}	
+                                                {tea.memberConfirmed=== false &&<ListItemText style={{color:"#9f0018"}}>{t('Waiting...')}</ListItemText>}	
+                                            </ListItem>)}	
+                                    </List>	
+
+                                </Grid>	
+                            )}else return null}}	
+
+                </Query>	
+                <Mutation mutation={MUTATION_ADDMEMBER} onError={(error) => enqueueSnackbar(error.message)} variables={{emailMembers, id:localStorage.getItem('team-id'}} onCompleted={(data) => confirm(data)}>	
+                    {( createteamMember,{loading, error, event}) => {
 
                         if (loading) { return (<LinearDeterminate/> )}
 
@@ -254,6 +299,7 @@ function TeamInfo({t,className, rest},props) {
 
 
             </div>
+
         </div>)
 }
 export default withTranslation() (TeamInfo)
