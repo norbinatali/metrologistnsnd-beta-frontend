@@ -77,7 +77,7 @@
     ]
   },
   "devDependencies": {
-    "@material-ui/pickers": "^3.2.8",
+    "@material-ui/pickers": "^3.2.8"
 
   }
 }
