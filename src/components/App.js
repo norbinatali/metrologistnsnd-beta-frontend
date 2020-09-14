@@ -6,6 +6,7 @@ import SignUp from "../SignUp";
 import history from '../history';
 import {Router} from "react-router-dom";
 import { GC_USER_ID, RESET_TOKEN as resetToken} from '../constants'
+import CircularProgressLoading from "./CircularProgressLoading"
 import ForgetPassword from "./ForgetPassword";
 import ConfirmResetPassword from "./ConfirmResetPassword";
 import MenuTabPanel from "./MenuTabPanel";
@@ -46,12 +47,19 @@ import MyDeviceSchedule from "./MyDeviceSchedule";
 import MyDeviceSetting from "./MyDeviceSetting";
 
 class App extends Component {
+constructor() {
+    this.state = { isLoading: true }
+}
+
+componentDidMount() {
+    this.setState({isLoading: false})
+}
 
     render() {
         const userId = localStorage.getItem(GC_USER_ID);
 
         return (
-
+ this.state.isLoading ? <CircularProgressLoading> : 
             <div className="App">
                 <div className="App-header">
 
