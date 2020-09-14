@@ -66,7 +66,7 @@ componentDidMount() {
         const userId = localStorage.getItem(GC_USER_ID);
  let { isLoading } = this.state;
         return (<div>{
-isLoading ? (  <div className="App"><CircularProgressLoading></div>) : (
+isLoading ? (  <div className="App"><CircularProgressLoading/></div>) : (
             <div className="App">
                 <div className="App-header">
 
