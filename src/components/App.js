@@ -47,19 +47,26 @@ import MyDeviceSchedule from "./MyDeviceSchedule";
 import MyDeviceSetting from "./MyDeviceSetting";
 
 class App extends Component {
-constructor() {
-    this.state = { isLoading: true }
-}
-
+ constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true
+    };
+  }
 componentDidMount() {
-    this.setState({isLoading: false})
+    setTimeout(
+        function() {
+         this.setState({ isLoading: false });
+        }.bind(this),
+       3000
+     );
 }
 
     render() {
         const userId = localStorage.getItem(GC_USER_ID);
-
-        return (
- this.state.isLoading ? <CircularProgressLoading> : 
+ let { isLoading } = this.state;
+        return (<div>{
+isLoading ? (  <div className="App"><CircularProgressLoading></div>) : (
             <div className="App">
                 <div className="App-header">
 
@@ -114,7 +121,7 @@ componentDidMount() {
 
                 </div>
             <Footer/>
-            </div> )
+            </div> )}</div>)
     }
 }
             
