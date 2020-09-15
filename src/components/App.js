@@ -45,7 +45,7 @@ import ConfirmTeamMember from "./ConfirmTeamMember";
 import MyDeviceActivity from "./MyDeviceActivity";
 import MyDeviceSchedule from "./MyDeviceSchedule";
 import MyDeviceSetting from "./MyDeviceSetting";
-import Wrapper from "./Wrapper";
+
 
 class App extends Component {
  constructor(props) {
@@ -69,10 +69,10 @@ class App extends Component {
                     <Route path={"/check-email"} component={CheckYourEmail}/>
                     <Route path={"/confirm-email"} component={PleaseConfirmEmail}/>
                     <Route exact path="/reset-your-password" component={ForgetPassword} />
-                    <Route exact path="/login" component={Wrapper(LoginForm)}/>
-             <Route exact path="/contact" component={Wrapper(ContactForm)} />
+                    <Route exact path="/login" component={LoginForm}/>
+             <Route exact path="/contact" component={ContactForm} />
                     <Route exact path={"/reset-password"} component={ConfirmResetPassword}/>
-                    <Route exact path="/signup" component={Wrapper(SignUp)} />
+                    <Route exact path="/signup" component={SignUp} />
            <Route path={"/create-team"} component={ConfirmTeamMember}/>
                            <PrivateRoute path="/user" component={Dashboard} />
                            <PrivateRoute path="/dashboard" component={Dashboard} />
