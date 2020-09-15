@@ -13,6 +13,7 @@
     "@material-ui/lab": "^4.0.0-alpha.40",
     "@material-ui/utils": "^4.7.1",
     "apollo-boost": "^0.4.9",
+     "apollo-client": "^2.6.4",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-link-context": "^1.0.19",
     "apollo-link-http": "^1.5.16",
