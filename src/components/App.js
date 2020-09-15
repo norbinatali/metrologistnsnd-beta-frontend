@@ -78,7 +78,7 @@ class App extends Component {
 
                     <Switch>
                     <Router history={history}>
-                    <Route exact path="/" component={Wrapper(FrontPageCarousel)} />
+                    <Route exact path="/" component={FrontPageCarousel} />
                     <Route path={"/check-email"} component={CheckYourEmail}/>
                     <Route path={"/confirm-email"} component={PleaseConfirmEmail}/>
                     <Route exact path="/reset-your-password" component={ForgetPassword} />
