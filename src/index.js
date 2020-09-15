@@ -41,14 +41,17 @@ const client = new ApolloClient({
     });
 export default client;
 
-ReactDOM.render(
-    <BrowserRouter>
+const Wrapper = ()=>(
     <ApolloProvider client={client}>
-      <SnackbarProvider>
-        <App />
-       </SnackbarProvider>
+        <BrowserRouter>
+            <SnackbarProvider>
+                <App />
+            </SnackbarProvider>
+        </BrowserRouter>
     </ApolloProvider>
-    </BrowserRouter>,
+)
+ReactDOM.render(
+    <Wrapper/>,
     document.getElementById('root'),
 );
 
