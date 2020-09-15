@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { withRouter } from "react-router";
 
-import CircularProgressLoading. from "./CircularProgressLoading";
+import LinearDeterminate from "./LinearDeterminate";
 
 export default WrappedComponent => {
     class Wrapper extends Component {
@@ -26,7 +26,7 @@ export default WrappedComponent => {
             <Fragment>
 
                 {this.state.isLoading
-                    ? <CircularProgressLoading />
+                    ? <LinearDeterminate />
                     : <WrappedComponent {...this.props} /> }
                     </Fragment>
 
