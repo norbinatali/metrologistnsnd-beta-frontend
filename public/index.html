@@ -45,11 +45,19 @@ gtag('config', 'UA-157590782-1', { 'optimize_id': 'GTM-K93LCQL'});
 <!-- End Google Tag Manager -->
   <style>
 .loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
   border: 16px solid #f3f3f3;
-  border-top: 16px solid #3498db;
   border-radius: 50%;
-  width: 130px;
-  height: 130px;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
 }
 
