@@ -45,6 +45,7 @@ import ConfirmTeamMember from "./ConfirmTeamMember";
 import MyDeviceActivity from "./MyDeviceActivity";
 import MyDeviceSchedule from "./MyDeviceSchedule";
 import MyDeviceSetting from "./MyDeviceSetting";
+import Wrapper from "./Wrapper";
 
 class App extends Component {
  constructor(props) {
@@ -53,33 +54,25 @@ class App extends Component {
       isLoading: true
     };
   }
-componentDidMount() {
-    setTimeout(
-        function() {
-         this.setState({ isLoading: false });
-        }.bind(this),
-       3000
-     );
-}
+
 
     render() {
         const userId = localStorage.getItem(GC_USER_ID);
- let { isLoading } = this.state;
-        return (<div>{
-isLoading ? (  <div className="App"><CircularProgressLoading/></div>) : (
+ 
+        return (
             <div className="App">
                 <div className="App-header">
 
                     <Switch>
                     <Router history={history}>
-                    <Route exact path="/" component={FrontPageCarousel} />
+                    <Route exact path="/" component={Wrapper(FrontPageCarousel)} />
                     <Route path={"/check-email"} component={CheckYourEmail}/>
                     <Route path={"/confirm-email"} component={PleaseConfirmEmail}/>
                     <Route exact path="/reset-your-password" component={ForgetPassword} />
-                    <Route exact path="/login" component={LoginForm}/>
-             <Route exact path="/contact" component={ContactForm} />
+                    <Route exact path="/login" component={Wrapper(LoginForm)}/>
+             <Route exact path="/contact" component={Wrapper(ContactForm)} />
                     <Route exact path={"/reset-password"} component={ConfirmResetPassword}/>
-                    <Route exact path="/signup" component={SignUp} />
+                    <Route exact path="/signup" component={Wrapper(SignUp)} />
            <Route path={"/create-team"} component={ConfirmTeamMember}/>
                            <PrivateRoute path="/user" component={Dashboard} />
                            <PrivateRoute path="/dashboard" component={Dashboard} />
@@ -121,7 +114,7 @@ isLoading ? (  <div className="App"><CircularProgressLoading/></div>) : (
 
                 </div>
             <Footer/>
-            </div> )}</div>)
+            </div> )
     }
 }
             
