@@ -54,11 +54,24 @@ class App extends Component {
       isLoading: true
     };
   }
-
+ componentDidMount() {
+    this.fakeRequest().then(() => {
+      const el = document.querySelector(".loader-container");
+      if (el) {
+        el.remove();  // removing the spinner element
+        this.setState({ loading: false }); // showing the app
+      }
+    });
+  }
+ fakeRequest = () => {
+    return new Promise(resolve => setTimeout(() => resolve(), 2500));
+  };
 
     render() {
         const userId = localStorage.getItem(GC_USER_ID);
- 
+  if (this.state.loading) {
+      return null; //app is not ready (fake request is in process)
+    }
         return (
             <div className="App">
                 <div className="App-header">
