@@ -57,9 +57,12 @@ class App extends Component {
  componentDidMount() {
     this.fakeRequest().then(() => {
       const el = document.querySelector(".loader-container");
+       
       if (el) {
+       document.getElementById("loading").style.display = "none";
         el.remove();  // removing the spinner element
         this.setState({ loading: false }); // showing the app
+        
       }
     });
   }
