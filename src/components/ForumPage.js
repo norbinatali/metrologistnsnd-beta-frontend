@@ -20,7 +20,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import {Query} from 'react-apollo';
-import LinearDeterminate from "./LinearDeterminate";
+import CircularProgressLoading from "./CircularProgressLoading";
 import gql from 'graphql-tag';
 import { SnackbarProvider, useSnackbar } from 'notistack';
 import Tooltip from "@material-ui/core/Tooltip";
@@ -56,7 +56,7 @@ function ForumPage ({t},props){
             <main style={{ flexGrow: 1, height: '100%',width:"100%", overflow: 'auto'}}>
         <Query query={POSTS_QUERY} fetchPolicy={"network-only"} pollInterval={50} onError={(error) => enqueueSnackbar(error.message)} >
     {( {loading, error, data} ) =>  {
-        if (loading) {return <LinearDeterminate />}
+        if (loading) {return <CircularProgressLoading />}
         if (error) { return error.message }
         const postslist = data.feed;
         return(
@@ -84,11 +84,8 @@ function ForumPage ({t},props){
                            </Tooltip>
 </div>
                        </Hidden>
-
-
                    </Toolbar>
                </AppBar>
-
         <Grid container xs={12} >
     <Grid item  style={{marginRight:"auto", marginLeft:"auto"}}>
         <TableContainer component={Paper} >
@@ -97,7 +94,6 @@ function ForumPage ({t},props){
                     <TableRow>
                         <TableCell>Topic</TableCell>
                         <TableCell align="right">Posts</TableCell>
-
                     </TableRow>
                 </TableHead>
                 {postslist.map(posts=>(
@@ -105,27 +101,17 @@ function ForumPage ({t},props){
                     <TableRow>
                         <TableCell component="th" scope="row" button>{posts.title}</TableCell>
                         <TableCell align="right"></TableCell>
-
                     </TableRow>
-
                 </TableBody>))}
             </Table>
         </TableContainer>
     </Grid>
-
 </Grid>
 </Grid>
                 )}}
 </Query>
             </main>
-
         </div>
-
-
     )
-
-
-
-
 }
 export default withTranslation()(ForumPage)
