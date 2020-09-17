@@ -21,7 +21,7 @@ import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
 import i18n from "../menu/translations/i18n";
 import UserMenu from "./UserMenu";
-import LinearDeterminate from "./LinearDeterminate";
+import CircularProgressLoading from "./CircularProgressLoading";
 import {AUTH_TOKEN, TEAM_ID, CREATE_MY_DEVICE, GC_USER_ID, DEVICE_ID, DEVICE_NAME, TEAM_NAME} from "../constants";
 import DeleteIcon from "@material-ui/icons/Delete"
 import TableContainer from '@material-ui/core/TableContainer';
@@ -56,10 +56,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 
 const authToken = localStorage.getItem(AUTH_TOKEN);
 const useStyles = makeStyles(theme => ({
-
-
     table:{
-
         "@media (min-width: 576px)": {
             maxWidth: "540px"
         },
@@ -74,7 +71,6 @@ const useStyles = makeStyles(theme => ({
         },
     },
     root: {
-
         height:"100%",
         marginRight:"auto",
         marginLeft:"auto",
@@ -128,7 +124,6 @@ const useStyles = makeStyles(theme => ({
 }));
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-
     return (
         <Typography
             component="div"
@@ -142,7 +137,6 @@ function TabPanel(props) {
         </Typography>
     );
 }
-
 TabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.any.isRequired,
@@ -199,11 +193,9 @@ function TeamList({t,className, rest},props) {
         localStorage.setItem(TEAM_ID,id);
 
     };
-
     const handleClickOpen = () => {
         setOpen(true);
     };
-
     const handleClose = () => {
         setOpen(false);
     };
@@ -211,15 +203,11 @@ function TeamList({t,className, rest},props) {
        <div>
             <UserMenu/>
             <div  className={classes.root}>
-
                 <Query query={QUERY_TEAMLIST} pollInterval={100} fetchPolicy={"network-only"} onError={(error) => enqueueSnackbar(error.message)}  >
                     {( {loading, error, data} ) =>  {
-                        if (loading) {return <LinearDeterminate />}
-console.log(data.me.teams);
+                        if (loading) {return <CircularProgressLoading />}
 const teamlist = data.me.teams;
-
                         if(authToken){
-
                             return(
 <div>  <Grid container spacing={2} xs={12}><AppBar position={"relative"}  color="default" elevation={5} style={{marginTop:"60px"}}>
     <Toolbar className={classes.toolbar} >
@@ -227,16 +215,9 @@ const teamlist = data.me.teams;
             <MenuItem value={'person'}><Button onClick={()=>history.push('/mydevices')}>{t('Person')}</Button></MenuItem>
             <MenuItem value={'team'}><Button onClick={()=> history.push('/team')}>{t('Team')}</Button></MenuItem>
         </Select>
-
         <Button style={{marginLeft:"auto "}} variant="outlined" onClick={handleClickOpen}> {t("Add Team")}</Button>
-
-
     </Toolbar>
-
 </AppBar>
-
-
-
 <List>
     {teamlist.map(tea=>
 <ListItem button onClick={()=>  (localStorage.setItem(TEAM_ID,tea.id), history.push('/team/'+tea.id))}>
@@ -247,12 +228,9 @@ const teamlist = data.me.teams;
                                     </Grid>
 </div>)}else return null}}
                         </Query>
-
                         <Mutation mutation={MUTATION_CREATETEAM} onError={(error) => enqueueSnackbar(error.message)} variables={{name}} onCompleted={(data) => confirm(data)}>
                             {( createteam,{loading, error, event}) => {
-
-                                if (loading) { return (<LinearDeterminate/> )}
-
+                                if (loading) { return (<CircularProgressLoading/> )}
                                 if (authToken){
                                     return(
                                         <Dialog
@@ -263,7 +241,6 @@ const teamlist = data.me.teams;
                                         >
                                             <DialogTitle id="alert-dialog-title">{"Create new team"}</DialogTitle>
                                             <DialogContent>
-
                                                 <FormControl>
                                                     <Typography>{t('Team Name')}</Typography>
                                                     <TextField value={name} onChange={(e)=>setName(e.target.value)}/>
@@ -274,14 +251,10 @@ const teamlist = data.me.teams;
                                                 <Button onClick={handleClose} color="primary">
                                                     {t('Close')}
                                                 </Button>
-
                                                 <Button  onClick={createteam}>{t('Submit')}</Button>
-
                                             </DialogActions>
                                         </Dialog>)}}}
-
                         </Mutation>
-
                         </div>
                         </div>)
                         }
