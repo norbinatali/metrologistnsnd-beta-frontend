@@ -8,7 +8,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import i18n from "../menu/translations/i18n";
 import UserMenu from "./UserMenu";
-import LinearDeterminate from "./LinearDeterminate";
+import CircularProgressLoading from "./CircularProgressLoading";
 import IconButton from "@material-ui/core/IconButton";
 import history from '../history';
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
