@@ -135,7 +135,7 @@ function UserProfile({t,props}) {
                                                                                       onCompleted={() => confirm()}>
                                                                                 {(changepassword, {loading, error}) => {
                                                                                     if (loading) {
-                                                                                        return (<LinearDeterminate/>)
+                                                                                        return (<CircularProgressLoading/>)
                                                                                     }
                                                                                     if (error) {
                                                                                         return (error.message)
