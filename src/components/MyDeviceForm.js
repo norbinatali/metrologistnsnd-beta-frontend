@@ -20,7 +20,7 @@ import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
 import i18n from "../menu/translations/i18n";
 import UserMenu from "./UserMenu";
-import LinearDeterminate from "./LinearDeterminate";
+import CircularProgressLoading from "./CircularProgressLoading";
 import {AUTH_TOKEN, CREATE_MY_DEVICE, GC_USER_ID,DEVICE_ID, DEVICE_NAME} from "../constants";
 import DeleteIcon from "@material-ui/icons/Delete"
 import TableContainer from '@material-ui/core/TableContainer';
@@ -180,7 +180,7 @@ function MyDeviceForm({t,className, rest}) {
 
             <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={100} onError={(error) => enqueueSnackbar(error.message)} >
                 {( {loading, error, data} ) =>  {
-                    if (loading) {return <LinearDeterminate />}
+                    if (loading) {return <CircularProgressLoading />}
                     if (error) { return error.message }
 
                     const currentDate =new Date();
