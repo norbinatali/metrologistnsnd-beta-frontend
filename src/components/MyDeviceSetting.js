@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import {withTranslation} from "react-i18next";
 import SwipeableViews from "react-swipeable-views";
 import {Query} from "react-apollo";
-import LinearDeterminate from "./LinearDeterminate";
+import CircularProgressLoading from "./CircularProgressLoading";
 import gql from "graphql-tag";
 import Box from "@material-ui/core/Box";
 import PropTypes from "prop-types";
@@ -105,16 +105,12 @@ function MyDeviceSetting() {
     return(
         <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={100} onError={(error) => enqueueSnackbar(error.message)} variables={{id:deviceID}}>
             {( {loading, error, data} ) =>  {
-                if (loading) {return <LinearDeterminate />}
+                if (loading) {return <CircularProgressLoading />}
                 if (error) { return error.message }
 
                 const currentDate =new Date();
                 const startDate= new Date(currentDate.setHours(2,0,0,0)).toISOString();
                 const endDate = new Date(new Date().setDate(new Date().getDate() + 1)).toISOString();
-
-                console.log(currentDate);
-                console.log(startDate);
-
                 const devicelist = data.myDevice;
                 if(authToken) {
                     return(
