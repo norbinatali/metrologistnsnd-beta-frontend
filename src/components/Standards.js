@@ -15,7 +15,7 @@ import Paper from '@material-ui/core/Paper';
 import CardContent from "@material-ui/core/CardContent";
 import i18n from "../menu/translations/i18n";
 import UserMenu from "./UserMenu";
-import LinearDeterminate from "./LinearDeterminate";
+import CircularProgressLoading from "./CircularProgressLoading";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import history from '../history';
@@ -30,8 +30,6 @@ const StyledTableCell = withStyles(theme => ({
         fontSize: 14,
     },
 }))(TableCell);
-
-
 const useStyles = makeStyles(theme => ({
     root: {
         width: '90%',
@@ -66,11 +64,7 @@ marginRight:"auto",
         backgroundColor:"#fff"
     }
 }));
-
-
 const GET_Device = gql`query { dtc(id:"ck4cnhiuhv5q60922pznldecj") {id name_EN name_UA device_id{ name_UA name_EN module tr{name_TR_UA name_TR_EN} }}}`;
-
-
 function Standards({t}){
     const classes = useStyles();
     const [completed, setCompleted] = React.useState(0);
@@ -91,10 +85,9 @@ function Standards({t}){
                 <Grid item xs={12}>
             <Query query={GET_Device} >
                 {( {loading, error, data} ) =>  {
-                    if (loading) {return<LinearDeterminate/>}
+                    if (loading) {return<CircularProgressLoading/>}
                     if (error) { return <div>error</div>;}
                     const devicelist = data.dtc.device_id;
-
                     if (i18n.language === "ua" )  {
                         return(
                              <Paper className={classes.table} >
@@ -104,22 +97,15 @@ function Standards({t}){
                                                        options={{
                                                            sorting: true,
                                                            rowStyle: {
-                                                               backgroundColor: '#EEE',
-                                                               
+                                                               backgroundColor: '#EEE',    
                                                            },
                                                        }}  localization={{
                                             body: {
                                                 emptyDataSourceMessage:"Немає данного приладу"},
                                             toolbar: {searchPlaceholder:"Пошук"},
                                             pagination: {labelRowsSelect:"рядків"}
-                                                       }}
-                                                        />
-
+                                                       }}  />
                                </Paper>)}
-
-
-
-
                     if (i18n.language === "en"){
                         return(
                             <Paper className={classes.table}>
@@ -138,12 +124,9 @@ function Standards({t}){
             </Query>
                 </Grid>
             </Grid>
+        </di>     
         </div>
-          
-        </div>
-
     );
-
 }
 
 export default withTranslation()(Standards);
