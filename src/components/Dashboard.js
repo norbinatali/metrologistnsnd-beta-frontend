@@ -10,7 +10,7 @@ import UserMenu from "./UserMenu";
 import Footer from "./Footer";
 import gql from "graphql-tag";
 import {Mutation, Query} from 'react-apollo';
-import LinearDeterminate from "./LinearDeterminate";
+import CircularProgressLoading from "./CircularProgressLoading";
 import {AUTH_TOKEN} from "../constants";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -171,7 +171,7 @@ function Dashboard ({t}){
                         <Query query={QUERY_USER} onError={(error) => enqueueSnackbar(error.message)}>
                             {({loading, error, data}) => {
                                 if (loading) {
-                                    return <LinearDeterminate/>
+                                    return <CircularProgressLoading/>
                                 }
                                 if (error) {
                                     return error.message
@@ -247,7 +247,7 @@ function Dashboard ({t}){
 
                 <Mutation mutation={MUTATION_APPOINTMENTS} variables={{title,location,notes,start_date,end_date}} onCompleted={(data) => confirm(data)}>
                     {( mutation,{loading, error}) => {
-                        if (loading) { return (<LinearDeterminate /> )}
+                        if (loading) { return (<CircularProgressLoading /> )}
                         if (authToken ){
 
                             return(
