@@ -20,7 +20,7 @@ export default function CircularStatic() {
       setCompleted(prevCompleted => (prevCompleted >= 100 ? 0 : prevCompleted + 10));
     }
 
-    const timer = setInterval(progress, 1000);
+    const timer = setInterval(progress, 500);
     return () => {
       clearInterval(timer);
     };
