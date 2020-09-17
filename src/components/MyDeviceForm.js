@@ -25,7 +25,6 @@ import {AUTH_TOKEN, CREATE_MY_DEVICE, GC_USER_ID,DEVICE_ID, DEVICE_NAME} from ".
 import DeleteIcon from "@material-ui/icons/Delete"
 import TableContainer from '@material-ui/core/TableContainer';
 import Toolbar from "@material-ui/core/Toolbar";
-import Draggable from 'react-draggable';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import history from '../history.js'
 import ListItem from "@material-ui/core/ListItem";
@@ -134,13 +133,6 @@ const StyledTableCell = withStyles(theme => ({
         fontSize: 10,
     },
 }))(TableCell);
-function PaperComponent(props) {
-    return (
-        <Draggable cancel={'[class*="MuiDialogContent-root"]'}>
-            <Paper {...props} />
-        </Draggable>
-    );
-}
 
 const GET_MyDevice = gql`query { me{mydevices{ id name_device,brand_device,series_device,kind_device,certificate_calibration,certificate_verification,certificate_conformity,module_device,tr_device,certificate_assessment_number,certificate_verification_number,certificate_calibration_number,department_assessment_center,department_verification_center,department_calibration_center,conformity_data,calibration_data,valid_verification,notes} }}`;
 const DELETE_MYDevice =gql`mutation ($id:ID!){deleteMyDevice(id:$id){ id }}`
@@ -182,18 +174,12 @@ function MyDeviceForm({t,className, rest}) {
                 {( {loading, error, data} ) =>  {
                     if (loading) {return <CircularProgressLoading />}
                     if (error) { return error.message }
-
                     const currentDate =new Date();
                     const startDate= new Date(currentDate.setHours(2,0,0,0)).toISOString();
                     const endDate = new Date(new Date().setDate(new Date().getDate() + 1)).toISOString();
-
-                    console.log(currentDate);
-                    console.log(startDate);
-
                     const devicelist = data.me.mydevices;
                     if(authToken){
                         return(
-
                             <div>
                                 <AppBar position={"relative"} fixed color="default" elevation={5} style={{marginTop:"50px"}}>
                                     <Toolbar className={classes.toolbar} >
@@ -201,10 +187,7 @@ function MyDeviceForm({t,className, rest}) {
                                             <MenuItem value={'person'}><Button onClick={()=>history.push('/mydevices')}>{t('Person')}</Button></MenuItem>
                                             <MenuItem value={'team'} ><Button onClick={()=>history.push('/team')}>{t('Team')}</Button></MenuItem>
                                         </Select>
-
                                         <Button style={{marginLeft:"auto"}} variant="outlined" onClick={()=> history.push("/add-device")}> {t("Add Device")}</Button>
-
-
                                     </Toolbar>
                                     <AppBar position="static" color="default" square>
                                         <Tabs value={value} onChange={handleChangeTab} indicatorColor="default" textColor="primary" scrollButtons="auto" variant="scrollable" centered style={{ flexGrow: 1,width: '100%', marginRight:"auto", marginLeft:"auto", backgroundColor:"#fff"}}>
@@ -218,18 +201,12 @@ function MyDeviceForm({t,className, rest}) {
 <Grid container spacing={2} xs={12}>
                                 <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
                                     <TabPanel value={value} index={0} dir={theme.direction} style={{ width:"100%",height: "600px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
-
                                         <Grid item justify={"center"} xs={12}>
-
                                             <Paper className={classes.table}>
-
                                                 <Table stickyHeader component={Paper} >
-
                                                     {devicelist.map(device =>(
-
-                                                        <TableBody>
+                                                       <TableBody>
                                                             {device.certificate_conformity=== true &&(
-
                                                                 <TableRow key={device.id}>
                                                                     <TableCell className={classes.tableCell} align="center" button onClick={()=>(
                                                                             localStorage.setItem(DEVICE_ID,device.id),
@@ -243,7 +220,7 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell>
                                                                         <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={10}>
                                                                             {( deleteDevice,{loading, error, data}) => {
-                                                                                if (loading) { return (<LinearDeterminate /> )}
+                                                                                if (loading) { return (<CircularProgressLoading /> )}
                                                                                 if (error) {return (error.message)}
                                                                                 if (authToken){
                                                                                     return(
@@ -263,14 +240,10 @@ function MyDeviceForm({t,className, rest}) {
                                     <TabPanel value={value} index={1} dir={theme.direction} style={{width:"100%",height: "600px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                         <Grid justify={"center"} item xs={12}>
                                             <Paper className={classes.table}>
-
                                                 <Table stickyHeader component={Paper}>
-
-
                                                     {devicelist.map(device =>(
                                                         <TableBody >
                                                             {device.certificate_calibration=== true &&(
-
                                                                 <TableRow key={device.id}>
                                                                     <TableCell className={classes.tableCell} align="center" button onClick={()=>(
                                                                    localStorage.setItem(DEVICE_ID,device.id),
@@ -285,13 +258,10 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell>
                                                                         <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={50}>
                                                                             {( deleteDevice,{loading, error, data}) => {
-                                                                                if (loading) { return (<LinearDeterminate /> )}
+                                                                                if (loading) { return (<CircularProgressLoading /> )}
                                                                                 if (error) {return (error.message)}
-
                                                                                 if (authToken){
-
                                                                                     return(
-
                                                                                         <Tooltip title={t('Delete')}>
                                                                                             <IconButton onClick={deleteDevice}><DeleteIcon /></IconButton>
                                                                                         </Tooltip>
@@ -310,12 +280,9 @@ function MyDeviceForm({t,className, rest}) {
                                     <TabPanel value={value} index={2} dir={theme.direction} style={{width:"100%",height: "600px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                         <Grid  justify={"center"} item xs={12}>
                                             <Paper className={classes.table}>
-
                                                 <Table stickyHeader component={Paper}>
-
                                                     {devicelist.map(device =>(
                                                         <TableBody >
-
                                                             {device.certificate_verification===true &&(
                                                                 <TableRow key={device.id}>
                                                                     <TableCell className={classes.tableCell} align="center" button onClick={()=>(
@@ -330,13 +297,10 @@ function MyDeviceForm({t,className, rest}) {
                                                                     <TableCell>
                                                                         <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={50}>
                                                                             {( deleteDevice,{loading, error, data}) => {
-                                                                                if (loading) { return (<LinearDeterminate /> )}
+                                                                                if (loading) { return (<CircularProgressLoading /> )}
                                                                                 if (error) {return (error.message)}
-
                                                                                 if (authToken){
-
                                                                                     return(
-
                                                                                         <Tooltip title={t('Delete')}>
                                                                                             <IconButton onClick={deleteDevice}><DeleteIcon /></IconButton>
                                                                                         </Tooltip>
@@ -346,44 +310,30 @@ function MyDeviceForm({t,className, rest}) {
                                                                 </TableRow> )}
                                                         </TableBody>))}
                                                 </Table>
-
-
-
-
                                             </Paper>
-
                                         </Grid>
                                     </TabPanel>
                                     <TabPanel value={value} index={3} dir={theme.direction} style={{ width:"100%",height: "600px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
-
                                         <Grid item justify={"center"} xs={12}>
                                             <Paper className={classes.table}>
                                                 <TableContainer component={Paper}>
-
                                                     <Table stickyHeader >
-
                                                         {devicelist.map(device =>(
-
-                                                            <TableBody>
+                                                           <TableBody>
                                                                 {(!device.certificate_verification && !device.certificate_calibration && !device.certificate_conformity) &&(
-
                                                                     <TableRow className={classes.tableCell} key={device.id}>
                                                                         <TableCell  align="center" button onClick={()=>(
                                                                                 localStorage.setItem(DEVICE_ID,device.id),
                                                                                     localStorage.setItem(DEVICE_NAME,device.name_device),
                                                                                     history.push('/mydevices/'+device.name_device)
-
                                                                                    )}>
                                                                                 {device.name_device} 
                                                                                </TableCell>
                                                                         <TableCell  align="center">{device.notes}</TableCell>
                                                                         <TableCell>
-
                                                                             <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={50}>
-
                                                                                 {( deleteDevice,{loading, error, data}) => {
-
-                                                                                    if (loading) { return (<LinearDeterminate /> )}
+                                                                                    if (loading) { return (<CircularProgressLoading /> )}
                                                                                     if (error) {return (error.message)}
                                                                                     if (authToken){
                                                                                         return(
@@ -397,16 +347,9 @@ function MyDeviceForm({t,className, rest}) {
                                                             </TableBody> ))}
                                                     </Table>
                                                 </TableContainer></Paper>
-
-
-
                                         </Grid>
-
                                     </TabPanel>
                                 </SwipeableViews>
-
-
-
                             </Grid></div>
                         )}else return null}}
             </Query>
