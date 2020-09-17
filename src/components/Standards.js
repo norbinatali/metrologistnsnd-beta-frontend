@@ -124,7 +124,7 @@ function Standards({t}){
             </Query>
                 </Grid>
             </Grid>
-        </di>     
+        </div>     
         </div>
     );
 }
