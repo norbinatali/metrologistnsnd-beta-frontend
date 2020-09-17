@@ -21,7 +21,7 @@ import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
 import i18n from "../menu/translations/i18n";
 import UserMenu from "./UserMenu";
-import LinearDeterminate from "./LinearDeterminate";
+import CircularProgressLoading from "./CircularProgressLoading";
 import {
     AUTH_TOKEN,
     TEAM_ID,
@@ -64,10 +64,7 @@ import TextField from "@material-ui/core/TextField";
 import DialogActions from "@material-ui/core/DialogActions";
 
 const authToken = localStorage.getItem(AUTH_TOKEN);
-
 const useStyles = makeStyles(theme => ({
-
-
     table:{
 
         "@media (min-width: 576px)": {
@@ -84,7 +81,6 @@ const useStyles = makeStyles(theme => ({
         },
     },
     root: {
-
         height:"100%",
         marginRight:"auto",
         marginLeft:"auto",
@@ -204,18 +200,14 @@ function TeamInfo({t,className, rest},props) {
     };
     const [emailMembers, setEmailMembers] = React.useState('');
     const confirm= async (data)=>{
-
         setOpen(false);
     };
     const saveData=(id)=>{
         localStorage.setItem(TEAM_MEMBERID,id);
-
     };
-
     const handleClickOpen = () => {
         setOpen(true);
     };
-
     const handleClose = () => {
         setOpen(false);
     };
@@ -223,19 +215,12 @@ function TeamInfo({t,className, rest},props) {
    <div>	        
             <UserMenu/>	
             <div  className={classes.root}>	
-
                 <Query query={QUERY_TEAMMEMBERS} pollInterval={100} variables={{id:localStorage.getItem('team-id')}} fetchPolicy={"network-only"} onError={(error) => enqueueSnackbar(error.message)}  >	
                     {( {loading, error, data} ) =>  {	
-                        if (loading) {return <LinearDeterminate />}	
-console.log(data.teamList);	
-console.log(data.teamList.teamMembers);	
+                        if (loading) {return <CircularProgressLoading />}	
 const teamMembersList=data.teamList.teamMembers;	
-
-
                         if(authToken){	
-
                             return(	
-
                                 <Grid container spacing={2} xs={12}>	
                                     <AppBar position={"relative"}  color="default" elevation={5} style={{marginTop:"50px"}}>	
                                         <Toolbar className={classes.toolbar} >	
@@ -243,12 +228,8 @@ const teamMembersList=data.teamList.teamMembers;
                                                 <MenuItem value={'person'} onClick={()=>history.push('/mydevices')}>{t('Person')}</MenuItem>	
                                                 <MenuItem value={'team'} onClick={()=> history.push('/team')}>{t('Team')}</MenuItem>	
                                             </Select>	
-
                                             <Button style={{marginLeft:"auto "}} variant="outlined" onClick={handleClickOpen}> {t("Add a New Team Member")}</Button>	
-
-
                                         </Toolbar>	
-
                                     </AppBar>	
                                     <List>	
                                         {teamMembersList.map(tea=>	
@@ -258,16 +239,12 @@ const teamMembersList=data.teamList.teamMembers;
                                                 {tea.memberConfirmed=== false &&<ListItemText style={{color:"#9f0018"}}>{t('Waiting...')}</ListItemText>}	
                                             </ListItem>)}	
                                     </List>	
-
                                 </Grid>	
                             )}else return null}}	
-
                 </Query>	
                 <Mutation mutation={MUTATION_ADDMEMBER} onError={(error) => enqueueSnackbar(error.message)} variables={{emailMembers, id:localStorage.getItem('team-id')}} onCompleted={(data) => confirm(data)}>	
                     {( createteamMember,{loading, error, event}) => {
-
-                        if (loading) { return (<LinearDeterminate/> )}
-
+                        if (loading) { return (<CircularProgressLoading/> )}
                         if (authToken){
                             return(
                                 <Dialog
@@ -278,28 +255,20 @@ const teamMembersList=data.teamList.teamMembers;
                                 >
                                     <DialogTitle id="alert-dialog-title">{"Add a new team member"}</DialogTitle>
                                     <DialogContent>
-
                                         <FormControl>
                                             <Typography>{t('Member Email')}</Typography>
                                             <TextField value={emailMembers} onChange={(e)=>setEmailMembers(e.target.value)}/>
-
                                         </FormControl>
                                     </DialogContent>
                                     <DialogActions>
                                         <Button onClick={handleClose} color="primary">
                                             {t('Close')}
                                         </Button>
-
                                         <Button onClick={createteamMember} >{t('Submit')}</Button>
-
                                     </DialogActions>
                                 </Dialog>)}}}
-
                 </Mutation>
-
-
             </div>
-
         </div>)
 }
 export default withTranslation() (TeamInfo)
