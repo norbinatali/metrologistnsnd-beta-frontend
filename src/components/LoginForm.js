@@ -24,7 +24,6 @@ import Auth from "./Auth";
 import history from "../history";
 import i18n from 'i18next';
 import {AUTH_TOKEN, GC_USER_ID} from "../constants";
-import LinearDeterminate from "./LinearDeterminate";
 import Snackbar from "@material-ui/core/Snackbar";
 import { SnackbarProvider, useSnackbar } from 'notistack';
 import MenuTabPanel from "./MenuTabPanel";
