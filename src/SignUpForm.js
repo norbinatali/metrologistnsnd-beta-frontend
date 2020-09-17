@@ -22,7 +22,7 @@ import FormControl from "@material-ui/core/FormControl";
 import RaisedButton from "material-ui/RaisedButton";
 import Auth from './components/Auth'
 import history from "./history";
-import LinearDeterminate from "./components/LinearDeterminate";
+import CircularProgressLoading from "./components/CircularProgressLoading";
 import Snackbar from "@material-ui/core/Snackbar";
 import { SnackbarProvider, useSnackbar } from 'notistack';
 import i18n from 'i18next';
@@ -127,7 +127,7 @@ function SignUpForm({t},props){
     return (
         <Mutation mutation={SIGNUP_MUTATION}  variables={{ email, password,name, companyName, country} } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(token) => confirm(token)}>
             {( signup,{loading, error, event}) => {
-                if (loading) { return (<LinearDeterminate /> )}
+                if (loading) { return (<CircularProgressLoading /> )}
 
                 return(
                     <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center', width:"100%"}}>
