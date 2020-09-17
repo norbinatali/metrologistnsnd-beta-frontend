@@ -7,7 +7,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Grid from "@material-ui/core/Grid";
 import {Button} from "@material-ui/core";
 import {AUTH_TOKEN, GC_USER_ID, RESET_TOKEN} from '../constants';
-import LinearDeterminate from "./LinearDeterminate";
+import CircularProgressLoading from "./CircularProgressLoading";
 import {
     fade, withStyles,
         makeStyles
@@ -70,7 +70,7 @@ function ForgetPassword ({t}) {
                 <TextField type="text" fullWidth value={email} onChange={e => setEmail( e.target.value )}/>
                 <Mutation mutation={FORGET_PASSWORD}  variables={{ email } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
                     {( mutation,{loading, error}) => {
-                if (loading) { return (<LinearDeterminate /> )}
+                if (loading) { return (<CircularProgressLoading /> )}
 
                 return(
                         <Button onClick={mutation}>{t('Submit')}</Button>)}}
