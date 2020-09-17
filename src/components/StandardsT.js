@@ -14,7 +14,7 @@ import Paper from '@material-ui/core/Paper';
 import CardContent from "@material-ui/core/CardContent";
 import i18n from "../menu/translations/i18n";
 import UserMenu from "./UserMenu";
-import LinearDeterminate from "./LinearDeterminate";
+import CircularProgressLoading from "./CircularProgressLoading";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import history from '../history';
@@ -65,15 +65,10 @@ marginRight:"auto",
         backgroundColor:"#fff"
     }
 }));
-
-
 const GET_Device = gql`query { dtc(id:"ck4cokk9qvfvn0922s2dovf72") {id name_EN name_UA device_id{ name_UA name_EN module tr{name_TR_UA name_TR_EN} }}}`;
-
-
 function StandardsT({t}){
     const classes = useStyles();
     const [completed, setCompleted] = React.useState(0);
-   
      const handleBack = () => {
     history.goBack();
 };
@@ -90,10 +85,9 @@ function StandardsT({t}){
                 <Grid item xs={12}>
             <Query query={GET_Device} >
                 {( {loading, error, data} ) =>  {
-                    if (loading) {return<LinearDeterminate/>}
+                    if (loading) {return<CircularProgressLoading/>}
                     if (error) { return <div>error</div>;}
                     const devicelist = data.dtc.device_id;
-
                     if (i18n.language === "ua" )  {
                         return(
                             <Paper className={classes.table} >
@@ -114,10 +108,6 @@ function StandardsT({t}){
                                                        }}
                                                         />
                                </Paper>)}
-
-
-
-
                     if (i18n.language === "en"){
                         return(
                            <Paper className={classes.table}>
