@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 import gql from "graphql-tag";
 import {AUTH_TOKEN, GC_USER_ID} from "./constants";
 import {Mutation} from 'react-apollo'
@@ -12,7 +11,6 @@ import {withTranslation} from "react-i18next";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Grid from "@material-ui/core/Grid";
-import LinearDeterminate from "./components/LinearDeterminate";
 import SignUpForm from "./SignUpForm";
 
 class SignUp extends Component{
@@ -24,16 +22,10 @@ class SignUp extends Component{
             signup:true,
             name:'',
             companyName:"",
-
         };
-
     }
-
-
-    render(){
-        
-   
-        const { t } = this.props;
+    render(){  
+       const { t } = this.props;
         return ( 
  <div style={{height: "100%"}} >
                 <MuiThemeProvider>
@@ -48,13 +40,10 @@ class SignUp extends Component{
                     </Grid>
                     <Grid  item lg={10} xs={12} >
             <SignUpForm />
-
                     </Grid> </Grid></MuiThemeProvider>
             </div>
         );
     }
-
-   
     handleBack = () => {
     history.goBack();
 };
