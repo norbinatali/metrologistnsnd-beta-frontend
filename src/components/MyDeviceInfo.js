@@ -21,7 +21,7 @@ import {Query} from 'react-apollo';
 import i18n from "../menu/translations/i18n";
 import UserMenu from "./UserMenu";
 import Hidden from "@material-ui/core/Hidden";
-import LinearDeterminate from "./LinearDeterminate";
+import CircularProgressLoading from "./CircularProgressLoading";
 import {AUTH_TOKEN, CREATE_MY_DEVICE, DEVICE_ID, DEVICE_NAME, GC_USER_ID} from "../constants";
 import DeleteIcon from "@material-ui/icons/Delete"
 import Toolbar from "@material-ui/core/Toolbar";
@@ -162,29 +162,17 @@ function MyDeviceInfo({t,className, rest}) {
         setValue(index);
     };
     const handleClickOpen = () => {setOpen(true);};
-
-
     const handleClose = () => {setOpen(false);};
     return(
         <div className={classes.container}>
         <UserMenu/>
-
-
-
             <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={100} onError={(error) => enqueueSnackbar(error.message)} variables={{id:localStorage.getItem('device-id').toString()}}>
                 {( {loading, error, data} ) =>  {
-                    if (loading) {return <LinearDeterminate />}
+                    if (loading) {return <CircularProgressLoading />}
                     if (error) { return error.message }
-
                     const currentDate =new Date();
                     const startDate= new Date(currentDate.setHours(2,0,0,0)).toISOString();
                     const endDate = new Date(new Date().setDate(new Date().getDate() + 1)).toISOString();
-
-                    console.log(currentDate);
-                    console.log(startDate);
-
-console.log(data.myDevice.id)
-                    console.log(deviceID)
                     const devicelist = data.myDevice;
                     if(authToken){
                         const tabsMenu= <Tabs value={value} onChange={handleChangeTab} indicatorColor="default" textColor="primary" scrollButtons="auto" variant="scrollable" centered style={{ flexGrow: 1,width: '100%', marginRight:"auto", marginLeft:"auto", backgroundColor:"#fff"}}>
@@ -200,10 +188,7 @@ console.log(data.myDevice.id)
                                         <Button onClick={()=> history.push('/mydevices')} >{t('Person')}</Button>
                                         <ArrowForwardIosIcon/>
                                         <Button onClick={()=> history.push('/mydevices/'+deviceName)}>{data.myDevice.name_device}</Button>
-
                                         <Button style={{marginLeft:"auto"}} variant="outlined" onClick={()=> history.push("/more")}> {t("More")}</Button>
-
-
                                     </Toolbar>
                                     <AppBar position="static" color="default" square>
                                         <Hidden smDown implementation="css">
@@ -260,7 +245,6 @@ console.log(data.myDevice.id)
                                                 </Table>
                                             </TableContainer>
 </Grid>
-
  <Grid item xs={12} md={6}>
 <TableContainer component={Paper}>
                                                 <Table className={classes.table} aria-label="spanning table">
@@ -358,7 +342,6 @@ console.log(data.myDevice.id)
                                                                <Typography style={{color: "#000"}}>{t('No Certificate')}</Typography></TableCell>
                                                            </TableRow>
                                                             )}
-
                                                     </TableBody>
                                                 </Table>
                                             </TableContainer>
@@ -366,30 +349,17 @@ console.log(data.myDevice.id)
                                         </Grid>
                                     </TabPanel>
 
-
                                     <TabPanel value={value} index={1} dir={theme.direction} style={{width:"100%",minHeight: "375px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                         <Grid justify={"center"} item xs={12}>
                                             <Paper className={classes.table}>
-
-                                             
-
-                                            </Paper>
-
+                                           </Paper>
                                         </Grid>
-
                                     </TabPanel>
                                     <TabPanel value={value} index={2} dir={theme.direction} style={{width:"100%",minHeight: "375px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
                                         <Grid  justify={"center"} item xs={12}>
                                             <Paper className={classes.table}>
-
                                                 <Table stickyHeader component={Paper}>
-
-
                                                 </Table>
-
-
-
-
                                             </Paper>
 
                                         </Grid>
@@ -399,22 +369,12 @@ console.log(data.myDevice.id)
                                         <Grid item justify={"center"} xs={12}>
                                             <Paper className={classes.table}>
                                                 <TableContainer component={Paper}>
-
                                                     <Table stickyHeader >
-
-
                                                     </Table>
                                                 </TableContainer></Paper>
-
-
-
                                         </Grid>
-
                                     </TabPanel>
                                 </SwipeableViews>
-
-
-
                             </Grid>
                         )}else return null}}
             </Query>
