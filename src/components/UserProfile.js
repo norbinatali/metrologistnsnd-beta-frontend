@@ -17,7 +17,7 @@ import Button from "@material-ui/core/Button";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import UserMenu from "./UserMenu";
-import LinearDeterminate from "./LinearDeterminate";
+import CircularProgressLoading from "./CircularProgressLoading";
 import {useSnackbar} from "notistack";
 import i18n from 'i18next';
 import Typography from "@material-ui/core/Typography";
@@ -83,17 +83,16 @@ function UserProfile({t,props}) {
         <div>
             <UserMenu/>
             <main style={{flexGrow: 1, height: '100%', overflow: 'auto'}}>
-                <Query query={QUERY_USER} pollInterval={100}>
+                <Query query={QUERY_USER} pollInterval={50}>
                     {({loading, error, data}) => {
                         if (loading) {
-                            return <LinearDeterminate/>
+                            return <CircularProgressLoading/>
                         }
                         if (error) {
                             return error.message
                         }
                         const userInfo = data.me;
-                        console.log(data.me.name)
-                        console.log(data.me.email)
+                       
                         if (authToken && data) {
                             return (
                                 <div className={classes.root}>
@@ -166,7 +165,7 @@ function UserProfile({t,props}) {
                                                               onCompleted={(data) => confirmUp(data)}>
                                                         {(upgradeUser, {loading, error}) => {
                                                             if (loading) {
-                                                                return (<LinearDeterminate/>)
+                                                                return (<CircularProgressLoading/>)
                                                             }
                                                             if (error) {
                                                                 return (error.message)
