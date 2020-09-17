@@ -16,7 +16,7 @@ import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import {AUTH_TOKEN, CREATE_MY_DEVICE, GC_USER_ID} from "../constants";
 import {fade} from "@material-ui/core/styles";
-import LinearDeterminate from "./LinearDeterminate";
+import CircularProgressLoading from "./CircularProgressLoading";
 import UserMenu from "./UserMenu";
 import CardHeader from "@material-ui/core/CardHeader";
 import Divider from "@material-ui/core/Divider";
@@ -260,7 +260,7 @@ const hasError = field =>
                                         <Divider />
                                         <Mutation mutation={CREATE_MYDEVICE}  variables={{id,name_device,brand_device,series_device,kind_device,certificate_calibration,certificate_verification,certificate_conformity,module_device,tr_device,certificate_assessment_number,certificate_verification_number,certificate_calibration_number,department_assessment_center,department_verification_center,department_calibration_center,conformity_data,calibration_data,valid_verification,notes} } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
                                             {( addmydevice,{loading, error, event}) => {
-                                                if (loading) { return (<LinearDeterminate /> )}
+                                                if (loading) { return (<CircularProgressLoading /> )}
                                                 if (error) {return (error.message)}
                                                 if (authToken){
                                                     return(
