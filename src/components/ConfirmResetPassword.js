@@ -7,7 +7,7 @@ import { withTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import history from '../history'
 import gql from 'graphql-tag';
-import LinearDeterminate from "./LinearDeterminate";
+import CircularProgressLoading from "./CircularProgressLoading";
 import{Mutation} from 'react-apollo';
 import Paper from "@material-ui/core/Paper";
 import { SnackbarProvider, useSnackbar } from 'notistack';
@@ -32,7 +32,7 @@ const resetTokenUrl = urlObj.searchParams.get('resetToken');
             <MenuForConfirm/>
                 <Paper ><Mutation mutation={RESET_PASSWORD}  variables={{email:emailUrl, resetToken:resetTokenUrl, password } } onError={(error) => enqueueSnackbar(error.message)} onCompleted={(data) => confirm(data)}>
                         {( mutation,{loading}) => {
-                if (loading) {return <LinearDeterminate />}
+                if (loading) {return <CircularProgressLoading />}
                               console.log(emailUrl)
                               console.log(resetTokenUrl)
                      return(
