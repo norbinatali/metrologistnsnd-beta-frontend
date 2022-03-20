@@ -4,16 +4,14 @@ import './style/index.css';
 import App from './components/App';
 import { ApolloProvider } from 'react-apollo'
 import ApolloClient from 'apollo-client'
-import {BrowserRouter} from 'react-router-dom'
 import { setContext } from 'apollo-link-context'
 import { AUTH_TOKEN } from './constants'
 import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import history from './history';
 import { onError } from "apollo-link-error";
-import { SnackbarProvider, useSnackbar } from 'notistack';
+import { SnackbarProvider } from 'notistack';
 const httpLink = createHttpLink({
-    uri: 'https://metrologistnsnd-beta-backend.herokuapp.com', credentials: "include" 
+    uri: 'https://metrologistnsnd-beta-backend.herokuapp.com', credentials: "include"
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -43,11 +41,11 @@ export default client;
 
 const Wrapper = ()=>(
     <ApolloProvider client={client}>
-        <BrowserRouter>
+
             <SnackbarProvider>
                 <App />
             </SnackbarProvider>
-        </BrowserRouter>
+
     </ApolloProvider>
 )
 ReactDOM.render(

@@ -5,7 +5,10 @@ const Auth = {
     authenticate() {
         this.isAuthenticated = true;
     },
-    signout() {
+    signIn() {
+        this.isAuthenticated = true;
+    },
+    signOut() {
         this.isAuthenticated = false;
         client.cache.reset();
         sessionStorage.clear();

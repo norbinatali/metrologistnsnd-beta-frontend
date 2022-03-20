@@ -1,61 +1,40 @@
-import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import {Grid, makeStyles, Typography, withStyles} from "@material-ui/core";
+import React from 'react';
+import {Grid, Typography, Paper} from "@mui/material";
 import PropTypes from "prop-types";
 import {withTranslation} from "react-i18next";
 import UserMenu from "./UserMenu";
-import Paper from "@material-ui/core/Paper";
-import Divider from "@material-ui/core/Divider";
-import history from '../history'
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        width: '100%',
-        marginTop: theme.spacing(3),
-        overflowX: 'auto',
-    },
-    table: {
-        minWidth: 700,
-        color:"linear-gradient(to right,#000222, rgba(23, 20, 61, 0.96),  #252529)"
-    },
-    boxFlex:"column"
-
-}));
- function HistoryMetrology({t,props}) {
-
-    const classes = useStyles();
-
-     const {  ...rest } = props;
-
-    return(
+function HistoryMetrology({t}) {
+    return (
         <div>
             <UserMenu/>
-                <main style={{ flexGrow: 1, height: '100%', overflow: 'auto'}}>
-                    <div style={{ marginTop: 40 }}>
-                        <div style={{ marginTop: 20, padding:30}}>
-                        <div style={{display:'flex'}}>
-                <Grid container spacing={2} >
-                    <Grid item>
-                   <Paper elevation={3}>
-         <Typography align={"justify"} style={{padding:10}} variant="subtitle1">{t('History')} </Typography>
-                        <Typography align={"justify"} style={{padding:30}} variant="subtitle1">
-                         <p>{t('History info')}</p>
-                         <p>{t('History metrology info')}</p>
-                         <p>{t('History metrology')}</p>
-
-                     </Typography>
-                    </Paper>
-
-                </Grid>
-                </Grid>
-
-        </div>
+            <main style={{flexGrow: 1, height: '100%', overflow: 'auto'}}>
+                <div style={{marginTop: 40}}>
+                    <div style={{marginTop: 20, padding: 30}}>
+                        <div style={{display: 'flex'}}>
+                            <Grid container spacing={2}>
+                                <Grid item>
+                                    <Paper elevation={3}>
+                                        <Typography align={"justify"} style={{padding: 10}}
+                                                    variant="subtitle1">{t('History')} </Typography>
+                                        <Typography align={"justify"} style={{padding: 30}} variant="subtitle1">
+                                            <p>{t('History info')}</p>
+                                            <p>{t('History metrology info')}</p>
+                                            <p>{t('History metrology')}</p>
+                                        </Typography>
+                                    </Paper>
+                                </Grid>
+                            </Grid>
                         </div>
                     </div>
-                </main>
-</div>
-    )}
+                </div>
+            </main>
+        </div>
+    )
+}
+
 HistoryMetrology.propTypes = {
-    className: PropTypes.string
+    className: PropTypes.string,
+    t:PropTypes.node
 };
 export default withTranslation()(HistoryMetrology)

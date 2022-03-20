@@ -1,14 +1,9 @@
 import React, {Component} from "react";
-import TextField from "@material-ui/core/TextField";
-import FormControl from "@material-ui/core/FormControl";
-import {Button} from "@material-ui/core";
-import {AUTH_TOKEN, CONFIRM_TEAM_MEMBER, GC_USER_ID, RESET_TOKEN} from '../constants';
-
-import { makeStyles } from '@material-ui/core/styles';
-
+import {Button,Paper} from "@mui/material";
+import {GC_USER_ID, RESET_TOKEN} from '../constants';
 import gql from 'graphql-tag';
 import{Mutation} from 'react-apollo';
-import Paper from "@material-ui/core/Paper";
+import PropTypes from "prop-types";
 
 
 export default class ConfirmTeamMember extends Component {
@@ -20,8 +15,6 @@ export default class ConfirmTeamMember extends Component {
             id: "",
             emailMembers: '',
             memberConfirmToken:'',
-
-
         };}
         componentDidMount() {
             const urlObj = new URL(window.location.href);
@@ -37,27 +30,25 @@ export default class ConfirmTeamMember extends Component {
             <div>
                 <Paper style={{backgroundColor:"white"}}>
                     <label  htmlFor="password">Confirm your membership in Team // Metrologist </label>
-
                     <Mutation mutation={TEAM_MEMBER}  variables={{emailMembers, memberConfirmToken } } onCompleted={() => this._confirm()}>
                         {mutation => (
                             <Button onClick={mutation}>Submit</Button>)}
                     </Mutation>
-
                 </Paper>
             </div>
-
         )
     }
     _confirm =() => {
-
         const {resetToken} = this.props.confirmresetpassword;
         this._saveUserData(resetToken);
-
     };
-
 
     _saveUserData =(id, token, resetToken) => {
         localStorage.setItem(GC_USER_ID, id);
         localStorage.setItem(RESET_TOKEN, resetToken)
     }
 }
+ConfirmTeamMember.propTypes = {
+    confirmresetpassword: PropTypes.node
+
+};

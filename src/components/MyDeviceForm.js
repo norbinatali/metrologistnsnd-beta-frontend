@@ -1,101 +1,42 @@
 import React from "react";
 import {withTranslation} from "react-i18next";
-import {List, ListItemText,makeStyles} from "@material-ui/core";
-import { withStyles } from '@material-ui/core/styles';
-import ExpandMoreIcon from "@material-ui/core/SvgIcon/SvgIcon";
-import Typography from "@material-ui/core/Typography";
-import RaisedButton from 'material-ui/RaisedButton';
+import {
+    MenuItem,
+    Select,
+    Tooltip,
+    IconButton,
+    Box,
+    AppBar,
+    Tab,
+    Tabs,
+    Toolbar,
+    TableContainer,
+    TableRow,
+    Button,
+    Grid,
+    Paper,
+    TableBody,
+    TableCell,
+    Table,
+    Typography
+} from "@mui/material";
+import {useTheme} from '@mui/material/styles';
+
 import PropTypes from 'prop-types';
-import Table from "@material-ui/core/Table";
-import TableHead from "@material-ui/core/TableHead";
-import TableCell from "@material-ui/core/TableCell";
-import TableBody from "@material-ui/core/TableBody";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import clsx from 'clsx';
-import Button from '@material-ui/core/Button';
-import DateFnsUtils from '@date-io/date-fns';
-import TableRow from "@material-ui/core/TableRow";
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
-import i18n from "../menu/translations/i18n";
-import UserMenu from "./UserMenu";
 import CircularProgressLoading from "./CircularProgressLoading";
-import {AUTH_TOKEN, CREATE_MY_DEVICE, GC_USER_ID,DEVICE_ID, DEVICE_NAME} from "../constants";
-import DeleteIcon from "@material-ui/icons/Delete"
-import TableContainer from '@material-ui/core/TableContainer';
-import Toolbar from "@material-ui/core/Toolbar";
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import {AUTH_TOKEN, DEVICE_ID, DEVICE_NAME} from "../constants";
+import DeleteIcon from "@mui/icons-material/Delete"
 import history from '../history.js'
-import ListItem from "@material-ui/core/ListItem";
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import useTheme from "@material-ui/core/styles/useTheme";
 import SwipeableViews from 'react-swipeable-views';
-import AppBar from "@material-ui/core/AppBar";
-import Box from "@material-ui/core/Box";
-import IconButton from "@material-ui/core/IconButton";
 import {Mutation} from "react-apollo";
-import Tooltip from "@material-ui/core/Tooltip";
-import { SnackbarProvider, useSnackbar } from 'notistack';
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
+import {useSnackbar} from 'notistack';
 
-const deviceid = localStorage.getItem(CREATE_MY_DEVICE);
 const authToken = localStorage.getItem(AUTH_TOKEN);
-const useStyles = makeStyles(theme => ({
 
-    table: {
-       
-       marginRight:"auto",
-        marginLeft:"auto",
-        backgroundColor:"transparent",
-         "@media (min-width: 576px)": {
-            maxWidth: "540px"
-        },
-        "@media (min-width: 768px)": {
-            maxWidth: "720px"
-        },
-        "@media (min-width: 992px)": {
-            maxWidth: "960px"
-        },
-        "@media (min-width: 1200px)": {
-            maxWidth: "1140px"
-        },
-         
-    },
-    tableCell:{ width:"400px",
-        "@media (min-width: 576px)": {
-                maxWidth: "540px"
-            },
-            "@media (min-width: 768px)": {
-                maxWidth: "720px"
-            },
-            "@media (min-width: 992px)": {
-                maxWidth: "960px"
-            },
-            "@media (min-width: 1200px)": {
-                maxWidth: "1140px"
-            },},
-    root: {
-        maxWidth: '100%',
-        height:"100%",
-        overflowX: 'auto',
-        marginRight:"auto",
-        marginLeft:"auto",
-        backgroundColor:"transparent",
-    },
-
-    inner:{
-        minWidth: "60%"
-    },
-    row:{
-        backgroundColor:"#fff"
-    },
-    paper:{ backgroundColor:"transparent"},
-}));
 function TabPanel(props) {
-    const { children, value, index, ...other } = props;
+    const {children, value, index, ...other} = props;
 
     return (
         <Typography
@@ -124,242 +65,368 @@ function a11yProps(index) {
     };
 }
 
-const StyledTableCell = withStyles(theme => ({
-    head: {
-        backgroundColor: theme.palette.common.white,
-        color: theme.palette.common.black,
-    },
-    body: {
-        fontSize: 10,
-    },
-}))(TableCell);
-
 const GET_MyDevice = gql`query { me{mydevices{ id name_device,brand_device,series_device,kind_device,certificate_calibration,certificate_verification,certificate_conformity,module_device,tr_device,certificate_assessment_number,certificate_verification_number,certificate_calibration_number,department_assessment_center,department_verification_center,department_calibration_center,conformity_data,calibration_data,valid_verification,notes} }}`;
-const DELETE_MYDevice =gql`mutation ($id:ID!){deleteMyDevice(id:$id){ id }}`
-function MyDeviceForm({t,className, rest}) {
-    const classes = useStyles();
+const DELETE_MYDevice = gql`mutation ($id:ID!){deleteMyDevice(id:$id){ id }}`
+
+function MyDeviceForm({t}) {
     const theme = useTheme();
-    const { enqueueSnackbar } = useSnackbar();
-    const [open, setOpen] = React.useState(false);
-    const [expanded, setExpanded] = React.useState(false);
-    const [component, setComponent] = React.useState(' ');
-    const [id,setId]= React.useState('');
+    const {enqueueSnackbar} = useSnackbar();
     const [value, setValue] = React.useState(0);
-    const handleChange = panel => (event, isExpanded) => {setExpanded(isExpanded ? panel : false);};
+
     const handleChangeTab = (event, newValue) => {
         setValue(newValue);
     };
     const handleChangeIndex = index => {
         setValue(index);
     };
-    const handleClickOpen = () => {setOpen(true);};
-    const confirm = async (data, e) => {
-        console.log(data.deleteMyDevice.id);
-
+    const confirm = async () => {
     };
-    const saveUserData = (token) => {
 
-        localStorage.setItem(CREATE_MY_DEVICE, token)
-    };
-  const [button, setButton] = React.useState('person');
+    const [button, setButton] = React.useState('person');
     const handleChangeButton = event => {
         setButton(event.target.value);
     };
-    const handleClose = () => {setOpen(false);};
-    return(
 
-        <div  className={classes.root}>
-
-            <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={100} onError={(error) => enqueueSnackbar(error.message)} >
-                {( {loading, error, data} ) =>  {
-                    if (loading) {return <CircularProgressLoading />}
-                    if (error) { return error.message }
-                    const currentDate =new Date();
-                    const startDate= new Date(currentDate.setHours(2,0,0,0)).toISOString();
+    return (
+        <div>
+            <Query query={GET_MyDevice} fetchPolicy={"network-only"} pollInterval={100}
+                   onError={(error) => enqueueSnackbar(error.message)}>
+                {({loading, error, data}) => {
+                    if (loading) {
+                        return <CircularProgressLoading/>
+                    }
+                    if (error) {
+                        return error.message
+                    }
+                    const currentDate = new Date();
+                    const startDate = new Date(currentDate.setHours(2, 0, 0, 0)).toISOString();
                     const endDate = new Date(new Date().setDate(new Date().getDate() + 1)).toISOString();
                     const devicelist = data.me.mydevices;
-                    if(authToken){
-                        return(
+                    if (authToken) {
+                        return (
                             <div>
-                                <AppBar position={"relative"} fixed color="default" elevation={5} style={{marginTop:"50px"}}>
-                                    <Toolbar className={classes.toolbar} >
-                                         <Select value={button} onChange={handleChangeButton} >
-                                            <MenuItem value={'person'}><Button onClick={()=>history.push('/mydevices')}>{t('Person')}</Button></MenuItem>
-                                            <MenuItem value={'team'} ><Button onClick={()=>history.push('/team')}>{t('Team')}</Button></MenuItem>
+                                <AppBar position={"relative"} fixed color="default" elevation={5}
+                                        style={{marginTop: "50px"}}>
+                                    <Toolbar>
+                                        <Select value={button} onChange={handleChangeButton}>
+                                            <MenuItem value={'person'}><Button
+                                                onClick={() => history.push('/mydevices')}>{t('Person')}</Button></MenuItem>
+                                            <MenuItem value={'team'}><Button
+                                                onClick={() => history.push('/team')}>{t('Team')}</Button></MenuItem>
                                         </Select>
-                                        <Button style={{marginLeft:"auto"}} variant="outlined" onClick={()=> history.push("/add-device")}> {t("Add Device")}</Button>
+                                        <Button style={{marginLeft: "auto"}} variant="outlined"
+                                                onClick={() => history.push("/add-device")}> {t("Add Device")}</Button>
                                     </Toolbar>
                                     <AppBar position="static" color="default" square>
-                                        <Tabs value={value} onChange={handleChangeTab} indicatorColor="default" textColor="primary" scrollButtons="auto" variant="scrollable" centered style={{ flexGrow: 1,width: '100%', marginRight:"auto", marginLeft:"auto", backgroundColor:"#fff"}}>
-                                            <Tab style={{backgroundColor:"#fff",marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Conformity assessment')}</Typography>} {...a11yProps(0)} />
-                                            <Tab style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Calibration')}</Typography>} {...a11yProps(1)} />
-                                            <Tab style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"caption"}>{t('Verification')}</Typography>}  {...a11yProps(2)} />
-                                            <Tab style={{backgroundColor:"#fff", marginRight:"auto", marginLeft:"auto"}} label={<Typography variant={"overline"}>{t('None')}</Typography>}  {...a11yProps(3)} />
+                                        <Tabs value={value} onChange={handleChangeTab} indicatorColor="default"
+                                              textColor="primary" scrollButtons="auto" variant="scrollable" centered
+                                              style={{
+                                                  flexGrow: 1,
+                                                  width: '100%',
+                                                  marginRight: "auto",
+                                                  marginLeft: "auto",
+                                                  backgroundColor: "#fff"
+                                              }}>
+                                            <Tab style={{
+                                                backgroundColor: "#fff",
+                                                marginRight: "auto",
+                                                marginLeft: "auto"
+                                            }} label={<Typography
+                                                variant={"caption"}>{t('Conformity assessment')}</Typography>} {...a11yProps(0)} />
+                                            <Tab style={{
+                                                backgroundColor: "#fff",
+                                                marginRight: "auto",
+                                                marginLeft: "auto"
+                                            }} label={<Typography
+                                                variant={"caption"}>{t('Calibration')}</Typography>} {...a11yProps(1)} />
+                                            <Tab style={{
+                                                backgroundColor: "#fff",
+                                                marginRight: "auto",
+                                                marginLeft: "auto"
+                                            }} label={<Typography
+                                                variant={"caption"}>{t('Verification')}</Typography>}  {...a11yProps(2)} />
+                                            <Tab style={{
+                                                backgroundColor: "#fff",
+                                                marginRight: "auto",
+                                                marginLeft: "auto"
+                                            }} label={<Typography
+                                                variant={"overline"}>{t('None')}</Typography>}  {...a11yProps(3)} />
                                         </Tabs>
                                     </AppBar>
                                 </AppBar>
-<Grid container spacing={2} xs={12}>
-                                <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
-                                    <TabPanel value={value} index={0} dir={theme.direction} style={{ width:"100%",height: "600px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
-                                        <Grid item justify={"center"} xs={12}>
-                                            <Paper className={classes.table}>
-                                                <Table stickyHeader component={Paper} >
-                                                    {devicelist.map(device =>(
-                                                       <TableBody>
-                                                            {device.certificate_conformity=== true &&(
-                                                                <TableRow key={device.id}>
-                                                                    <TableCell className={classes.tableCell} align="center" button onClick={()=>(
-                                                                            localStorage.setItem(DEVICE_ID,device.id),
-                                                                            localStorage.setItem(DEVICE_NAME,device.name_device),
-                                                                                history.push('/mydevices/'+device.name_device)
-                                                                            )}>
-                                                                            {device.name_device} </TableCell>
-                                                                     {device.conformity_data >= endDate  &&(<TableCell align="center" > <Typography style={{color:"#00DE28"}}>{t('Valid')}</Typography></TableCell>)}
-                                                                    {device.conformity_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{t('Expired')}</TableCell>) }
-                                                                    <TableCell> {device.notes}</TableCell>
-                                                                    <TableCell>
-                                                                        <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={10}>
-                                                                            {( deleteDevice,{loading, error, data}) => {
-                                                                                if (loading) { return (<CircularProgressLoading /> )}
-                                                                                if (error) {return (error.message)}
-                                                                                if (authToken){
-                                                                                    return(
-                                                                                        <Tooltip title={t('Delete')}>
-                                                                                            <IconButton onClick={deleteDevice}><DeleteIcon /></IconButton>
-                                                                                        </Tooltip>
-                                                                                    )}}}
-                                                                        </Mutation>
-                                                                    </TableCell>
-                                                                </TableRow>)}
-                                                        </TableBody> ))}
-                                                </Table>
-                                            </Paper>
-                                        </Grid>
-
-                                    </TabPanel>
-                                    <TabPanel value={value} index={1} dir={theme.direction} style={{width:"100%",height: "600px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
-                                        <Grid justify={"center"} item xs={12}>
-                                            <Paper className={classes.table}>
-                                                <Table stickyHeader component={Paper}>
-                                                    {devicelist.map(device =>(
-                                                        <TableBody >
-                                                            {device.certificate_calibration=== true &&(
-                                                                <TableRow key={device.id}>
-                                                                    <TableCell className={classes.tableCell} align="center" button onClick={()=>(
-                                                                   localStorage.setItem(DEVICE_ID,device.id),
-                                                                                localStorage.setItem(DEVICE_NAME,device.name_device),
-                                                                                history.push('/mydevices/'+device.name_device)
-                                                                               )}>
-                                                                            {device.name_device} 
-                                                                            </TableCell>
-                                                                    {device.calibration_data >= endDate &&(<TableCell align="center" ><Typography style={{color:"#00DE28"}}>{t('Valid')}</Typography></TableCell>)}
-                                                                    {device.calibration_data <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{t('Expired')}</TableCell>)}
-                                                                    <TableCell  align="center">{device.notes}</TableCell>
-                                                                    <TableCell>
-                                                                        <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={50}>
-                                                                            {( deleteDevice,{loading, error, data}) => {
-                                                                                if (loading) { return (<CircularProgressLoading /> )}
-                                                                                if (error) {return (error.message)}
-                                                                                if (authToken){
-                                                                                    return(
-                                                                                        <Tooltip title={t('Delete')}>
-                                                                                            <IconButton onClick={deleteDevice}><DeleteIcon /></IconButton>
-                                                                                        </Tooltip>
-                                                                                    )}}}
-                                                                        </Mutation>
-                                                                    </TableCell>
-                                                                </TableRow>  )}
-                                                        </TableBody>))}
-                                                </Table>
-
-                                            </Paper>
-
-                                        </Grid>
-
-                                    </TabPanel>
-                                    <TabPanel value={value} index={2} dir={theme.direction} style={{width:"100%",height: "600px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
-                                        <Grid  justify={"center"} item xs={12}>
-                                            <Paper className={classes.table}>
-                                                <Table stickyHeader component={Paper}>
-                                                    {devicelist.map(device =>(
-                                                        <TableBody >
-                                                            {device.certificate_verification===true &&(
-                                                                <TableRow key={device.id}>
-                                                                    <TableCell className={classes.tableCell} align="center" button onClick={()=>(
-                                                                            localStorage.setItem(DEVICE_ID,device.id),
-                                                                                localStorage.setItem(DEVICE_NAME,device.name_device),
-                                                                                history.push('/mydevices/'+device.name_device)
-                                                                                )}>
-                                                                            {device.name_device} </TableCell>
-                                                                    {device.valid_verification >= endDate &&(<TableCell align="center" ><Typography style={{color:"#00DE28"}}>{t('Valid')}</Typography></TableCell>)}
-                                                                    {device.valid_verification <= startDate &&(<TableCell align="center" style={{color:"#ff0737"}}>{t('Expired')}</TableCell>)}
-                                                                    <TableCell  align="center">{device.notes}</TableCell>
-                                                                    <TableCell>
-                                                                        <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={50}>
-                                                                            {( deleteDevice,{loading, error, data}) => {
-                                                                                if (loading) { return (<CircularProgressLoading /> )}
-                                                                                if (error) {return (error.message)}
-                                                                                if (authToken){
-                                                                                    return(
-                                                                                        <Tooltip title={t('Delete')}>
-                                                                                            <IconButton onClick={deleteDevice}><DeleteIcon /></IconButton>
-                                                                                        </Tooltip>
-                                                                                    )}}}
-                                                                        </Mutation>
-                                                                    </TableCell>
-                                                                </TableRow> )}
-                                                        </TableBody>))}
-                                                </Table>
-                                            </Paper>
-                                        </Grid>
-                                    </TabPanel>
-                                    <TabPanel value={value} index={3} dir={theme.direction} style={{ width:"100%",height: "600px",marginRight:"auto", marginTop: "0px", marginLeft: "auto",}}>
-                                        <Grid item justify={"center"} xs={12}>
-                                            <Paper className={classes.table}>
-                                                <TableContainer component={Paper}>
-                                                    <Table stickyHeader >
-                                                        {devicelist.map(device =>(
-                                                           <TableBody>
-                                                                {(!device.certificate_verification && !device.certificate_calibration && !device.certificate_conformity) &&(
-                                                                    <TableRow className={classes.tableCell} key={device.id}>
-                                                                        <TableCell  align="center" button onClick={()=>(
-                                                                                localStorage.setItem(DEVICE_ID,device.id),
-                                                                                    localStorage.setItem(DEVICE_NAME,device.name_device),
-                                                                                    history.push('/mydevices/'+device.name_device)
+                                <Grid container spacing={2} xs={12}>
+                                    <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value}
+                                                    onChangeIndex={handleChangeIndex}>
+                                        <TabPanel value={value} index={0} dir={theme.direction} style={{
+                                            width: "100%",
+                                            height: "600px",
+                                            marginRight: "auto",
+                                            marginTop: "0px",
+                                            marginLeft: "auto",
+                                        }}>
+                                            <Grid item justify={"center"} xs={12}>
+                                                <Paper>
+                                                    <Table stickyHeader component={Paper}>
+                                                        {devicelist.map(device => (
+                                                            <TableBody key={device.id}>
+                                                                {device.certificate_conformity === true && (
+                                                                    <TableRow key={device.id}>
+                                                                        <TableCell
+                                                                                   align="center" button
+                                                                                   onClick={() => (
+                                                                                       localStorage.setItem(DEVICE_ID, device.id),
+                                                                                           localStorage.setItem(DEVICE_NAME, device.name_device),
+                                                                                           history.push('/mydevices/' + device.name_device)
                                                                                    )}>
-                                                                                {device.name_device} 
-                                                                               </TableCell>
-                                                                        <TableCell  align="center">{device.notes}</TableCell>
+                                                                            {device.name_device} </TableCell>
+                                                                        {device.conformity_data >= endDate && (
+                                                                            <TableCell align="center"> <Typography
+                                                                                style={{color: "#00DE28"}}>{t('Valid')}</Typography></TableCell>)}
+                                                                        {device.conformity_data <= startDate && (
+                                                                            <TableCell align="center"
+                                                                                       style={{color: "#ff0737"}}>{t('Expired')}</TableCell>)}
+                                                                        <TableCell> {device.notes}</TableCell>
                                                                         <TableCell>
-                                                                            <Mutation mutation={DELETE_MYDevice}  variables={{id:device.id}}  onCompleted={(data) => confirm(data)} pollInterval={50}>
-                                                                                {( deleteDevice,{loading, error, data}) => {
-                                                                                    if (loading) { return (<CircularProgressLoading /> )}
-                                                                                    if (error) {return (error.message)}
-                                                                                    if (authToken){
-                                                                                        return(
-                                                                                            <Tooltip title={t('Delete')}>
-                                                                                                <IconButton onClick={deleteDevice}><DeleteIcon /></IconButton>
+                                                                            <Mutation mutation={DELETE_MYDevice}
+                                                                                      variables={{id: device.id}}
+                                                                                      onCompleted={(data) => confirm(data)}
+                                                                                      pollInterval={10}>
+                                                                                {(deleteDevice, {
+                                                                                    loading,
+                                                                                    error,
+                                                                                    data
+                                                                                }) => {
+                                                                                    if (loading) {
+                                                                                        return (
+                                                                                            <CircularProgressLoading/>)
+                                                                                    }
+                                                                                    if (error) {
+                                                                                        return (error.message)
+                                                                                    }
+                                                                                    if (authToken) {
+                                                                                        return (
+                                                                                            <Tooltip
+                                                                                                title={t('Delete')}>
+                                                                                                <IconButton
+                                                                                                    onClick={deleteDevice}><DeleteIcon/></IconButton>
                                                                                             </Tooltip>
-                                                                                        )}}}
+                                                                                        )
+                                                                                    }
+                                                                                }}
                                                                             </Mutation>
                                                                         </TableCell>
                                                                     </TableRow>)}
-                                                            </TableBody> ))}
+                                                            </TableBody>))}
                                                     </Table>
-                                                </TableContainer></Paper>
-                                        </Grid>
-                                    </TabPanel>
-                                </SwipeableViews>
-                            </Grid></div>
-                        )}else return null}}
+                                                </Paper>
+                                            </Grid>
+
+                                        </TabPanel>
+                                        <TabPanel value={value} index={1} dir={theme.direction} style={{
+                                            width: "100%",
+                                            height: "600px",
+                                            marginRight: "auto",
+                                            marginTop: "0px",
+                                            marginLeft: "auto",
+                                        }}>
+                                            <Grid justify={"center"} item xs={12}>
+                                                <Paper>
+                                                    <Table stickyHeader component={Paper}>
+                                                        {devicelist.map(device => (
+                                                            <TableBody key={device.id}>
+                                                                {device.certificate_calibration === true && (
+                                                                    <TableRow key={device.id}>
+                                                                        <TableCell
+                                                                                   align="center" button
+                                                                                   onClick={() => (
+                                                                                       localStorage.setItem(DEVICE_ID, device.id),
+                                                                                           localStorage.setItem(DEVICE_NAME, device.name_device),
+                                                                                           history.push('/mydevices/' + device.name_device)
+                                                                                   )}>
+                                                                            {device.name_device}
+                                                                        </TableCell>
+                                                                        {device.calibration_data >= endDate && (
+                                                                            <TableCell align="center"><Typography
+                                                                                style={{color: "#00DE28"}}>{t('Valid')}</Typography></TableCell>)}
+                                                                        {device.calibration_data <= startDate && (
+                                                                            <TableCell align="center"
+                                                                                       style={{color: "#ff0737"}}>{t('Expired')}</TableCell>)}
+                                                                        <TableCell
+                                                                            align="center">{device.notes}</TableCell>
+                                                                        <TableCell>
+                                                                            <Mutation mutation={DELETE_MYDevice}
+                                                                                      variables={{id: device.id}}
+                                                                                      onCompleted={(data) => confirm(data)}
+                                                                                      pollInterval={50}>
+                                                                                {(deleteDevice, {
+                                                                                    loading,
+                                                                                    error,
+                                                                                    data
+                                                                                }) => {
+                                                                                    if (loading) {
+                                                                                        return (
+                                                                                            <CircularProgressLoading/>)
+                                                                                    }
+                                                                                    if (error) {
+                                                                                        return (error.message)
+                                                                                    }
+                                                                                    if (authToken) {
+                                                                                        return (
+                                                                                            <Tooltip
+                                                                                                title={t('Delete')}>
+                                                                                                <IconButton
+                                                                                                    onClick={deleteDevice}><DeleteIcon/></IconButton>
+                                                                                            </Tooltip>
+                                                                                        )
+                                                                                    }
+                                                                                }}
+                                                                            </Mutation>
+                                                                        </TableCell>
+                                                                    </TableRow>)}
+                                                            </TableBody>))}
+                                                    </Table>
+
+                                                </Paper>
+
+                                            </Grid>
+
+                                        </TabPanel>
+                                        <TabPanel value={value} index={2} dir={theme.direction} style={{
+                                            width: "100%",
+                                            height: "600px",
+                                            marginRight: "auto",
+                                            marginTop: "0px",
+                                            marginLeft: "auto",
+                                        }}>
+                                            <Grid justify={"center"} item xs={12}>
+                                                <Paper>
+                                                    <Table stickyHeader component={Paper}>
+                                                        {devicelist.map(device => (
+                                                            <TableBody key={device.id}>
+                                                                {device.certificate_verification === true && (
+                                                                    <TableRow key={device.id}>
+                                                                        <TableCell
+                                                                                   align="center" button
+                                                                                   onClick={() => (
+                                                                                       localStorage.setItem(DEVICE_ID, device.id),
+                                                                                           localStorage.setItem(DEVICE_NAME, device.name_device),
+                                                                                           history.push('/mydevices/' + device.name_device)
+                                                                                   )}>
+                                                                            {device.name_device} </TableCell>
+                                                                        {device.valid_verification >= endDate && (
+                                                                            <TableCell align="center"><Typography
+                                                                                style={{color: "#00DE28"}}>{t('Valid')}</Typography></TableCell>)}
+                                                                        {device.valid_verification <= startDate && (
+                                                                            <TableCell align="center"
+                                                                                       style={{color: "#ff0737"}}>{t('Expired')}</TableCell>)}
+                                                                        <TableCell
+                                                                            align="center">{device.notes}</TableCell>
+                                                                        <TableCell>
+                                                                            <Mutation mutation={DELETE_MYDevice}
+                                                                                      variables={{id: device.id}}
+                                                                                      onCompleted={(data) => confirm(data)}
+                                                                                      pollInterval={50}>
+                                                                                {(deleteDevice, {
+                                                                                    loading,
+                                                                                    error,
+                                                                                    data
+                                                                                }) => {
+                                                                                    if (loading) {
+                                                                                        return (
+                                                                                            <CircularProgressLoading/>)
+                                                                                    }
+                                                                                    if (error) {
+                                                                                        return (error.message)
+                                                                                    }
+                                                                                    if (authToken) {
+                                                                                        return (
+                                                                                            <Tooltip
+                                                                                                title={t('Delete')}>
+                                                                                                <IconButton
+                                                                                                    onClick={deleteDevice}><DeleteIcon/></IconButton>
+                                                                                            </Tooltip>
+                                                                                        )
+                                                                                    }
+                                                                                }}
+                                                                            </Mutation>
+                                                                        </TableCell>
+                                                                    </TableRow>)}
+                                                            </TableBody>))}
+                                                    </Table>
+                                                </Paper>
+                                            </Grid>
+                                        </TabPanel>
+                                        <TabPanel value={value} index={3} dir={theme.direction} style={{
+                                            width: "100%",
+                                            height: "600px",
+                                            marginRight: "auto",
+                                            marginTop: "0px",
+                                            marginLeft: "auto",
+                                        }}>
+                                            <Grid item justify={"center"} xs={12}>
+                                                <Paper>
+                                                    <TableContainer component={Paper}>
+                                                        <Table stickyHeader>
+                                                            {devicelist.map(device => (
+                                                                <TableBody key={device.id}>
+                                                                    {(!device.certificate_verification && !device.certificate_calibration && !device.certificate_conformity) && (
+                                                                        <TableRow
+                                                                                  key={device.id}>
+                                                                            <TableCell align="center" button
+                                                                                       onClick={() => (
+                                                                                           localStorage.setItem(DEVICE_ID, device.id),
+                                                                                               localStorage.setItem(DEVICE_NAME, device.name_device),
+                                                                                               history.push('/mydevices/' + device.name_device)
+                                                                                       )}>
+                                                                                {device.name_device}
+                                                                            </TableCell>
+                                                                            <TableCell
+                                                                                align="center">{device.notes}</TableCell>
+                                                                            <TableCell>
+                                                                                <Mutation mutation={DELETE_MYDevice}
+                                                                                          variables={{id: device.id}}
+                                                                                          onCompleted={(data) => confirm(data)}
+                                                                                          pollInterval={50}>
+                                                                                    {(deleteDevice, {
+                                                                                        loading,
+                                                                                        error,
+                                                                                        data
+                                                                                    }) => {
+                                                                                        if (loading) {
+                                                                                            return (
+                                                                                                <CircularProgressLoading/>)
+                                                                                        }
+                                                                                        if (error) {
+                                                                                            return (error.message)
+                                                                                        }
+                                                                                        if (authToken) {
+                                                                                            return (
+                                                                                                <Tooltip
+                                                                                                    title={t('Delete')}>
+                                                                                                    <IconButton
+                                                                                                        onClick={deleteDevice}><DeleteIcon/></IconButton>
+                                                                                                </Tooltip>
+                                                                                            )
+                                                                                        }
+                                                                                    }}
+                                                                                </Mutation>
+                                                                            </TableCell>
+                                                                        </TableRow>)}
+                                                                </TableBody>))}
+                                                        </Table>
+                                                    </TableContainer></Paper>
+                                            </Grid>
+                                        </TabPanel>
+                                    </SwipeableViews>
+                                </Grid></div>
+                        )
+                    } else return null
+                }}
             </Query>
-
         </div>
-
-
     )
-
-
-
 }
+MyDeviceForm.propTypes = {
+    t:PropTypes.node
+};
 export default withTranslation()(MyDeviceForm)

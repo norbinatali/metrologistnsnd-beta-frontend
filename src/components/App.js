@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import '../style/App.css';
 import Login from "./Login";
-import {Switch,Route,Redirect} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import SignUp from "../SignUp";
 import history from '../history';
-import {Router} from "react-router-dom";
-import { GC_USER_ID, RESET_TOKEN as resetToken} from '../constants'
+import {GC_USER_ID, RESET_TOKEN as resetToken} from '../constants'
 import CircularProgressLoading from "./CircularProgressLoading"
 import ForgetPassword from "./ForgetPassword";
 import ConfirmResetPassword from "./ConfirmResetPassword";
@@ -45,106 +44,92 @@ import ConfirmTeamMember from "./ConfirmTeamMember";
 import MyDeviceActivity from "./MyDeviceActivity";
 import MyDeviceSchedule from "./MyDeviceSchedule";
 import MyDeviceSetting from "./MyDeviceSetting";
-
+import PropTypes from "prop-types";
+import {PrivateRoute} from "./routing/PrivateRouting";
 
 class App extends Component {
- constructor(props) {
-    super(props);
-    this.state = {
-      isLoading: true
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading: true
+        };
+    }
+
+    componentDidMount() {
+        this.fakeRequest().then(() => {
+            const el = document.querySelector(".loader-container");
+            if (el) {
+                el.remove();  // removing the spinner element
+                this.setState({loading: false}); // showing the app
+
+            }
+        });
+    }
+
+    fakeRequest = () => {
+        return new Promise(resolve => setTimeout(() => resolve(), 2500));
     };
-  }
- componentDidMount() {
-    this.fakeRequest().then(() => {
-      const el = document.querySelector(".loader-container");  
-      if (el) {
-        el.remove();  // removing the spinner element
-        this.setState({ loading: false }); // showing the app
-        
-      }
-    });
-  }
- fakeRequest = () => {
-    return new Promise(resolve => setTimeout(() => resolve(), 2500));
-  };
 
     render() {
         const userId = localStorage.getItem(GC_USER_ID);
-  if (this.state.loading) {
-      return null; //app is not ready (fake request is in process)
-    }
+        if (this.state.loading) {
+            return null; //app is not ready (fake request is in process)
+        }
+
         return (
             <div className="App">
                 <div className="App-header">
-
-                    <Switch>
-                    <Router history={history}>
-                    <Route exact path="/" component={FrontPageCarousel} />
-                    <Route path={"/check-email"} component={CheckYourEmail}/>
-                    <Route path={"/confirm-email"} component={PleaseConfirmEmail}/>
-                    <Route exact path="/reset-your-password" component={ForgetPassword} />
-                    <Route exact path="/login" component={LoginForm}/>
-             <Route exact path="/contact" component={ContactForm} />
-                    <Route exact path={"/reset-password"} component={ConfirmResetPassword}/>
-                    <Route exact path="/signup" component={SignUp} />
-           <Route path={"/create-team"} component={ConfirmTeamMember}/>
-                           <PrivateRoute path="/user" component={Dashboard} />
-                           <PrivateRoute path="/dashboard" component={Dashboard} />
-                           <PrivateRoute path="/metrology" component={History} />
-                           <PrivateRoute path="/add-device" component={AddDevice} />
-                           <PrivateRoute exact path="/mydevices" component={MyDevice} />
-                          <PrivateRoute exact path="/team" component={TeamList} />
-                            <PrivateRoute path="/team/:teamID" component={TeamInfo} />
-                            <PrivateRoute path={"/mydevices/:deviceName" } component={MyDeviceInfo} />
-                            <PrivateRoute path={"/mydevices/:deviceName/activity" } component={MyDeviceActivity} />
-                            <PrivateRoute path={"/mydevices/:deviceName/schedule" } component={MyDeviceSchedule} />
-                            <PrivateRoute path={"/mydevices/:deviceName/setting" } component={MyDeviceSetting} />
-                           <PrivateRoute path="/account" component={UserProfile} />
-                           <PrivateRoute path="/contactus" component={ContactUS} />
-                           <PrivateRoute path="/sand" component={QMS} />
-                           <PrivateRoute path="/sand/:sandNumber" component={QMS} />
-                           <PrivateRoute path="/standards-L" component={Standards} />
-                           <PrivateRoute path="/standards" component={StandardListGrid} />
-                           <PrivateRoute path="/standards-M" component={StandardsM} />
-                           <PrivateRoute path="/standards-EM" component={StandardsEM} />
-                           <PrivateRoute path="/standards-T" component={StandardsT} />
-                           <PrivateRoute path="/standards-TF" component={StandardsTF} />
-                           <PrivateRoute path="/standards-PR" component={StandardsPR} />
-                           <PrivateRoute path="/standards-IR" component={StandardsIR} />
-                           <PrivateRoute path="/standards-AUV" component={StandardsAUV} />
-                           <PrivateRoute path="/standards-QM" component={StandardsQM} />
-                           <PrivateRoute path="/what-is-metrologist" component={WhatIsMetrologist} />
-                           <PrivateRoute path="/what-is-metrology" component={WhatIsMetrology} />
-                           <PrivateRoute path="/history-metrology" component={HistoryMetrology} />
-                           <PrivateRoute path="/what-is-conformity-assessment" component={History} />
-                           <PrivateRoute path="/modules" component={History} />
-                           <PrivateRoute path="/technical-reglaments" component={History} />
-                           <PrivateRoute path="/procedure-conformity-assessment" component={History} />
-                           <PrivateRoute path="/what-is-quality-system" component={History} />
-                           <PrivateRoute path="/documents-of-quality-system" component={History} />
-                            <PrivateRoute path="/forum" component={ForumPage} />
-                        </Router>
-                    </Switch>
-
+                    <BrowserRouter history={history}>
+                        <Routes>
+                            <Route path="/" element={<FrontPageCarousel/>}/>
+                            <Route path="/check-email" element={<CheckYourEmail/>}/>
+                            <Route path="/confirm-email" element={<PleaseConfirmEmail/>}/>
+                            <Route exact path="/reset-your-password" element={<ForgetPassword/>}/>
+                            <Route exact path="/login" element={<LoginForm/>}/>
+                            <Route exact path="/contact" element={<ContactForm/>}/>
+                            <Route exact path="/reset-password" element={<ConfirmResetPassword/>}/>
+                            <Route exact path="/signup" element={<SignUp/>}/>
+                            <Route path="/create-team" element={<ConfirmTeamMember/>}/>
+                            <Route path="/dashboard" element={<PrivateRoute component={Dashboard}/>}/>
+                            <Route path="/user" element={<PrivateRoute component={Dashboard}/>}/>
+                            <Route path="/metrology" element={<PrivateRoute component={History}/>}/>
+                            <Route path="/add-device" element={<PrivateRoute component={AddDevice}/>}/>
+                            <Route exact path="/mydevices" element={<PrivateRoute component={MyDevice}/>}/>
+                            <Route exact path="/team" element={<PrivateRoute component={TeamList}/>}/>
+                            <Route path="/team/:teamID" element={<PrivateRoute component={TeamInfo}/>}/>
+                            <Route path="/mydevices/:deviceName" element={<PrivateRoute component={MyDeviceInfo}/>}/>
+                            <Route path="/mydevices/:deviceName/activity" element={<PrivateRoute component={MyDeviceActivity}/>}/>
+                            <Route path="/mydevices/:deviceName/schedule" element={<PrivateRoute component={MyDeviceSchedule}/>}/>
+                            <Route path="/mydevices/:deviceName/setting" element={<PrivateRoute component={MyDeviceSetting}/>}/>
+                            <Route path="/account" element={<PrivateRoute component={UserProfile}/>}/>
+                            <Route path="/contactus" element={<PrivateRoute component={ContactUS}/>}/>
+                            <Route path="/sand" element={<PrivateRoute component={QMS}/>}/>
+                            <Route path="/sand/:sandNumber" element={<PrivateRoute component={QMS}/>}/>
+                            <Route path="/standards-L" element={<PrivateRoute component={Standards}/>}/>
+                            <Route path="/standards" element={<PrivateRoute component={StandardListGrid}/>}/>
+                            <Route path="/standards-M" element={<PrivateRoute component={StandardsM}/>}/>
+                            <Route path="/standards-EM" element={<PrivateRoute component={StandardsEM}/>}/>
+                            <Route path="/standards-TF" element={<PrivateRoute component={StandardsTF}/>}/>
+                            <Route path="/standards-PR" element={<PrivateRoute component={StandardsPR}/>}/>
+                            <Route path="/standards-IR" element={<PrivateRoute component={StandardsIR}/>}/>
+                            <Route path="/standards-AUV" element={<PrivateRoute component={StandardsAUV}/>}/>
+                            <Route path="/standards-IR" element={<PrivateRoute component={StandardsIR}/>}/>
+                            <Route path="/standards-QM" element={<PrivateRoute component={StandardsQM}/>}/>
+                            <Route path="/what-is-metrologist" element={<PrivateRoute component={WhatIsMetrologist}/>}/>
+                            <Route path="/what-is-metrology" element={<PrivateRoute component={WhatIsMetrology}/>}/>
+                            <Route path="/history-metrology" element={<PrivateRoute component={HistoryMetrology}/>}/>
+                            <Route path="/modules" element={<PrivateRoute component={History}/>}/>
+                            <Route path="/technical-reglaments" element={<PrivateRoute component={History}/>}/>
+                            <Route path="/what-is-conformity-assessment" element={<PrivateRoute component={History}/>}/>
+                            <Route path="/forum" element={<PrivateRoute component={ForumPage}/>}/>
+                        </Routes>
+                    </BrowserRouter>
                 </div>
-            <Footer/>
-            </div> )
+                <Footer/>
+            </div>
+        )
     }
 }
-            
-const PrivateRoute = ({ component: Component, ...rest }) => (
-    <Route
-        {...rest}
-        render={props =>
-            Auth.getAuth() ? (
-                <Component {...props} />
-            ) : (
-                <Redirect to={{ pathname: "/" }}
-                />
-            )
-        }
-    />
-);
 
 
 export default App;
