@@ -64,7 +64,7 @@ function MenuTabPanel() {
                     <Grid container spacing={16}>
                         <Grid item xs={11}>
                             <div style={{marginRight: "auto", marginLeft: "auto",}}>
-                                <img src={logo} alt={}/>
+                                <img src={logo} alt={''}/>
                             </div>
                         </Grid>
                         <Grid item>
@@ -76,17 +76,17 @@ function MenuTabPanel() {
                                         backgroundColor: "rgba(0,1,14,0.74)",
                                         border: "none",
                                         outline: "none"
-                                    }}><img src={FlagUA} alt={}/></MenuItem>
+                                    }}><img src={FlagUA} alt={''}/></MenuItem>
                                     <MenuItem value={'en'} style={{
                                         backgroundColor: "rgba(0,1,14,0.74)",
                                         border: "none",
                                         outline: "none"
-                                    }}><img src={FlagUS} alt={}/></MenuItem>
+                                    }}><img src={FlagUS} alt={''}/></MenuItem>
                                     <MenuItem value={'ru'} style={{
                                         backgroundColor: "rgba(0,1,14,0.74)",
                                         border: "none",
                                         outline: "none"
-                                    }}><img src={FlagRU} alt={}/></MenuItem>
+                                    }}><img src={FlagRU} alt={''}/></MenuItem>
                                 </Select></div>
                         </Grid>
                     </Grid>

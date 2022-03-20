@@ -23,18 +23,18 @@ function UserMenu() {
                 <Toolbar>
                     <UserMenuAccount/>
                     <UserMenuMoreOptions/>
-                    <img src={LogoV2} style={{marginRight: "auto", marginLeft: "auto"}} alt={}/>
+                    <img src={LogoV2} style={{marginRight: "auto", marginLeft: "auto"}} alt={''}/>
                     <Select labelId="demo-simple-select-autowidth-label" id="demo-simple-select-autowidth" value={lang}
                             style={{backgroundColor: "transparent"}} onChange={handleChangeLang} autoWidth>
                         <MenuItem value={'ua'}
                                   style={{backgroundColor: "rgba(0,1,14,0.74)", border: "none", outline: "none"}}><img
-                            src={FlagUA} alt={}/></MenuItem>
+                            src={FlagUA} alt={''}/></MenuItem>
                         <MenuItem value={'en'}
                                   style={{backgroundColor: "rgba(0,1,14,0.74)", border: "none", outline: "none"}}><img
-                            src={FlagUS} alt={}/></MenuItem>
+                            src={FlagUS} alt={''}/></MenuItem>
                         <MenuItem value={'ru'}
                                   style={{backgroundColor: "rgba(0,1,14,0.74)", border: "none", outline: "none"}}><img
-                            src={FlagRU} alt={}/></MenuItem>
+                            src={FlagRU} alt={''}/></MenuItem>
                     </Select>
                 </Toolbar>
             </AppBar>
