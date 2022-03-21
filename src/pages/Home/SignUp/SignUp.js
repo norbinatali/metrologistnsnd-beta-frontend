@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import history from './history';
+import history from '../../../history';
 
 import {withTranslation} from "react-i18next";
 import {IconButton, Grid} from "@mui/material";
@@ -18,17 +18,14 @@ class SignUp extends Component {
             companyName: "",
         };
     }
-
     render() {
         return (
-            <div style={{height: "100%"}}>
-                <Grid container style={{height: '100%'}}>
+            <div>
+                <Grid container spacing={12}>
                     <Grid item>
-                        <div style={{marginTop: "0px"}}>
                             <IconButton onClick={this.handleBack}>
-                                <ArrowBackIcon style={{color: "rgba(0,1,47,0.84)"}}/>
+                                <ArrowBackIcon/>
                             </IconButton>
-                        </div>
                     </Grid>
                     <Grid item lg={10} xs={12}>
                         <SignUpForm/>

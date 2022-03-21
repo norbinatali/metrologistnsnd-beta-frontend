@@ -1,6 +1,6 @@
 
 import { Navigate } from 'react-router-dom'
-import Auth from "../Auth";
+import Auth from "../../pages/Home/Auth/Auth";
 import PropTypes from "prop-types";
 import React from "react";
 

@@ -7,13 +7,13 @@ import {
     FormControl,
 } from '@mui/material';
 import {withTranslation} from "react-i18next";
-import gql from 'graphql-tag';
+import {SIGNUP_MUTATION} from '../../../graphql/mutations/Mutations';
 import {Mutation} from 'react-apollo';
-import history from "./history";
-import CircularProgressLoading from "./components/CircularProgressLoading";
+import history from "../../../history";
+import CircularProgressLoading from "../../../components/CircularProgressLoading";
 import {useSnackbar} from 'notistack';
 import i18n from 'i18next';
-import {GC_USER_ID, GC_AUTH_TOKEN} from "./constants";
+import {GC_USER_ID, GC_AUTH_TOKEN} from "../../../constants";
 
 const schema = {
     email: {
@@ -31,14 +31,11 @@ const schema = {
     }
 };
 
-function RedditTextField(props) {
-
+const RedditTextField = (props) => {
     return <TextField InputProps={{disableUnderline: true}} {...props} />;
 }
 
-const SIGNUP_MUTATION = gql`mutation ($email: String!, $password: String!, $name: String!, $companyName:String){signup(email:$email , password: $password,name:$name, companyName: $companyName){token}}`;
-
-function SignUpForm({t}) {
+const SignUpForm = ({t}) => {
     const {enqueueSnackbar} = useSnackbar();
     const [email, setStateEmail] = useState("");
     const [password, setStatePassword] = useState("");
@@ -81,12 +78,10 @@ function SignUpForm({t}) {
                 if (loading) {
                     return (<CircularProgressLoading/>)
                 }
-
                 return (
-                    <FormControl style={{flexGrow: 1, display: 'flex', alignItems: 'center', width: "100%"}}>
-                        <h3 style={{color: "rgba(0,1,47,0.84)"}}>{t("Registration")}</h3><br/>
-
-                        <label style={{color: "rgba(0,1,47,0.84)"}} htmlFor="email">{t("Email")} </label>
+                    <FormControl>
+                        <h3>{t("Registration")}</h3><br/>
+                        <label htmlFor="email">{t("Email")} </label>
                         <RedditTextField
                             type="text"
                             name={"email"}
@@ -117,7 +112,7 @@ function SignUpForm({t}) {
                             }}
                             required
                         />
-                        < label style={{color: "rgba(0,1,47,0.84)"}} htmlFor="password">{t("Password")} </label>
+                        <label htmlFor="password">{t("Password")} </label>
                         <RedditTextField
                             type="password"
                             size="medium"
@@ -147,14 +142,13 @@ function SignUpForm({t}) {
 
                             }} required
                         />
-                        <label style={{color: "rgba(0,1,47,0.84)"}} htmlFor="name">{t("Name")} </label>
+                        <label htmlFor="name">{t("Name")} </label>
                         <RedditTextField
                             type="name"
                             size="medium"
                             name={"name"}
                             fullWidth
                             error={hasError('name')}
-
                             helperText={
                                 hasError('name') ? formState.errors.name[0] : null
                             }
@@ -179,7 +173,7 @@ function SignUpForm({t}) {
                                 setStateName(e.target.value)
                             }}
                         />
-                        <label style={{color: "rgba(0,1,47,0.84)"}} htmlFor="companyName">{t("Company Name")} </label>
+                        <label htmlFor="companyName">{t("Company Name")} </label>
                         <RedditTextField
                             type="companyName"
                             size="medium"
@@ -207,7 +201,7 @@ function SignUpForm({t}) {
 
                             }}
 
-                        /><label style={{color: "rgba(0,1,47,0.84)"}} htmlFor="country">{t("Country")} </label>
+                        /><label htmlFor="country">{t("Country")} </label>
                         <RedditTextField
                             type="country"
                             size="medium"

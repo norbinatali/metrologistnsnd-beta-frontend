@@ -3,9 +3,9 @@ import i18n from 'i18next';
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next"
 import backend from "i18next-http-backend";
-import en from '../translations/en';
-import ua from '../translations/ua';
-import ru from '../translations/ru';
+import en from './en.json';
+import ua from './ua.json';
+import ru from './ru.json';
 
 
 const resources ={

@@ -10,18 +10,18 @@ import {
     TextField,
     Link,
     Box,
-    Typography, useTheme
+    Typography
 } from '@mui/material';
 import {withTranslation} from "react-i18next";
-import gql from 'graphql-tag';
 import {Mutation} from 'react-apollo';
-import Auth from "./Auth";
-import history from "../history";
+import {LOGIN_QUERY} from "../../../graphql/mutations/Mutations"
+import Auth from "../Auth/Auth";
+import history from "../../../history";
 import i18n from 'i18next';
-import {AUTH_TOKEN, GC_USER_ID} from "../constants";
+import {AUTH_TOKEN, GC_USER_ID} from "../../../constants";
 import {useSnackbar} from 'notistack';
-import MenuTabPanel from "./MenuTabPanel";
-import CircularProgressLoading from "./CircularProgressLoading"
+import MenuTabPanel from "../../../components/menu/MenuTabPanel";
+import CircularProgressLoading from "../../../components/CircularProgressLoading"
 
 const schema = {
     email: {
@@ -38,7 +38,7 @@ const schema = {
         }
     }
 };
-function TabPanel(props) {
+const TabPanel = (props) => {
     const {children, value, index, ...other} = props;
     return (
         <div>
@@ -61,14 +61,12 @@ TabPanel.propTypes = {
     index: PropTypes.any.isRequired,
     value: PropTypes.any.isRequired,
 };
-const HELLO_QUERY = gql`mutation ($email:String!, $password:String!) { login(email:$email , password: $password){token,user{id, posts{id, title}}}}`;
 
-function LoginForm({t}) {
+const LoginForm = ({t}) => {
     const {enqueueSnackbar} = useSnackbar();
     const {id} = React.useState("");
     const [email, setStateEmail] = useState("");
     const [password, setStatePassword] = useState("");
-    const theme = useTheme();
     const [formState, setFormState] = React.useState({
         isValid: false,
         values: {email, password},
@@ -101,15 +99,14 @@ function LoginForm({t}) {
         !!(formState.touched[field] && formState.errors[field]);
     const [open, setOpen] = React.useState(false);
     return (
-
         <div>
             <MenuTabPanel/>
-            <TabPanel value={1} index={1} dir={theme.direction} >
-                <div style={{marginRight: "auto", marginLeft: "auto"}}>
-                    <div style={{marginLeft: "auto", marginRight: "auto", display: "flex"}}>
+            <TabPanel value={1} index={1} >
+                <div>
+                    <div>
                         <Grid container spacing={12}>
                             <Grid item xs={12} >
-                                <Mutation mutation={HELLO_QUERY} variables={{email, password, id}}
+                                <Mutation mutation={LOGIN_QUERY} variables={{email, password, id}}
                                           onError={(error) => enqueueSnackbar(error.message)}
                                           onCompleted={(data) => confirm(data)}>
                                     {(mutation, {loading, error}) => {
@@ -119,12 +116,8 @@ function LoginForm({t}) {
 
                                         return (
                                             <FormControl>
-                                                <h3 style={{
-                                                    color: "rgba(0,1,47,0.84)",
-                                                    marginTop: "50%"
-                                                }}>{t("Login in")}</h3> <br/>
-                                                <label style={{color: "rgba(0,1,47,0.84)"}}
-                                                       htmlFor="email">{t('Email')} </label>
+                                                <h3>{t("Login in")}</h3> <br/>
+                                                <label htmlFor="email">{t('Email')} </label>
                                                 <TextField
                                                     type="text"
                                                     name={"email"}
@@ -155,8 +148,7 @@ function LoginForm({t}) {
                                                         ));
                                                     }}
                                                 />
-                                                < label style={{color: "rgba(0,1,47,0.84)"}}
-                                                        htmlFor="password">{t('Password')} </label>
+                                                <label htmlFor="password">{t('Password')} </label>
                                                 <TextField
                                                     type="password"
                                                     size="medium"
@@ -190,16 +182,14 @@ function LoginForm({t}) {
                                                     }
                                                     }
                                                 /><br/>
-                                                <Link component={RouterLink} to="/reset-your-password" variant="h8"
-                                                      style={{color: "rgba(23, 20, 61, 0.96)"}}>
+                                                <Link component={RouterLink} to="/reset-your-password" variant="h8">
                                                     {t('Forgot password?')}
                                                 </Link><br/>
                                                 <Button disabled={!formState.isValid} onClick={mutation}>{t('Submit')}
                                                 </Button>
-                                                <Typography style={{color: "rgba(0,1,47,0.84)"}} variant="body1">
+                                                <Typography variant="body1">
                                                     {t('Dont have an account?')}{' '}
-                                                    <Link component={RouterLink} to="/signup" variant="h8"
-                                                          style={{color: "rgba(0,1,47,0.84)"}}>
+                                                    <Link component={RouterLink} to="/signup" variant="h8">
                                                         {t('Sign up')}
                                                     </Link>
                                                 </Typography>

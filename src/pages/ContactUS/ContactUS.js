@@ -1,20 +1,18 @@
 import React, {useState} from 'react';
 import {withTranslation} from "react-i18next";
-import gql from "graphql-tag";
 import {FormControl, TextField, Button} from "@mui/material";
-import {CREATE_LETTER} from "../constants";
+import {CREATE_LETTER} from "../../constants";
+import {LETTER_MUTATION} from "../../graphql/mutations/Mutations"
 import {Mutation} from 'react-apollo'
 import {useSnackbar} from 'notistack';
-import UserMenu from "./UserMenu";
+import UserMenu from "../../components/UserMenu";
 import PropTypes from "prop-types";
 
-const LETTER_MUTATION = gql`mutation ($from: String!, $text: String!, $subject: String!){createNewLetter(text:$text , subject: $subject,from:$from){text,subject,from}}`
-
-function RedditTextField(props) {
+const RedditTextField = (props) => {
     return <TextField InputProps={{disableUnderline: true}} {...props} />;
 }
 
-function ContactUS({t}) {
+const ContactUS = ({t}) => {
     const {enqueueSnackbar} = useSnackbar();
     const [sendMail] = useState(true);
     const [from, setFrom] = useState("");
@@ -22,7 +20,6 @@ function ContactUS({t}) {
     const [text, setText] = useState("");
 
     const confirm = () => {
-
         const {token} = sendMail;
         saveLetterData(token);
         enqueueSnackbar('Thank you for your request. Дякую за Ваше звернення')

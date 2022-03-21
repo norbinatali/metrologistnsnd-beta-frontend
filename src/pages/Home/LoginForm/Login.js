@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import Grid from '@mui/material/Grid';
-import '../style/login.css';
 import {withTranslation} from "react-i18next";
-
 
 import LoginForm from './LoginForm'
 
@@ -24,15 +22,13 @@ class Login extends Component {
 
     render() {
         return (
-            <div style={{marginLeft: "auto", marginRight: "auto", display: "flex"}}>
-                <Grid container spacing={5}>
-                    <Grid item xs={12} md={2}>
+                <Grid container spacing={12}>
+                    <Grid item xs={6} md={6}>
                     </Grid>
-                    <Grid item xs={12} md={4} lg={8}>
+                    <Grid item xs={6} md={6}>
                         <LoginForm/>
                     </Grid>
                 </Grid>
-            </div>
         )
     }
 }

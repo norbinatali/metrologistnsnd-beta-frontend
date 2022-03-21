@@ -1,13 +1,12 @@
 import React from 'react';
 
 import {Select, MenuItem, CssBaseline, Toolbar, AppBar, Grid} from "@mui/material";
-import '../style/login.css';
-import i18n from "../menu/translations/i18n";
+import i18n from "../i18n/i18n";
 import {withTranslation} from "react-i18next";
-import logo from "../menu/style/LogoMakr_6pZrzB.png"
-import FlagUA from "../menu/style/LogoMakr_1Xl0t4.png";
-import FlagUS from "../menu/style/LogoMakr_4V1dPm.png";
-import FlagRU from "../menu/style/LogoMakr_3lAH4j.png";
+import logo from "../assets/images/LogoMakr_6pZrzB.png"
+import FlagUA from "../assets/images/LogoMakr_1Xl0t4.png";
+import FlagUS from "../assets/images/LogoMakr_4V1dPm.png";
+import FlagRU from "../assets/images/LogoMakr_3lAH4j.png";
 
 function MenuForConfirm() {
 

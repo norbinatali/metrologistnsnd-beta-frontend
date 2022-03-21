@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 import {FormControl, Typography, TextField, Box, Button} from "@mui/material";
 import {Mutation} from 'react-apollo';
-import MenuTabPanel from "./MenuTabPanel";
+import MenuTabPanel from "../../components/menu/MenuTabPanel";
 import {useTheme} from "@mui/styles";
 import PropTypes from "prop-types";
-import gql from "graphql-tag";
-import {CREATE_LETTER} from "../constants";
+import {CREATE_LETTER} from "../../constants";
+import {LETTER_MUTATION} from "../../graphql/mutations/Mutations"
 import {useSnackbar} from "notistack";
 import {withTranslation} from "react-i18next";
 
-function TabPanel(props) {
+const TabPanel = (props) => {
     const {children, value, index, ...other} = props;
     return (
         <div>
@@ -33,20 +33,17 @@ TabPanel.propTypes = {
     value: PropTypes.any.isRequired,
 };
 
-function RedditTextField(props) {
+const RedditTextField = (props) => {
     return <TextField InputProps={{disableUnderline: true}} {...props} />;
 }
 
-const LETTER_MUTATION = gql`mutation ($from: String!, $text: String!, $subject: String!){createNewLetter(text:$text , subject: $subject,from:$from){text,subject,from}}`
-
-function ContactForm({t}) {
+const ContactForm = ({t}) => {
     const theme = useTheme();
     const {enqueueSnackbar} = useSnackbar();
     const [subject, setSubject] = useState("");
     const [text, setText] = useState("");
     const [from, setFrom] = useState("");
     const confirm = async (token) => {
-
         saveLetterData(token);
         enqueueSnackbar('Thank you for your request. Дякую за Ваше звернення')
     };
@@ -72,8 +69,8 @@ function ContactForm({t}) {
                         />
                         <label style={{color: "rgba(0,1,47,0.84)"}} htmlFor="text">{t("Text")} </label>
                         <RedditTextField
-                                         id="outlined-multiline-static" multiline rows="5" type="text" margin="normal"
-                                         variant="outlined" value={text} onChange={e => setText(e.target.value)}
+                            id="outlined-multiline-static" multiline rows="5" type="text" margin="normal"
+                            variant="outlined" value={text} onChange={e => setText(e.target.value)}
                         /><br/>
                         <Mutation mutation={LETTER_MUTATION} variables={{from, subject, text}}
                                   onCompleted={() => confirm()}>

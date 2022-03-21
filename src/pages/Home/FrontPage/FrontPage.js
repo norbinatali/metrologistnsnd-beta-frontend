@@ -2,11 +2,11 @@ import React from "react";
 
 import {Grid, Button, Typography, Box} from "@mui/material";
 import {withTranslation} from "react-i18next";
-import history from "../history";
+import history from "../../../history";
 import PropTypes from "prop-types";
-import MenuTabPanel from "./MenuTabPanel";
+import MenuTabPanel from "../../../components/menu/MenuTabPanel";
 
-function TabPanel(props) {
+const TabPanel = (props) => {
     const {children, value, index, ...other} = props;
     return (
         <div>
@@ -30,7 +30,7 @@ TabPanel.propTypes = {
     value: PropTypes.any.isRequired,
 };
 
-function FrontPageCarousel() {
+const FrontPage = () => {
     return (
         <div>
             <MenuTabPanel/>
@@ -42,8 +42,7 @@ function FrontPageCarousel() {
                             <Typography variant={"h4"}
                             >{'New software for metrologists, manufacturers and people who want to know more about measuring technology'}</Typography>
                             <Typography variant={"body1"}
-                            >{'*** This application is corrently in beta release. More information and features are in development.'}</Typography>
-
+                            >{'*** This application is corrently in beta release. More information and pages are in development.'}</Typography>
                         </div>
                         <Grid item >
                             <Button
@@ -59,4 +58,4 @@ function FrontPageCarousel() {
     );
 }
 
-export default withTranslation()(FrontPageCarousel)
+export default withTranslation()(FrontPage)

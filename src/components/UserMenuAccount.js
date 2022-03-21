@@ -14,7 +14,7 @@ import {
     Typography
 } from "@mui/material";
 import AssignmentIcon from "@mui/material/SvgIcon/SvgIcon";
-import Auth from "./Auth";
+import Auth from "../pages/Home/Auth/Auth";
 import history from "../history";
 import {ExitToApp} from "@mui/icons-material";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';

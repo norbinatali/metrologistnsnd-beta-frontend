@@ -8,8 +8,7 @@
 }
 
 .App-header {
-
-  background-image:white;
+  background-color:#0000;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,5 +22,14 @@
   color: #09d3ac;
 }
 
-
+.body {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  cursor: default;
+  font-family: "Fira Code", "SF Mono", "Consolas", "Segoe UI", "Roboto", "-apple-system",
+  "Helvetica Neue", sans-serif;
+  font-size: 0.94em;
+  -webkit-user-select: none;
+}
 

@@ -3,7 +3,7 @@ import {withTranslation} from "react-i18next";
 import {withStyles} from '@mui/material/styles';
 import {Typography} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material';
-import '../style/index.css'
+import '../index.scss'
 
 const ExpansionPanel = withStyles({
     root: {

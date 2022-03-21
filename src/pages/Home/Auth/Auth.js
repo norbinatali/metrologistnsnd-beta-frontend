@@ -1,4 +1,4 @@
-import client from '../index.js';
+import client from '../../../index.js';
 
 const Auth = {
     isAuthenticated: false,

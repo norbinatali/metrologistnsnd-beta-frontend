@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './style/index.css';
-import App from './components/App';
+import './index.scss';
+import App from './pages/App/App';
 import { ApolloProvider } from 'react-apollo'
 import ApolloClient from 'apollo-client'
 import { setContext } from 'apollo-link-context'
@@ -41,11 +41,9 @@ export default client;
 
 const Wrapper = ()=>(
     <ApolloProvider client={client}>
-
             <SnackbarProvider>
                 <App />
             </SnackbarProvider>
-
     </ApolloProvider>
 )
 ReactDOM.render(

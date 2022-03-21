@@ -48,6 +48,7 @@
     "react-swipeable-views": "^0.14.0",
     "react-swipeable-views-utils": "^0.14.0",
     "react-tap-event-plugin": "^3.0.3",
+    "sass": "^1.49.9",
     "theme": "^0.1.0",
     "validate.js": "^0.13.1"
   },

@@ -1,51 +1,51 @@
 import React, {Component} from 'react';
-import '../style/App.css';
-import Login from "./Login";
+import './App.scss';
+import Login from "../Home/LoginForm/Login";
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
-import SignUp from "../SignUp";
-import history from '../history';
-import {GC_USER_ID, RESET_TOKEN as resetToken} from '../constants'
-import CircularProgressLoading from "./CircularProgressLoading"
-import ForgetPassword from "./ForgetPassword";
-import ConfirmResetPassword from "./ConfirmResetPassword";
-import MenuTabPanel from "./MenuTabPanel";
-import AddDevice from "./AddDevice";
-import PleaseConfirmEmail from "./PleaseConfirmEmail";
-import CheckYourEmail from "./CheckYourEmail";
-import Auth from "./Auth";
-import Standards from "./Standards";
-import StandardsM from "./StandardsM";
-import StandardsEM from "./StandardsEM";
-import StandardsT from "./StandardsT";
-import StandardsTF from "./StandardsTF";
-import StandardsPR from "./StandardsPR";
-import StandardsIR from "./StandardsIR";
-import StandardsAUV from "./StandardsAUV";
-import StandardsQM from "./StandardsQM";
-import Dashboard from "./Dashboard";
-import MyDevice from "./MyDevice";
-import Footer from "./Footer";
-import History from "./History";
-import WhatIsMetrology from "./WhatIsMetrology";
-import HistoryMetrology from "./HistoryMetrology";
-import UserProfile from "./UserProfile";
-import StandardListGrid from "./StandardListGrid";
-import ContactUS from "./ContactUS";
-import WhatIsMetrologist from "./WhatIsMetrologist";
-import LoginForm from "./LoginForm";
-import FrontPageCarousel from "./FrontPageCarousel";
-import ContactForm from "./ContactForm";
-import ForumPage from "./ForumPage";
-import MyDeviceInfo from "./MyDeviceInfo";
-import QMS from "./QMS";
-import TeamList from "./TeamList";
-import TeamInfo from "./TeamInfo";
-import ConfirmTeamMember from "./ConfirmTeamMember";
-import MyDeviceActivity from "./MyDeviceActivity";
-import MyDeviceSchedule from "./MyDeviceSchedule";
-import MyDeviceSetting from "./MyDeviceSetting";
+import SignUp from "../Home/SignUp/SignUp";
+import history from '../../history';
+import {GC_USER_ID, RESET_TOKEN as resetToken} from '../../constants'
+import CircularProgressLoading from "../../components/CircularProgressLoading"
+import ForgetPassword from "../../components/ForgetPassword";
+import ConfirmResetPassword from "../../components/ConfirmResetPassword";
+import MenuTabPanel from "../../components/menu/MenuTabPanel";
+import AddDevice from "../../components/AddDevice";
+import PleaseConfirmEmail from "../../components/PleaseConfirmEmail";
+import CheckYourEmail from "../../components/CheckYourEmail";
+import Auth from "../Home/Auth/Auth";
+import Standards from "../../components/Standards";
+import StandardsM from "../../components/StandardsM";
+import StandardsEM from "../../components/StandardsEM";
+import StandardsT from "../../components/StandardsT";
+import StandardsTF from "../../components/StandardsTF";
+import StandardsPR from "../../components/StandardsPR";
+import StandardsIR from "../../components/StandardsIR";
+import StandardsAUV from "../../components/StandardsAUV";
+import StandardsQM from "../../components/StandardsQM";
+import Dashboard from "../../components/Dashboard";
+import MyDevice from "../../components/MyDevice";
+import Footer from "../../components/Footer";
+import History from "../../components/History";
+import WhatIsMetrology from "../../components/WhatIsMetrology";
+import HistoryMetrology from "../../components/HistoryMetrology";
+import UserProfile from "../../components/UserProfile";
+import StandardListGrid from "../../components/StandardListGrid";
+import ContactUS from "../ContactUS/ContactUS";
+import WhatIsMetrologist from "../../components/WhatIsMetrologist";
+import LoginForm from "../Home/LoginForm/LoginForm";
+import FrontPage from "../Home/FrontPage/FrontPage";
+import ContactForm from "../ContactUS/ContactForm";
+import ForumPage from "../../components/ForumPage";
+import MyDeviceInfo from "../../components/MyDeviceInfo";
+import QMS from "../../components/QMS";
+import TeamList from "../../components/TeamList";
+import TeamInfo from "../../components/TeamInfo";
+import ConfirmTeamMember from "../../components/ConfirmTeamMember";
+import MyDeviceActivity from "../../components/MyDeviceActivity";
+import MyDeviceSchedule from "../../components/MyDeviceSchedule";
+import MyDeviceSetting from "../../components/MyDeviceSetting";
 import PropTypes from "prop-types";
-import {PrivateRoute} from "./routing/PrivateRouting";
+import {PrivateRoute} from "../../components/routing/PrivateRouting";
 
 class App extends Component {
     constructor(props) {
@@ -81,7 +81,7 @@ class App extends Component {
                 <div className="App-header">
                     <BrowserRouter history={history}>
                         <Routes>
-                            <Route path="/" element={<FrontPageCarousel/>}/>
+                            <Route path="/" element={<FrontPage/>}/>
                             <Route path="/check-email" element={<CheckYourEmail/>}/>
                             <Route path="/confirm-email" element={<PleaseConfirmEmail/>}/>
                             <Route exact path="/reset-your-password" element={<ForgetPassword/>}/>

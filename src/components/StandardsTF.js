@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
 import {withTranslation} from 'react-i18next';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import i18n from "../menu/translations/i18n";
+import i18n from "../i18n/i18n";
 import UserMenu from "./UserMenu";
 import CircularProgressLoading from "./CircularProgressLoading";
 import {Grid, IconButton, Paper} from "@mui/material";
