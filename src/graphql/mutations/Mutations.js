@@ -32,3 +32,21 @@ export const RESET_PASSWORD = gql`mutation ($email:String!, $resetToken:String!,
 export const FORGET_PASSWORD = gql`mutation ($email:String!) { triggerPasswordReset(email: $email){ ok,resetToken }}`;
 export const MUTATION_CREATETEAM = gql`mutation($name:String! ){createNewTeam(name: $name){id name payment}}`;
 export const MUTATION_ADDMEMBER = gql`mutation($emailMember:String!, $id:ID! ){createTeamMembers(emailMember: $emailMember, id:$id){id emailMember member memberConfirmToken}}`;
+export const MUTATION_APPOINTMENTS = gql`mutation ($title:String, $start_date:DateTime, $end_date:DateTime, $location:String, $notes:String){createNewAppointment(title: $title,start_date:$start_date,end_date: $end_date,location: $location,notes: $notes){
+    title,
+    start_date,
+    end_date,
+    location,
+    notes,
+}}`
+export const TEAM_MEMBER = gql `mutation ($emailMembers:String!, $memberConfirmToken:String! ) { confirMemberEmail(emailMembers: $emailMembers, memberConfirmToken: $memberConfirmToken){ id}}`;
+export const UPGRADE_USER = gql`mutation($email:String!, $country:String, $name:String, $companyName:String){upgradeUser(email: $email,companyName: $companyName,country: $country,name: $name){
+        name
+        companyName
+        country
+    }}`
+export const CHANGE_PASSWORD = gql`mutation($oldpassword:String!, $newpassword:String!,$email:String!){changePassword(email: $email,oldpassword: $oldpassword,newpassword: $newpassword){
+        id
+        email
+        name
+    }}`;
