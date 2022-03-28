@@ -12,7 +12,7 @@ import {onError} from "apollo-link-error";
 import {SnackbarProvider} from 'notistack';
 
 const httpLink = createHttpLink({
-    uri: 'http://localhost:4000/graphql'
+    uri: 'https://metrologistnsnd-beta-backend.herokuapp.com/graphql', credentials: "include"
 });
 
 const authLink = setContext((_, {headers}) => {
@@ -31,7 +31,7 @@ const linkError = onError(({graphQLErrors, networkError}) => {
                 `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
             ),
         );
-console.log(networkError);
+
     if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 const client = new ApolloClient({
