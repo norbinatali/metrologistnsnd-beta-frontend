@@ -5,7 +5,6 @@ import {CREATE_LETTER} from "../../constants";
 import {LETTER_MUTATION} from "../../graphql/mutations/Mutations"
 import {Mutation} from 'react-apollo'
 import {useSnackbar} from 'notistack';
-import UserMenu from "../../components/UserMenu";
 import PropTypes from "prop-types";
 
 const RedditTextField = (props) => {
@@ -30,7 +29,6 @@ const ContactUS = ({t}) => {
     }
     return (
         <div>
-            <UserMenu/>
             <main style={{flexGrow: 1, height: '100%', overflow: 'auto'}}>
                 <FormControl>
                     <label style={{color: "rgba(0,1,47,0.84)", marginTop: "80px"}}

@@ -1,44 +1,19 @@
 import React, {useState} from 'react';
-import {FormControl, Typography, TextField, Box, Button} from "@mui/material";
+import {FormControl, TextField, Button} from "@mui/material";
 import {Mutation} from 'react-apollo';
 import MenuTabPanel from "../../components/menu/MenuTabPanel";
-import {useTheme} from "@mui/styles";
 import PropTypes from "prop-types";
 import {CREATE_LETTER} from "../../constants";
 import {LETTER_MUTATION} from "../../graphql/mutations/Mutations"
 import {useSnackbar} from "notistack";
 import {withTranslation} from "react-i18next";
 
-const TabPanel = (props) => {
-    const {children, value, index, ...other} = props;
-    return (
-        <div>
-            <Typography
-                component="div"
-                role="tabpanel"
-                hidden={value !== index}
-                id={`full-width-tabpanel-${index}`}
-                aria-labelledby={`full-width-tab-${index}`}
-                {...other}
-            >
-                {value === index && <Box p={3}>{children}</Box>}
-            </Typography>
-        </div>
-    );
-}
-
-TabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.any.isRequired,
-    value: PropTypes.any.isRequired,
-};
-
 const RedditTextField = (props) => {
     return <TextField InputProps={{disableUnderline: true}} {...props} />;
 }
 
 const ContactForm = ({t}) => {
-    const theme = useTheme();
+
     const {enqueueSnackbar} = useSnackbar();
     const [subject, setSubject] = useState("");
     const [text, setText] = useState("");
@@ -53,8 +28,7 @@ const ContactForm = ({t}) => {
     return (
         <div>
             <MenuTabPanel/>
-            <TabPanel value={2} index={2} dir={theme.direction}>
-                <div style={{marginRight: "auto", marginLeft: "auto", marginTop: "55px"}}>
+                <div style={{marginRight: "auto", marginLeft: "auto"}}>
                     <FormControl>
                         <label style={{color: "rgba(0,1,47,0.84)", marginTop: "80px"}}
                                htmlFor="from">{t("Email")} </label>
@@ -79,9 +53,7 @@ const ContactForm = ({t}) => {
                                         onClick={send}>{t("Send")} </Button>)}
                         </Mutation>
                     </FormControl>
-
                 </div>
-            </TabPanel>
         </div>
     )
 

@@ -9,7 +9,6 @@ import {
     Snackbar,
     TextField,
     Link,
-    Box,
     Typography
 } from '@mui/material';
 import {withTranslation} from "react-i18next";
@@ -21,7 +20,7 @@ import i18n from 'i18next';
 import {AUTH_TOKEN, GC_USER_ID} from "../../../constants";
 import {useSnackbar} from 'notistack';
 import MenuTabPanel from "../../../components/menu/MenuTabPanel";
-import CircularProgressLoading from "../../../components/CircularProgressLoading"
+import CircularProgressLoading from "../../../components/circularProgressLoading/CircularProgressLoading"
 
 const schema = {
     email: {
@@ -37,29 +36,6 @@ const schema = {
             maximum: 128
         }
     }
-};
-const TabPanel = (props) => {
-    const {children, value, index, ...other} = props;
-    return (
-        <div>
-            <Typography
-                component="div"
-                role="tabpanel"
-                hidden={value !== index}
-                id={`full-width-tabpanel-${index}`}
-                aria-labelledby={`full-width-tab-${index}`}
-                {...other}
-            >
-                {value === index && <Box p={3}>{children}</Box>}
-            </Typography>
-        </div>
-    );
-}
-
-TabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.any.isRequired,
-    value: PropTypes.any.isRequired,
 };
 
 const LoginForm = ({t}) => {
@@ -101,110 +77,104 @@ const LoginForm = ({t}) => {
     return (
         <div>
             <MenuTabPanel/>
-            <TabPanel value={1} index={1} >
-                <div>
-                    <div>
-                        <Grid container spacing={12}>
-                            <Grid item xs={12} >
-                                <Mutation mutation={LOGIN_QUERY} variables={{email, password, id}}
-                                          onError={(error) => enqueueSnackbar(error.message)}
-                                          onCompleted={(data) => confirm(data)}>
-                                    {(mutation, {loading, error}) => {
-                                        if (loading) {
-                                            return (<CircularProgressLoading/>)
+            <Grid container spacing={12}>
+                <Grid item xs={12}>
+                    <Mutation mutation={LOGIN_QUERY} variables={{email, password, id}}
+                              onError={(error) => enqueueSnackbar(error.message)}
+                              onCompleted={(data) => confirm(data)}>
+                        {(mutation, {loading, error}) => {
+                            if (loading) {
+                                return (<CircularProgressLoading/>)
+                            }
+
+                            return (
+                                <FormControl>
+                                    <h3>{t("Login in")}</h3> <br/>
+                                    <label htmlFor="email">{t('Email')} </label>
+                                    <TextField
+                                        type="text"
+                                        name={"email"}
+                                        placeholder={"example@example.com"}
+                                        value={formState.values.email || ''}
+                                        fullWidth
+                                        size="medium"
+                                        error={hasError('email')}
+                                        helperText={hasError('email') ? formState.errors.email[0] : null}
+                                        variant="outlined"
+                                        onChange={(e) => {
+                                            setStateEmail(e.target.value);
+                                            e.persist();
+                                            setFormState(formState => ({
+                                                    ...formState,
+                                                    values: {
+                                                        ...formState.values,
+                                                        [e.target.name]:
+                                                            e.target.type === 'checkbox'
+                                                                ? e.target.checked
+                                                                : e.target.value
+                                                    },
+                                                    touched: {
+                                                        ...formState.touched,
+                                                        [e.target.name]: true
+                                                    }
+                                                }
+                                            ));
+                                        }}
+                                    />
+                                    <label htmlFor="password">{t('Password')} </label>
+                                    <TextField
+                                        type="password"
+                                        size="medium"
+                                        name={"password"}
+                                        fullWidth
+                                        error={hasError('password')}
+                                        helperText={
+                                            hasError('password') ? formState.errors.password[0] : null
                                         }
+                                        variant="outlined"
 
-                                        return (
-                                            <FormControl>
-                                                <h3>{t("Login in")}</h3> <br/>
-                                                <label htmlFor="email">{t('Email')} </label>
-                                                <TextField
-                                                    type="text"
-                                                    name={"email"}
-                                                    placeholder={"example@example.com"}
-                                                    value={formState.values.email || ''}
-                                                    fullWidth
-                                                    size="medium"
-                                                    error={hasError('email')}
-                                                    helperText={hasError('email') ? formState.errors.email[0] : null}
-                                                    variant="outlined"
-                                                    onChange={(e) => {
-                                                        setStateEmail(e.target.value);
-                                                        e.persist();
-                                                        setFormState(formState => ({
-                                                                ...formState,
-                                                                values: {
-                                                                    ...formState.values,
-                                                                    [e.target.name]:
-                                                                        e.target.type === 'checkbox'
-                                                                            ? e.target.checked
-                                                                            : e.target.value
-                                                                },
-                                                                touched: {
-                                                                    ...formState.touched,
-                                                                    [e.target.name]: true
-                                                                }
-                                                            }
-                                                        ));
-                                                    }}
-                                                />
-                                                <label htmlFor="password">{t('Password')} </label>
-                                                <TextField
-                                                    type="password"
-                                                    size="medium"
-                                                    name={"password"}
-                                                    fullWidth
-                                                    error={hasError('password')}
-                                                    helperText={
-                                                        hasError('password') ? formState.errors.password[0] : null
+                                        value={formState.values.password || ''}
+                                        onChange={e => {
+                                            setStatePassword(e.target.value)
+                                            e.persist();
+                                            setFormState(formState => ({
+                                                    ...formState,
+                                                    values: {
+                                                        ...formState.values,
+                                                        [e.target.name]:
+                                                            e.target.type === 'checkbox'
+                                                                ? e.target.checked
+                                                                : e.target.value
+                                                    },
+                                                    touched: {
+                                                        ...formState.touched,
+                                                        [e.target.name]: true
                                                     }
-                                                    variant="outlined"
+                                                }
+                                            ));
+                                        }
+                                        }
+                                    /><br/>
+                                    <Link component={RouterLink} to="/reset-your-password" variant="h8">
+                                        {t('Forgot password?')}
+                                    </Link><br/>
+                                    <Button disabled={!formState.isValid} onClick={mutation}>{t('Submit')}
+                                    </Button>
+                                    <Typography variant="body1">
+                                        {t('Dont have an account?')}{' '}
+                                        <Link component={RouterLink} to="/signup" variant="h8">
+                                            {t('Sign up')}
+                                        </Link>
+                                    </Typography>
+                                </FormControl>
+                            )
+                        }}
 
-                                                    value={formState.values.password || ''}
-                                                    onChange={e => {
-                                                        setStatePassword(e.target.value)
-                                                        e.persist();
-                                                        setFormState(formState => ({
-                                                                ...formState,
-                                                                values: {
-                                                                    ...formState.values,
-                                                                    [e.target.name]:
-                                                                        e.target.type === 'checkbox'
-                                                                            ? e.target.checked
-                                                                            : e.target.value
-                                                                },
-                                                                touched: {
-                                                                    ...formState.touched,
-                                                                    [e.target.name]: true
-                                                                }
-                                                            }
-                                                        ));
-                                                    }
-                                                    }
-                                                /><br/>
-                                                <Link component={RouterLink} to="/reset-your-password" variant="h8">
-                                                    {t('Forgot password?')}
-                                                </Link><br/>
-                                                <Button disabled={!formState.isValid} onClick={mutation}>{t('Submit')}
-                                                </Button>
-                                                <Typography variant="body1">
-                                                    {t('Dont have an account?')}{' '}
-                                                    <Link component={RouterLink} to="/signup" variant="h8">
-                                                        {t('Sign up')}
-                                                    </Link>
-                                                </Typography>
-                                            </FormControl>
-                                        )
-                                    }}
-
-                                </Mutation>
-                                <Snackbar open={open} onClose={() => setOpen(false)}
-                                          message={<span>error.message</span>} autoHideDuration={6000}/>
-                            </Grid>
-                        </Grid>
-                    </div>
-                </div>
-            </TabPanel>
+                    </Mutation>
+                    <Snackbar open={open} onClose={() => setOpen(false)}
+                              message={<span>error.message</span>} autoHideDuration={6000}/>
+                </Grid>
+            </Grid>
         </div>
     )
 

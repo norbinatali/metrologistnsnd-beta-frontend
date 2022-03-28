@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {withTranslation} from "react-i18next";
 import {
-    Paper,
     Typography,
     Dialog,
     FormControl,
@@ -11,10 +10,9 @@ import {
     DialogActions,
     Button
 } from "@mui/material";
-import UserMenu from "./UserMenu";
 import gql from "graphql-tag";
 import {Mutation, Query} from 'react-apollo';
-import CircularProgressLoading from "./CircularProgressLoading";
+import CircularProgressLoading from "./circularProgressLoading/CircularProgressLoading";
 import {AUTH_TOKEN} from "../constants";
 import {useSnackbar} from "notistack";
 import {LocalizationProvider} from "@mui/lab";
@@ -48,9 +46,6 @@ function Dashboard({t}) {
     };
     return (
         <div>
-            <UserMenu/>
-            <main style={{flexGrow: 1, height: '100%', overflow: 'auto'}}>
-                <div style={{marginTop: 40}}>
                     <div style={{marginTop: 20, padding: 30}}>
                         <Query query={QUERY_USER} onError={(error) => enqueueSnackbar(error.message)}>
                             {({loading, error, data}) => {
@@ -66,9 +61,6 @@ function Dashboard({t}) {
                                             <div><Typography align={"justify"}
                                                              style={{color: "rgba(0,1,14,0.74)"}}>{t('Welcome')} {data.me.name}</Typography>
                                             </div>
-                                            <Paper>
-
-                                            </Paper>
                                             <Dialog open={open} onClose={handleClose}
                                                     aria-labelledby="form-dialog-title">
 
@@ -138,15 +130,12 @@ function Dashboard({t}) {
                             }}
                         </Query>
                     </div>
-                </div>
-            </main>
-
         </div>
     )
 }
 
 Dashboard.propTypes = {
-    t: PropTypes.node.isRequired
+    t: PropTypes.node
 
 };
 export default withTranslation()(Dashboard)

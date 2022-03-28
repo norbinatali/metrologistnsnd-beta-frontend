@@ -57,8 +57,9 @@ function LegalMetrology({t}) {
         </List>
     )
 }
+
 LegalMetrology.propTypes = {
-    t:PropTypes.node
+    t: PropTypes.node
 };
 
 export default withTranslation()(LegalMetrology)

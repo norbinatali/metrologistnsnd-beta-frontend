@@ -1,51 +1,40 @@
 import React, {Component} from 'react';
 import './App.scss';
-import Login from "../Home/LoginForm/Login";
+import Login from "../Home/LoginForm/LoginForm";
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
-import SignUp from "../Home/SignUp/SignUp";
+import SignUp from "../Home/SignUp/SignUpForm";
 import history from '../../history';
 import {GC_USER_ID, RESET_TOKEN as resetToken} from '../../constants'
-import CircularProgressLoading from "../../components/CircularProgressLoading"
-import ForgetPassword from "../../components/ForgetPassword";
-import ConfirmResetPassword from "../../components/ConfirmResetPassword";
+import CircularProgressLoading from "../../components/circularProgressLoading/CircularProgressLoading"
+import ForgetPassword from "../Home/ResetPassword/ForgetPassword";
+import ConfirmResetPassword from "../Home/ResetPassword/ConfirmResetPassword/ConfirmResetPassword";
 import MenuTabPanel from "../../components/menu/MenuTabPanel";
-import AddDevice from "../../components/AddDevice";
-import PleaseConfirmEmail from "../../components/PleaseConfirmEmail";
-import CheckYourEmail from "../../components/CheckYourEmail";
+import AddDevice from "../Devices/AddDevice/AddDevice";
+import PleaseConfirmEmail from "../Home/SignUp/ConfirmEmail/PleaseConfirmEmail";
+import CheckYourEmail from "../Home/SignUp/ConfirmEmail/CheckYourEmail";
 import Auth from "../Home/Auth/Auth";
-import Standards from "../../components/Standards";
-import StandardsM from "../../components/StandardsM";
-import StandardsEM from "../../components/StandardsEM";
-import StandardsT from "../../components/StandardsT";
-import StandardsTF from "../../components/StandardsTF";
-import StandardsPR from "../../components/StandardsPR";
-import StandardsIR from "../../components/StandardsIR";
-import StandardsAUV from "../../components/StandardsAUV";
-import StandardsQM from "../../components/StandardsQM";
+import Standards from "../Standards/Standards";
 import Dashboard from "../../components/Dashboard";
-import MyDevice from "../../components/MyDevice";
-import Footer from "../../components/Footer";
-import History from "../../components/History";
-import WhatIsMetrology from "../../components/WhatIsMetrology";
-import HistoryMetrology from "../../components/HistoryMetrology";
-import UserProfile from "../../components/UserProfile";
-import StandardListGrid from "../../components/StandardListGrid";
+import MyDevice from "../Devices/Dashboard/MyDevice";
+import Footer from "../../components/layout/footer/Footer";
+import Header from "../../components/layout/header/Header";
+import History from "../History/History";
+import HomeDashboard from "../Home/Dashboard/HomeDashboard"
+import HistoryMetrology from "../History/HistoryMetrology";
+import UserProfile from "../UserProfile/UserProfile";
+import StandardListGrid from "../Standards/List/StandardListGrid";
 import ContactUS from "../ContactUS/ContactUS";
-import WhatIsMetrologist from "../../components/WhatIsMetrologist";
 import LoginForm from "../Home/LoginForm/LoginForm";
-import FrontPage from "../Home/FrontPage/FrontPage";
 import ContactForm from "../ContactUS/ContactForm";
-import ForumPage from "../../components/ForumPage";
-import MyDeviceInfo from "../../components/MyDeviceInfo";
-import QMS from "../../components/QMS";
-import TeamList from "../../components/TeamList";
-import TeamInfo from "../../components/TeamInfo";
+import ForumPage from "../Forum/ForumPage";
+import MyDeviceInfo from "../Devices/Info/MyDeviceInfo";
+import TeamList from "../Teams/List/TeamList";
+import TeamInfo from "../Teams/Details/TeamInfo";
 import ConfirmTeamMember from "../../components/ConfirmTeamMember";
-import MyDeviceActivity from "../../components/MyDeviceActivity";
-import MyDeviceSchedule from "../../components/MyDeviceSchedule";
-import MyDeviceSetting from "../../components/MyDeviceSetting";
+import MyDeviceActivity from "../Devices/Activity/MyDeviceActivity";
+import MyDeviceSetting from "../Devices/Settings/MyDeviceSetting";
 import PropTypes from "prop-types";
-import {PrivateRoute} from "../../components/routing/PrivateRouting";
+import {PrivateRoute} from "../../router/PrivateRouting";
 
 class App extends Component {
     constructor(props) {
@@ -78,10 +67,11 @@ class App extends Component {
 
         return (
             <div className="App">
-                <div className="App-header">
+                <Header/>
+                <div className="body">
                     <BrowserRouter history={history}>
                         <Routes>
-                            <Route path="/" element={<FrontPage/>}/>
+                            <Route path="/" element={<HomeDashboard/>}/>
                             <Route path="/check-email" element={<CheckYourEmail/>}/>
                             <Route path="/confirm-email" element={<PleaseConfirmEmail/>}/>
                             <Route exact path="/reset-your-password" element={<ForgetPassword/>}/>
@@ -98,25 +88,9 @@ class App extends Component {
                             <Route exact path="/team" element={<PrivateRoute component={TeamList}/>}/>
                             <Route path="/team/:teamID" element={<PrivateRoute component={TeamInfo}/>}/>
                             <Route path="/mydevices/:deviceName" element={<PrivateRoute component={MyDeviceInfo}/>}/>
-                            <Route path="/mydevices/:deviceName/activity" element={<PrivateRoute component={MyDeviceActivity}/>}/>
-                            <Route path="/mydevices/:deviceName/schedule" element={<PrivateRoute component={MyDeviceSchedule}/>}/>
-                            <Route path="/mydevices/:deviceName/setting" element={<PrivateRoute component={MyDeviceSetting}/>}/>
                             <Route path="/account" element={<PrivateRoute component={UserProfile}/>}/>
                             <Route path="/contactus" element={<PrivateRoute component={ContactUS}/>}/>
-                            <Route path="/sand" element={<PrivateRoute component={QMS}/>}/>
-                            <Route path="/sand/:sandNumber" element={<PrivateRoute component={QMS}/>}/>
-                            <Route path="/standards-L" element={<PrivateRoute component={Standards}/>}/>
                             <Route path="/standards" element={<PrivateRoute component={StandardListGrid}/>}/>
-                            <Route path="/standards-M" element={<PrivateRoute component={StandardsM}/>}/>
-                            <Route path="/standards-EM" element={<PrivateRoute component={StandardsEM}/>}/>
-                            <Route path="/standards-TF" element={<PrivateRoute component={StandardsTF}/>}/>
-                            <Route path="/standards-PR" element={<PrivateRoute component={StandardsPR}/>}/>
-                            <Route path="/standards-IR" element={<PrivateRoute component={StandardsIR}/>}/>
-                            <Route path="/standards-AUV" element={<PrivateRoute component={StandardsAUV}/>}/>
-                            <Route path="/standards-IR" element={<PrivateRoute component={StandardsIR}/>}/>
-                            <Route path="/standards-QM" element={<PrivateRoute component={StandardsQM}/>}/>
-                            <Route path="/what-is-metrologist" element={<PrivateRoute component={WhatIsMetrologist}/>}/>
-                            <Route path="/what-is-metrology" element={<PrivateRoute component={WhatIsMetrology}/>}/>
                             <Route path="/history-metrology" element={<PrivateRoute component={HistoryMetrology}/>}/>
                             <Route path="/modules" element={<PrivateRoute component={History}/>}/>
                             <Route path="/technical-reglaments" element={<PrivateRoute component={History}/>}/>

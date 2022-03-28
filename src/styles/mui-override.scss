@@ -1,0 +1,20 @@
+@import  'variables';
+
+.css-1ujykiq-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: #ffffff;
+}
+.MuiToolbar-root {
+  background-color: #0e045d;
+}
+a.MuiButton-root {
+  color: $color-white-54;
+}
+.MuiButtonGroup-root {
+  a {
+    border-color: transparent !important;
+  }
+}
+.MuiOutlinedInput-root {
+  outline: none;
+}
+
