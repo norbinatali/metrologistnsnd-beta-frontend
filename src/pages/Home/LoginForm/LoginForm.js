@@ -38,7 +38,7 @@ const schema = {
     }
 };
 
-const LoginForm = ({t}) => {
+const LoginForm = () => {
     const {enqueueSnackbar} = useSnackbar();
     const {id} = React.useState("");
     const [email, setStateEmail] = useState("");
@@ -89,8 +89,8 @@ const LoginForm = ({t}) => {
 
                             return (
                                 <FormControl>
-                                    <h3>{t("Login in")}</h3> <br/>
-                                    <label htmlFor="email">{t('Email')} </label>
+                                    <h3>{"Login in"}</h3> <br/>
+                                    <label htmlFor="email">{'Email'} </label>
                                     <TextField
                                         type="text"
                                         name={"email"}
@@ -121,7 +121,7 @@ const LoginForm = ({t}) => {
                                             ));
                                         }}
                                     />
-                                    <label htmlFor="password">{t('Password')} </label>
+                                    <label htmlFor="password">{'Password'} </label>
                                     <TextField
                                         type="password"
                                         size="medium"
@@ -132,7 +132,6 @@ const LoginForm = ({t}) => {
                                             hasError('password') ? formState.errors.password[0] : null
                                         }
                                         variant="outlined"
-
                                         value={formState.values.password || ''}
                                         onChange={e => {
                                             setStatePassword(e.target.value)
@@ -156,14 +155,14 @@ const LoginForm = ({t}) => {
                                         }
                                     /><br/>
                                     <Link component={RouterLink} to="/reset-your-password" variant="h8">
-                                        {t('Forgot password?')}
+                                        {'Forgot password?'}
                                     </Link><br/>
-                                    <Button disabled={!formState.isValid} onClick={mutation}>{t('Submit')}
+                                    <Button disabled={!formState.isValid} onClick={mutation}>{'Submit'}
                                     </Button>
                                     <Typography variant="body1">
-                                        {t('Dont have an account?')}{' '}
+                                        {'Dont have an account?'}{' '}
                                         <Link component={RouterLink} to="/signup" variant="h8">
-                                            {t('Sign up')}
+                                            {'Sign up'}
                                         </Link>
                                     </Typography>
                                 </FormControl>
@@ -179,10 +178,5 @@ const LoginForm = ({t}) => {
     )
 
 }
-
-LoginForm.propTypes = {
-    classes: PropTypes.object.isRequired,
-    t: PropTypes.node.isRequired
-};
 
 export default withTranslation()(LoginForm)

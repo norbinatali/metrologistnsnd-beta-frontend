@@ -10,24 +10,15 @@ import {
     DialogActions,
     Button
 } from "@mui/material";
-import gql from "graphql-tag";
 import {Mutation, Query} from 'react-apollo';
 import CircularProgressLoading from "./circularProgressLoading/CircularProgressLoading";
-import {AUTH_TOKEN} from "../constants";
+import Auth from "../pages/Home/Auth/Auth";
 import {useSnackbar} from "notistack";
 import {LocalizationProvider} from "@mui/lab";
 import DateFnsUtils from "@date-io/date-fns";
 import PropTypes from "prop-types";
-
-const authToken = localStorage.getItem(AUTH_TOKEN);
-const QUERY_USER = gql`query{me {name, email,country, companyName,appointments{title,location,notes,start_date,end_date},mydevices{certificate_verification,valid_verification,calibration_data,name_device}}}`;
-const MUTATION_APPOINTMENTS = gql`mutation ($title:String, $start_date:DateTime, $end_date:DateTime, $location:String, $notes:String){createNewAppointment(title: $title,start_date:$start_date,end_date: $end_date,location: $location,notes: $notes){
-    title,
-    start_date,
-    end_date,
-    location,
-    notes,
-}}`
+import {MUTATION_APPOINTMENTS} from '../graphql/mutations/Mutations';
+import {QUERY_USER} from '../graphql/query/Query';
 
 function Dashboard({t}) {
 
@@ -55,7 +46,7 @@ function Dashboard({t}) {
                                 if (error) {
                                     return error.message
                                 }
-                                if (authToken && data) {
+                                if (Auth.isAuthenticated && data) {
                                     return (
                                         <div>
                                             <div><Typography align={"justify"}
@@ -71,7 +62,7 @@ function Dashboard({t}) {
                                                         if (loading) {
                                                             return (<CircularProgressLoading/>)
                                                         }
-                                                        if (authToken) {
+                                                        if (Auth.isAuthenticated) {
 
                                                             return (
                                                                 <LocalizationProvider dateAdapter={DateFnsUtils}>

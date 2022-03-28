@@ -18,7 +18,7 @@ export default function CircularStatic() {
 
     return (
         <div>
-            <CircularProgress variant="static" value={completed}/>
+            <CircularProgress variant="determinate" value={completed}/>
         </div>
     );
 }

@@ -13,18 +13,16 @@ import {
     CardContent
 } from "@mui/material";
 import PropTypes from 'prop-types';
-import gql from 'graphql-tag';
+import {QUERY_USER} from '../../graphql/query/Query';
 import {Mutation, Query} from 'react-apollo';
-import {AUTH_TOKEN} from '../../constants';
 import CircularProgressLoading from "../../components/circularProgressLoading/CircularProgressLoading";
 import {useSnackbar} from "notistack";
 import i18n from 'i18next';
-import history from '../../history.js'
-
-const authToken = localStorage.getItem(AUTH_TOKEN);
+import history from '../../history.js';
+import {UPGRADE_USER, CHANGE_PASSWORD } from '../../graphql/mutations/Mutations';
+import Auth from "../../pages/Home/Auth/Auth";
 
 function UserProfile({t, props}) {
-
     const {...rest} = props;
     const {enqueueSnackbar} = useSnackbar();
     const [newpassword, setNewPassword] = React.useState('');
@@ -42,22 +40,8 @@ function UserProfile({t, props}) {
         enqueueSnackbar(i18n.t('You updated your personal information successfully'));
         history.push('/account');
     };
-
-    const QUERY_USER = gql`query{me {name, email,country, companyName}}`;
-    const CHANGE_PASSWORD = gql`mutation($oldpassword:String!, $newpassword:String!,$email:String!){changePassword(email: $email,oldpassword: $oldpassword,newpassword: $newpassword){
-        id
-        email
-        name
-    }}`;
-    const UPGRADE_USER = gql`mutation($email:String!, $country:String, $name:String, $companyName:String){upgradeUser(email: $email,companyName: $companyName,country: $country,name: $name){
-        name
-        companyName
-        country
-    }}`
     return (
-
         <div>
-            <main style={{flexGrow: 1, height: '100%', overflow: 'auto'}}>
                 <Query query={QUERY_USER} pollInterval={50}>
                     {({loading, error, data}) => {
                         if (loading) {
@@ -67,7 +51,7 @@ function UserProfile({t, props}) {
                             return error.message
                         }
 
-                        if (authToken && data) {
+                        if (Auth.isAuthenticated && data) {
                             return (
                                 <div>
                                     <Grid container spacing={4}>
@@ -141,7 +125,7 @@ function UserProfile({t, props}) {
                                                         if (error) {
                                                             return (error.message)
                                                         }
-                                                        if (authToken) {
+                                                        if (Auth.isAuthenticated) {
                                                             return (
                                                                 <FormControl autoComplete="off" noValidate>
                                                                     <CardHeader
@@ -207,7 +191,6 @@ function UserProfile({t, props}) {
                         } else return null
                     }}
                 </Query>
-            </main>
         </div>)
 }
 

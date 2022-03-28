@@ -5,3 +5,5 @@ export const POSTS_QUERY = gql`query {feed{title,content,author{name}}}`;
 export const QUERY_TEAMLIST = gql`query {me{name teams{id name}}}`;
 export const QUERY_TEAMMEMBERS = gql`query($id:ID!) {teamList(id:$id){name teamMembers{emailMembers memberConfirmToken member memberConfirmed} author{name}} }`;
 export const GET_Device = gql`query { feedDevice {id name_EN name_UA  module category}}`;
+export const QUERY_USER = gql`query{me {name, email,country, companyName,appointments{title,location,notes,start_date,end_date},mydevices{certificate_verification,valid_verification,calibration_data,name_device}}}`;
+

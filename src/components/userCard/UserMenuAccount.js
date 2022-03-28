@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import Auth from "../../pages/Home/Auth/Auth";
 
-import {Logout, Menu, PersonAdd, Settings} from "@mui/icons-material";
+import {Logout, Menu, Settings} from "@mui/icons-material";
 
 import PropTypes from "prop-types";
 
@@ -18,11 +18,12 @@ function UserMenuAccount({t}) {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    console.log(Auth.isAuthenticated);
     const handleClose = () => {
         setAnchorEl(null);
     };
-
+    const loginOut = () => {
+        Auth.signOut();
+    }
     return (
         <div>
             <Tooltip title="Account settings">
@@ -81,17 +82,11 @@ function UserMenuAccount({t}) {
                 <Divider/>
                 <MenuItem>
                     <ListItemIcon>
-                        <PersonAdd fontSize="small"/>
-                    </ListItemIcon>
-                    Add another account
-                </MenuItem>
-                <MenuItem>
-                    <ListItemIcon>
                         <Settings fontSize="small"/>
                     </ListItemIcon>
                     Settings
                 </MenuItem>
-                <MenuItem>
+                <MenuItem onClick={() => loginOut()}>
                     <ListItemIcon>
                         <Logout fontSize="small"/>
                     </ListItemIcon>

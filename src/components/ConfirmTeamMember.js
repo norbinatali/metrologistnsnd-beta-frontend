@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {Button,Paper} from "@mui/material";
 import {GC_USER_ID, RESET_TOKEN} from '../constants';
-import gql from 'graphql-tag';
 import{Mutation} from 'react-apollo';
 import PropTypes from "prop-types";
+import {TEAM_MEMBER} from '../graphql/mutations/Mutations'
 
 
 export default class ConfirmTeamMember extends Component {
@@ -23,9 +23,7 @@ export default class ConfirmTeamMember extends Component {
             this.setState({emailMembers, memberConfirmToken});
     }
     render() {
-        const TEAM_MEMBER = gql `mutation ($emailMembers:String!, $memberConfirmToken:String! ) { confirMemberEmail(emailMembers: $emailMembers, memberConfirmToken: $memberConfirmToken){ id}}`;
-        const { emailMembers, memberConfirmToken} = this.state;
-
+         const { emailMembers, memberConfirmToken} = this.state;
         return(
             <div>
                 <Paper style={{backgroundColor:"white"}}>
