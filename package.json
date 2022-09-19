@@ -29,7 +29,7 @@
     "i18next-http-backend": "^1.4.0",
     "moment": "^2.29.2",
     "node-pre-gyp": "^0.17.0",
-    "node-sass": "^7.0.1",
+    "node-sass": "^7.0.3",
     "notistack": "^2.0.3",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
